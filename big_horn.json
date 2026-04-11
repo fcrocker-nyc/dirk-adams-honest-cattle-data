@@ -1,1 +1,9 @@
-{"county":"big_horn","date":"2026-04-08","swe_index":9.5,"percent_of_median":72,"trend":"→","status":"Below Normal","forage_score":55}
+{
+  "county": "big_horn",
+  "date": "2026-04-11",
+  "swe_index": 11,
+  "percent_of_median": 80,
+  "trend": "\u2192",
+  "status": "Below Normal",
+  "forage_score": 66
+}

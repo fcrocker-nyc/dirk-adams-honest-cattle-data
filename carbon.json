@@ -1,9 +1,9 @@
 {
-  "county": "meagher",
+  "county": "carbon",
   "date": "2026-04-11",
-  "swe_index": 12,
+  "swe_index": 14,
   "percent_of_median": 80,
   "trend": "\u2192",
   "status": "Below Normal",
-  "forage_score": 62
+  "forage_score": 64
 }

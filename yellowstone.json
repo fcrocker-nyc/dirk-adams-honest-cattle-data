@@ -1,1 +1,9 @@
-{"county":"yellowstone","date":"2026-04-08","swe_index":9.8,"percent_of_median":70,"trend":"→","status":"Below Normal","forage_score":55}
+{
+  "county": "yellowstone",
+  "date": "2026-04-11",
+  "swe_index": 11,
+  "percent_of_median": 80,
+  "trend": "\u2192",
+  "status": "Below Normal",
+  "forage_score": 61
+}

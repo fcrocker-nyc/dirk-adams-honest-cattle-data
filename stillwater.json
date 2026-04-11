@@ -1,1 +1,9 @@
-{"county":"stillwater","date":"2026-04-08","swe_index":10.2,"percent_of_median":75,"trend":"→","status":"Below Normal","forage_score":60}
+{
+  "county": "stillwater",
+  "date": "2026-04-11",
+  "swe_index": 10,
+  "percent_of_median": 80,
+  "trend": "\u2192",
+  "status": "Below Normal",
+  "forage_score": 65
+}

@@ -1,1 +1,9 @@
-{"county":"lewis_clark","date":"2026-04-08","swe_index":14.2,"percent_of_median":95,"trend":"→","status":"Near Normal","forage_score":75}
+{
+  "county": "lewis_clark",
+  "date": "2026-04-11",
+  "swe_index": 14,
+  "percent_of_median": 80,
+  "trend": "\u2192",
+  "status": "Below Normal",
+  "forage_score": 69
+}

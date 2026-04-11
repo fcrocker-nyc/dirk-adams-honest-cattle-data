@@ -1,1 +1,9 @@
-{"county":"gallatin","date":"2026-04-08","swe_index":12.6,"percent_of_median":80,"trend":"→","status":"Below Normal","forage_score":60}
+{
+  "county": "gallatin",
+  "date": "2026-04-11",
+  "swe_index": 11,
+  "percent_of_median": 80,
+  "trend": "\u2192",
+  "status": "Below Normal",
+  "forage_score": 66
+}

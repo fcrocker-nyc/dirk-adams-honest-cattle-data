@@ -1,1 +1,9 @@
-{"county":"park","date":"2026-04-08","swe_index":13.0,"percent_of_median":85,"trend":"→","status":"Near Normal","forage_score":70}
+{
+  "county": "park",
+  "date": "2026-04-11",
+  "swe_index": 10,
+  "percent_of_median": 80,
+  "trend": "\u2192",
+  "status": "Below Normal",
+  "forage_score": 65
+}
