@@ -1,9 +1,1 @@
-{
-  "county": "yellowstone",
-  "date": "2026-04-11",
-  "swe_index": 11,
-  "percent_of_median": 80,
-  "trend": "\u2192",
-  "status": "Below Normal",
-  "forage_score": 61
-}
+{"county": "yellowstone", "date": "2026-04-14", "swe_index": 0.0, "percent_of_median": 0, "trend": "↓", "status": "No Snowpack", "forage_score": 40}

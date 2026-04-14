@@ -1,9 +1,1 @@
-{
-  "county": "sweet_grass",
-  "date": "2026-04-11",
-  "swe_index": 13,
-  "percent_of_median": 80,
-  "trend": "\u2192",
-  "status": "Below Normal",
-  "forage_score": 68
-}
+{"county": "sweet_grass", "date": "2026-04-14", "swe_index": 7.45, "percent_of_median": 63, "trend": "↓", "status": "Below Normal", "forage_score": 64}

@@ -1,9 +1,1 @@
-{
-  "county": "carbon",
-  "date": "2026-04-11",
-  "swe_index": 14,
-  "percent_of_median": 80,
-  "trend": "\u2192",
-  "status": "Below Normal",
-  "forage_score": 64
-}
+{"county": "carbon", "date": "2026-04-14", "swe_index": 2.0, "percent_of_median": 26, "trend": "→", "status": "Below Normal", "forage_score": 56}

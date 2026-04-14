@@ -1,9 +1,1 @@
-{
-  "county": "meagher",
-  "date": "2026-04-11",
-  "swe_index": 12,
-  "percent_of_median": 80,
-  "trend": "\u2192",
-  "status": "Below Normal",
-  "forage_score": 62
-}
+{"county": "meagher", "date": "2026-04-14", "swe_index": 10.95, "percent_of_median": 84, "trend": "↓", "status": "Normal", "forage_score": 72}
