@@ -1,1 +1,1 @@
-{"county": "sweet_grass", "date": "2026-04-14", "swe_index": 7.45, "percent_of_median": 63, "trend": "↓", "status": "Below Normal", "forage_score": 64}
+{"county": "sweet_grass", "date": "2026-04-14", "swe_index": 7.45, "percent_of_median": 63, "trend": "↓", "status": "Below Normal", "forage_score": 64, "precip_ytd": {"inches": 18.1, "percent_of_median": 103, "status": "Normal"}, "drought": {"valid_end": "2026-04-13", "none_pct": 0.0, "d0_pct": 100.0, "d1_pct": 93.47, "d2_pct": 57.81, "d3_pct": 0.0, "d4_pct": 0.0, "worst_class": "D2"}}

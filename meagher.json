@@ -1,1 +1,1 @@
-{"county": "meagher", "date": "2026-04-14", "swe_index": 10.95, "percent_of_median": 84, "trend": "↓", "status": "Normal", "forage_score": 72}
+{"county": "meagher", "date": "2026-04-14", "swe_index": 10.95, "percent_of_median": 84, "trend": "↓", "status": "Normal", "forage_score": 72, "precip_ytd": {"inches": 17.28, "percent_of_median": 107, "status": "Normal"}, "drought": {"valid_end": "2026-04-13", "none_pct": 0.0, "d0_pct": 100.0, "d1_pct": 100.0, "d2_pct": 79.53, "d3_pct": 0.0, "d4_pct": 0.0, "worst_class": "D2"}}

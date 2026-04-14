@@ -1,1 +1,1 @@
-{"county": "lewis_clark", "date": "2026-04-14", "swe_index": 13.5, "percent_of_median": 78, "trend": "↓", "status": "Normal", "forage_score": 69}
+{"county": "lewis_clark", "date": "2026-04-14", "swe_index": 13.5, "percent_of_median": 78, "trend": "↓", "status": "Normal", "forage_score": 69, "precip_ytd": {"inches": 28.35, "percent_of_median": 148, "status": "Above Normal"}, "drought": {"valid_end": "2026-04-13", "none_pct": 0.29, "d0_pct": 99.71, "d1_pct": 54.72, "d2_pct": 37.11, "d3_pct": 0.0, "d4_pct": 0.0, "worst_class": "D2"}}

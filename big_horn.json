@@ -1,1 +1,1 @@
-{"county": "big_horn", "date": "2026-04-14", "swe_index": 0.0, "percent_of_median": 0, "trend": "↓", "status": "No Snowpack", "forage_score": 40}
+{"county": "big_horn", "date": "2026-04-14", "swe_index": 0.0, "percent_of_median": 0, "trend": "↓", "status": "No Snowpack", "forage_score": 40, "precip_ytd": null, "drought": {"valid_end": "2026-04-13", "none_pct": 0.0, "d0_pct": 100.0, "d1_pct": 99.56, "d2_pct": 15.82, "d3_pct": 0.0, "d4_pct": 0.0, "worst_class": "D2"}}

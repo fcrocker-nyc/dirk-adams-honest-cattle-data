@@ -1,1 +1,1 @@
-{"county": "gallatin", "date": "2026-04-14", "swe_index": 10.91, "percent_of_median": 55, "trend": "↓", "status": "Below Normal", "forage_score": 62}
+{"county": "gallatin", "date": "2026-04-14", "swe_index": 10.91, "percent_of_median": 55, "trend": "↓", "status": "Below Normal", "forage_score": 62, "precip_ytd": {"inches": 23.45, "percent_of_median": 98, "status": "Normal"}, "drought": {"valid_end": "2026-04-13", "none_pct": 0.0, "d0_pct": 100.0, "d1_pct": 100.0, "d2_pct": 78.1, "d3_pct": 0.0, "d4_pct": 0.0, "worst_class": "D2"}}

@@ -1,1 +1,1 @@
-{"county": "park", "date": "2026-04-14", "swe_index": 12.7, "percent_of_median": 75, "trend": "↓", "status": "Normal", "forage_score": 68}
+{"county": "park", "date": "2026-04-14", "swe_index": 12.7, "percent_of_median": 75, "trend": "↓", "status": "Normal", "forage_score": 68, "precip_ytd": {"inches": 22.6, "percent_of_median": 113, "status": "Above Normal"}, "drought": {"valid_end": "2026-04-13", "none_pct": 0.0, "d0_pct": 100.0, "d1_pct": 85.56, "d2_pct": 40.41, "d3_pct": 0.0, "d4_pct": 0.0, "worst_class": "D2"}}

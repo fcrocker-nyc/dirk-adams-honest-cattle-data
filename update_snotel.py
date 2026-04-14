@@ -5,31 +5,48 @@ update_snotel.py
 
 Drop-in daily updater for the fcrocker-nyc/dirk-adams-honest-cattle-data
 repository. Pulls live SNOTEL data from the USDA NRCS Air and Water
-Database (AWDB) REST API, aggregates to the ten active honestcattle.net
-Montana counties, and writes one JSON file per county at the repo root
-using the exact filenames and schema honestcattle.net already expects:
+Database (AWDB) REST API plus USDA Drought Monitor classifications,
+aggregates to the ten active honestcattle.net Montana counties, and
+writes one JSON file per county at the repo root.
 
-    big_horn.json, blaine.json, carbon.json, gallatin.json,
-    lewis_clark.json, meagher.json, park.json, stillwater.json,
-    sweet_grass.json, yellowstone.json
-
-Each file matches the schema the honestcattle.net county pages already
-read:
+Output schema (v1.1 — precip_ytd + drought added, all prior fields unchanged):
 
     {
-      "county": "big_horn",
+      "county": "gallatin",
       "date": "2026-04-14",
-      "swe_index": 11.3,
-      "percent_of_median": 78,
+      "swe_index": 10.91,
+      "percent_of_median": 55,
       "trend": "↓",
       "status": "Below Normal",
-      "forage_score": 64
+      "forage_score": 62,
+      "precip_ytd": {
+        "inches": 14.2,
+        "percent_of_median": 92,
+        "status": "Normal"
+      },
+      "drought": {
+        "valid_end": "2026-04-06",
+        "none_pct": 0.0,
+        "d0_pct": 100.0,
+        "d1_pct": 100.0,
+        "d2_pct": 77.98,
+        "d3_pct": 0.0,
+        "d4_pct": 0.0,
+        "worst_class": "D2"
+      }
     }
 
-Before this script existed the repo had one stale "auto update" commit
-from 2026-04-11 in which every county reported the same 80% / Below
-Normal / flat-trend placeholder — this script replaces that with real
-county-level aggregated SWE.
+The `precip_ytd` block is null for counties with no MT SNOTEL stations
+(Big Horn, Blaine, Stillwater, Yellowstone). The `drought` block comes
+from USDM and is populated for all 10 counties regardless of SNOTEL
+coverage. Both are additive — consumers that only read the original
+six fields are unaffected.
+
+Notes on USDM semantics: the d0..d4 percentages are **cumulative** —
+`d2_pct` is the percent of the county in D2 or worse, not just "in
+exactly D2". This matches the common USDM phrasing ("D2 Severe Drought
+across 78% of the county") used in the county page prose. `worst_class`
+is a convenience field: the highest drought bucket with any area.
 
 Standard library only, so it runs fine in GitHub Actions without any
 pip dependencies.
@@ -46,7 +63,8 @@ import urllib.request
 from pathlib import Path
 
 AWDB_BASE = "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1"
-USER_AGENT = "honestcattle-snotel-updater/1.0 (+https://honestcattle.net)"
+USDM_BASE = "https://usdmdataservices.unl.edu/api"
+USER_AGENT = "honestcattle-snotel-updater/1.1 (+https://honestcattle.net)"
 REQUEST_TIMEOUT = 30
 
 # Active honestcattle.net Montana counties. Maps the canonical NRCS
@@ -64,7 +82,23 @@ ACTIVE_COUNTIES: dict[str, str] = {
     "Yellowstone":     "yellowstone",
 }
 
+# USDM API uses federal county FIPS codes. MT state prefix is 30.
+# Source: US Census Bureau FIPS county codes for Montana.
+COUNTY_FIPS: dict[str, str] = {
+    "big_horn":    "30003",
+    "blaine":      "30005",
+    "carbon":      "30009",
+    "gallatin":    "30031",
+    "lewis_clark": "30049",
+    "meagher":     "30059",
+    "park":        "30067",
+    "stillwater":  "30095",
+    "sweet_grass": "30097",
+    "yellowstone": "30111",
+}
+
 # Classification thresholds on percent-of-median SWE.
+# NOTE: thresholds are unreviewed assumptions. See SOURCES.md §5.
 STATUS_THRESHOLDS = [
     (0,   "No Snowpack"),
     (70,  "Below Normal"),
@@ -72,31 +106,50 @@ STATUS_THRESHOLDS = [
     (200, "Above Normal"),
 ]
 
+# Same percent-of-median thresholds applied to water-year precipitation,
+# minus "No Snowpack" which doesn't apply to precip. See SOURCES.md §9.
+PRECIP_STATUS_THRESHOLDS = [
+    (70,  "Below Normal"),
+    (110, "Normal"),
+    (200, "Above Normal"),
+]
+
 TREND_UP, TREND_DOWN, TREND_FLAT = "\u2191", "\u2193", "\u2192"
 
+# Elements requested from AWDB /data in a single call:
+#   WTEQ = snow water equivalent (inches)
+#   PREC = water-year precipitation accumulation (inches, resets Oct 1)
+ELEMENTS_REQUESTED = "WTEQ,PREC"
+
 
 # ---------------------------------------------------------------------------
-# NRCS AWDB REST calls
+# HTTP helper
 # ---------------------------------------------------------------------------
 
-def _get(path: str, params: dict) -> object:
-    query = urllib.parse.urlencode(
-        {k: v for k, v in params.items() if v is not None}, doseq=True
-    )
+def _get(url: str, params: dict | None = None) -> object:
+    if params:
+        query = urllib.parse.urlencode(
+            {k: v for k, v in params.items() if v is not None}, doseq=True
+        )
+        url = f"{url}?{query}"
     req = urllib.request.Request(
-        f"{AWDB_BASE}{path}?{query}",
+        url,
         headers={"User-Agent": USER_AGENT, "Accept": "application/json"},
     )
     with urllib.request.urlopen(req, timeout=REQUEST_TIMEOUT) as resp:
         return json.loads(resp.read().decode("utf-8"))
 
 
+# ---------------------------------------------------------------------------
+# NRCS AWDB
+# ---------------------------------------------------------------------------
+
 def fetch_mt_stations() -> list[dict]:
     # NRCS AWDB /stations silently ignores server-side filters, so we
-    # request the full list and filter client-side by stateCode + networkCode.
+    # pull the full list and filter client-side by stateCode + networkCode.
     # Using the raw countyName value — it already matches our county keys
     # (e.g. "Lewis and Clark" with lowercase "and"); .title() would break that.
-    data = _get("/stations", {})
+    data = _get(f"{AWDB_BASE}/stations")
     out: list[dict] = []
     for s in data or []:
         if s.get("stateCode") != "MT":
@@ -111,16 +164,16 @@ def fetch_mt_stations() -> list[dict]:
 
 
 def _fetch_data_chunk(triplets: list[str], begin: dt.date, end: dt.date) -> list:
-    """Fetch WTEQ + median for a chunk of triplets. On HTTP 500 with >1
-    triplet, splits the chunk in half and retries each half so a single
-    bad station (e.g. 690:MT:SNTL / Pickfoot Creek) doesn't poison the
-    whole batch. Individual stations that still 500 are skipped and logged.
+    """Fetch WTEQ + PREC + median for a chunk of triplets. On HTTP 500
+    with >1 triplet, splits the chunk in half and retries each half so
+    a single bad station (e.g. 690:MT:SNTL / Pickfoot Creek) doesn't
+    poison the batch. Individual stations that still 500 are skipped.
     """
     if not triplets:
         return []
     params = {
         "stationTriplets": ",".join(triplets),
-        "elements": "WTEQ",
+        "elements": ELEMENTS_REQUESTED,
         "duration": "DAILY",
         "beginDate": begin.isoformat(),
         "endDate": end.isoformat(),
@@ -130,7 +183,7 @@ def _fetch_data_chunk(triplets: list[str], begin: dt.date, end: dt.date) -> list
         "returnSuspectData": "false",
     }
     try:
-        return _get("/data", params) or []
+        return _get(f"{AWDB_BASE}/data", params) or []
     except urllib.error.HTTPError as exc:
         if exc.code != 500:
             raise
@@ -142,53 +195,154 @@ def _fetch_data_chunk(triplets: list[str], begin: dt.date, end: dt.date) -> list
                 + _fetch_data_chunk(triplets[mid:], begin, end))
 
 
-def fetch_swe_series(triplets: list[str], days_back: int) -> dict:
+def fetch_station_data(triplets: list[str], days_back: int) -> dict:
+    """Fetch WTEQ and PREC per station triplet in a single multi-element
+    /data call, chunked into batches of 20.
+
+    Returns a dict keyed by station triplet:
+
+        {
+            "360:MT:SNTL": {
+                "swe_series":   [("2026-04-08", 9.1), ..., ("2026-04-14", 8.7)],
+                "swe_median":   11.4,
+                "prec_current": 24.2,
+                "prec_median":  21.4,
+            },
+            ...
+        }
+
+    All values in inches. Medians are read inline from the latest-dated
+    value (NRCS data lags a day, so "today" often isn't present yet).
+    """
     if not triplets:
         return {}
     end = dt.date.today()
     begin = end - dt.timedelta(days=days_back)
-    today_iso = end.isoformat()
+
     out: dict = {}
-    # NRCS /data silently drops stations past ~20 triplets and 500s at ~30+,
-    # so we chunk the request into small batches and merge the results.
     BATCH_SIZE = 20
     for i in range(0, len(triplets), BATCH_SIZE):
         chunk = triplets[i : i + BATCH_SIZE]
         payload = _fetch_data_chunk(chunk, begin, end)
-        for block in payload or []:
+        for block in payload:
             triplet = block.get("stationTriplet")
             if not triplet:
                 continue
-            series: list[tuple[str, float]] = []
-            latest_date: str | None = None
-            latest_median: float | None = None
+            row: dict = {
+                "swe_series": [],
+                "swe_median": None,
+                "prec_current": None,
+                "prec_median": None,
+            }
             for el in block.get("data", []):
-                if el.get("stationElement", {}).get("elementCode") != "WTEQ":
-                    continue
-                for v in el.get("values", []):
-                    d = v.get("date")
-                    val = v.get("value")
-                    if not d or val is None:
-                        continue
-                    try:
-                        series.append((d, float(val)))
-                    except (TypeError, ValueError):
-                        continue
-                    # With centralTendencyType=MEDIAN, NRCS attaches a `median`
-                    # key inline on each value item. Capture the one on the
-                    # latest-dated value — NRCS data lags a day so "today"
-                    # often isn't present yet.
-                    if latest_date is None or d > latest_date:
-                        latest_date = d
-                        m = v.get("median")
-                        if m is not None:
+                se = el.get("stationElement", {}) or {}
+                code = se.get("elementCode")
+                values = el.get("values", []) or []
+                if code == "WTEQ":
+                    latest_date = None
+                    for v in values:
+                        d = v.get("date")
+                        val = v.get("value")
+                        if not d or val is None:
+                            continue
+                        try:
+                            row["swe_series"].append((d, float(val)))
+                        except (TypeError, ValueError):
+                            continue
+                        if latest_date is None or d > latest_date:
+                            latest_date = d
+                            m = v.get("median")
+                            if m is not None:
+                                try:
+                                    row["swe_median"] = float(m)
+                                except (TypeError, ValueError):
+                                    row["swe_median"] = None
+                    row["swe_series"].sort(key=lambda t: t[0])
+                elif code == "PREC":
+                    latest_date = None
+                    for v in values:
+                        d = v.get("date")
+                        val = v.get("value")
+                        if not d or val is None:
+                            continue
+                        if latest_date is None or d > latest_date:
+                            latest_date = d
                             try:
-                                latest_median = float(m)
+                                row["prec_current"] = float(val)
                             except (TypeError, ValueError):
-                                latest_median = None
-            series.sort(key=lambda t: t[0])
-            out[triplet] = {"series": series, "median_today": latest_median}
+                                row["prec_current"] = None
+                            m = v.get("median")
+                            if m is not None:
+                                try:
+                                    row["prec_median"] = float(m)
+                                except (TypeError, ValueError):
+                                    row["prec_median"] = None
+            out[triplet] = row
     return out
+
+
+# ---------------------------------------------------------------------------
+# USDA Drought Monitor (USDM)
+# ---------------------------------------------------------------------------
+
+def fetch_county_drought(fips: str, today: dt.date) -> dict | None:
+    """Fetch the most recent weekly USDM drought classification for a
+    county and return cumulative percent-of-area by drought category.
+
+    `d0_pct` = "D0 or worse" (abnormally dry +), `d1_pct` = "D1 or worse"
+    (moderate drought +), etc. That cumulative form matches the common
+    USDM phrasing used in the county page prose.
+
+    Returns None on API failure.
+    """
+    # USDM publishes weekly on Thursdays. Query a 3-week window and
+    # take the latest row to guarantee coverage regardless of weekday.
+    begin = today - dt.timedelta(days=21)
+    params = {
+        "aoi": fips,
+        "startdate": begin.isoformat(),
+        "enddate": today.isoformat(),
+        "statisticsType": "1",
+    }
+    try:
+        rows = _get(
+            f"{USDM_BASE}/CountyStatistics/GetDroughtSeverityStatisticsByAreaPercent",
+            params,
+        )
+    except (urllib.error.HTTPError, urllib.error.URLError) as exc:
+        print(f"[snotel] USDM fetch failed for {fips}: {exc}", file=sys.stderr)
+        return None
+    if not rows or not isinstance(rows, list):
+        return None
+
+    rows.sort(key=lambda r: r.get("validEnd") or "")
+    latest = rows[-1]
+
+    def _pct(key: str) -> float:
+        v = latest.get(key)
+        try:
+            return round(float(v), 2) if v is not None else 0.0
+        except (TypeError, ValueError):
+            return 0.0
+
+    d0, d1, d2, d3, d4 = (_pct(k) for k in ("d0", "d1", "d2", "d3", "d4"))
+    worst = None
+    for label, v in (("D4", d4), ("D3", d3), ("D2", d2), ("D1", d1), ("D0", d0)):
+        if v > 0:
+            worst = label
+            break
+
+    valid_end = (latest.get("validEnd") or "")[:10] or None
+    return {
+        "valid_end": valid_end,
+        "none_pct": _pct("none"),
+        "d0_pct": d0,
+        "d1_pct": d1,
+        "d2_pct": d2,
+        "d3_pct": d3,
+        "d4_pct": d4,
+        "worst_class": worst,
+    }
 
 
 # ---------------------------------------------------------------------------
@@ -199,6 +353,15 @@ def classify(percent: int | None, swe: float) -> str:
     if swe <= 0.0 or not percent:
         return "No Snowpack"
     for threshold, label in STATUS_THRESHOLDS:
+        if percent < threshold:
+            return label
+    return "Above Normal"
+
+
+def classify_precip(percent: int | None) -> str | None:
+    if percent is None:
+        return None
+    for threshold, label in PRECIP_STATUS_THRESHOLDS:
         if percent < threshold:
             return label
     return "Above Normal"
@@ -217,6 +380,9 @@ def compute_trend(series: list[float]) -> str:
 
 
 def forage_score(percent: int | None, status: str) -> int:
+    # NOTE: these ramps are unreviewed. See SOURCES.md §6. Precipitation
+    # and drought are NOT yet folded into this score — they are written
+    # to the JSON as informational fields.
     if status == "No Snowpack":
         return 40
     p = percent or 0
@@ -227,11 +393,38 @@ def forage_score(percent: int | None, status: str) -> int:
     return min(100, int(round(85 + ((min(p, 200) - 110) / 90.0) * 15)))
 
 
-def build_record(slug: str, today: dt.date,
-                 station_current: list[float],
-                 station_median: list[float],
-                 station_series: list[list[float]]) -> dict:
+def aggregate_precip(
+    station_current: list[float],
+    station_median: list[float],
+) -> dict | None:
+    """County-level water-year precipitation aggregate from station
+    values. Returns None if no stations reported precip."""
     if not station_current:
+        return None
+    inches = round(sum(station_current) / len(station_current), 2)
+    meds = [m for m in station_median if m and m > 0]
+    percent = (
+        int(round((inches / (sum(meds) / len(meds))) * 100))
+        if meds
+        else None
+    )
+    return {
+        "inches": inches,
+        "percent_of_median": percent,
+        "status": classify_precip(percent),
+    }
+
+
+def build_record(slug: str, today: dt.date,
+                 swe_current: list[float],
+                 swe_medians: list[float],
+                 swe_serieses: list[list[float]],
+                 prec_current: list[float],
+                 prec_medians: list[float],
+                 drought: dict | None) -> dict:
+    precip_ytd = aggregate_precip(prec_current, prec_medians)
+
+    if not swe_current:
         return {
             "county": slug,
             "date": today.isoformat(),
@@ -240,16 +433,18 @@ def build_record(slug: str, today: dt.date,
             "trend": TREND_DOWN if today.month >= 4 else TREND_FLAT,
             "status": "No Snowpack",
             "forage_score": 40,
+            "precip_ytd": precip_ytd,
+            "drought": drought,
         }
 
-    swe = round(sum(station_current) / len(station_current), 2)
-    meds = [m for m in station_median if m and m > 0]
+    swe = round(sum(swe_current) / len(swe_current), 2)
+    meds = [m for m in swe_medians if m and m > 0]
     percent = int(round((swe / (sum(meds) / len(meds))) * 100)) if meds else 0
 
-    if station_series:
-        length = min(len(s) for s in station_series)
+    if swe_serieses:
+        length = min(len(s) for s in swe_serieses)
         county_series = [
-            sum(s[i] for s in station_series) / len(station_series)
+            sum(s[i] for s in swe_serieses) / len(swe_serieses)
             for i in range(length)
         ]
     else:
@@ -264,6 +459,8 @@ def build_record(slug: str, today: dt.date,
         "trend": compute_trend(county_series),
         "status": status,
         "forage_score": forage_score(percent, status),
+        "precip_ytd": precip_ytd,
+        "drought": drought,
     }
 
 
@@ -302,31 +499,45 @@ def main() -> int:
 
     all_triplets = [t for v in triplets_by_county.values() for t in v]
     try:
-        station_data = fetch_swe_series(all_triplets, days_back=max(args.trend_days, 7))
+        station_data = fetch_station_data(
+            all_triplets, days_back=max(args.trend_days, 7)
+        )
     except urllib.error.URLError as exc:
         print(f"[snotel] data fetch failed: {exc}", file=sys.stderr)
         return 2
 
     changed = 0
     for county, slug in ACTIVE_COUNTIES.items():
-        current, medians, serieses = [], [], []
+        swe_current, swe_medians, swe_serieses = [], [], []
+        prec_current, prec_medians = [], []
         for triplet in triplets_by_county[county]:
             d = station_data.get(triplet, {})
-            series = d.get("series", [])
-            if not series:
-                continue
-            vals = [v for _, v in series]
-            current.append(vals[-1])
-            serieses.append(vals[-args.trend_days:])
-            m = d.get("median_today")
-            if m is not None:
-                medians.append(m)
+            series = d.get("swe_series", [])
+            if series:
+                vals = [v for _, v in series]
+                swe_current.append(vals[-1])
+                swe_serieses.append(vals[-args.trend_days:])
+                m = d.get("swe_median")
+                if m is not None:
+                    swe_medians.append(m)
+            pc = d.get("prec_current")
+            if pc is not None:
+                prec_current.append(pc)
+                pm = d.get("prec_median")
+                if pm is not None:
+                    prec_medians.append(pm)
 
-        record = build_record(slug, today, current, medians, serieses)
+        fips = COUNTY_FIPS.get(slug)
+        drought = fetch_county_drought(fips, today) if fips else None
+
+        record = build_record(
+            slug, today,
+            swe_current, swe_medians, swe_serieses,
+            prec_current, prec_medians,
+            drought,
+        )
         path = args.out / f"{slug}.json"
 
-        # Only rewrite if the content actually changed, so the commit
-        # history stays clean on days with no material change.
         new_text = json.dumps(record, ensure_ascii=False) + "\n"
         if path.exists() and path.read_text(encoding="utf-8") == new_text:
             if args.verbose:
@@ -335,12 +546,22 @@ def main() -> int:
         path.write_text(new_text, encoding="utf-8")
         changed += 1
         if args.verbose:
+            pr = record.get("precip_ytd") or {}
+            dr = record.get("drought") or {}
+            pr_desc = (
+                f"precip={pr.get('inches')}\" ({pr.get('percent_of_median')}%)"
+                if pr else "precip=none"
+            )
+            dr_desc = (
+                f"drought={dr.get('worst_class')}@d2+{dr.get('d2_pct')}%"
+                if dr else "drought=none"
+            )
             print(
                 f"[snotel] {slug}: swe={record['swe_index']} "
                 f"%med={record['percent_of_median']} "
                 f"{record['trend']} {record['status']} "
                 f"(forage {record['forage_score']}, "
-                f"{len(triplets_by_county[county])} stations)"
+                f"{len(triplets_by_county[county])} stn, {pr_desc}, {dr_desc})"
             )
 
     print(f"[snotel] {changed} of {len(ACTIVE_COUNTIES)} county files updated")

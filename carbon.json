@@ -1,1 +1,1 @@
-{"county": "carbon", "date": "2026-04-14", "swe_index": 1.6, "percent_of_median": 20, "trend": "↓", "status": "Below Normal", "forage_score": 54}
+{"county": "carbon", "date": "2026-04-14", "swe_index": 1.6, "percent_of_median": 20, "trend": "↓", "status": "Below Normal", "forage_score": 54, "precip_ytd": {"inches": 9.55, "percent_of_median": 75, "status": "Normal"}, "drought": {"valid_end": "2026-04-13", "none_pct": 0.0, "d0_pct": 100.0, "d1_pct": 94.07, "d2_pct": 67.74, "d3_pct": 0.0, "d4_pct": 0.0, "worst_class": "D2"}}
