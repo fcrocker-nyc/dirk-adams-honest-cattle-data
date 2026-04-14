@@ -4,12 +4,19 @@ update_snotel.py
 ================
 
 Drop-in daily updater for the fcrocker-nyc/dirk-adams-honest-cattle-data
-repository. Pulls live SNOTEL data from the USDA NRCS Air and Water
-Database (AWDB) REST API plus USDA Drought Monitor classifications,
-aggregates to the ten active honestcattle.net Montana counties, and
-writes one JSON file per county at the repo root.
+repository. Pulls live moisture data from five public sources, aggregates
+to the ten active honestcattle.net Montana counties, and writes one JSON
+file per county at the repo root.
 
-Output schema (v1.1 — precip_ytd + drought added, all prior fields unchanged):
+Data sources (v1.2):
+    1. NRCS AWDB (SNOTEL)            — SWE + water-year precipitation
+    2. USDA Drought Monitor (USDM)   — county drought classification
+    3. USGS Water Services (NWIS)    — stream discharge + day-of-year percentile
+    4. Montana Mesonet (UMT)         — station-level soil VWC
+    5. NOAA NCEI Climate at a Glance — monthly county precip anomaly (1/3/12 mo)
+
+Output schema (v1.2 — streamflow, soil_moisture, precip_anomaly added;
+all prior fields unchanged):
 
     {
       "county": "gallatin",
@@ -19,43 +26,47 @@ Output schema (v1.1 — precip_ytd + drought added, all prior fields unchanged):
       "trend": "↓",
       "status": "Below Normal",
       "forage_score": 62,
-      "precip_ytd": {
-        "inches": 14.2,
-        "percent_of_median": 92,
-        "status": "Normal"
+      "precip_ytd": { ... },
+      "drought":    { ... },
+      "streamflow": {
+        "gauge_name": "Gallatin River at Logan",
+        "site_no":    "06052500",
+        "cfs":         1320,
+        "percentile":  42,
+        "status":     "Normal"
       },
-      "drought": {
-        "valid_end": "2026-04-06",
-        "none_pct": 0.0,
-        "d0_pct": 100.0,
-        "d1_pct": 100.0,
-        "d2_pct": 77.98,
-        "d3_pct": 0.0,
-        "d4_pct": 0.0,
-        "worst_class": "D2"
+      "soil_moisture": {
+        "shallow_vwc_pct": 27.9,
+        "deep_vwc_pct":    29.8,
+        "station_count":   3,
+        "source":          "Montana Mesonet"
+      },
+      "precip_anomaly": {
+        "month_end":      "2026-03",
+        "m1":  {"inches": 1.37, "normal": 2.13, "anomaly": -0.76, "rank": 28},
+        "m3":  {"inches": 3.51, "normal": 5.64, "anomaly": -2.13, "rank": 9},
+        "m12": {"inches": 21.22,"normal": 24.28,"anomaly": -3.06, "rank": 23}
       }
     }
 
-The `precip_ytd` block is null for counties with no MT SNOTEL stations
-(Big Horn, Blaine, Stillwater, Yellowstone). The `drought` block comes
-from USDM and is populated for all 10 counties regardless of SNOTEL
-coverage. Both are additive — consumers that only read the original
-six fields are unaffected.
+All three new blocks are nullable — the script degrades gracefully if
+any source fails or lacks coverage for a given county. The original
+seven fields remain unchanged, so the existing [hc_snotel] shortcode
+on honestcattle.net keeps working without modification.
 
-Notes on USDM semantics: the d0..d4 percentages are **cumulative** —
-`d2_pct` is the percent of the county in D2 or worse, not just "in
-exactly D2". This matches the common USDM phrasing ("D2 Severe Drought
-across 78% of the county") used in the county page prose. `worst_class`
-is a convenience field: the highest drought bucket with any area.
+Informational-only: forage_score is still computed from SWE alone.
+Adding streamflow / soil moisture / precip anomaly to the score is
+deferred until rangeland-scientist review of the existing ramps (see
+SOURCES.md §6).
 
-Standard library only, so it runs fine in GitHub Actions without any
-pip dependencies.
+Standard library only. Runs in GitHub Actions without pip deps.
 """
 
 from __future__ import annotations
 
 import datetime as dt
 import json
+import re
 import sys
 import urllib.error
 import urllib.parse
@@ -64,11 +75,14 @@ from pathlib import Path
 
 AWDB_BASE = "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1"
 USDM_BASE = "https://usdmdataservices.unl.edu/api"
-USER_AGENT = "honestcattle-snotel-updater/1.1 (+https://honestcattle.net)"
+USGS_BASE = "https://waterservices.usgs.gov/nwis"
+MESONET_BASE = "https://mesonet.climate.umt.edu/api/v2"
+NCEI_CAG_BASE = "https://www.ncei.noaa.gov/cag/county/mapping"
+USER_AGENT = "honestcattle-snotel-updater/1.2 (+https://honestcattle.net)"
 REQUEST_TIMEOUT = 30
 
 # Active honestcattle.net Montana counties. Maps the canonical NRCS
-# `countyName` to the repo's filename slug (underscores, no "and").
+# countyName to the repo's filename slug.
 ACTIVE_COUNTIES: dict[str, str] = {
     "Big Horn":        "big_horn",
     "Blaine":          "blaine",
@@ -82,8 +96,7 @@ ACTIVE_COUNTIES: dict[str, str] = {
     "Yellowstone":     "yellowstone",
 }
 
-# USDM API uses federal county FIPS codes. MT state prefix is 30.
-# Source: US Census Bureau FIPS county codes for Montana.
+# USDM API uses federal county FIPS codes. MT state prefix = 30.
 COUNTY_FIPS: dict[str, str] = {
     "big_horn":    "30003",
     "blaine":      "30005",
@@ -97,8 +110,25 @@ COUNTY_FIPS: dict[str, str] = {
     "yellowstone": "30111",
 }
 
-# Classification thresholds on percent-of-median SWE.
-# NOTE: thresholds are unreviewed assumptions. See SOURCES.md §5.
+# USGS stream gauge per county (site_no, display name).
+# Picked the most agriculturally-relevant active gauge on the river the
+# honestcattle.net page prose actually references for each county.
+# Gauges discovered via USGS NWIS site service (stateCd=mt, siteType=ST,
+# parameterCd=00060, siteStatus=active).
+COUNTY_GAUGES: dict[str, tuple[str, str]] = {
+    "big_horn":    ("06287000", "Bighorn River below Yellowtail Afterbay Dam near St. Xavier"),
+    "blaine":      ("06155030", "Milk River at Havre"),
+    "carbon":      ("06207500", "Clarks Fork Yellowstone River near Belfry"),
+    "gallatin":    ("06052500", "Gallatin River at Logan"),
+    "lewis_clark": ("06073500", "Dearborn River near Craig"),
+    "meagher":     ("06076690", "Smith River near Fort Logan"),
+    "park":        ("06192500", "Yellowstone River near Livingston"),
+    "stillwater":  ("06205000", "Stillwater River near Absarokee"),
+    "sweet_grass": ("06200000", "Boulder River at Big Timber"),
+    "yellowstone": ("06214500", "Yellowstone River at Billings"),
+}
+
+# Classification thresholds on percent-of-median SWE. See SOURCES.md §5.
 STATUS_THRESHOLDS = [
     (0,   "No Snowpack"),
     (70,  "Below Normal"),
@@ -106,20 +136,37 @@ STATUS_THRESHOLDS = [
     (200, "Above Normal"),
 ]
 
-# Same percent-of-median thresholds applied to water-year precipitation,
-# minus "No Snowpack" which doesn't apply to precip. See SOURCES.md §9.
+# Same percent-of-median thresholds applied to water-year precipitation.
 PRECIP_STATUS_THRESHOLDS = [
     (70,  "Below Normal"),
     (110, "Normal"),
     (200, "Above Normal"),
 ]
 
+# Streamflow status bands, based on day-of-year percentile.
+# Below 25th percentile = below normal, 25-75 = normal, above 75 = above normal.
+STREAMFLOW_STATUS_THRESHOLDS = [
+    (25,  "Below Normal"),
+    (75,  "Normal"),
+    (101, "Above Normal"),
+]
+
 TREND_UP, TREND_DOWN, TREND_FLAT = "\u2191", "\u2193", "\u2192"
 
-# Elements requested from AWDB /data in a single call:
-#   WTEQ = snow water equivalent (inches)
-#   PREC = water-year precipitation accumulation (inches, resets Oct 1)
+# Multi-element AWDB query: WTEQ = SWE, PREC = water-year precip accumulation.
 ELEMENTS_REQUESTED = "WTEQ,PREC"
+
+# NCEI state code for Montana (NOT FIPS — NCEI uses its own 2-digit system).
+NCEI_STATE_MT = 24
+
+# Mesonet Soil VWC field name parser: "Soil VWC @ -5 cm [%]"
+_MESONET_VWC_RE = re.compile(r"^Soil VWC @ -(\d+) cm")
+
+# Mesonet soil moisture depth buckets in cm.
+# Shallow = 5/10 cm (grass & forb root zone, responsive to recent precip).
+# Deep    = 50/100 cm (subsoil storage, slower season-long signal).
+MESONET_SHALLOW_CM = {5, 10}
+MESONET_DEEP_CM = {50, 100}
 
 
 # ---------------------------------------------------------------------------
@@ -140,15 +187,27 @@ def _get(url: str, params: dict | None = None) -> object:
         return json.loads(resp.read().decode("utf-8"))
 
 
+def _get_text(url: str, params: dict | None = None) -> str:
+    if params:
+        query = urllib.parse.urlencode(
+            {k: v for k, v in params.items() if v is not None}, doseq=True
+        )
+        url = f"{url}?{query}"
+    req = urllib.request.Request(
+        url, headers={"User-Agent": USER_AGENT},
+    )
+    with urllib.request.urlopen(req, timeout=REQUEST_TIMEOUT) as resp:
+        return resp.read().decode("utf-8")
+
+
 # ---------------------------------------------------------------------------
-# NRCS AWDB
+# NRCS AWDB — SWE + water-year precipitation
 # ---------------------------------------------------------------------------
 
 def fetch_mt_stations() -> list[dict]:
-    # NRCS AWDB /stations silently ignores server-side filters, so we
-    # pull the full list and filter client-side by stateCode + networkCode.
-    # Using the raw countyName value — it already matches our county keys
-    # (e.g. "Lewis and Clark" with lowercase "and"); .title() would break that.
+    # NRCS AWDB /stations silently ignores server-side filters; filter
+    # client-side by stateCode + networkCode. Keep raw countyName (already
+    # matches our keys, e.g. "Lewis and Clark" — don't .title() it).
     data = _get(f"{AWDB_BASE}/stations")
     out: list[dict] = []
     for s in data or []:
@@ -165,9 +224,8 @@ def fetch_mt_stations() -> list[dict]:
 
 def _fetch_data_chunk(triplets: list[str], begin: dt.date, end: dt.date) -> list:
     """Fetch WTEQ + PREC + median for a chunk of triplets. On HTTP 500
-    with >1 triplet, splits the chunk in half and retries each half so
-    a single bad station (e.g. 690:MT:SNTL / Pickfoot Creek) doesn't
-    poison the batch. Individual stations that still 500 are skipped.
+    with >1 triplet, recursively splits the chunk so a single bad
+    station (e.g. 690:MT:SNTL / Pickfoot Creek) doesn't poison the batch.
     """
     if not triplets:
         return []
@@ -196,24 +254,6 @@ def _fetch_data_chunk(triplets: list[str], begin: dt.date, end: dt.date) -> list
 
 
 def fetch_station_data(triplets: list[str], days_back: int) -> dict:
-    """Fetch WTEQ and PREC per station triplet in a single multi-element
-    /data call, chunked into batches of 20.
-
-    Returns a dict keyed by station triplet:
-
-        {
-            "360:MT:SNTL": {
-                "swe_series":   [("2026-04-08", 9.1), ..., ("2026-04-14", 8.7)],
-                "swe_median":   11.4,
-                "prec_current": 24.2,
-                "prec_median":  21.4,
-            },
-            ...
-        }
-
-    All values in inches. Medians are read inline from the latest-dated
-    value (NRCS data lags a day, so "today" often isn't present yet).
-    """
     if not triplets:
         return {}
     end = dt.date.today()
@@ -282,21 +322,10 @@ def fetch_station_data(triplets: list[str], days_back: int) -> dict:
 
 
 # ---------------------------------------------------------------------------
-# USDA Drought Monitor (USDM)
+# USDA Drought Monitor
 # ---------------------------------------------------------------------------
 
 def fetch_county_drought(fips: str, today: dt.date) -> dict | None:
-    """Fetch the most recent weekly USDM drought classification for a
-    county and return cumulative percent-of-area by drought category.
-
-    `d0_pct` = "D0 or worse" (abnormally dry +), `d1_pct` = "D1 or worse"
-    (moderate drought +), etc. That cumulative form matches the common
-    USDM phrasing used in the county page prose.
-
-    Returns None on API failure.
-    """
-    # USDM publishes weekly on Thursdays. Query a 3-week window and
-    # take the latest row to guarantee coverage regardless of weekday.
     begin = today - dt.timedelta(days=21)
     params = {
         "aoi": fips,
@@ -346,7 +375,314 @@ def fetch_county_drought(fips: str, today: dt.date) -> dict | None:
 
 
 # ---------------------------------------------------------------------------
-# Aggregation
+# USGS Water Services — streamflow
+# ---------------------------------------------------------------------------
+
+def _rdb_parse(text: str) -> list[dict]:
+    """Parse USGS RDB tab-separated-values into a list of dicts. Skips
+    lines starting with '#' and the type-descriptor line (line after
+    the header that has entries like '5s', '15s', etc.)."""
+    lines = [l for l in text.split("\n") if l and not l.startswith("#")]
+    if len(lines) < 2:
+        return []
+    header = lines[0].split("\t")
+    # Skip the type-descriptor line (all cells look like "\d+s" or "\d+n")
+    start_idx = 1
+    if start_idx < len(lines) and re.match(r"^[\ds]+$", lines[1].replace("\t", "").replace("n", "")):
+        start_idx = 2
+    out: list[dict] = []
+    for line in lines[start_idx:]:
+        parts = line.split("\t")
+        if len(parts) != len(header):
+            continue
+        out.append(dict(zip(header, parts)))
+    return out
+
+
+def _streamflow_percentile(cfs: float, p10: float, p25: float, p50: float,
+                           p75: float, p90: float) -> int:
+    """Linear interpolation of a discharge value against day-of-year
+    percentile bands. Returns an integer 0-100."""
+    if cfs is None:
+        return None
+    if cfs <= p10:
+        return max(0, int(round(10 * cfs / p10))) if p10 > 0 else 0
+    if cfs <= p25:
+        return int(round(10 + 15 * (cfs - p10) / (p25 - p10)))
+    if cfs <= p50:
+        return int(round(25 + 25 * (cfs - p25) / (p50 - p25)))
+    if cfs <= p75:
+        return int(round(50 + 25 * (cfs - p50) / (p75 - p50)))
+    if cfs <= p90:
+        return int(round(75 + 15 * (cfs - p75) / (p90 - p75)))
+    return min(100, int(round(90 + 10 * (cfs - p90) / max(p90, 1.0))))
+
+
+def _classify_streamflow(percentile: int | None) -> str | None:
+    if percentile is None:
+        return None
+    for threshold, label in STREAMFLOW_STATUS_THRESHOLDS:
+        if percentile < threshold:
+            return label
+    return "Above Normal"
+
+
+def fetch_streamflow(site_no: str, gauge_name: str, today: dt.date) -> dict | None:
+    """Fetch current daily discharge + day-of-year historical percentile
+    bands for a USGS stream gauge. Returns None on any failure.
+    """
+    # 1. Current daily value
+    try:
+        dv = _get(f"{USGS_BASE}/dv/", {
+            "format": "json",
+            "sites": site_no,
+            "parameterCd": "00060",
+            "siteStatus": "active",
+        })
+    except (urllib.error.HTTPError, urllib.error.URLError) as exc:
+        print(f"[snotel] USGS dv fetch failed for {site_no}: {exc}", file=sys.stderr)
+        return None
+    ts = dv.get("value", {}).get("timeSeries", [])
+    if not ts:
+        return None
+    values = ts[0].get("values", [{}])[0].get("value", [])
+    if not values:
+        return None
+    latest = values[-1]
+    try:
+        cfs = float(latest.get("value"))
+    except (TypeError, ValueError):
+        return None
+    # "-999999" is USGS's no-data sentinel
+    if cfs < 0:
+        return None
+
+    # 2. Historical day-of-year percentile bands for this site
+    try:
+        rdb = _get_text(f"{USGS_BASE}/stat/", {
+            "format": "rdb",
+            "sites": site_no,
+            "parameterCd": "00060",
+            "statReportType": "daily",
+            "statTypeCd": "p10,p25,p50,p75,p90",
+        })
+    except (urllib.error.HTTPError, urllib.error.URLError) as exc:
+        print(f"[snotel] USGS stat fetch failed for {site_no}: {exc}", file=sys.stderr)
+        return {
+            "gauge_name": gauge_name,
+            "site_no": site_no,
+            "cfs": round(cfs, 0),
+            "percentile": None,
+            "status": None,
+        }
+
+    rows = _rdb_parse(rdb)
+    percentile = None
+
+    def _num(x: object) -> float | None:
+        if x is None:
+            return None
+        s = str(x).strip()
+        if not s:
+            return None
+        try:
+            return float(s)
+        except ValueError:
+            return None
+
+    for row in rows:
+        try:
+            m = int(row.get("month_nu", 0))
+            d = int(row.get("day_nu", 0))
+        except (TypeError, ValueError):
+            continue
+        if m != today.month or d != today.day:
+            continue
+        p10 = _num(row.get("p10_va"))
+        p25 = _num(row.get("p25_va"))
+        p50 = _num(row.get("p50_va"))
+        p75 = _num(row.get("p75_va"))
+        p90 = _num(row.get("p90_va"))
+        # USGS occasionally omits p90 (and rarely p10) on high-variance
+        # spring days. Extrapolate from adjacent bands to keep the
+        # percentile calculation meaningful rather than dropping it.
+        if p50 is None:
+            break
+        if p10 is None and p25 is not None:
+            p10 = p25 * 0.6
+        if p25 is None and p10 is not None and p50 is not None:
+            p25 = (p10 + p50) / 2
+        if p75 is None and p50 is not None:
+            p75 = p50 * 1.3
+        if p90 is None and p75 is not None:
+            p90 = p75 * 1.3
+        if None in (p10, p25, p50, p75, p90):
+            break
+        percentile = _streamflow_percentile(cfs, p10, p25, p50, p75, p90)
+        break
+
+    return {
+        "gauge_name": gauge_name,
+        "site_no": site_no,
+        "cfs": round(cfs, 0),
+        "percentile": percentile,
+        "status": _classify_streamflow(percentile),
+    }
+
+
+# ---------------------------------------------------------------------------
+# Montana Mesonet — soil moisture (VWC at multiple depths)
+# ---------------------------------------------------------------------------
+
+def fetch_mesonet_stations() -> list[dict]:
+    """Fetch all Mesonet stations. Returns a list of dicts with keys:
+    station, name, county, has_swp, etc."""
+    try:
+        data = _get(f"{MESONET_BASE}/stations", {"type": "json"})
+    except (urllib.error.HTTPError, urllib.error.URLError) as exc:
+        print(f"[snotel] Mesonet stations fetch failed: {exc}", file=sys.stderr)
+        return []
+    return data or []
+
+
+def fetch_mesonet_latest(station_ids: list[str]) -> list[dict]:
+    """Fetch latest observations for a batch of Mesonet station IDs."""
+    if not station_ids:
+        return []
+    try:
+        data = _get(f"{MESONET_BASE}/latest", {
+            "stations": ",".join(station_ids),
+            "type": "json",
+        })
+    except (urllib.error.HTTPError, urllib.error.URLError) as exc:
+        print(f"[snotel] Mesonet latest fetch failed: {exc}", file=sys.stderr)
+        return []
+    return data or []
+
+
+def aggregate_mesonet_soil_moisture(
+    obs: list[dict],
+) -> dict | None:
+    """Aggregate a list of station observation dicts into a county-level
+    soil-moisture summary. Expects each obs to have fields like
+    'Soil VWC @ -5 cm [%]' with numeric values."""
+    if not obs:
+        return None
+    shallow_vals: list[float] = []
+    deep_vals: list[float] = []
+    contributing = 0
+    for station_obs in obs:
+        if not isinstance(station_obs, dict):
+            continue
+        station_has_vwc = False
+        for key, val in station_obs.items():
+            m = _MESONET_VWC_RE.match(str(key))
+            if not m:
+                continue
+            try:
+                v = float(val)
+            except (TypeError, ValueError):
+                continue
+            depth_cm = int(m.group(1))
+            if depth_cm in MESONET_SHALLOW_CM:
+                shallow_vals.append(v)
+                station_has_vwc = True
+            elif depth_cm in MESONET_DEEP_CM:
+                deep_vals.append(v)
+                station_has_vwc = True
+        if station_has_vwc:
+            contributing += 1
+    if contributing == 0:
+        return None
+    return {
+        "shallow_vwc_pct": round(sum(shallow_vals) / len(shallow_vals), 1)
+                           if shallow_vals else None,
+        "deep_vwc_pct":    round(sum(deep_vals) / len(deep_vals), 1)
+                           if deep_vals else None,
+        "station_count":   contributing,
+        "source":          "Montana Mesonet",
+    }
+
+
+# ---------------------------------------------------------------------------
+# NOAA NCEI Climate at a Glance — county precipitation anomaly
+# ---------------------------------------------------------------------------
+
+def fetch_cag_precip_anomaly(today: dt.date) -> dict:
+    """Fetch 1/3/12-month county-level precipitation anomaly for every
+    Montana county from NCEI's Climate at a Glance mapping endpoint.
+
+    Returns a dict keyed by county FIPS (e.g. 'MT-059'):
+        {
+          'MT-059': {
+            'month_end': '2026-03',
+            'm1':  {'inches': 1.98, 'normal': 1.66, 'anomaly': 0.32, 'rank': 97},
+            'm3':  {'inches': 3.38, 'normal': 4.36, 'anomaly': -0.98, 'rank': 34},
+            'm12': {'inches': 18.74,'normal': 21.96,'anomaly': -3.22, 'rank': 30}
+          },
+          ...
+        }
+
+    NCEI publishes data by completed calendar month. Try the current
+    month first; if it 404s, fall back to the previous month.
+    """
+    # Figure out the most recent month NCEI has data for.
+    candidate_months = []
+    cm = today.replace(day=1)
+    candidate_months.append(cm)
+    prev = (cm - dt.timedelta(days=1)).replace(day=1)
+    candidate_months.append(prev)
+
+    periods = [("m1", 1), ("m3", 3), ("m12", 12)]
+
+    # By-county accumulator.
+    by_county: dict[str, dict] = {}
+    month_end_used: str | None = None
+
+    for period_key, n_months in periods:
+        data = None
+        month_used = None
+        for cand in candidate_months:
+            yyyymm = cand.strftime("%Y%m")
+            url = f"{NCEI_CAG_BASE}/{NCEI_STATE_MT}-pcp-{yyyymm}-{n_months}.json"
+            try:
+                data = _get(url)
+                month_used = cand.strftime("%Y-%m")
+                break
+            except urllib.error.HTTPError as exc:
+                if exc.code == 404:
+                    continue
+                print(f"[snotel] NCEI CAG {period_key} fetch failed: {exc}", file=sys.stderr)
+                break
+            except urllib.error.URLError as exc:
+                print(f"[snotel] NCEI CAG {period_key} fetch failed: {exc}", file=sys.stderr)
+                break
+        if data is None:
+            continue
+        if month_end_used is None:
+            month_end_used = month_used
+        for key, v in (data.get("data") or {}).items():
+            if not isinstance(v, dict):
+                continue
+            entry = by_county.setdefault(key, {"month_end": month_used})
+            def _num(k: str) -> float | None:
+                val = v.get(k)
+                try:
+                    return round(float(val), 2) if val is not None else None
+                except (TypeError, ValueError):
+                    return None
+            entry[period_key] = {
+                "inches":  _num("value"),
+                "normal":  _num("mean"),
+                "anomaly": _num("anomaly"),
+                "rank":    v.get("rank"),
+            }
+
+    return by_county
+
+
+# ---------------------------------------------------------------------------
+# Aggregation helpers
 # ---------------------------------------------------------------------------
 
 def classify(percent: int | None, swe: float) -> str:
@@ -380,9 +716,10 @@ def compute_trend(series: list[float]) -> str:
 
 
 def forage_score(percent: int | None, status: str) -> int:
-    # NOTE: these ramps are unreviewed. See SOURCES.md §6. Precipitation
-    # and drought are NOT yet folded into this score — they are written
-    # to the JSON as informational fields.
+    # NOTE: these ramps are unreviewed. See SOURCES.md §6. None of the
+    # newer signals (precip_ytd, drought, streamflow, soil_moisture,
+    # precip_anomaly) influence this score yet — they are written to
+    # the JSON as informational fields pending scientist review.
     if status == "No Snowpack":
         return 40
     p = percent or 0
@@ -397,8 +734,6 @@ def aggregate_precip(
     station_current: list[float],
     station_median: list[float],
 ) -> dict | None:
-    """County-level water-year precipitation aggregate from station
-    values. Returns None if no stations reported precip."""
     if not station_current:
         return None
     inches = round(sum(station_current) / len(station_current), 2)
@@ -421,7 +756,10 @@ def build_record(slug: str, today: dt.date,
                  swe_serieses: list[list[float]],
                  prec_current: list[float],
                  prec_medians: list[float],
-                 drought: dict | None) -> dict:
+                 drought: dict | None,
+                 streamflow: dict | None,
+                 soil_moisture: dict | None,
+                 precip_anomaly: dict | None) -> dict:
     precip_ytd = aggregate_precip(prec_current, prec_medians)
 
     if not swe_current:
@@ -435,6 +773,9 @@ def build_record(slug: str, today: dt.date,
             "forage_score": 40,
             "precip_ytd": precip_ytd,
             "drought": drought,
+            "streamflow": streamflow,
+            "soil_moisture": soil_moisture,
+            "precip_anomaly": precip_anomaly,
         }
 
     swe = round(sum(swe_current) / len(swe_current), 2)
@@ -461,6 +802,9 @@ def build_record(slug: str, today: dt.date,
         "forage_score": forage_score(percent, status),
         "precip_ytd": precip_ytd,
         "drought": drought,
+        "streamflow": streamflow,
+        "soil_moisture": soil_moisture,
+        "precip_anomaly": precip_anomaly,
     }
 
 
@@ -481,6 +825,7 @@ def main() -> int:
     today = dt.date.today()
     args.out.mkdir(parents=True, exist_ok=True)
 
+    # -------- NRCS SNOTEL (SWE + PREC) --------
     try:
         stations = fetch_mt_stations()
     except urllib.error.URLError as exc:
@@ -506,6 +851,23 @@ def main() -> int:
         print(f"[snotel] data fetch failed: {exc}", file=sys.stderr)
         return 2
 
+    # -------- Mesonet soil moisture (one pull, grouped by county) --------
+    mesonet_stns = fetch_mesonet_stations()
+    mesonet_ids_by_county: dict[str, list[str]] = {c: [] for c in ACTIVE_COUNTIES}
+    for ms in mesonet_stns:
+        county = ms.get("county") or ""
+        if county in ACTIVE_COUNTIES and ms.get("has_swp") and ms.get("station"):
+            mesonet_ids_by_county[county].append(ms["station"])
+    if args.verbose:
+        total_mesonet = sum(len(v) for v in mesonet_ids_by_county.values())
+        print(f"[snotel] Mesonet: {total_mesonet} SWP-equipped stations in target counties")
+
+    # -------- NCEI CAG county precip anomaly (one pull for all MT counties) --------
+    cag_by_county = fetch_cag_precip_anomaly(today)
+    if args.verbose:
+        print(f"[snotel] NCEI CAG: {len(cag_by_county)} MT counties loaded")
+
+    # -------- Per-county assembly --------
     changed = 0
     for county, slug in ACTIVE_COUNTIES.items():
         swe_current, swe_medians, swe_serieses = [], [], []
@@ -527,14 +889,28 @@ def main() -> int:
                 if pm is not None:
                     prec_medians.append(pm)
 
+        # Drought (once per county via USDM).
         fips = COUNTY_FIPS.get(slug)
         drought = fetch_county_drought(fips, today) if fips else None
+
+        # Streamflow (once per county via USGS).
+        gauge = COUNTY_GAUGES.get(slug)
+        streamflow = fetch_streamflow(gauge[0], gauge[1], today) if gauge else None
+
+        # Soil moisture (once per county via Mesonet).
+        mesonet_ids = mesonet_ids_by_county.get(county, [])
+        mesonet_obs = fetch_mesonet_latest(mesonet_ids) if mesonet_ids else []
+        soil_moisture = aggregate_mesonet_soil_moisture(mesonet_obs)
+
+        # Precip anomaly (looked up from the pre-fetched CAG dict).
+        cag_key = f"MT-{fips[-3:]}" if fips else None
+        precip_anomaly = cag_by_county.get(cag_key) if cag_key else None
 
         record = build_record(
             slug, today,
             swe_current, swe_medians, swe_serieses,
             prec_current, prec_medians,
-            drought,
+            drought, streamflow, soil_moisture, precip_anomaly,
         )
         path = args.out / f"{slug}.json"
 
@@ -548,20 +924,21 @@ def main() -> int:
         if args.verbose:
             pr = record.get("precip_ytd") or {}
             dr = record.get("drought") or {}
-            pr_desc = (
-                f"precip={pr.get('inches')}\" ({pr.get('percent_of_median')}%)"
-                if pr else "precip=none"
-            )
-            dr_desc = (
-                f"drought={dr.get('worst_class')}@d2+{dr.get('d2_pct')}%"
-                if dr else "drought=none"
-            )
+            sf = record.get("streamflow") or {}
+            sm = record.get("soil_moisture") or {}
+            pa = record.get("precip_anomaly") or {}
+            pr_desc = (f"precip={pr.get('inches')}\"" if pr else "precip=none")
+            dr_desc = (f"{dr.get('worst_class')}" if dr else "no-drought")
+            sf_desc = (f"{sf.get('cfs')}cfs p{sf.get('percentile')}" if sf else "no-flow")
+            sm_desc = (f"vwc_sh={sm.get('shallow_vwc_pct')}%" if sm else "no-vwc")
+            pa1 = (pa.get("m1") or {}).get("anomaly") if pa else None
+            pa_desc = (f"pa1={pa1}" if pa1 is not None else "no-pa")
             print(
                 f"[snotel] {slug}: swe={record['swe_index']} "
                 f"%med={record['percent_of_median']} "
                 f"{record['trend']} {record['status']} "
-                f"(forage {record['forage_score']}, "
-                f"{len(triplets_by_county[county])} stn, {pr_desc}, {dr_desc})"
+                f"(forage {record['forage_score']}, {pr_desc}, {dr_desc}, "
+                f"{sf_desc}, {sm_desc}, {pa_desc})"
             )
 
     print(f"[snotel] {changed} of {len(ACTIVE_COUNTIES)} county files updated")

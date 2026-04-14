@@ -27,8 +27,11 @@ have not been reviewed by a rangeland scientist.
 | `trend`                      | Memo §3.A example (↑ ↓ →)          | Exact      |
 | `status`                     | Memo §3.A example + §1 list        | Exact      |
 | `forage_score`               | Memo §3.A example + §4             | Exact      |
-| `precip_ytd`                 | Added v1.1 — see §9 below          | **NEW**    |
-| `drought`                    | Added v1.1 — see §10 below         | **NEW**    |
+| `precip_ytd`                 | Added v1.1 — see §9 below          | v1.1       |
+| `drought`                    | Added v1.1 — see §10 below         | v1.1       |
+| `streamflow`                 | Added v1.2 — see §11 below         | **NEW**    |
+| `soil_moisture`              | Added v1.2 — see §12 below         | **NEW**    |
+| `precip_anomaly`             | Added v1.2 — see §13 below         | **NEW**    |
 
 The original seven fields are taken verbatim from the memo's example
 JSON object and the "Key outputs" list in §1. Field names, types, and
@@ -434,13 +437,194 @@ drought-free) in the current map.
   comfortably within reasonable rate limits. If USDM ever publishes
   a batch endpoint for all counties in a state, collapse the loop.
 
-**What's still missing from memo §6 and §7.A.** Temperature /
-melt-rate modeling, soil moisture (NRCS SCAN network has thin MT
-coverage, would need proxy mapping), and weighted station averaging
-(terrain or grazing-area weights) are still not implemented.
-Precipitation and drought were the cheapest and most impactful
-additions for the plains counties; the other three are larger
-changes.
+**What was still missing at v1.1.** Temperature / melt-rate modeling,
+soil moisture (NRCS SCAN network has only 1 target-county station),
+and weighted station averaging. Streamflow, soil moisture (via
+Montana Mesonet), and county precipitation anomalies were added in
+v1.2 — see §§11–13 below. Temperature/melt-rate modeling and weighted
+station averaging are still not implemented.
+
+---
+
+## 11. USGS streamflow (`streamflow` field, added v1.2)
+
+| Choice                                | Source                           | Confidence |
+|---------------------------------------|----------------------------------|------------|
+| USGS Water Services NWIS              | Public API, no auth              | Exact      |
+| `/nwis/dv/` for current daily value   | USGS standard                    | Exact      |
+| `/nwis/stat/` for historical percentiles | USGS standard                 | Exact      |
+| Parameter code `00060` (discharge)    | USGS standard                    | Exact      |
+| One gauge per county (`COUNTY_GAUGES`)| **Curated by hand**              | Unreviewed |
+| Linear interpolation between p10/p25/p50/p75/p90 bands | Standard method    | Reasonable |
+| Status bands 25 / 75 / above          | **ASSUMPTION**                   | Unreviewed |
+
+**What it does.** For each county, looks up a single stream gauge on
+the river that county's page prose actually discusses (e.g. Gallatin
+River at Logan for Gallatin County, Milk River at Havre for Blaine
+County, Boulder River at Big Timber for Sweet Grass County). Fetches
+the most recent daily discharge (cfs) and compares it against the
+historical daily stats for that day-of-year (p10, p25, p50, p75, p90
+from the full period of record). The percentile is a linear
+interpolation between the bands — below p10 extrapolates toward 0,
+above p90 toward 100.
+
+**Known caveat — missing p90.** USGS occasionally omits `p90_va` on
+high-variance spring days for some gauges (I saw this on 5 of 10
+target gauges for April 14: Gallatin, Clarks Fork, Yellowstone at
+Livingston, Boulder, Bighorn). When p90 is missing, the script
+extrapolates from p75 × 1.3 as a synthetic upper band. This means
+percentiles **above the 90th mark may be slightly inflated** toward
+100 — if current flow is 2× p75, you'll get 96–100 rather than the
+"real" 94 you'd get with actual p90 data. Values in the 0–75 range
+are unaffected by this extrapolation and are accurate. The p50
+sanity-check on April 14 confirmed the core math: Gallatin at 934
+cfs vs p50 966 cfs returns 46 (just below median, correct).
+
+**County → gauge mapping.** The ten gauges in `COUNTY_GAUGES` were
+hand-picked from the USGS NWIS site service (`stateCd=mt`,
+`siteType=ST`, `parameterCd=00060`, `siteStatus=active`) to match
+the river each county's page prose already cites as its principal
+water supply. A hydrologist may disagree with some choices — for
+instance, Stillwater County could arguably use either the Stillwater
+River at Absarokee (the named river in the page) or the Yellowstone
+River at Billings (the mainstem the county's lower benchlands pull
+from). Update `COUNTY_GAUGES` at the top of `update_snotel.py` if a
+different gauge better represents a county's agricultural water
+picture.
+
+**Status bands.** I chose 0-24 = Below Normal, 25-75 = Normal,
+76-100 = Above Normal. This is the USGS WaterWatch convention and
+maps cleanly onto the rest of the schema's Below/Normal/Above
+framing. A more granular "Much Below / Below / Normal / Above / Much
+Above" at 10/25/75/90 is available if a rancher-facing review asks
+for it.
+
+---
+
+## 12. Soil moisture via Montana Mesonet (`soil_moisture` field, added v1.2)
+
+| Choice                                | Source                           | Confidence |
+|---------------------------------------|----------------------------------|------------|
+| Montana Mesonet API v2                | mesonet.climate.umt.edu/api/v2   | Exact      |
+| `/stations/?type=json`                | Mesonet OpenAPI spec             | Exact      |
+| Filter `has_swp == true`              | Mesonet field for SWP sensors    | Exact      |
+| Volumetric water content (VWC) %      | Mesonet element                  | Exact      |
+| Shallow = 5/10 cm, deep = 50/100 cm   | **ASSUMPTION**                   | Unreviewed |
+| Flat average across stations in county| Matches §3 SWE approach          | Consistent |
+| Soil moisture does NOT influence forage_score | **Intentional** (see §6)  | Deliberate |
+
+**Why Mesonet instead of NRCS SCAN.** The NRCS SCAN network has 8
+stations in Montana, but **only one** (Table Mountain in Gallatin) is
+in one of our 10 target counties. That gives 1/10 counties with soil
+moisture coverage from NRCS. The Montana Mesonet (operated by the
+Montana Climate Office at UMT) has **211 stations statewide with 26
+`has_swp=true` stations across 8 of the 10 target counties**
+(Big Horn, Blaine, Carbon, Gallatin, Park, Stillwater, Sweet Grass,
+Yellowstone). Lewis and Clark and Meagher currently have zero
+Mesonet SWP stations and return `soil_moisture: null`.
+
+**Field parser.** Mesonet encodes sensor data in its `/latest/`
+response using human-readable keys like `"Soil VWC @ -5 cm [%]": 27.95`.
+The script parses these via regex `^Soil VWC @ -(\d+) cm` and
+extracts the depth in centimeters.
+
+**Depth bucketing.** Shallow = {5, 10} cm = grass/forb root zone,
+most responsive to recent precipitation and melt. Deep = {50, 100}
+cm = subsoil storage reached by shrub and tree roots, slower to
+respond, indicative of season-long conditions. A rangeland soil
+scientist may prefer a different split (e.g. 0-20 cm vs 20-50 cm, or
+reporting all 5 depths without bucketing). The bucketing happens in
+`aggregate_mesonet_soil_moisture()` — it's two lines to change.
+
+**Sample from 2026-04-14 dry run:**
+
+| County       | Shallow VWC % | Deep VWC % | Stations |
+|--------------|---------------|------------|----------|
+| Big Horn     | 22.4          | 18.9       | 6        |
+| Blaine       | 28.0          | 23.3       | 3        |
+| Carbon       | 18.8          | 16.2       | 3        |
+| Gallatin     | 18.6          | 12.1       | 2        |
+| Lewis & Clark| null          | null       | 0        |
+| Meagher      | null          | null       | 0        |
+| Park         | 24.8          | 19.7       | 2        |
+| Stillwater   | 24.7          | 22.0       | 5        |
+| Sweet Grass  | 24.7          | 20.4       | 3        |
+| Yellowstone  | 22.2          | 19.6       | 2        |
+
+Eight of ten counties now have soil moisture data — compared to
+1/10 if the script had tried to use NRCS SCAN only.
+
+**Why soil moisture does not enter the forage score.** Same rationale
+as precipitation in §9: unreviewed ramps plus an undefined combining
+formula. v1.2 makes the data **present** without making the score
+depend on it. Review together with the SWE ramps in §6.
+
+---
+
+## 13. NOAA NCEI county precipitation anomaly (`precip_anomaly` field, added v1.2)
+
+| Choice                                | Source                           | Confidence |
+|---------------------------------------|----------------------------------|------------|
+| NOAA NCEI Climate at a Glance (CAG)   | Public endpoint                  | Exact      |
+| `/cag/county/mapping/{state}-pcp-{yyyymm}-{n}.json` | CAG URL pattern     | Verified   |
+| NCEI state code 24 = Montana          | NCEI nCLIMDIV convention, NOT FIPS | Exact   |
+| County keyed as `MT-NNN` where NNN = last 3 of FIPS | CAG response shape    | Verified   |
+| Periods: 1-month, 3-month, 12-month   | **Chosen** for short/medium/long context | Design |
+| Try current month, fall back to previous | NCEI publishes early in following month | Reasonable |
+
+**What it does.** For each target county, reports precipitation for
+1-month, 3-month, and 12-month periods ending in the most recent
+completed NCEI calendar month. Each period returns:
+
+- `inches` — actual accumulated precipitation
+- `normal` — 1901–2000 climatological mean for the same period
+- `anomaly` — difference (inches, signed)
+- `rank` — rank of this period against the full historical record
+  (1 = driest, higher = wetter)
+
+The script fetches 3 NCEI URLs per run (one per period), each of
+which returns **all 56 Montana counties in one response**. Total
+NCEI network cost: 3 HTTP calls for 10 counties.
+
+**Sample from 2026-04-14 dry run** (month_end = 2026-03, which was
+the latest available at NCEI on April 14):
+
+| County       | 1-mo anomaly | 3-mo anomaly | 12-mo anomaly | 3-mo rank |
+|--------------|--------------|--------------|---------------|-----------|
+| Big Horn     | +0.05        | −0.70        | +3.40         | 24        |
+| Blaine       | +0.09        | −0.69        | +0.71         | 13        |
+| Carbon       | +0.10        | −1.81        | −0.54         | 11        |
+| **Gallatin** | −0.76        | **−2.13**    | −3.06         | **9**     |
+| Lewis & Clark| +1.05        | −1.09        | −2.05         | 23        |
+| Meagher      | +0.32        | −0.98        | −3.22         | 34        |
+| Park         | −0.13        | −1.58        | −1.72         | 19        |
+| Stillwater   | +0.20        | −1.03        | +0.29         | 30        |
+| Sweet Grass  | +0.07        | −1.45        | −2.06         | 21        |
+| Yellowstone  | +0.30        | −0.35        | +4.12         | 51        |
+
+Note the signal divergence at different timescales: Big Horn and
+Yellowstone have near-normal 1-month totals but a strong **wet**
+12-month anomaly. Gallatin's 3-month rank of 9 (out of ~130 years of
+record) makes this winter the 9th-driest January–March on record
+for that county — a signal no other field in the JSON captures.
+
+**Known caveats.**
+
+- **Monthly resolution.** NCEI publishes by completed calendar
+  month. On April 14, the most recent available data is March 2026.
+  True "last 30 days" rolling anomalies would need a daily-gridded
+  product like PRISM or CPC (substantially more complex).
+- **NCEI state code ≠ FIPS.** NCEI uses its own 2-digit state code
+  system derived from the old NWS numbering. Montana is 24 in NCEI,
+  not 30. (NCEI's 30 is New York.) The constant `NCEI_STATE_MT = 24`
+  at the top of the script captures this.
+- **No forecast.** NCEI is observational only.
+- **Rank denominator.** Rank denominators vary slightly by period
+  length because the period-of-record the NCEI historical series
+  covers differs; I'm storing the rank integer but not the total, so
+  it's not directly interpretable as a percentile without cross-
+  referencing NCEI's documentation. A future enhancement could
+  derive `rank_out_of` or `rank_percentile` client-side.
 
 ---
 
@@ -456,14 +640,26 @@ items in priority order:
    ranchers see first on every page.
 3. **Precipitation status thresholds** (§5.2). Same 70/110 cutoffs
    applied by convention to precip; needs its own review.
-4. **Whether precipitation and/or drought should enter the forage
-   score** (§6, §9, §10). Fresh additions in v1.1; needs a rangeland
-   scientist's opinion before any downstream logic trusts them.
-5. **Trend noise floor** of 0.2" SWE (§4). Smaller impact, easy to
+4. **Streamflow status bands** at 25 / 75 percentile (§11). Different
+   semantic from % of median — based on day-of-year percentile bands.
+5. **Which of precipitation, drought, streamflow, soil moisture, or
+   county precip anomaly should enter the forage score** (§§6, 9,
+   10, 11, 12, 13). Five new informational inputs added across v1.1
+   and v1.2; need rangeland-scientist opinion before any of them
+   influence a composite score.
+6. **Soil moisture depth bucketing** (§12). Shallow = 5/10 cm, deep
+   = 50/100 cm was a choice; a soil scientist may want a different
+   split or no bucketing at all.
+7. **USGS gauge selection per county** (§11). Each of the 10 gauges
+   in `COUNTY_GAUGES` was hand-picked; a hydrologist may disagree
+   with some of the choices.
+8. **Trend noise floor** of 0.2" SWE (§4). Smaller impact, easy to
    get right from NRCS.
-6. **Equal-weighted station averaging** (§3). The memo already flags
+9. **Equal-weighted station averaging** (§3). The memo already flags
    this for upgrade; a scientist can tell us what to weight by.
 
 Items 1–3 determine whether a rancher ever trusts this product.
-Item 4 determines whether v1.1's new data is credible as a composite
-signal versus as standalone informational fields.
+Item 5 determines whether v1.1 + v1.2's new data fields get composed
+into a single score or stay as separate informational signals.
+Items 6 and 7 are data-quality reviews that refine the v1.2
+additions but don't block them from being useful.
