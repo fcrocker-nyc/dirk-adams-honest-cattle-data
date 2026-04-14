@@ -91,6 +91,12 @@ ACTIVE_COUNTIES: dict[str, str] = {
     "Carbon":          "carbon",
     "Carter":          "carter",
     "Cascade":         "cascade",
+    "Chouteau":        "chouteau",
+    "Custer":          "custer",
+    "Daniels":         "daniels",
+    "Dawson":          "dawson",
+    "Deer Lodge":      "deer_lodge",
+    "Fallon":          "fallon",
     "Gallatin":        "gallatin",
     "Lewis and Clark": "lewis_clark",
     "Meagher":         "meagher",
@@ -109,6 +115,12 @@ COUNTY_FIPS: dict[str, str] = {
     "carbon":      "30009",
     "carter":      "30011",
     "cascade":     "30013",
+    "chouteau":    "30015",
+    "custer":      "30017",
+    "daniels":     "30019",
+    "dawson":      "30021",
+    "deer_lodge":  "30023",
+    "fallon":      "30025",
     "gallatin":    "30031",
     "lewis_clark": "30049",
     "meagher":     "30059",
@@ -123,9 +135,8 @@ COUNTY_FIPS: dict[str, str] = {
 # honestcattle.net page prose actually references for each county.
 # Gauges discovered via USGS NWIS site service (stateCd=mt, siteType=ST,
 # parameterCd=00060, siteStatus=active).
-# Carter County has no active in-county discharge gauge on the Little
-# Missouri — the closest active gauge is across the ND border. Omitted
-# from this map so Carter's streamflow field stays null.
+# Carter and Fallon have no active in-county discharge gauge, so they
+# are omitted from this map and their streamflow field stays null.
 COUNTY_GAUGES: dict[str, tuple[str, str]] = {
     "beaverhead":  ("06017000", "Beaverhead River at Dillon"),
     "big_horn":    ("06287000", "Bighorn River below Yellowtail Afterbay Dam near St. Xavier"),
@@ -133,6 +144,11 @@ COUNTY_GAUGES: dict[str, tuple[str, str]] = {
     "broadwater":  ("06054500", "Missouri River at Toston"),
     "carbon":      ("06207500", "Clarks Fork Yellowstone River near Belfry"),
     "cascade":     ("06090300", "Missouri River near Great Falls"),
+    "chouteau":    ("06090800", "Missouri River at Fort Benton"),
+    "custer":      ("06309000", "Yellowstone River at Miles City"),
+    "daniels":     ("06178000", "Poplar River at international boundary"),
+    "dawson":      ("06327500", "Yellowstone River at Glendive"),
+    "deer_lodge":  ("12323770", "Warm Springs Creek at Warm Springs"),
     "gallatin":    ("06052500", "Gallatin River at Logan"),
     "lewis_clark": ("06073500", "Dearborn River near Craig"),
     "meagher":     ("06076690", "Smith River near Fort Logan"),
