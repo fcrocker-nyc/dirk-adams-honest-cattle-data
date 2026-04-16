@@ -121,8 +121,24 @@ ACTIVE_COUNTIES: dict[str, str] = {
     "Petroleum":       "petroleum",
     "Phillips":        "phillips",
     "Pondera":         "pondera",
+    "Powder River":    "powder_river",
+    "Powell":          "powell",
+    "Prairie":         "prairie",
+    "Ravalli":         "ravalli",
+    "Richland":        "richland",
+    "Roosevelt":       "roosevelt",
+    "Rosebud":         "rosebud",
+    "Sanders":         "sanders",
+    "Sheridan":        "sheridan",
+    "Silver Bow":      "silver_bow",
     "Stillwater":      "stillwater",
     "Sweet Grass":     "sweet_grass",
+    "Teton":           "teton",
+    "Toole":           "toole",
+    "Treasure":        "treasure",
+    "Valley":          "valley",
+    "Wheatland":       "wheatland",
+    "Wibaux":          "wibaux",
     "Yellowstone":     "yellowstone",
 }
 
@@ -165,8 +181,24 @@ COUNTY_FIPS: dict[str, str] = {
     "petroleum":     "30069",
     "phillips":      "30071",
     "pondera":       "30073",
+    "powder_river":  "30075",
+    "powell":        "30077",
+    "prairie":       "30079",
+    "ravalli":       "30081",
+    "richland":      "30083",
+    "roosevelt":     "30085",
+    "rosebud":       "30087",
+    "sanders":       "30089",
+    "sheridan":      "30091",
+    "silver_bow":    "30093",
     "stillwater":    "30095",
     "sweet_grass":   "30097",
+    "teton":         "30099",
+    "toole":         "30101",
+    "treasure":      "30103",
+    "valley":        "30105",
+    "wheatland":     "30107",
+    "wibaux":        "30109",
     "yellowstone":   "30111",
 }
 
@@ -175,8 +207,8 @@ COUNTY_FIPS: dict[str, str] = {
 # honestcattle.net page prose actually references for each county.
 # Gauges discovered via USGS NWIS site service (stateCd=mt, siteType=ST,
 # parameterCd=00060, siteStatus=active).
-# Carter, Fallon, and Garfield have no active in-county discharge gauge,
-# so they are omitted from this map and their streamflow field stays null.
+# Carter, Fallon, Garfield, Prairie, and Wibaux have no active in-county
+# discharge gauge, so they are omitted and their streamflow field stays null.
 COUNTY_GAUGES: dict[str, tuple[str, str]] = {
     "beaverhead":    ("06017000", "Beaverhead River at Dillon"),
     "big_horn":      ("06287000", "Bighorn River below Yellowtail Afterbay Dam near St. Xavier"),
@@ -212,8 +244,22 @@ COUNTY_GAUGES: dict[str, tuple[str, str]] = {
     "petroleum":     ("06130500", "Musselshell River at Mosby"),
     "phillips":      ("06155500", "Milk River at Malta"),
     "pondera":       ("06097000", "Birch Creek at Robare"),
+    "powder_river":  ("06324500", "Powder River at Moorhead"),
+    "powell":        ("12324200", "Clark Fork at Deer Lodge"),
+    "ravalli":       ("12350250", "Bitterroot River at Bell Crossing near Victor"),
+    "richland":      ("06329500", "Yellowstone River near Sidney"),
+    "roosevelt":     ("06181000", "Poplar River near Poplar"),
+    "rosebud":       ("06295000", "Yellowstone River at Forsyth"),
+    "sanders":       ("12389000", "Clark Fork near Plains"),
+    "sheridan":      ("06183450", "Big Muddy Creek near Antelope"),
+    "silver_bow":    ("06024580", "Big Hole River near Wise River"),
     "stillwater":    ("06205000", "Stillwater River near Absarokee"),
     "sweet_grass":   ("06200000", "Boulder River at Big Timber"),
+    "teton":         ("06102500", "Teton River below South Fork near Choteau"),
+    "toole":         ("06099500", "Marias River near Shelby"),
+    "treasure":      ("06294500", "Bighorn River above Tullock Creek near Bighorn"),
+    "valley":        ("06174500", "Milk River at Nashua"),
+    "wheatland":     ("06120500", "Musselshell River at Harlowton"),
     "yellowstone":   ("06214500", "Yellowstone River at Billings"),
 }
 
