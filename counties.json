@@ -1,0 +1,394 @@
+[
+  {
+    "name": "Beaverhead",
+    "slug": "beaverhead-county-montana",
+    "region": "western",
+    "snotel": true,
+    "stream": true
+  },
+  {
+    "name": "Big Horn",
+    "slug": "big-horn-county",
+    "region": "central",
+    "snotel": false,
+    "stream": true
+  },
+  {
+    "name": "Blaine",
+    "slug": "blaine-county-montana",
+    "region": "eastern",
+    "snotel": false,
+    "stream": true
+  },
+  {
+    "name": "Broadwater",
+    "slug": "broadwater-county-montana",
+    "region": "central",
+    "snotel": false,
+    "stream": true
+  },
+  {
+    "name": "Carbon",
+    "slug": "carbon-county",
+    "region": "central",
+    "snotel": true,
+    "stream": true
+  },
+  {
+    "name": "Carter",
+    "slug": "carter-county-montana",
+    "region": "eastern",
+    "snotel": false,
+    "stream": false
+  },
+  {
+    "name": "Cascade",
+    "slug": "cascade-county-montana",
+    "region": "central",
+    "snotel": false,
+    "stream": true
+  },
+  {
+    "name": "Chouteau",
+    "slug": "chouteau-county-montana",
+    "region": "central",
+    "snotel": false,
+    "stream": true
+  },
+  {
+    "name": "Custer",
+    "slug": "custer-county-montana",
+    "region": "eastern",
+    "snotel": false,
+    "stream": true
+  },
+  {
+    "name": "Daniels",
+    "slug": "daniels-county-montana",
+    "region": "eastern",
+    "snotel": false,
+    "stream": true
+  },
+  {
+    "name": "Dawson",
+    "slug": "dawson-county-montana",
+    "region": "eastern",
+    "snotel": false,
+    "stream": true
+  },
+  {
+    "name": "Deer Lodge",
+    "slug": "deer-lodge-county-montana",
+    "region": "western",
+    "snotel": true,
+    "stream": true
+  },
+  {
+    "name": "Fallon",
+    "slug": "fallon-county-montana",
+    "region": "eastern",
+    "snotel": false,
+    "stream": false
+  },
+  {
+    "name": "Fergus",
+    "slug": "fergus-county-montana",
+    "region": "central",
+    "snotel": true,
+    "stream": true
+  },
+  {
+    "name": "Flathead",
+    "slug": "flathead-county-montana",
+    "region": "western",
+    "snotel": true,
+    "stream": true
+  },
+  {
+    "name": "Gallatin",
+    "slug": "gallatin-county",
+    "region": "central",
+    "snotel": true,
+    "stream": true
+  },
+  {
+    "name": "Garfield",
+    "slug": "garfield-county-montana",
+    "region": "eastern",
+    "snotel": false,
+    "stream": false
+  },
+  {
+    "name": "Glacier",
+    "slug": "glacier-county-montana",
+    "region": "western",
+    "snotel": true,
+    "stream": true
+  },
+  {
+    "name": "Golden Valley",
+    "slug": "golden-valley-county-montana",
+    "region": "central",
+    "snotel": false,
+    "stream": true
+  },
+  {
+    "name": "Granite",
+    "slug": "granite-county-montana",
+    "region": "western",
+    "snotel": true,
+    "stream": true
+  },
+  {
+    "name": "Hill",
+    "slug": "hill-county-montana",
+    "region": "central",
+    "snotel": true,
+    "stream": true
+  },
+  {
+    "name": "Jefferson",
+    "slug": "jefferson-county-montana",
+    "region": "central",
+    "snotel": true,
+    "stream": true
+  },
+  {
+    "name": "Judith Basin",
+    "slug": "judith-basin-county-montana",
+    "region": "central",
+    "snotel": true,
+    "stream": true
+  },
+  {
+    "name": "Lake",
+    "slug": "lake-county-montana",
+    "region": "western",
+    "snotel": true,
+    "stream": true
+  },
+  {
+    "name": "Lewis and Clark",
+    "slug": "lewis-and-clark-county",
+    "region": "western",
+    "snotel": true,
+    "stream": true
+  },
+  {
+    "name": "Liberty",
+    "slug": "liberty-county-montana",
+    "region": "central",
+    "snotel": false,
+    "stream": true
+  },
+  {
+    "name": "Lincoln",
+    "slug": "lincoln-county-montana",
+    "region": "western",
+    "snotel": true,
+    "stream": true
+  },
+  {
+    "name": "Madison",
+    "slug": "madison-county-montana",
+    "region": "western",
+    "snotel": true,
+    "stream": true
+  },
+  {
+    "name": "McCone",
+    "slug": "mccone-county-montana",
+    "region": "eastern",
+    "snotel": false,
+    "stream": true
+  },
+  {
+    "name": "Meagher",
+    "slug": "meagher-county-montana",
+    "region": "central",
+    "snotel": true,
+    "stream": true
+  },
+  {
+    "name": "Mineral",
+    "slug": "mineral-county-montana",
+    "region": "western",
+    "snotel": true,
+    "stream": true
+  },
+  {
+    "name": "Missoula",
+    "slug": "missoula-county-montana",
+    "region": "western",
+    "snotel": true,
+    "stream": true
+  },
+  {
+    "name": "Musselshell",
+    "slug": "musselshell-county-montana",
+    "region": "central",
+    "snotel": false,
+    "stream": true
+  },
+  {
+    "name": "Park",
+    "slug": "park-county-montana",
+    "region": "central",
+    "snotel": true,
+    "stream": true
+  },
+  {
+    "name": "Petroleum",
+    "slug": "petroleum-county-montana",
+    "region": "central",
+    "snotel": false,
+    "stream": true
+  },
+  {
+    "name": "Phillips",
+    "slug": "phillips-county-montana",
+    "region": "eastern",
+    "snotel": false,
+    "stream": true
+  },
+  {
+    "name": "Pondera",
+    "slug": "pondera-county-montana",
+    "region": "western",
+    "snotel": true,
+    "stream": true
+  },
+  {
+    "name": "Powder River",
+    "slug": "powder-river-county-montana",
+    "region": "eastern",
+    "snotel": false,
+    "stream": true
+  },
+  {
+    "name": "Powell",
+    "slug": "powell-county-montana",
+    "region": "western",
+    "snotel": true,
+    "stream": true
+  },
+  {
+    "name": "Prairie",
+    "slug": "prairie-county-montana",
+    "region": "eastern",
+    "snotel": false,
+    "stream": false
+  },
+  {
+    "name": "Ravalli",
+    "slug": "ravalli-county-montana",
+    "region": "western",
+    "snotel": true,
+    "stream": true
+  },
+  {
+    "name": "Richland",
+    "slug": "richland-county-montana",
+    "region": "eastern",
+    "snotel": false,
+    "stream": true
+  },
+  {
+    "name": "Roosevelt",
+    "slug": "roosevelt-county-montana",
+    "region": "eastern",
+    "snotel": false,
+    "stream": true
+  },
+  {
+    "name": "Rosebud",
+    "slug": "rosebud-county-montana",
+    "region": "eastern",
+    "snotel": false,
+    "stream": true
+  },
+  {
+    "name": "Sanders",
+    "slug": "sanders-county-montana",
+    "region": "western",
+    "snotel": true,
+    "stream": true
+  },
+  {
+    "name": "Sheridan",
+    "slug": "sheridan-county-montana",
+    "region": "eastern",
+    "snotel": false,
+    "stream": true
+  },
+  {
+    "name": "Silver Bow",
+    "slug": "silver-bow-county-montana",
+    "region": "western",
+    "snotel": true,
+    "stream": true
+  },
+  {
+    "name": "Stillwater",
+    "slug": "stillwater-county-montana",
+    "region": "central",
+    "snotel": false,
+    "stream": true
+  },
+  {
+    "name": "Sweet Grass",
+    "slug": "sweet-grass-county-montana",
+    "region": "central",
+    "snotel": true,
+    "stream": true
+  },
+  {
+    "name": "Teton",
+    "slug": "teton-county-montana",
+    "region": "western",
+    "snotel": true,
+    "stream": true
+  },
+  {
+    "name": "Toole",
+    "slug": "toole-county-montana",
+    "region": "western",
+    "snotel": false,
+    "stream": true
+  },
+  {
+    "name": "Treasure",
+    "slug": "treasure-county-montana",
+    "region": "eastern",
+    "snotel": false,
+    "stream": true
+  },
+  {
+    "name": "Valley",
+    "slug": "valley-county-montana",
+    "region": "eastern",
+    "snotel": false,
+    "stream": true
+  },
+  {
+    "name": "Wheatland",
+    "slug": "wheatland-county-montana",
+    "region": "central",
+    "snotel": false,
+    "stream": true
+  },
+  {
+    "name": "Wibaux",
+    "slug": "wibaux-county-montana",
+    "region": "eastern",
+    "snotel": false,
+    "stream": false
+  },
+  {
+    "name": "Yellowstone",
+    "slug": "yellowstone-county-montana",
+    "region": "central",
+    "snotel": false,
+    "stream": true
+  }
+]
