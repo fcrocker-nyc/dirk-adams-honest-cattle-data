@@ -212,7 +212,7 @@ COUNTY_FIPS: dict[str, str] = {
 COUNTY_GAUGES: dict[str, tuple[str, str]] = {
     "beaverhead":    ("06017000", "Beaverhead River at Dillon"),
     "big_horn":      ("06287000", "Bighorn River below Yellowtail Afterbay Dam near St. Xavier"),
-    "blaine":        ("06155030", "Milk River at Havre"),
+    "blaine":        ("06155030", "Milk River near Dodson"),
     "broadwater":    ("06054500", "Missouri River at Toston"),
     "carbon":        ("06207500", "Clarks Fork Yellowstone River near Belfry"),
     "cascade":       ("06090300", "Missouri River near Great Falls"),
