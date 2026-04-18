@@ -1,0 +1,277 @@
+[
+  {
+    "source_key": "pays",
+    "auction": "Public Auction Yards",
+    "report_id": "AMS_1776",
+    "sale_day": "Friday",
+    "sale_date": "2026-02-27",
+    "total_receipts": 4034,
+    "breakdown": {
+      "feeder": {
+        "head": 3988,
+        "pct": 98.9
+      },
+      "slaughter": {
+        "head": 36,
+        "pct": 0.9
+      },
+      "replacement": {
+        "head": 10,
+        "pct": 0.2
+      }
+    },
+    "narrative": "Special Note: This is the last Friday special until Fall. Check the schedule for updates. The last feeder cattle special was held 2/18/26. All feeder cattle comparisons are to that sale. Feeder steers under 550 lbs sold generally steady in a narrow comparison. Steers 550-749 lbs sold steady to firm, steers over 750 lbs were too lightly tested last sale to develop an accurate market trend, however steady to lower undertones were noticed. Feeder heifers under 500 lbs were too lightly tested to develop an accurate market trend, however steady undertones were noticed. 500-599 lbs heifers sold steady to 10.00 higher, 600-649 lbs heifers sold 10.00-20.00 higher, heifers over 650 lbs were too lightly tested last sale to make an accurate market trend, however higher undertones were noticed. Demand was very good today for all offerings and strengthened throughout the sale. Demand for grass cattle was very good with several buyers looking for this class of cattle. Buyers looking for grass heifers dipped into the light end of replacement heifers in order to buy high quality cattle. This class of cattle showed the largest increase in value week over week. Quality today was average to very attractive with many sets of high quality cattle on offer. Cattle too big to go to grass were the soft part of the sale as lighter offerings made putting together loads of like quality cattle difficult. Additionally, CME positions sold off sharply today which put some pressure on this class of cattle. A large crowd was on hand for todays sale with active bidding seen from both order buyers and ranchers looking for grass cattle and replacement heifers. Weigh up cows sold on moderate demand for very light offerings. Too few cows were seen to develop a full market trend, however lower undertones were noticed. Slaughter bulls were too lightly tested to develop an accurate market trend, however steady undertones were noticed. Young age cows suitable to feed or rebreed were too lightly tested to develop any market trend. Supply included: 99% Feeder Cattle (37% Steers, 63% Heifers, 0% Bulls); 1% Slaughter Cattle (87% Cows, 13% Bulls); 0% Replacement Cattle (100% Stock Cows). Feeder cattle supply over 600 lbs was 62%.",
+    "summary": {
+      "steers": {
+        "400_499": {
+          "head": 17,
+          "wtd_avg_price": 612.06,
+          "price_low": 552.5,
+          "price_high": 620.0
+        },
+        "500_549": {
+          "head": 224,
+          "wtd_avg_price": 517.06,
+          "price_low": 511.0,
+          "price_high": 550.0
+        },
+        "600_649": {
+          "head": 135,
+          "wtd_avg_price": 465.17,
+          "price_low": 445.0,
+          "price_high": 487.5
+        },
+        "700_749": {
+          "head": 61,
+          "wtd_avg_price": 390.23,
+          "price_low": 370.5,
+          "price_high": 415.0
+        },
+        "800_899": {
+          "head": 75,
+          "wtd_avg_price": 357.5,
+          "price_low": 336.0,
+          "price_high": 369.0
+        },
+        "under_400": {
+          "head": 9,
+          "wtd_avg_price": 629.37,
+          "price_low": 620.0,
+          "price_high": 640.0
+        },
+        "550_599": {
+          "head": 29,
+          "wtd_avg_price": 468.8,
+          "price_low": 452.0,
+          "price_high": 477.5
+        },
+        "650_699": {
+          "head": 43,
+          "wtd_avg_price": 419.6,
+          "price_low": 402.5,
+          "price_high": 430.0
+        },
+        "750_799": {
+          "head": 64,
+          "wtd_avg_price": 360.5,
+          "price_low": 360.5,
+          "price_high": 360.5
+        }
+      },
+      "heifers": {
+        "under_400": {
+          "head": 11,
+          "wtd_avg_price": 556.82,
+          "price_low": 550.0,
+          "price_high": 562.5
+        },
+        "400_499": {
+          "head": 6,
+          "wtd_avg_price": 535.0,
+          "price_low": 535.0,
+          "price_high": 535.0
+        },
+        "500_549": {
+          "head": 14,
+          "wtd_avg_price": 451.96,
+          "price_low": 448.0,
+          "price_high": 455.0
+        },
+        "600_649": {
+          "head": 25,
+          "wtd_avg_price": 389.57,
+          "price_low": 365.0,
+          "price_high": 405.0
+        },
+        "700_749": {
+          "head": 6,
+          "wtd_avg_price": 356.0,
+          "price_low": 356.0,
+          "price_high": 356.0
+        },
+        "800_899": {
+          "head": 6,
+          "wtd_avg_price": 331.0,
+          "price_low": 331.0,
+          "price_high": 331.0
+        }
+      }
+    },
+    "parsed_at": "2026-04-18T15:03:26.801888Z",
+    "entry_count": 45
+  },
+  {
+    "source_key": "bls",
+    "auction": "Billings Livestock Commission",
+    "report_id": "AMS_1777",
+    "sale_day": "Thursday",
+    "sale_date": "2026-04-09",
+    "total_receipts": 779,
+    "breakdown": {
+      "feeder": {
+        "head": 219,
+        "pct": 28.1
+      },
+      "slaughter": {
+        "head": 232,
+        "pct": 29.8
+      },
+      "replacement": {
+        "head": 328,
+        "pct": 42.1
+      }
+    },
+    "narrative": "Compared to last sale (4-02-26): Feeder cattle were all too lightly tested today to develop an accurate market trend however steady to higher undertones were noticed on all offerings. Demand was mostly good to for light offerings. Feeders were offered in mostly small packages or as singles. Buyers showed good demand as they pushed to finish out loads started earlier in the week. Quality this week was mostly plain to average and significantly lower than last weeks, very attractive, heavy offering. CME positions moved higher over the last couple days providing additional support for higher feeder cattle prices. A small crowd was on hand for todays sale, however limited offerings and strong demand led to active rapid bidding from buyers. Market activity was mostly active as a result. Weigh up cows and bulls sold on good to very good demand for light offerings. Both feeding and slaughter cows were too lightly tested last sale to develop any market trend. Demand for feeding cows was good to very good for limited offerings. Slaughter cows sold on slightly stronger demand this week as packers showed need for cows for immediate harvest. Slaughter bulls were too lightly tested last sale to develop an accurate market trend. however higher undertones were noticed. Very good demand was seen for feeding type bulls this week as packers and feeding bull buyers competed over limited offerings. Young age offerings suitable to feed or rebreed comprised a large portion of the sale this week. Buyers were willing to take up to middle age cows to turn out and rebreed. Young cow offerings were too lightly tested to develop an accurate market trend, however higher undertones were noticed. Quality this week was mostly average to attractive. Supply included: 28% Feeder Cattle (43% Steers, 50% Heifers, 7% Bulls); 30% Slaughter Cattle (82% Cows, 17% Bulls, 0% Dairy Cows); 42% Replacement Cattle (79% Stock Cows, 12% Bred Cows, 1% Bred Heifers, 8% Cow-Calf Pairs). Feeder cattle supply over 600 lbs was 45%.",
+    "summary": {
+      "steers": {
+        "400_499": {
+          "head": 10,
+          "wtd_avg_price": 537.85,
+          "price_low": 535.0,
+          "price_high": 550.0
+        },
+        "600_649": {
+          "head": 7,
+          "wtd_avg_price": 428.0,
+          "price_low": 417.5,
+          "price_high": 450.0
+        },
+        "500_549": {
+          "head": 2,
+          "wtd_avg_price": 500.0,
+          "price_low": 500.0,
+          "price_high": 500.0
+        }
+      },
+      "heifers": {
+        "under_400": {
+          "head": 1,
+          "wtd_avg_price": 560.0,
+          "price_low": 560.0,
+          "price_high": 560.0
+        },
+        "650_699": {
+          "head": 2,
+          "wtd_avg_price": 375.0,
+          "price_low": 375.0,
+          "price_high": 375.0
+        }
+      }
+    },
+    "parsed_at": "2026-04-18T15:03:27.170309Z",
+    "entry_count": 33
+  },
+  {
+    "source_key": "mt_weekly",
+    "auction": "Montana Weekly Summary",
+    "report_id": "AMS_1778",
+    "sale_day": "Monday",
+    "sale_date": "2026-04-13",
+    "period_start": "4/5/2026",
+    "period_end": "4/11/2026",
+    "total_receipts": 1836,
+    "breakdown": {
+      "feeder": {
+        "head": 553,
+        "pct": 30.1
+      },
+      "slaughter": {
+        "head": 655,
+        "pct": 35.7
+      },
+      "replacement": {
+        "head": 628,
+        "pct": 34.2
+      }
+    },
+    "narrative": "Compared to last week: Feeder cattle were all too lightly tested this week to develop an accurate market trend, however steady undertones were noticed. No feeder specials were held this week and sale sizes were small. Quality this week was plain to average. Most cattle were offered in small packages or as singles. Buyers were forced to piece together loads as a result. Demand for feeder cattle was mostly good despite a light, plain offering. Fewer buyers were in the stands this week, but all showed good demand for offerings especially late in the week as buyers pushed to finish loads of cattle started at other sales across the state. Cattle suitable to run on grass sold with the best demand as order buyers and ranchers both chased limited offerings. CME positions continue to march higher this week as tight supplies keep feeders searching for feeders to fill pen and pasture space. The April closed Friday at 374.15, 1.25 higher than last Friday. The May contract closed Friday at 372.35, 1.725 higher than last Friday. The August contract closed Friday at 372.45, 2.95 higher than last Fridays close. Market activity was mostly active despite a smaller crowd. A mix of order buyers and ranchers were noticed this week. Weigh up cows sold on mostly good to very good demand for light to moderate offerings. Feeding cow demand remains very good. Feeding cows sold mostly steady to 2.00 higher with most of the uptick in prices seen for high quality and young feeding cows. Major packers showed good to very good demand for high quality cows this week. Cow quality was mixed this week from plain to attractive. A large crowd of feeding cow buyers were present at all sales. Young feeding cows saw increased demand again this week as more and more of these offerings are being purchased by rebreed buyers. The demand for these young to middle age cows was very good this week as both feeding and rebreed buyers bid on this age of cows. Weigh up conditions were mostly average to below average. Slaughter cow demand remains strong as packers continue to show good demand for limited slaughter offerings. Premium white cows sold mostly 6.00 higher on a lower yielding offering, making cows higher both live and dressed. Fed cow quality was mostly average this week. Breaking, boning and lean slaughter cows were too lightly tested to develop an accurate market trend, however higher undertones were noticed on all offerings. Slaughter bulls sold mostly 5.00-7.00 higher. Demand remains good as packer search for lean meat to blend down excess fat currently on the market. Feeding bull demand was mostly very good. Feeding bulls sold 5.00 higher on very good demand. Packers and feeding bull buyers were both competing over similar offerings this week which helped improve prices on both classes. Demand for young age cows suitable to feed or rebreed was mostly good to very good. Cows and heifers which lost calves are being marketed, but with very good weather conditions limited offerings are",
+    "summary": {
+      "steers": {
+        "400_499": {
+          "head": 14,
+          "wtd_avg_price": 629.3,
+          "price_low": 625.0,
+          "price_high": 630.0
+        },
+        "550_599": {
+          "head": 16,
+          "wtd_avg_price": 492.0,
+          "price_low": 492.0,
+          "price_high": 492.0
+        },
+        "500_549": {
+          "head": 2,
+          "wtd_avg_price": 500.0,
+          "price_low": 500.0,
+          "price_high": 500.0
+        },
+        "600_649": {
+          "head": 11,
+          "wtd_avg_price": 422.25,
+          "price_low": 402.5,
+          "price_high": 432.5
+        }
+      },
+      "heifers": {
+        "under_400": {
+          "head": 12,
+          "wtd_avg_price": 531.66,
+          "price_low": 510.0,
+          "price_high": 565.0
+        },
+        "400_499": {
+          "head": 30,
+          "wtd_avg_price": 499.22,
+          "price_low": 492.5,
+          "price_high": 510.0
+        },
+        "550_599": {
+          "head": 25,
+          "wtd_avg_price": 436.38,
+          "price_low": 430.0,
+          "price_high": 438.0
+        },
+        "650_699": {
+          "head": 46,
+          "wtd_avg_price": 394.07,
+          "price_low": 385.0,
+          "price_high": 396.0
+        },
+        "750_799": {
+          "head": 15,
+          "wtd_avg_price": 344.5,
+          "price_low": 344.5,
+          "price_high": 344.5
+        },
+        "500_549": {
+          "head": 19,
+          "wtd_avg_price": 447.38,
+          "price_low": 435.0,
+          "price_high": 460.0
+        }
+      }
+    },
+    "parsed_at": "2026-04-18T15:03:27.607705Z",
+    "entry_count": 53
+  }
+]

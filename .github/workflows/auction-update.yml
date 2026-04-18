@@ -1,0 +1,45 @@
+name: Update auction data
+
+# Pulls latest USDA AMS market reports for PAYS, BLS, and MT Weekly.
+# Reports are overwritten in-place by USDA after each sale, so we
+# run daily and only commit when a new sale date appears.
+
+on:
+  schedule:
+    # 12:00 UTC = ~06:00 Mountain (after USDA posts overnight)
+    - cron: '0 12 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install pdftotext
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+
+      - name: Run auction updater
+        run: python update_auction.py --out . --verbose
+
+      - name: Commit updated auction files
+        run: |
+          git config user.name "auction-bot"
+          git config user.email "auction-bot@users.noreply.github.com"
+          if [[ -n "$(git status --porcelain 'auction/')" ]]; then
+            git add auction/
+            git commit -m "auto update: auction data $(date -u +%Y-%m-%d)"
+            git pull --rebase origin main
+            git push
+          else
+            echo "No new auction data."
+          fi
