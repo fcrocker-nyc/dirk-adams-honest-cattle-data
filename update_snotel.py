@@ -66,8 +66,10 @@ USDM_BASE = "https://usdmdataservices.unl.edu/api"
 USGS_BASE = "https://waterservices.usgs.gov/nwis"
 MESONET_BASE = "https://mesonet.climate.umt.edu/api/v2"
 NCEI_CAG_BASE = "https://www.ncei.noaa.gov/cag/county/mapping"
+NASS_BASE = "https://quickstats.nass.usda.gov/api/api_GET"
 USER_AGENT = "honestcattle-snotel-updater/2.0 (+https://honestcattle.net)"
 REQUEST_TIMEOUT = 30
+NASS_API_KEY = __import__("os").environ.get("NASS_API_KEY", "")
 
 # Active honestcattle.net Montana counties. Maps the canonical NRCS
 # countyName to the repo's filename slug.
@@ -825,6 +827,77 @@ def fetch_cag_precip_anomaly(today: dt.date) -> dict:
     return by_county
 
 
+def fetch_nass_range_condition() -> dict | None:
+    """Fetch latest Montana pasture & range condition from NASS Quick Stats.
+
+    Returns dict with VP/P/F/G/E percentages and week_ending, or None
+    if the API key is missing or the query fails. Data is statewide
+    (Montana), published weekly April–October.
+
+    Requires NASS_API_KEY environment variable (free signup at
+    https://quickstats.nass.usda.gov/api/).
+    """
+    if not NASS_API_KEY:
+        return None
+
+    today = dt.date.today()
+    rows = []
+    for year in (today.year, today.year - 1):
+        params = urllib.parse.urlencode({
+            "key": NASS_API_KEY,
+            "commodity_desc": "PASTURELAND",
+            "statisticcat_desc": "CONDITION",
+            "state_alpha": "MT",
+            "year": year,
+            "format": "JSON",
+        })
+        url = f"{NASS_BASE}/?{params}"
+        try:
+            data = _get(url)
+            rows = data.get("data", [])
+            if rows:
+                break
+        except (urllib.error.URLError, urllib.error.HTTPError) as exc:
+            print(f"[snotel] NASS condition fetch ({year}): {exc}", file=sys.stderr)
+            continue
+
+    if not rows:
+        return None
+
+    latest_week = max(
+        (r.get("week_ending") or r.get("end_code", "") for r in rows),
+        default="",
+    )
+    if not latest_week:
+        return None
+
+    week_rows = [r for r in rows if (r.get("week_ending") or r.get("end_code", "")) == latest_week]
+
+    result: dict = {"week_ending": latest_week, "source": "NASS Quick Stats"}
+    for r in week_rows:
+        desc = (r.get("short_desc") or "").upper()
+        try:
+            val = float(str(r.get("Value", "0")).replace(",", ""))
+        except (ValueError, TypeError):
+            continue
+        if "VERY POOR" in desc:
+            result["vp"] = val
+        elif "POOR" in desc:
+            result["p"] = val
+        elif "FAIR" in desc:
+            result["f"] = val
+        elif "EXCELLENT" in desc:
+            result["e"] = val
+        elif "GOOD" in desc:
+            result["g"] = val
+
+    needed = {"vp", "p", "f", "g", "e"}
+    if not needed.issubset(result.keys()):
+        return None
+
+    return result
+
+
 # ---------------------------------------------------------------------------
 # Aggregation helpers
 # ---------------------------------------------------------------------------
@@ -911,19 +984,48 @@ def _drought_component(drought: dict | None) -> float:
     return max(5.0, min(95.0, 100 - weighted))
 
 
-def _soil_vr_proxy(soil_moisture: dict | None) -> float | None:
-    """Use soil moisture as a vegetation-response proxy when NDVI unavailable."""
-    if not soil_moisture:
+def _soil_vr_proxy(soil_moisture: dict | None,
+                   precip_anomaly: dict | None) -> float | None:
+    """Vegetation-response proxy from soil moisture + precip trend.
+
+    Combines Mesonet soil VWC with recent precipitation anomaly to
+    approximate vegetation health when NDVI is unavailable.
+    """
+    components: list[float] = []
+    weights: list[float] = []
+
+    if soil_moisture:
+        shallow = soil_moisture.get("shallow_vwc_pct")
+        if shallow is not None:
+            if shallow >= 35:   sv = 85.0
+            elif shallow >= 28: sv = 70.0
+            elif shallow >= 22: sv = 55.0
+            elif shallow >= 16: sv = 40.0
+            elif shallow >= 10: sv = 25.0
+            else:               sv = 10.0
+            components.append(sv)
+            weights.append(0.65)
+
+    if precip_anomaly:
+        m1 = precip_anomaly.get("m1") or {}
+        m3 = precip_anomaly.get("m3") or {}
+        anomaly = m3.get("anomaly") if m3.get("anomaly") is not None else m1.get("anomaly")
+        normal = m3.get("normal") if m3.get("normal") is not None else m1.get("normal")
+        if anomaly is not None and normal and normal > 0:
+            pct_dep = (anomaly / normal) * 100
+            if pct_dep >= 20:    pv = 85.0
+            elif pct_dep >= 0:   pv = 70.0
+            elif pct_dep >= -15: pv = 55.0
+            elif pct_dep >= -30: pv = 40.0
+            elif pct_dep >= -50: pv = 25.0
+            else:                pv = 10.0
+            components.append(pv)
+            weights.append(0.35)
+
+    if not components:
         return None
-    shallow = soil_moisture.get("shallow_vwc_pct")
-    if shallow is None:
-        return None
-    if shallow >= 35: return 85.0
-    if shallow >= 28: return 70.0
-    if shallow >= 22: return 55.0
-    if shallow >= 16: return 40.0
-    if shallow >= 10: return 25.0
-    return 10.0
+    total_w = sum(weights)
+    return sum(c * w for c, w in zip(components, weights)) / total_w
 
 
 def _streamflow_adjustment(streamflow: dict | None) -> float:
@@ -948,6 +1050,16 @@ def _forage_category(score: int) -> str:
     return "Very Poor"
 
 
+def _nass_condition_score(nass: dict) -> float:
+    """Convert NASS VP/P/F/G/E percentages to a 0-100 score."""
+    vp = nass.get("vp", 0)
+    p = nass.get("p", 0)
+    f = nass.get("f", 0)
+    g = nass.get("g", 0)
+    e = nass.get("e", 0)
+    return vp * 0.05 + p * 0.25 + f * 0.55 + g * 0.80 + e * 1.00
+
+
 def forage_score(
     slug: str,
     swe_pct: int | None,
@@ -957,6 +1069,7 @@ def forage_score(
     streamflow: dict | None,
     soil_moisture: dict | None,
     precip_anomaly: dict | None,
+    nass_condition: dict | None = None,
 ) -> tuple[int, dict]:
     """Full forage model. Returns (score, model_detail_dict)."""
     sp = float(STRUCTURAL_POTENTIAL.get(slug, 55))
@@ -979,11 +1092,16 @@ def forage_score(
           0.35 * _swe_component(swe_pct) +
           0.20 * _basin_precip_component(basin_pct))
 
-    vr_soil = _soil_vr_proxy(soil_moisture)
-    vr = vr_soil if vr_soil is not None else 50.0
+    vr_val = _soil_vr_proxy(soil_moisture, precip_anomaly)
+    vr = vr_val if vr_val is not None else 50.0
 
-    dc = (0.60 * _drought_component(drought) +
-          0.40 * 50.0)  # NASS not yet automated; neutral default
+    nass_score = 50.0
+    nass_live = False
+    if nass_condition and all(k in nass_condition for k in ("vp", "p", "f", "g", "e")):
+        nass_score = _nass_condition_score(nass_condition)
+        nass_live = True
+
+    dc = 0.60 * _drought_component(drought) + 0.40 * nass_score
 
     lu = 50.0
 
@@ -993,9 +1111,8 @@ def forage_score(
 
     missing = 0
     if precip_pct is None: missing += 1
-    if swe_pct is None or swe_pct == 0 and status == "No Snowpack":
-        pass  # expected for plains counties
-    if vr_soil is None: missing += 1
+    if vr_val is None: missing += 1
+    if not nass_live: missing += 1
 
     detail = {
         "sp": round(sp, 1),
@@ -1005,8 +1122,10 @@ def forage_score(
         "lu": round(lu, 1),
         "category": _forage_category(score),
         "confidence": "High" if missing == 0 else ("Medium" if missing <= 1 else "Low"),
-        "model": "HC Forage v2.0",
+        "model": "HC Forage v2.1",
     }
+    if nass_live:
+        detail["nass_week"] = nass_condition.get("week_ending")
     return score, detail
 
 
@@ -1039,13 +1158,15 @@ def build_record(slug: str, today: dt.date,
                  drought: dict | None,
                  streamflow: dict | None,
                  soil_moisture: dict | None,
-                 precip_anomaly: dict | None) -> dict:
+                 precip_anomaly: dict | None,
+                 nass_condition: dict | None = None) -> dict:
     precip_ytd = aggregate_precip(prec_current, prec_medians)
 
     if not swe_current:
         score, model = forage_score(
             slug, 0, "No Snowpack",
             precip_ytd, drought, streamflow, soil_moisture, precip_anomaly,
+            nass_condition,
         )
         return {
             "county": slug,
@@ -1080,6 +1201,7 @@ def build_record(slug: str, today: dt.date,
     score, model = forage_score(
         slug, percent, status,
         precip_ytd, drought, streamflow, soil_moisture, precip_anomaly,
+        nass_condition,
     )
     return {
         "county": slug,
@@ -1157,6 +1279,16 @@ def main() -> int:
     if args.verbose:
         print(f"[snotel] NCEI CAG: {len(cag_by_county)} MT counties loaded")
 
+    # -------- NASS pasture & range condition (one pull, statewide MT) --------
+    nass_condition = fetch_nass_range_condition()
+    if args.verbose:
+        if nass_condition:
+            print(f"[snotel] NASS: MT range condition week {nass_condition.get('week_ending')} "
+                  f"(G={nass_condition.get('g')}% F={nass_condition.get('f')}% P={nass_condition.get('p')}%)")
+        else:
+            nass_reason = "no API key" if not NASS_API_KEY else "no data (off-season?)"
+            print(f"[snotel] NASS: skipped ({nass_reason})")
+
     # -------- Per-county assembly --------
     changed = 0
     for county, slug in ACTIVE_COUNTIES.items():
@@ -1201,6 +1333,7 @@ def main() -> int:
             swe_current, swe_medians, swe_serieses,
             prec_current, prec_medians,
             drought, streamflow, soil_moisture, precip_anomaly,
+            nass_condition,
         )
         path = args.out / f"{slug}.json"
 

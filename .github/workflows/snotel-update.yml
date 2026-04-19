@@ -26,6 +26,8 @@ jobs:
           python-version: '3.11'
 
       - name: Run SNOTEL updater
+        env:
+          NASS_API_KEY: ${{ secrets.NASS_API_KEY }}
         run: python update_snotel.py --out . --verbose
 
       - name: Commit updated county files
