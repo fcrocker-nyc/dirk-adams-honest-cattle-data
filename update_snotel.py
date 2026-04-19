@@ -8,15 +8,14 @@ repository. Pulls live moisture data from five public sources, aggregates
 to the ten active honestcattle.net Montana counties, and writes one JSON
 file per county at the repo root.
 
-Data sources (v1.2):
+Data sources (v2.0 — HC Forage Score model integrated):
     1. NRCS AWDB (SNOTEL)            — SWE + water-year precipitation
     2. USDA Drought Monitor (USDM)   — county drought classification
     3. USGS Water Services (NWIS)    — stream discharge + day-of-year percentile
     4. Montana Mesonet (UMT)         — station-level soil VWC
     5. NOAA NCEI Climate at a Glance — monthly county precip anomaly (1/3/12 mo)
 
-Output schema (v1.2 — streamflow, soil_moisture, precip_anomaly added;
-all prior fields unchanged):
+Output schema (v2.0 — forage_model added with full component breakdown):
 
     {
       "county": "gallatin",
@@ -25,28 +24,17 @@ all prior fields unchanged):
       "percent_of_median": 55,
       "trend": "↓",
       "status": "Below Normal",
-      "forage_score": 62,
+      "forage_score": 47,
+      "forage_model": {
+        "sp": 62.0, "mi": 32.5, "vr": 40.0, "dc": 45.0, "lu": 50.0,
+        "category": "Poor", "confidence": "Medium",
+        "model": "HC Forage v2.0"
+      },
       "precip_ytd": { ... },
       "drought":    { ... },
-      "streamflow": {
-        "gauge_name": "Gallatin River at Logan",
-        "site_no":    "06052500",
-        "cfs":         1320,
-        "percentile":  42,
-        "status":     "Normal"
-      },
-      "soil_moisture": {
-        "shallow_vwc_pct": 27.9,
-        "deep_vwc_pct":    29.8,
-        "station_count":   3,
-        "source":          "Montana Mesonet"
-      },
-      "precip_anomaly": {
-        "month_end":      "2026-03",
-        "m1":  {"inches": 1.37, "normal": 2.13, "anomaly": -0.76, "rank": 28},
-        "m3":  {"inches": 3.51, "normal": 5.64, "anomaly": -2.13, "rank": 9},
-        "m12": {"inches": 21.22,"normal": 24.28,"anomaly": -3.06, "rank": 23}
-      }
+      "streamflow": { ... },
+      "soil_moisture": { ... },
+      "precip_anomaly": { ... }
     }
 
 All three new blocks are nullable — the script degrades gracefully if
@@ -54,10 +42,10 @@ any source fails or lacks coverage for a given county. The original
 seven fields remain unchanged, so the existing [hc_snotel] shortcode
 on honestcattle.net keeps working without modification.
 
-Informational-only: forage_score is still computed from SWE alone.
-Adding streamflow / soil moisture / precip anomaly to the score is
-deferred until rangeland-scientist review of the existing ramps (see
-SOURCES.md §6).
+forage_score now uses the full HC Forage Score model (v2.0):
+    HC = 0.20(SP) + 0.25(MI) + 0.25(VR) + 0.15(DC) + 0.15(LU)
+with streamflow adjustment. See HC_Forage_Score_Automation_Plan.docx.
+A new forage_model block in the JSON provides component breakdown.
 
 Standard library only. Runs in GitHub Actions without pip deps.
 """
@@ -78,7 +66,7 @@ USDM_BASE = "https://usdmdataservices.unl.edu/api"
 USGS_BASE = "https://waterservices.usgs.gov/nwis"
 MESONET_BASE = "https://mesonet.climate.umt.edu/api/v2"
 NCEI_CAG_BASE = "https://www.ncei.noaa.gov/cag/county/mapping"
-USER_AGENT = "honestcattle-snotel-updater/1.2 (+https://honestcattle.net)"
+USER_AGENT = "honestcattle-snotel-updater/2.0 (+https://honestcattle.net)"
 REQUEST_TIMEOUT = 30
 
 # Active honestcattle.net Montana counties. Maps the canonical NRCS
@@ -261,6 +249,27 @@ COUNTY_GAUGES: dict[str, tuple[str, str]] = {
     "valley":        ("06174500", "Milk River at Nashua"),
     "wheatland":     ("06120500", "Musselshell River at Harlowton"),
     "yellowstone":   ("06214500", "Yellowstone River at Billings"),
+}
+
+# Structural Potential (SP) — static per-county value representing
+# inherent rangeland productivity. Western irrigated valleys higher,
+# eastern dryland plains lower. Values from HC Forage Score Automation
+# Plan where available; remainder assigned by ag region.
+STRUCTURAL_POTENTIAL: dict[str, int] = {
+    "beaverhead": 70, "big_horn": 55, "blaine": 50, "broadwater": 60,
+    "carbon": 63, "carter": 48, "cascade": 62, "chouteau": 55,
+    "custer": 52, "daniels": 48, "dawson": 50, "deer_lodge": 62,
+    "fallon": 45, "fergus": 58, "flathead": 65, "gallatin": 62,
+    "garfield": 45, "glacier": 58, "golden_valley": 55, "granite": 60,
+    "hill": 52, "jefferson": 60, "judith_basin": 60, "lake": 65,
+    "lewis_clark": 58, "liberty": 50, "lincoln": 55, "madison": 68,
+    "mccone": 48, "meagher": 62, "mineral": 52, "missoula": 60,
+    "musselshell": 55, "park": 68, "petroleum": 45, "phillips": 50,
+    "pondera": 58, "powder_river": 48, "powell": 58, "prairie": 45,
+    "ravalli": 65, "richland": 52, "roosevelt": 50, "rosebud": 52,
+    "sanders": 55, "sheridan": 48, "silver_bow": 55, "stillwater": 65,
+    "sweet_grass": 64, "teton": 60, "toole": 55, "treasure": 52,
+    "valley": 50, "wheatland": 55, "wibaux": 45, "yellowstone": 58,
 }
 
 # Classification thresholds on percent-of-median SWE. See SOURCES.md §5.
@@ -850,19 +859,155 @@ def compute_trend(series: list[float]) -> str:
     return TREND_FLAT
 
 
-def forage_score(percent: int | None, status: str) -> int:
-    # NOTE: these ramps are unreviewed. See SOURCES.md §6. None of the
-    # newer signals (precip_ytd, drought, streamflow, soil_moisture,
-    # precip_anomaly) influence this score yet — they are written to
-    # the JSON as informational fields pending scientist review.
-    if status == "No Snowpack":
-        return 40
-    p = percent or 0
-    if p < 70:
-        return int(round(50 + (p / 70.0) * 15))
-    if p < 110:
-        return int(round(65 + ((p - 70) / 40.0) * 20))
-    return min(100, int(round(85 + ((min(p, 200) - 110) / 90.0) * 15)))
+# ---------------------------------------------------------------------------
+# HC Forage Score — full 5-component model
+# HC = 0.20(SP) + 0.25(MI) + 0.25(VR) + 0.15(DC) + 0.15(LU)
+# From HC_Forage_Score_Automation_Plan.docx
+# ---------------------------------------------------------------------------
+
+def _precip_component(pct_normal: float | None) -> float:
+    if pct_normal is None:
+        return 50.0
+    if pct_normal >= 120: return 95.0
+    if pct_normal >= 100: return 75.0
+    if pct_normal >= 90:  return 60.0
+    if pct_normal >= 80:  return 45.0
+    if pct_normal >= 70:  return 30.0
+    if pct_normal >= 60:  return 15.0
+    return 5.0
+
+
+def _swe_component(swe_pct: int | None) -> float:
+    if swe_pct is None or swe_pct == 0:
+        return 5.0
+    if swe_pct >= 120: return 95.0
+    if swe_pct >= 100: return 75.0
+    if swe_pct >= 85:  return 55.0
+    if swe_pct >= 70:  return 35.0
+    if swe_pct >= 55:  return 15.0
+    return 5.0
+
+
+def _basin_precip_component(basin_pct: float | None) -> float:
+    if basin_pct is None:
+        return 50.0
+    if basin_pct >= 125: return 90.0
+    if basin_pct >= 100: return 70.0
+    if basin_pct >= 85:  return 55.0
+    if basin_pct >= 70:  return 35.0
+    if basin_pct >= 55:  return 15.0
+    return 5.0
+
+
+def _drought_component(drought: dict | None) -> float:
+    if not drought:
+        return 50.0
+    d0 = drought.get("d0_pct", 0) or 0
+    d1 = drought.get("d1_pct", 0) or 0
+    d2 = drought.get("d2_pct", 0) or 0
+    d3 = drought.get("d3_pct", 0) or 0
+    d4 = drought.get("d4_pct", 0) or 0
+    weighted = 0.10*d0 + 0.30*d1 + 0.55*d2 + 0.80*d3 + 1.00*d4
+    return max(5.0, min(95.0, 100 - weighted))
+
+
+def _soil_vr_proxy(soil_moisture: dict | None) -> float | None:
+    """Use soil moisture as a vegetation-response proxy when NDVI unavailable."""
+    if not soil_moisture:
+        return None
+    shallow = soil_moisture.get("shallow_vwc_pct")
+    if shallow is None:
+        return None
+    if shallow >= 35: return 85.0
+    if shallow >= 28: return 70.0
+    if shallow >= 22: return 55.0
+    if shallow >= 16: return 40.0
+    if shallow >= 10: return 25.0
+    return 10.0
+
+
+def _streamflow_adjustment(streamflow: dict | None) -> float:
+    """Small adjustment from streamflow percentile (+/- up to 5 points)."""
+    if not streamflow:
+        return 0.0
+    pctl = streamflow.get("percentile")
+    if pctl is None:
+        return 0.0
+    if pctl >= 75:   return 5.0
+    if pctl >= 50:   return 2.0
+    if pctl >= 25:   return 0.0
+    if pctl >= 10:   return -3.0
+    return -5.0
+
+
+def _forage_category(score: int) -> str:
+    if score >= 80: return "Excellent"
+    if score >= 65: return "Good"
+    if score >= 50: return "Fair"
+    if score >= 35: return "Poor"
+    return "Very Poor"
+
+
+def forage_score(
+    slug: str,
+    swe_pct: int | None,
+    status: str,
+    precip_ytd: dict | None,
+    drought: dict | None,
+    streamflow: dict | None,
+    soil_moisture: dict | None,
+    precip_anomaly: dict | None,
+) -> tuple[int, dict]:
+    """Full forage model. Returns (score, model_detail_dict)."""
+    sp = float(STRUCTURAL_POTENTIAL.get(slug, 55))
+
+    precip_pct = None
+    if precip_anomaly:
+        m1 = precip_anomaly.get("m1") or {}
+        inches = m1.get("inches")
+        normal = m1.get("normal")
+        if inches is not None and normal and normal > 0:
+            precip_pct = (inches / normal) * 100
+    if precip_pct is None and precip_ytd:
+        precip_pct = precip_ytd.get("percent_of_median")
+
+    basin_pct = None
+    if precip_ytd:
+        basin_pct = precip_ytd.get("percent_of_median")
+
+    mi = (0.45 * _precip_component(precip_pct) +
+          0.35 * _swe_component(swe_pct) +
+          0.20 * _basin_precip_component(basin_pct))
+
+    vr_soil = _soil_vr_proxy(soil_moisture)
+    vr = vr_soil if vr_soil is not None else 50.0
+
+    dc = (0.60 * _drought_component(drought) +
+          0.40 * 50.0)  # NASS not yet automated; neutral default
+
+    lu = 50.0
+
+    raw = 0.20*sp + 0.25*mi + 0.25*vr + 0.15*dc + 0.15*lu
+    raw += _streamflow_adjustment(streamflow)
+    score = max(0, min(100, int(round(raw))))
+
+    missing = 0
+    if precip_pct is None: missing += 1
+    if swe_pct is None or swe_pct == 0 and status == "No Snowpack":
+        pass  # expected for plains counties
+    if vr_soil is None: missing += 1
+
+    detail = {
+        "sp": round(sp, 1),
+        "mi": round(mi, 1),
+        "vr": round(vr, 1),
+        "dc": round(dc, 1),
+        "lu": round(lu, 1),
+        "category": _forage_category(score),
+        "confidence": "High" if missing == 0 else ("Medium" if missing <= 1 else "Low"),
+        "model": "HC Forage v2.0",
+    }
+    return score, detail
 
 
 def aggregate_precip(
@@ -898,6 +1043,10 @@ def build_record(slug: str, today: dt.date,
     precip_ytd = aggregate_precip(prec_current, prec_medians)
 
     if not swe_current:
+        score, model = forage_score(
+            slug, 0, "No Snowpack",
+            precip_ytd, drought, streamflow, soil_moisture, precip_anomaly,
+        )
         return {
             "county": slug,
             "date": today.isoformat(),
@@ -905,7 +1054,8 @@ def build_record(slug: str, today: dt.date,
             "percent_of_median": 0,
             "trend": TREND_DOWN if today.month >= 4 else TREND_FLAT,
             "status": "No Snowpack",
-            "forage_score": 40,
+            "forage_score": score,
+            "forage_model": model,
             "precip_ytd": precip_ytd,
             "drought": drought,
             "streamflow": streamflow,
@@ -927,6 +1077,10 @@ def build_record(slug: str, today: dt.date,
         county_series = []
 
     status = classify(percent, swe)
+    score, model = forage_score(
+        slug, percent, status,
+        precip_ytd, drought, streamflow, soil_moisture, precip_anomaly,
+    )
     return {
         "county": slug,
         "date": today.isoformat(),
@@ -934,7 +1088,8 @@ def build_record(slug: str, today: dt.date,
         "percent_of_median": percent,
         "trend": compute_trend(county_series),
         "status": status,
-        "forage_score": forage_score(percent, status),
+        "forage_score": score,
+        "forage_model": model,
         "precip_ytd": precip_ytd,
         "drought": drought,
         "streamflow": streamflow,
