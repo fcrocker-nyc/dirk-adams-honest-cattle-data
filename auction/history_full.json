@@ -1,11 +1,12 @@
 {
   "metadata": {
-    "generated": "2026-04-18T15:29:33.911035Z",
+    "generated": "2026-04-19T19:27:18.530670Z",
     "sources": [
       "montana_cattle_weekly.xlsx (96 weeks, Feb 2024 - Jan 2026)",
       "january_cattle_trends_2023_2026.xlsx (4 years BLS January detail)",
       "montana_cattle_expanded.xlsx (price summaries + Feb 2026 detail)",
-      "USDA AMS Reports AMS_1776/1777/1778 (latest sales via pipeline)"
+      "USDA AMS Reports AMS_1776/1777/1778 (latest sales via pipeline)",
+      "BLS March 2026 sale PDFs (3 sales, 3,613 hd total, parsed from user-provided PDFs)"
     ]
   },
   "weekly_summary": [
@@ -1474,12 +1475,14 @@
       "Jan 2024 (BLS)": 307.67,
       "Jan 2025": 340,
       "Jan 2026": 525,
-      "23\u219224 Chg": 0.4738,
-      "24\u219225 Chg": 0.1051,
-      "25\u219226 Chg": 0.5441,
+      "23→24 Chg": 0.4738,
+      "24→25 Chg": 0.1051,
+      "25→26 Chg": 0.5441,
       "3-Yr Cumulative": 1.5148,
       "Feb 2026 (BLS+Pays)": 503.72,
-      "Jan\u2192Feb 26": -0.0405
+      "Jan→Feb 26": -0.0405,
+      "Mar 2026 (BLS)": 483,
+      "Feb→Mar 26": -0.0411
     },
     "500-600 lb Heifers": {
       "Weight/Category": "500-600 lb Heifers",
@@ -1487,12 +1490,12 @@
       "Jan 2024 (BLS)": 284.81,
       "Jan 2025": 290,
       "Jan 2026": 480,
-      "23\u219224 Chg": 0.594,
-      "24\u219225 Chg": 0.0182,
-      "25\u219226 Chg": 0.6552,
+      "23→24 Chg": 0.594,
+      "24→25 Chg": 0.0182,
+      "25→26 Chg": 0.6552,
       "3-Yr Cumulative": 1.6864,
       "Feb 2026 (BLS+Pays)": 448.34,
-      "Jan\u2192Feb 26": -0.066
+      "Jan→Feb 26": -0.066
     },
     "400-500 lb Steers": {
       "Weight/Category": "400-500 lb Steers",
@@ -1500,11 +1503,12 @@
       "Jan 2024 (BLS)": 310,
       "Jan 2025": 383,
       "Jan 2026": 575,
-      "23\u219224 Chg": 0.3478,
-      "24\u219225 Chg": 0.2355,
-      "25\u219226 Chg": 0.5013,
+      "23→24 Chg": 0.3478,
+      "24→25 Chg": 0.2355,
+      "25→26 Chg": 0.5013,
       "3-Yr Cumulative": 1.5,
-      "Feb 2026 (BLS+Pays)": "n/a"
+      "Feb 2026 (BLS+Pays)": "n/a",
+      "Mar 2026 (BLS)": 572
     },
     "400-500 lb Heifers": {
       "Weight/Category": "400-500 lb Heifers",
@@ -1512,9 +1516,9 @@
       "Jan 2024 (BLS)": 265,
       "Jan 2025": 341,
       "Jan 2026": 510,
-      "23\u219224 Chg": 0.359,
-      "24\u219225 Chg": 0.2868,
-      "25\u219226 Chg": 0.4956,
+      "23→24 Chg": 0.359,
+      "24→25 Chg": 0.2868,
+      "25→26 Chg": 0.4956,
       "3-Yr Cumulative": 1.6154,
       "Feb 2026 (BLS+Pays)": "n/a"
     },
@@ -1524,11 +1528,12 @@
       "Jan 2024 (BLS)": 335,
       "Jan 2025": 440,
       "Jan 2026": 675,
-      "23\u219224 Chg": 0.34,
-      "24\u219225 Chg": 0.3134,
-      "25\u219226 Chg": 0.5341,
+      "23→24 Chg": 0.34,
+      "24→25 Chg": 0.3134,
+      "25→26 Chg": 0.5341,
       "3-Yr Cumulative": 1.7,
-      "Feb 2026 (BLS+Pays)": "n/a"
+      "Feb 2026 (BLS+Pays)": "n/a",
+      "Mar 2026 (BLS)": "n/a"
     },
     "Steer-Heifer Spread (500-600)": {
       "Weight/Category": "Steer-Heifer Spread (500-600)",
@@ -1590,7 +1595,7 @@
       "Market Commentary": "Volume-weighted avg. Pays 2/18 special not accessible."
     },
     {
-      "section": "PAYS 2/27 GRADE BREAKDOWN \u2014 500-600 LB STEERS",
+      "section": "PAYS 2/27 GRADE BREAKDOWN — 500-600 LB STEERS",
       "Grade": "M&L 1",
       "Head": 224,
       "Wt Range": "509-548",
@@ -1600,7 +1605,7 @@
       "Notes": "Premium grade"
     },
     {
-      "section": "PAYS 2/27 GRADE BREAKDOWN \u2014 500-600 LB STEERS",
+      "section": "PAYS 2/27 GRADE BREAKDOWN — 500-600 LB STEERS",
       "Grade": "M&L 1",
       "Head": 154,
       "Wt Range": "550-584",
@@ -1610,7 +1615,7 @@
       "Notes": "Premium grade"
     },
     {
-      "section": "PAYS 2/27 GRADE BREAKDOWN \u2014 500-600 LB STEERS",
+      "section": "PAYS 2/27 GRADE BREAKDOWN — 500-600 LB STEERS",
       "Grade": "M&L 1-2",
       "Head": 48,
       "Wt Range": "528-549",
@@ -1620,7 +1625,7 @@
       "Notes": "Standard+"
     },
     {
-      "section": "PAYS 2/27 GRADE BREAKDOWN \u2014 500-600 LB STEERS",
+      "section": "PAYS 2/27 GRADE BREAKDOWN — 500-600 LB STEERS",
       "Grade": "M&L 1-2",
       "Head": 29,
       "Wt Range": "570-598",
@@ -1630,7 +1635,7 @@
       "Notes": "Standard+"
     },
     {
-      "section": "PAYS 2/27 GRADE BREAKDOWN \u2014 500-600 LB STEERS",
+      "section": "PAYS 2/27 GRADE BREAKDOWN — 500-600 LB STEERS",
       "Grade": "Large 1",
       "Head": 2,
       "Wt Range": "510",
@@ -1640,7 +1645,7 @@
       "Notes": "Frame premium"
     },
     {
-      "section": "PAYS 2/27 GRADE BREAKDOWN \u2014 500-600 LB STEERS",
+      "section": "PAYS 2/27 GRADE BREAKDOWN — 500-600 LB STEERS",
       "Grade": "Medium 1",
       "Head": 6,
       "Wt Range": "590",
@@ -1650,7 +1655,7 @@
       "Notes": "Frame discount"
     },
     {
-      "section": "PAYS 2/27 GRADE BREAKDOWN \u2014 500-600 LB HEIFERS",
+      "section": "PAYS 2/27 GRADE BREAKDOWN — 500-600 LB HEIFERS",
       "Grade": "M&L 1",
       "Head": 91,
       "Wt Range": "503-542",
@@ -1660,7 +1665,7 @@
       "Notes": "Premium grade"
     },
     {
-      "section": "PAYS 2/27 GRADE BREAKDOWN \u2014 500-600 LB HEIFERS",
+      "section": "PAYS 2/27 GRADE BREAKDOWN — 500-600 LB HEIFERS",
       "Grade": "M&L 1",
       "Head": 180,
       "Wt Range": "560-597",
@@ -1670,7 +1675,7 @@
       "Notes": "Premium grade"
     },
     {
-      "section": "PAYS 2/27 GRADE BREAKDOWN \u2014 500-600 LB HEIFERS",
+      "section": "PAYS 2/27 GRADE BREAKDOWN — 500-600 LB HEIFERS",
       "Grade": "M&L 1-2",
       "Head": 14,
       "Wt Range": "536-548",
@@ -1680,7 +1685,7 @@
       "Notes": "Standard+"
     },
     {
-      "section": "PAYS 2/27 GRADE BREAKDOWN \u2014 500-600 LB HEIFERS",
+      "section": "PAYS 2/27 GRADE BREAKDOWN — 500-600 LB HEIFERS",
       "Grade": "M&L 1-2",
       "Head": 233,
       "Wt Range": "567-593",
@@ -1690,7 +1695,7 @@
       "Notes": "Standard+"
     },
     {
-      "section": "PAYS 2/27 GRADE BREAKDOWN \u2014 500-600 LB HEIFERS",
+      "section": "PAYS 2/27 GRADE BREAKDOWN — 500-600 LB HEIFERS",
       "Grade": "Medium 1",
       "Head": 84,
       "Wt Range": "543-545",
@@ -1700,7 +1705,7 @@
       "Notes": "Frame discount"
     },
     {
-      "section": "PAYS 2/27 GRADE BREAKDOWN \u2014 500-600 LB HEIFERS",
+      "section": "PAYS 2/27 GRADE BREAKDOWN — 500-600 LB HEIFERS",
       "Grade": "Medium 1",
       "Head": 5,
       "Wt Range": "567",
@@ -2149,6 +2154,71 @@
       "Avg Wt": 1881,
       "Price/CWT": 198.5,
       "Class/Color": "BK-BULL"
+    }
+  ],
+  "march_2026": [
+    {
+      "section": "sales",
+      "Sale": "BLS 3/5",
+      "Report": "AMS 1777",
+      "Total Hd": 2611,
+      "Type": "Thu Feeder Special",
+      "Str_400_500": {
+        "range": "$538-640",
+        "avg": 572
+      },
+      "Str_500_600": {
+        "range": "$460-527",
+        "avg": 483
+      },
+      "Str_600_700": {
+        "range": "$427-464",
+        "avg": 446
+      },
+      "Market Commentary": "Feeder Special — heavy offering with strong demand."
+    },
+    {
+      "section": "sales",
+      "Sale": "BLS 3/12",
+      "Report": "AMS 1777",
+      "Total Hd": 563,
+      "Type": "Thu All Class",
+      "Market Commentary": "All class sale, lighter feeder offerings."
+    },
+    {
+      "section": "sales",
+      "Sale": "BLS 3/19",
+      "Report": "AMS 1777",
+      "Total Hd": 439,
+      "Type": "Thu All Class",
+      "Market Commentary": "All class sale, light offerings."
+    },
+    {
+      "section": "sales",
+      "Sale": "MARCH TOTAL (BLS only)",
+      "Total Hd": 3613,
+      "Str_400_500": {
+        "range": "$538-640",
+        "avg": 572
+      },
+      "Str_500_600": {
+        "range": "$460-527",
+        "avg": 483
+      },
+      "Str_600_700": {
+        "range": "$427-464",
+        "avg": 446
+      },
+      "Cow_range": "$172-202",
+      "Bull_range": "$196-340",
+      "Market Commentary": "3 BLS sales. No PAYS feeder specials in March (last was Feb 27). March 26 sale data not provided."
+    },
+    {
+      "section": "yoy",
+      "Period": "Mar 2026",
+      "500-600 Str": 483,
+      "Source": "BLS Feeder Special (2,611 hd)",
+      "Notes": "BLS only — no PAYS specials in March"
     }
   ]
 }
