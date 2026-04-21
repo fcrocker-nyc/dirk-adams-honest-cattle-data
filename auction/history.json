@@ -273,5 +273,134 @@
     },
     "parsed_at": "2026-04-18T15:03:27.607705Z",
     "entry_count": 53
+  },
+  {
+    "source_key": "mt_weekly",
+    "auction": "Montana Weekly Summary",
+    "report_id": "AMS_1778",
+    "sale_day": "Monday",
+    "sale_date": "2026-04-20",
+    "period_start": "4/12/2026",
+    "period_end": "4/18/2026",
+    "total_receipts": 4859,
+    "breakdown": {
+      "feeder": {
+        "head": 3667,
+        "pct": 75.5
+      },
+      "slaughter": {
+        "head": 717,
+        "pct": 14.8
+      },
+      "replacement": {
+        "head": 475,
+        "pct": 9.8
+      }
+    },
+    "narrative": "Compared to last week: Feeder cattle were all too lightly tested last week to develop an accurate market trend, however steady to higher undertones were noticed on all offerings. No feeder specials were held last week and sale sizes were small. This week Public auction yards held their annual Aprilfest feeder special and the bulk of the feeder offering was at that one sale. Quality this week was plain to attractive. Most cattle were offered in moderate size packages, with a few load lots on offer as well. Demand for feeder cattle was mostly good to very good. Many sets of cattle were put together and backgrounded over the winter and spring. Demand for load lots was very good, even on backgrounded offerings. Cattle suitable to run on grass sold with the best demand as order buyers and ranchers both chased this weight of feeders. CME positions retreated some this week after flirting with contract highs. The April closed Friday at 371.32, 2.83 lower than last Friday. The May contract closed Friday at 372.35 365.275, 7.075 lower than last Friday. The August contract closed Friday at 365.675, 6.775 lower than last Fridays close. Market activity was mostly active with a large pool of buyers noticed, both in the stands and over the internet. Weigh up cows sold on mostly good to very good demand for light to moderate offerings. Feeding cow demand remains very good. Feeding cows sold mostly generally steady. Major packers showed good to very good demand for high quality cows this week. Cow quality was mixed this week from plain to attractive. A large crowd of feeding cow buyers were present at all sales. Young feeding cows were met with very good demand again this week as more and more of these offerings are being purchased by rebreed buyers. The demand for these young to middle age cows was very good this week as both feeding and rebreed buyers bid on this age of cows. Slaughter cow demand remains strong as packers continue to show good demand for limited slaughter offerings. Breaking, boning and lean slaughter cows were too lightly tested to develop an accurate market trend, however steady to weak undertones were noticed on all offerings. Slaughter bulls sold mostly steady. Demand remains good as packer search for lean meat to blend down excess fat currently on the market. Feeding bull demand was mostly very good. Feeding bulls sold steady to firm on very good demand. Packers and feeding bull buyers were both competing over similar offerings this week. Demand for young age cows suitable to feed or rebreed was mostly good to very good. Cows and heifers which lost calves are being marketed, but with very good weather conditions limited offerings are being seen. Demand for all offerings is very good with buyers for all quality levels. Young cows sold mostly steady to firm. Quality was average to attractive, and similar to last week. Supply included: 75% Feeder Cattle (33% Steers, 64% Heifers, 3% Bulls); 15% Slaughter Cattle (76% Cows, 24% Bulls); 10% Repla",
+    "summary": {
+      "steers": {
+        "under_400": {
+          "head": 39,
+          "wtd_avg_price": 651.68,
+          "price_low": 550.0,
+          "price_high": 710.0
+        },
+        "400_499": {
+          "head": 103,
+          "wtd_avg_price": 544.98,
+          "price_low": 425.0,
+          "price_high": 590.0
+        },
+        "550_599": {
+          "head": 114,
+          "wtd_avg_price": 489.28,
+          "price_low": 427.0,
+          "price_high": 526.0
+        },
+        "650_699": {
+          "head": 47,
+          "wtd_avg_price": 370.44,
+          "price_low": 342.5,
+          "price_high": 400.0
+        },
+        "750_799": {
+          "head": 13,
+          "wtd_avg_price": 361.76,
+          "price_low": 320.0,
+          "price_high": 380.0
+        },
+        "800_899": {
+          "head": 5,
+          "wtd_avg_price": 328.68,
+          "price_low": 322.5,
+          "price_high": 337.5
+        },
+        "900_plus": {
+          "head": 5,
+          "wtd_avg_price": 311.38,
+          "price_low": 307.0,
+          "price_high": 318.0
+        }
+      },
+      "heifers": {
+        "under_400": {
+          "head": 21,
+          "wtd_avg_price": 600.69,
+          "price_low": 550.0,
+          "price_high": 605.0
+        },
+        "400_499": {
+          "head": 114,
+          "wtd_avg_price": 577.72,
+          "price_low": 470.0,
+          "price_high": 615.0
+        },
+        "500_549": {
+          "head": 156,
+          "wtd_avg_price": 487.04,
+          "price_low": 447.5,
+          "price_high": 505.0
+        },
+        "600_649": {
+          "head": 152,
+          "wtd_avg_price": 411.08,
+          "price_low": 390.0,
+          "price_high": 431.0
+        },
+        "650_699": {
+          "head": 56,
+          "wtd_avg_price": 408.0,
+          "price_low": 408.0,
+          "price_high": 408.0
+        },
+        "700_749": {
+          "head": 248,
+          "wtd_avg_price": 385.53,
+          "price_low": 358.0,
+          "price_high": 415.0
+        },
+        "750_799": {
+          "head": 72,
+          "wtd_avg_price": 362.13,
+          "price_low": 325.0,
+          "price_high": 375.0
+        },
+        "800_899": {
+          "head": 47,
+          "wtd_avg_price": 342.91,
+          "price_low": 325.0,
+          "price_high": 357.5
+        },
+        "900_plus": {
+          "head": 68,
+          "wtd_avg_price": 345.34,
+          "price_low": 317.5,
+          "price_high": 353.5
+        }
+      }
+    },
+    "parsed_at": "2026-04-21T13:17:30.307311Z",
+    "entry_count": 79
   }
 ]
