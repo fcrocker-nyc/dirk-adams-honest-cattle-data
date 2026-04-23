@@ -56,6 +56,7 @@ import datetime as dt
 import json
 import re
 import sys
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -1238,11 +1239,22 @@ def main() -> int:
     args.out.mkdir(parents=True, exist_ok=True)
 
     # -------- NRCS SNOTEL (SWE + PREC) --------
-    try:
-        stations = fetch_mt_stations()
-    except urllib.error.URLError as exc:
-        print(f"[snotel] station fetch failed: {exc}", file=sys.stderr)
-        return 2
+    # NRCS AWDB bootstrap is the only hard-fail path in this script — every
+    # other source degrades gracefully. Retry transient URLErrors with
+    # exponential backoff before giving up; a single hiccup from
+    # wcc.sc.egov.usda.gov should not kill the whole 56-county refresh.
+    stations: list = []
+    for attempt in range(3):
+        try:
+            stations = fetch_mt_stations()
+            break
+        except urllib.error.URLError as exc:
+            if attempt == 2:
+                print(f"[snotel] station fetch failed after 3 attempts: {exc}", file=sys.stderr)
+                return 2
+            delay = 20 * (attempt + 1)
+            print(f"[snotel] station fetch attempt {attempt+1} failed ({exc}); retrying in {delay}s", file=sys.stderr)
+            time.sleep(delay)
 
     if args.verbose:
         print(f"[snotel] discovered {len(stations)} MT SNOTEL stations")
@@ -1255,13 +1267,20 @@ def main() -> int:
             triplets_by_county[cn].append(triplet)
 
     all_triplets = [t for v in triplets_by_county.values() for t in v]
-    try:
-        station_data = fetch_station_data(
-            all_triplets, days_back=max(args.trend_days, 7)
-        )
-    except urllib.error.URLError as exc:
-        print(f"[snotel] data fetch failed: {exc}", file=sys.stderr)
-        return 2
+    station_data: list = []
+    for attempt in range(3):
+        try:
+            station_data = fetch_station_data(
+                all_triplets, days_back=max(args.trend_days, 7)
+            )
+            break
+        except urllib.error.URLError as exc:
+            if attempt == 2:
+                print(f"[snotel] data fetch failed after 3 attempts: {exc}", file=sys.stderr)
+                return 2
+            delay = 20 * (attempt + 1)
+            print(f"[snotel] data fetch attempt {attempt+1} failed ({exc}); retrying in {delay}s", file=sys.stderr)
+            time.sleep(delay)
 
     # -------- Mesonet soil moisture (one pull, grouped by county) --------
     mesonet_stns = fetch_mesonet_stations()
