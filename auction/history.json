@@ -402,5 +402,120 @@
     },
     "parsed_at": "2026-04-21T13:17:30.307311Z",
     "entry_count": 79
+  },
+  {
+    "source_key": "bls",
+    "auction": "Billings Livestock Commission",
+    "report_id": "AMS_1777",
+    "sale_day": "Thursday",
+    "sale_date": "2026-04-23",
+    "total_receipts": 1011,
+    "breakdown": {
+      "feeder": {
+        "head": 334,
+        "pct": 33.0
+      },
+      "slaughter": {
+        "head": 402,
+        "pct": 39.8
+      },
+      "replacement": {
+        "head": 275,
+        "pct": 27.2
+      }
+    },
+    "narrative": "Compared to last sale (4-9-26): Feeder cattle were all too lightly tested to develop an accurate market trend however higher undertones were noted on feeder steers and bulls, while steady to lower undertones were noted on feeder heifers. Demand was mostly good for light offerings. Feeders were offered in mostly small packages or as singles. Quality this week was mostly plain to average. Weigh up cows and bulls sold on good to very good demand for heavier offerings. Slaughter cows sold uneven; leans and breakers sold 4.00 to 8.00 lower, while boners sold 6.00 higher. Slaughter bulls sold 3.00 lower. Feeding cows and bulls overall sold 2.00 to 5.00 higher. Young age offerings suitable to feed or rebreed comprised a large portion of the sale this week. Buyers were willing to take up to middle age cows to turn out and rebreed. Young cow offerings were too lightly tested to develop an accurate market trend, however higher undertones were noticed. Quality this week was mostly average to attractive. Supply included: 33% Feeder Cattle (34% Steers, 49% Heifers, 16% Bulls); 40% Slaughter Cattle (80% Cows, 20% Bulls); 27% Replacement Cattle (73% Stock Cows, 19% Bred Cows, 1% Bred Heifers, 4% Cow-Calf Pairs, 3% Heifer Pairs). Feeder cattle supply over 600 lbs was 52%.",
+    "summary": {
+      "steers": {
+        "under_400": {
+          "head": 6,
+          "wtd_avg_price": 619.09,
+          "price_low": 550.0,
+          "price_high": 710.0
+        },
+        "500_549": {
+          "head": 2,
+          "wtd_avg_price": 512.32,
+          "price_low": 500.0,
+          "price_high": 525.0
+        },
+        "600_649": {
+          "head": 2,
+          "wtd_avg_price": 485.0,
+          "price_low": 485.0,
+          "price_high": 485.0
+        },
+        "400_499": {
+          "head": 4,
+          "wtd_avg_price": 458.86,
+          "price_low": 425.0,
+          "price_high": 480.0
+        },
+        "550_599": {
+          "head": 1,
+          "wtd_avg_price": 470.0,
+          "price_low": 470.0,
+          "price_high": 470.0
+        },
+        "650_699": {
+          "head": 20,
+          "wtd_avg_price": 353.12,
+          "price_low": 342.5,
+          "price_high": 390.0
+        }
+      },
+      "heifers": {
+        "under_400": {
+          "head": 5,
+          "wtd_avg_price": 505.21,
+          "price_low": 450.0,
+          "price_high": 520.0
+        },
+        "400_499": {
+          "head": 12,
+          "wtd_avg_price": 492.5,
+          "price_low": 492.5,
+          "price_high": 492.5
+        },
+        "550_599": {
+          "head": 18,
+          "wtd_avg_price": 442.69,
+          "price_low": 420.0,
+          "price_high": 460.0
+        },
+        "700_749": {
+          "head": 7,
+          "wtd_avg_price": 388.36,
+          "price_low": 358.0,
+          "price_high": 400.0
+        },
+        "800_899": {
+          "head": 7,
+          "wtd_avg_price": 342.87,
+          "price_low": 327.5,
+          "price_high": 357.5
+        },
+        "900_plus": {
+          "head": 4,
+          "wtd_avg_price": 323.75,
+          "price_low": 305.0,
+          "price_high": 330.0
+        },
+        "500_549": {
+          "head": 2,
+          "wtd_avg_price": 410.0,
+          "price_low": 410.0,
+          "price_high": 410.0
+        },
+        "600_649": {
+          "head": 5,
+          "wtd_avg_price": 345.43,
+          "price_low": 342.5,
+          "price_high": 347.5
+        }
+      }
+    },
+    "parsed_at": "2026-04-24T13:15:34.820704Z",
+    "entry_count": 55
   }
 ]
