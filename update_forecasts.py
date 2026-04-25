@@ -311,8 +311,11 @@ def main(argv: list[str] | None = None) -> int:
         return 2
 
     if payload is None:
-        print("[forecasts] no parseable forecasts found in the most recent posts", file=sys.stderr)
-        return 1
+        # Not a failure: every recent post is still in prose / lacks the
+        # hc-forecast table. Leave the existing forecasts_recent.json in
+        # place and exit clean so the workflow doesn't show as failed.
+        print("[forecasts] no posts in the new table format yet — leaving existing JSON unchanged", file=sys.stderr)
+        return 0
 
     out_dir = Path(args.out)
     out_dir.mkdir(parents=True, exist_ok=True)
