@@ -1,0 +1,44 @@
+name: Update HC Weekly Forecast JSON
+
+# Pulls the four most recent honestcattle.net "Weekly Forecasts" posts via
+# the WP REST API, parses the quarterly calf-price table marked with
+# class="hc-forecast", and rewrites forecasts_recent.json. The HonestCattle
+# iOS app's Market tab reads this file from raw.githubusercontent.com.
+
+on:
+  schedule:
+    # 13:30 UTC = ~07:30 Mountain — after the typical Saturday/Monday morning
+    # publish window, before most users open the app for the day.
+    - cron: '30 13 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+
+      - name: Run forecast updater
+        run: python update_forecasts.py --out . --verbose
+
+      - name: Commit updated forecast file
+        run: |
+          git config user.name "forecast-bot"
+          git config user.email "forecast-bot@users.noreply.github.com"
+          if [[ -n "$(git status --porcelain forecasts_recent.json)" ]]; then
+            git add forecasts_recent.json
+            git commit -m "auto update: weekly forecast $(date -u +%Y-%m-%d)"
+            git pull --rebase origin main
+            git push
+          else
+            echo "No forecast changes to commit."
+          fi
