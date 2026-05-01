@@ -646,5 +646,132 @@
     },
     "parsed_at": "2026-04-28T13:55:17.386111Z",
     "entry_count": 68
+  },
+  {
+    "source_key": "bls",
+    "auction": "Billings Livestock Commission",
+    "report_id": "AMS_1777",
+    "sale_day": "Thursday",
+    "sale_date": "2026-04-30",
+    "total_receipts": 2561,
+    "breakdown": {
+      "feeder": {
+        "head": 2235,
+        "pct": 87.3
+      },
+      "slaughter": {
+        "head": 138,
+        "pct": 5.4
+      },
+      "replacement": {
+        "head": 188,
+        "pct": 7.3
+      }
+    },
+    "narrative": "Compared to last sale (4-16-26): Feeder cattle were all too lightly tested last sale to develop an accurate market trend however higher undertones were noticed on all offerings. Demand was very good for moderate offerings. Feeders were offered in mostly moderate size packages with a few load lots seen as well. Buyers showed very good demand for all offerings suitable to turn out on grass, as ranchers and order buyers both bid aggressively against each other over light fleshed offerings. Many sets of light fleshed offerings were seen this week. Record high prices for this sale barn were seen for grass steers today as many offerings topped 3,000 per head. Buyers were willing to take steers up to 750 lbs and heifers up to 725 lbs to run on grass. Demand from Canadian buyers was very good as several loads of feeders were purchased to ship north to feed. Quality this week was mostly average to attractive. CME positions moved sharply higher this week as higher fat cattle prices have helped provide additional support for feeders. A large crowd was on hand for todays sale. Market activity was mostly active as a result. Weigh up cows and bulls sold on good to very good demand for light offerings. Both feeding and slaughter cows were too lightly tested last sale to develop an accurate market trend, however higher undertones were noticed. Demand for feeding cows was very good for limited offerings. Slaughter cows sold on light to moderate demand. Fewer slaughter cow buyers were present this week which allowed slaughter cow prices to weaken. Slaughter bulls were too lightly tested to develop an accurate market trend, however steady undertones were noticed. Young age offerings suitable to feed or rebreed comprised a large portion of the cow offering this week. Buyers continue to be willing to take up to middle age cows to turn out and rebreed. Young cow offerings sold with lower undertones on a lower quality offering. Quality this week was mostly average, and not as attractive as last sale. Supply included: 87% Feeder Cattle (38% Steers, 59% Heifers, 3% Bulls); 5% Slaughter Cattle (82% Cows, 17% Bulls, 1% Dairy Cows); 7% Replacement Cattle (92% Stock Cows, 5% Bred Cows, 3% Bred Heifers). Feeder cattle supply over 600 lbs was 68%.",
+    "summary": {
+      "steers": {
+        "400_499": {
+          "head": 26,
+          "wtd_avg_price": 574.52,
+          "price_low": 572.5,
+          "price_high": 590.0
+        },
+        "550_599": {
+          "head": 81,
+          "wtd_avg_price": 523.42,
+          "price_low": 505.0,
+          "price_high": 525.5
+        },
+        "650_699": {
+          "head": 102,
+          "wtd_avg_price": 458.46,
+          "price_low": 442.0,
+          "price_high": 465.0
+        },
+        "750_799": {
+          "head": 27,
+          "wtd_avg_price": 396.63,
+          "price_low": 394.0,
+          "price_high": 400.0
+        },
+        "800_899": {
+          "head": 44,
+          "wtd_avg_price": 358.45,
+          "price_low": 334.0,
+          "price_high": 387.5
+        },
+        "900_plus": {
+          "head": 62,
+          "wtd_avg_price": 350.09,
+          "price_low": 350.0,
+          "price_high": 352.0
+        },
+        "under_400": {
+          "head": 2,
+          "wtd_avg_price": 600.0,
+          "price_low": 600.0,
+          "price_high": 600.0
+        },
+        "500_549": {
+          "head": 8,
+          "wtd_avg_price": 510.36,
+          "price_low": 500.0,
+          "price_high": 525.0
+        },
+        "600_649": {
+          "head": 13,
+          "wtd_avg_price": 433.85,
+          "price_low": 427.5,
+          "price_high": 450.0
+        },
+        "700_749": {
+          "head": 6,
+          "wtd_avg_price": 397.52,
+          "price_low": 385.0,
+          "price_high": 400.0
+        }
+      },
+      "heifers": {
+        "400_499": {
+          "head": 19,
+          "wtd_avg_price": 504.75,
+          "price_low": 495.0,
+          "price_high": 512.5
+        },
+        "550_599": {
+          "head": 237,
+          "wtd_avg_price": 459.68,
+          "price_low": 424.0,
+          "price_high": 471.0
+        },
+        "600_649": {
+          "head": 3,
+          "wtd_avg_price": 397.5,
+          "price_low": 397.5,
+          "price_high": 397.5
+        },
+        "650_699": {
+          "head": 183,
+          "wtd_avg_price": 396.55,
+          "price_low": 350.0,
+          "price_high": 406.0
+        },
+        "under_400": {
+          "head": 3,
+          "wtd_avg_price": 510.0,
+          "price_low": 510.0,
+          "price_high": 510.0
+        },
+        "800_899": {
+          "head": 2,
+          "wtd_avg_price": 335.0,
+          "price_low": 335.0,
+          "price_high": 335.0
+        }
+      }
+    },
+    "parsed_at": "2026-05-01T13:11:39.939346Z",
+    "entry_count": 56
   }
 ]
