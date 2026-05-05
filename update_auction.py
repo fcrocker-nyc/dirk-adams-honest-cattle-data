@@ -36,6 +36,7 @@ import re
 import subprocess
 import sys
 import tempfile
+import time
 import urllib.error
 import urllib.request
 from pathlib import Path
@@ -58,10 +59,44 @@ PDFTOTEXT = os.environ.get("PDFTOTEXT", "pdftotext")
 # ---------------------------------------------------------------------------
 
 def download_pdf(report_id: str) -> bytes:
+    """Fetch an AMS report PDF with a hard wall-clock budget.
+
+    urllib's ``timeout`` parameter only governs the socket connect; it does
+    NOT enforce a read deadline. AMS occasionally accepts the connection
+    on `search.ams.usda.gov` and then drips bytes slowly, which can hang
+    for hours. We wrap the whole call (connect + redirect follow + read)
+    in a wall-clock deadline and retry on transient errors.
+    """
     url = f"{AMS_BASE}/{report_id}.pdf"
-    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-    with urllib.request.urlopen(req, timeout=REQUEST_TIMEOUT) as resp:
-        return resp.read()
+    last_exc: Exception | None = None
+    for attempt in range(1, 4):
+        deadline = time.monotonic() + REQUEST_TIMEOUT
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+            with urllib.request.urlopen(req, timeout=REQUEST_TIMEOUT) as resp:
+                chunks: list[bytes] = []
+                while True:
+                    remaining = deadline - time.monotonic()
+                    if remaining <= 0:
+                        raise TimeoutError(
+                            f"AMS read exceeded {REQUEST_TIMEOUT}s budget"
+                        )
+                    chunk = resp.read(64 * 1024)
+                    if not chunk:
+                        break
+                    chunks.append(chunk)
+                return b"".join(chunks)
+        except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError) as exc:
+            last_exc = exc
+            backoff = 2 ** (attempt - 1) * 5  # 5, 10, 20 seconds
+            print(
+                f"[auction] {report_id} attempt {attempt}/3 failed: {exc}; "
+                f"retrying in {backoff}s",
+                file=sys.stderr,
+            )
+            if attempt < 3:
+                time.sleep(backoff)
+    raise last_exc if last_exc else RuntimeError("download_pdf: unknown failure")
 
 
 def pdf_to_text(pdf_bytes: bytes) -> str:

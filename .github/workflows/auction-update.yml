@@ -13,9 +13,18 @@ on:
 permissions:
   contents: write
 
+# Don't let a hung run block tomorrow's. If a previous run is still
+# in-flight when the next one fires, cancel the old one.
+concurrency:
+  group: auction-update
+  cancel-in-progress: true
+
 jobs:
   update:
     runs-on: ubuntu-latest
+    # Hard wall-clock cap. AMS occasionally hangs; we'd rather see a clean
+    # "exceeded job timeout" than a 6-hour silently-cancelled phantom.
+    timeout-minutes: 10
     steps:
       - name: Check out repo
         uses: actions/checkout@v5
@@ -29,6 +38,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y poppler-utils
 
       - name: Run auction updater
+        timeout-minutes: 5
         run: python update_auction.py --out . --verbose
 
       - name: Commit updated auction files
