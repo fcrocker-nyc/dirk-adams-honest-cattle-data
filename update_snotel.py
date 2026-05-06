@@ -485,7 +485,7 @@ def fetch_county_drought(fips: str, today: dt.date) -> dict | None:
             f"{USDM_BASE}/CountyStatistics/GetDroughtSeverityStatisticsByAreaPercent",
             params,
         )
-    except (urllib.error.HTTPError, urllib.error.URLError) as exc:
+    except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, OSError) as exc:
         print(f"[snotel] USDM fetch failed for {fips}: {exc}", file=sys.stderr)
         return None
     if not rows or not isinstance(rows, list):
@@ -586,7 +586,7 @@ def fetch_streamflow(site_no: str, gauge_name: str, today: dt.date) -> dict | No
             "parameterCd": "00060",
             "siteStatus": "active",
         })
-    except (urllib.error.HTTPError, urllib.error.URLError) as exc:
+    except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, OSError) as exc:
         print(f"[snotel] USGS dv fetch failed for {site_no}: {exc}", file=sys.stderr)
         return None
     ts = dv.get("value", {}).get("timeSeries", [])
@@ -613,7 +613,7 @@ def fetch_streamflow(site_no: str, gauge_name: str, today: dt.date) -> dict | No
             "statReportType": "daily",
             "statTypeCd": "p10,p25,p50,p75,p90",
         })
-    except (urllib.error.HTTPError, urllib.error.URLError) as exc:
+    except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, OSError) as exc:
         print(f"[snotel] USGS stat fetch failed for {site_no}: {exc}", file=sys.stderr)
         return {
             "gauge_name": gauge_name,
@@ -686,7 +686,7 @@ def fetch_mesonet_stations() -> list[dict]:
     station, name, county, has_swp, etc."""
     try:
         data = _get(f"{MESONET_BASE}/stations", {"type": "json"})
-    except (urllib.error.HTTPError, urllib.error.URLError) as exc:
+    except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, OSError) as exc:
         print(f"[snotel] Mesonet stations fetch failed: {exc}", file=sys.stderr)
         return []
     return data or []
@@ -701,7 +701,7 @@ def fetch_mesonet_latest(station_ids: list[str]) -> list[dict]:
             "stations": ",".join(station_ids),
             "type": "json",
         })
-    except (urllib.error.HTTPError, urllib.error.URLError) as exc:
+    except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, OSError) as exc:
         print(f"[snotel] Mesonet latest fetch failed: {exc}", file=sys.stderr)
         return []
     return data or []
