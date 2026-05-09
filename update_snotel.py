@@ -53,14 +53,40 @@ Standard library only. Runs in GitHub Actions without pip deps.
 from __future__ import annotations
 
 import datetime as dt
+import http.client
 import json
 import re
+import socket
 import sys
 import time
 import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
+
+# ---------------------------------------------------------------------------
+# Unified transient-network-error tuple
+# ---------------------------------------------------------------------------
+# Every external HTTP fetch in this script can fail for a wide range of reasons
+# that are not script bugs: API rate limits, server 5xx, slow chunked-transfer,
+# truncated reads, DNS hiccups, TLS handshake failures, malformed JSON. Each
+# of these surfaces as a different Python exception class, and over the past
+# month we have hit at least three distinct ones (TimeoutError on Mesonet/NRCS,
+# IncompleteRead on USGS streamflow, generic URLError on stations). Rather
+# than play whack-a-mole on each new class, we define a single tuple of
+# "recoverable upstream failures" used everywhere in this file and inside
+# the _get retry loop.
+TRANSIENT_NET_ERRORS = (
+    urllib.error.URLError,        # most network errors funnel through this
+    urllib.error.HTTPError,       # 4xx / 5xx HTTP responses (subclass of URLError)
+    http.client.HTTPException,    # IncompleteRead, BadStatusLine, RemoteDisconnected, …
+    TimeoutError,                 # Py 3.10+ alias for socket.timeout, raised by urllib on read timeout
+    socket.timeout,               # belt-and-braces for older patterns / direct socket use
+    ConnectionError,              # ConnectionRefused/Reset/Aborted
+    OSError,                      # broad socket-level catch-all (errno-based failures)
+    json.JSONDecodeError,         # truncated or corrupt JSON body
+    ValueError,                   # json.loads sometimes raises bare ValueError on bad input
+)
 
 AWDB_BASE = "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1"
 USDM_BASE = "https://usdmdataservices.unl.edu/api"
@@ -320,7 +346,21 @@ MESONET_DEEP_CM = {50, 100}
 # HTTP helper
 # ---------------------------------------------------------------------------
 
+# Backoff schedule for _get retries. 3 attempts total: initial + 2 retries.
+# Total wall-clock cost on a fully-failing endpoint is ~30s + 5s + 15s = 50s.
+# The CI run window is the daily NRCS roll-up + 30 minutes of slack, so
+# this is well within budget.
+_RETRY_BACKOFF_SECONDS = (5, 15)
+
+
 def _get(url: str, params: dict | None = None) -> object:
+    """GET + JSON parse with automatic retry on transient network errors.
+
+    Retries up to len(_RETRY_BACKOFF_SECONDS) times on any exception in
+    TRANSIENT_NET_ERRORS, sleeping the corresponding backoff between attempts.
+    Final-attempt exceptions bubble up; callers that want fail-soft semantics
+    should still wrap in a try/except TRANSIENT_NET_ERRORS.
+    """
     if params:
         query = urllib.parse.urlencode(
             {k: v for k, v in params.items() if v is not None}, doseq=True
@@ -330,11 +370,23 @@ def _get(url: str, params: dict | None = None) -> object:
         url,
         headers={"User-Agent": USER_AGENT, "Accept": "application/json"},
     )
-    with urllib.request.urlopen(req, timeout=REQUEST_TIMEOUT) as resp:
-        return json.loads(resp.read().decode("utf-8"))
+    last_exc: Exception | None = None
+    for attempt in range(len(_RETRY_BACKOFF_SECONDS) + 1):
+        try:
+            with urllib.request.urlopen(req, timeout=REQUEST_TIMEOUT) as resp:
+                return json.loads(resp.read().decode("utf-8"))
+        except TRANSIENT_NET_ERRORS as exc:
+            last_exc = exc
+            if attempt < len(_RETRY_BACKOFF_SECONDS):
+                time.sleep(_RETRY_BACKOFF_SECONDS[attempt])
+                continue
+            raise
+    # Unreachable but keeps the type checker happy.
+    raise last_exc if last_exc else RuntimeError("unreachable")
 
 
 def _get_text(url: str, params: dict | None = None) -> str:
+    """GET (text) with the same retry semantics as _get."""
     if params:
         query = urllib.parse.urlencode(
             {k: v for k, v in params.items() if v is not None}, doseq=True
@@ -343,8 +395,18 @@ def _get_text(url: str, params: dict | None = None) -> str:
     req = urllib.request.Request(
         url, headers={"User-Agent": USER_AGENT},
     )
-    with urllib.request.urlopen(req, timeout=REQUEST_TIMEOUT) as resp:
-        return resp.read().decode("utf-8")
+    last_exc: Exception | None = None
+    for attempt in range(len(_RETRY_BACKOFF_SECONDS) + 1):
+        try:
+            with urllib.request.urlopen(req, timeout=REQUEST_TIMEOUT) as resp:
+                return resp.read().decode("utf-8")
+        except TRANSIENT_NET_ERRORS as exc:
+            last_exc = exc
+            if attempt < len(_RETRY_BACKOFF_SECONDS):
+                time.sleep(_RETRY_BACKOFF_SECONDS[attempt])
+                continue
+            raise
+    raise last_exc if last_exc else RuntimeError("unreachable")
 
 
 # ---------------------------------------------------------------------------
@@ -485,7 +547,7 @@ def fetch_county_drought(fips: str, today: dt.date) -> dict | None:
             f"{USDM_BASE}/CountyStatistics/GetDroughtSeverityStatisticsByAreaPercent",
             params,
         )
-    except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, OSError) as exc:
+    except TRANSIENT_NET_ERRORS as exc:
         print(f"[snotel] USDM fetch failed for {fips}: {exc}", file=sys.stderr)
         return None
     if not rows or not isinstance(rows, list):
@@ -586,7 +648,7 @@ def fetch_streamflow(site_no: str, gauge_name: str, today: dt.date) -> dict | No
             "parameterCd": "00060",
             "siteStatus": "active",
         })
-    except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, OSError) as exc:
+    except TRANSIENT_NET_ERRORS as exc:
         print(f"[snotel] USGS dv fetch failed for {site_no}: {exc}", file=sys.stderr)
         return None
     ts = dv.get("value", {}).get("timeSeries", [])
@@ -613,7 +675,7 @@ def fetch_streamflow(site_no: str, gauge_name: str, today: dt.date) -> dict | No
             "statReportType": "daily",
             "statTypeCd": "p10,p25,p50,p75,p90",
         })
-    except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, OSError) as exc:
+    except TRANSIENT_NET_ERRORS as exc:
         print(f"[snotel] USGS stat fetch failed for {site_no}: {exc}", file=sys.stderr)
         return {
             "gauge_name": gauge_name,
@@ -686,7 +748,7 @@ def fetch_mesonet_stations() -> list[dict]:
     station, name, county, has_swp, etc."""
     try:
         data = _get(f"{MESONET_BASE}/stations", {"type": "json"})
-    except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, OSError) as exc:
+    except TRANSIENT_NET_ERRORS as exc:
         print(f"[snotel] Mesonet stations fetch failed: {exc}", file=sys.stderr)
         return []
     return data or []
@@ -701,7 +763,7 @@ def fetch_mesonet_latest(station_ids: list[str]) -> list[dict]:
             "stations": ",".join(station_ids),
             "type": "json",
         })
-    except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, OSError) as exc:
+    except TRANSIENT_NET_ERRORS as exc:
         print(f"[snotel] Mesonet latest fetch failed: {exc}", file=sys.stderr)
         return []
     return data or []
@@ -858,7 +920,7 @@ def fetch_nass_range_condition() -> dict | None:
             rows = data.get("data", [])
             if rows:
                 break
-        except (urllib.error.URLError, urllib.error.HTTPError) as exc:
+        except TRANSIENT_NET_ERRORS as exc:
             print(f"[snotel] NASS condition fetch ({year}): {exc}", file=sys.stderr)
             continue
 
@@ -1248,7 +1310,7 @@ def main() -> int:
         try:
             stations = fetch_mt_stations()
             break
-        except urllib.error.URLError as exc:
+        except TRANSIENT_NET_ERRORS as exc:
             if attempt == 2:
                 print(f"[snotel] station fetch failed after 3 attempts: {exc}", file=sys.stderr)
                 return 2
@@ -1274,7 +1336,7 @@ def main() -> int:
                 all_triplets, days_back=max(args.trend_days, 7)
             )
             break
-        except urllib.error.URLError as exc:
+        except TRANSIENT_NET_ERRORS as exc:
             if attempt == 2:
                 print(f"[snotel] data fetch failed after 3 attempts: {exc}", file=sys.stderr)
                 return 2
@@ -1330,17 +1392,37 @@ def main() -> int:
                 if pm is not None:
                     prec_medians.append(pm)
 
+        # Per-county fetches are wrapped in TRANSIENT_NET_ERRORS try/excepts
+        # so a single county's upstream failure never crashes the whole run.
+        # All four sources (USDM, USGS, Mesonet stations, Mesonet latest) are
+        # enrichment data — if any one is missing for a given county we still
+        # write a record with whatever else came back. The retry-with-backoff
+        # inside _get already handles intra-fetch transient blips; this layer
+        # is the final fail-soft net for cases where retries also exhaust.
+
         # Drought (once per county via USDM).
         fips = COUNTY_FIPS.get(slug)
-        drought = fetch_county_drought(fips, today) if fips else None
+        try:
+            drought = fetch_county_drought(fips, today) if fips else None
+        except TRANSIENT_NET_ERRORS as exc:
+            print(f"[snotel] {slug}: drought fetch failed ({type(exc).__name__}): {exc}", file=sys.stderr)
+            drought = None
 
         # Streamflow (once per county via USGS).
         gauge = COUNTY_GAUGES.get(slug)
-        streamflow = fetch_streamflow(gauge[0], gauge[1], today) if gauge else None
+        try:
+            streamflow = fetch_streamflow(gauge[0], gauge[1], today) if gauge else None
+        except TRANSIENT_NET_ERRORS as exc:
+            print(f"[snotel] {slug}: streamflow fetch failed ({type(exc).__name__}): {exc}", file=sys.stderr)
+            streamflow = None
 
         # Soil moisture (once per county via Mesonet).
         mesonet_ids = mesonet_ids_by_county.get(county, [])
-        mesonet_obs = fetch_mesonet_latest(mesonet_ids) if mesonet_ids else []
+        try:
+            mesonet_obs = fetch_mesonet_latest(mesonet_ids) if mesonet_ids else []
+        except TRANSIENT_NET_ERRORS as exc:
+            print(f"[snotel] {slug}: mesonet fetch failed ({type(exc).__name__}): {exc}", file=sys.stderr)
+            mesonet_obs = []
         soil_moisture = aggregate_mesonet_soil_moisture(mesonet_obs)
 
         # Precip anomaly (looked up from the pre-fetched CAG dict).
