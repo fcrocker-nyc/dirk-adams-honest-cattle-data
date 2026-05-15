@@ -1140,5 +1140,90 @@
     },
     "parsed_at": "2026-05-12T14:13:31.125413Z",
     "entry_count": 79
+  },
+  {
+    "source_key": "bls",
+    "auction": "Billings Livestock Commission",
+    "report_id": "AMS_1777",
+    "sale_day": "Thursday",
+    "sale_date": "2026-05-14",
+    "total_receipts": 1125,
+    "breakdown": {
+      "feeder": {
+        "head": 220,
+        "pct": 19.6
+      },
+      "slaughter": {
+        "head": 590,
+        "pct": 52.4
+      },
+      "replacement": {
+        "head": 315,
+        "pct": 28.0
+      }
+    },
+    "narrative": "Compared to last sale (5-07-26): Feeder cattle were all too lightly tested to develop any market trend. Quality this week was mostly plain. A few limited offerings of attractive heifers were seen. Demand was mostly moderate to good for light offerings. Most offerings were offered in small groups or as singles. Quality limited demand this sale. A small crowd was on hand for todays sale. Market activity was mostly moderate. Weigh up cows sold on good to very good demand. Demand for feeding cows was very good as a large crowd of buyers were present looking for cows to feed. Canadian buyers continue to buy cows to ship north and feed. They were very competitive as they bid against both American packers and private feeders. Feeding cows sold 1.00-3.00 higher on breaking flesh cows, while boning and lean fleshed cows sold fully steady. Demand for slaughter cows was stronger this week as packers showed need for cows for immediate harvest. All slaughter cows were too lightly tested to develop an accurate market trend, however higher undertones were noticed on all offerings. Slaughter bulls sold mostly 3.00-5.00 higher. Demand for feeding bulls was very good this sale. Feeding bulls sold mostly steady to 3.00 higher. Young age offerings suitable to feed or rebreed sold mostly 10.00-12.00 lower. Quality limited demand this week as many open heifers and feeding type young cows were noticed. Very few wet bagged attractive quality offerings were seen. Quality this week was mostly plain to average and overall significantly lower than last weeks offering. Supply included: 20% Feeder Cattle (23% Steers, 62% Heifers, 15% Bulls); 52% Slaughter Cattle (83% Cows, 16% Bulls, 1% Dairy Cows); 28% Replacement Cattle (75% Stock Cows, 13% Bred Cows, 0% Bred Heifers, 10% Cow-Calf Pairs, 2% Bulls). Feeder cattle supply over 600 lbs was 64%.",
+    "summary": {
+      "steers": {
+        "600_649": {
+          "head": 9,
+          "wtd_avg_price": 440.0,
+          "price_low": 440.0,
+          "price_high": 440.0
+        },
+        "400_499": {
+          "head": 2,
+          "wtd_avg_price": 485.0,
+          "price_low": 485.0,
+          "price_high": 485.0
+        },
+        "550_599": {
+          "head": 2,
+          "wtd_avg_price": 465.0,
+          "price_low": 465.0,
+          "price_high": 465.0
+        }
+      },
+      "heifers": {
+        "500_549": {
+          "head": 9,
+          "wtd_avg_price": 449.89,
+          "price_low": 449.0,
+          "price_high": 450.0
+        },
+        "600_649": {
+          "head": 9,
+          "wtd_avg_price": 410.0,
+          "price_low": 410.0,
+          "price_high": 410.0
+        },
+        "700_749": {
+          "head": 27,
+          "wtd_avg_price": 368.82,
+          "price_low": 359.0,
+          "price_high": 370.0
+        },
+        "400_499": {
+          "head": 12,
+          "wtd_avg_price": 450.0,
+          "price_low": 450.0,
+          "price_high": 450.0
+        },
+        "550_599": {
+          "head": 2,
+          "wtd_avg_price": 410.0,
+          "price_low": 410.0,
+          "price_high": 410.0
+        },
+        "800_899": {
+          "head": 2,
+          "wtd_avg_price": 337.0,
+          "price_low": 337.0,
+          "price_high": 337.0
+        }
+      }
+    },
+    "parsed_at": "2026-05-15T13:57:43.184799Z",
+    "entry_count": 47
   }
 ]
