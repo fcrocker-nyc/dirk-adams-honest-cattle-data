@@ -1330,5 +1330,96 @@
     },
     "parsed_at": "2026-05-18T15:21:17.565789Z",
     "entry_count": 79
+  },
+  {
+    "source_key": "bls",
+    "auction": "Billings Livestock Commission",
+    "report_id": "AMS_1777",
+    "sale_day": "Thursday",
+    "sale_date": "2026-05-21",
+    "total_receipts": 1377,
+    "breakdown": {
+      "feeder": {
+        "head": 344,
+        "pct": 25.0
+      },
+      "slaughter": {
+        "head": 712,
+        "pct": 51.7
+      },
+      "replacement": {
+        "head": 321,
+        "pct": 23.3
+      }
+    },
+    "narrative": "Compared to last sale (5-14-26): Feeder cattle were all too lightly tested to develop any market trend. Quality this week was mostly plain with many blemished cattle in the offering. Very few reportable cattle sold today as a result. Demand was mostly moderate to good for light offerings. Most offerings were offered in small groups or as singles. Quality limited demand this sale. A small crowd was on hand for todays sale. Market activity was mostly moderate. Weigh up cows sold on good to very good demand. Demand for feeding cows was very good with additional buyers in the market this week buying cows to feed. Canadian buyers were mostly absent this week, however private feeders all showed very good demand for cows and pushed offerings higher. Feeding cows sold 2.00-5.00 higher on breaking and boning flesh cows, while lean fleshed cows sold generally steady to firm. Demand for slaughter cows was stronger this week as packers showed need for cows for immediate harvest. All slaughter cows were too lightly tested to develop an accurate market trend, however higher undertones were noticed on all offerings. Slaughter bulls sold mostly steady to firm on a higher yielding offering. Bull quality this week was mostly attractive. Bull quality and yields were higher this week, and while prices were slightly higher on a live basis, bulls sold near steady on a dressed basis. Demand for feeding bulls was very good again this sale. Feeding bulls sold mostly steady. Young age offerings suitable to feed or rebreed sold mostly 10.00-15.00 higher on a higher quality offering. Quality this week was mostly average to attractive and overall significantly higher than last weeks offering. Demand for feeding quality young cows was very good this week with additional buyers in the market. Supply included: 25% Feeder Cattle (26% Steers, 64% Heifers, 9% Bulls); 52% Slaughter Cattle (85% Cows, 15% Bulls, 0% Dairy Cows); 23% Replacement Cattle (93% Stock Cows, 6% Bred Cows, 1% Cow-Calf Pairs). Feeder cattle supply over 600 lbs was 75%.",
+    "summary": {
+      "steers": {
+        "500_549": {
+          "head": 4,
+          "wtd_avg_price": 470.0,
+          "price_low": 470.0,
+          "price_high": 470.0
+        },
+        "650_699": {
+          "head": 4,
+          "wtd_avg_price": 402.5,
+          "price_low": 402.5,
+          "price_high": 402.5
+        },
+        "800_899": {
+          "head": 8,
+          "wtd_avg_price": 362.19,
+          "price_low": 360.0,
+          "price_high": 362.5
+        }
+      },
+      "heifers": {
+        "550_599": {
+          "head": 1,
+          "wtd_avg_price": 440.0,
+          "price_low": 440.0,
+          "price_high": 440.0
+        },
+        "600_649": {
+          "head": 17,
+          "wtd_avg_price": 381.2,
+          "price_low": 367.5,
+          "price_high": 400.0
+        },
+        "800_899": {
+          "head": 34,
+          "wtd_avg_price": 321.53,
+          "price_low": 320.0,
+          "price_high": 324.0
+        },
+        "900_plus": {
+          "head": 9,
+          "wtd_avg_price": 309.0,
+          "price_low": 309.0,
+          "price_high": 309.0
+        },
+        "400_499": {
+          "head": 2,
+          "wtd_avg_price": 490.0,
+          "price_low": 490.0,
+          "price_high": 490.0
+        },
+        "500_549": {
+          "head": 11,
+          "wtd_avg_price": 422.24,
+          "price_low": 420.0,
+          "price_high": 425.0
+        },
+        "700_749": {
+          "head": 9,
+          "wtd_avg_price": 364.99,
+          "price_low": 360.0,
+          "price_high": 367.5
+        }
+      }
+    },
+    "parsed_at": "2026-05-22T14:30:55.050082Z",
+    "entry_count": 52
   }
 ]
