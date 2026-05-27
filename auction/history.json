@@ -1421,5 +1421,67 @@
     },
     "parsed_at": "2026-05-22T14:30:55.050082Z",
     "entry_count": 52
+  },
+  {
+    "source_key": "mt_weekly",
+    "auction": "Montana Weekly Summary",
+    "report_id": "AMS_1778",
+    "sale_day": "Monday",
+    "sale_date": "2026-05-26",
+    "period_start": "5/17/2026",
+    "period_end": "5/23/2026",
+    "total_receipts": 7698,
+    "breakdown": {
+      "feeder": {
+        "head": 448,
+        "pct": 5.8
+      },
+      "slaughter": {
+        "head": 1335,
+        "pct": 17.3
+      },
+      "replacement": {
+        "head": 2323,
+        "pct": 30.2
+      }
+    },
+    "narrative": "Compared to last week: Feeder cattle were all too lightly tested last week to develop any market trend. Quality this week was mostly plain to average. Demand overall for feeder cattle was good. Package sizes this week were mostly small with lots of singles. CME positions moved sharply lower throughout the week in the lead up to the release of Fridays cattle on feed report. The cattle on feed report showed cattle and calves on feed up 2% from May 2025, placements at 6% above May 2025 and marketing's 10% below May 2025. The May CME feeder cattle contract settled Friday at 369.125, 0.45 higher than last Friday. The August contract closed Friday at 349.85, 11.60 lower than last Fridays close. The September contract closed Friday at 346.85, 12.275 lower than last Fridays close. Market activity was mostly moderate to active with a smaller buyer pool noticed this week. Weigh up cows sold on mostly very good demand for moderate offerings. Feeding cow demand was very good this week. Feeding cows sold mostly 3.00-6.00 higher on breaking and boning flesh cows. Lean fleshed cows sold 2.00-4.00 higher. Very good demand was seen this week from private feeders. Canadian buyers were not as active this week. American packers were still not very active as cow prices continue to strengthen. Cow quality was mostly average to attractive this week with many high quality cows off reputation ranches. A large crowd of feeding cow buyers were present at all sales. Young feeding cows were met with very good demand this week. Young cows were in high demand both from replacement buyers and from feeding buyers. Slaughter cow demand increased slightly this week but most cows remain mostly above packer's breakeven to slaughter. Breaking, boning and lean slaughter cows all sold with higher undertones. Slaughter bulls sold mostly steady to 2.00 higher on a higher yielding offering. Feeding bull demand remains very good. Feeding bulls sold 3.00-5.00 higher this week. Demand for young age cows suitable to feed or rebreed was mostly good, but significantly stronger than last week. Cows and heifers which lost calves sold on very good demand. Feeding demand for young cows which are still eligible to grade choice was very good. Buyers took heifers up to 3 years old to put on feed this week. Young cows sold 12.00-15.00 higher on a higher quality offering. Quality was mostly average to attractive. Many sets of cattle were off reputation ranches as ranchers sent opens and pairs to town due to drought. Demand for cow-calf pairs continues to soften as heavier supplies are being seen as drought conditions worsen. Supply included: 6% Feeder Cattle (23% Steers, 62% Heifers, 15% Bulls); 17% Slaughter Cattle (85% Cows, 15% Bulls, 0% Dairy Cows); 30% Replacement Cattle (42% Stock Cows, 9% Bred Cows, 1% Bred Heifers, 44% Cow-Calf Pairs, 5% Heifer Pairs, 0% Bulls); 7% Feeder Sheep/Lambs (91% Lambs, 9% Hair Lambs); 30% Slaughter Sheep/Lambs (34% Wooled & Shorn, 13% Hair Breeds, 50% Ewes, 1% Hair Ewe",
+    "summary": {
+      "steers": {},
+      "heifers": {
+        "550_599": {
+          "head": 11,
+          "wtd_avg_price": 425.0,
+          "price_low": 425.0,
+          "price_high": 425.0
+        },
+        "600_649": {
+          "head": 1,
+          "wtd_avg_price": 400.0,
+          "price_low": 400.0,
+          "price_high": 400.0
+        },
+        "800_899": {
+          "head": 19,
+          "wtd_avg_price": 320.0,
+          "price_low": 320.0,
+          "price_high": 320.0
+        },
+        "900_plus": {
+          "head": 9,
+          "wtd_avg_price": 309.0,
+          "price_low": 309.0,
+          "price_high": 309.0
+        },
+        "400_499": {
+          "head": 2,
+          "wtd_avg_price": 490.0,
+          "price_low": 490.0,
+          "price_high": 490.0
+        }
+      }
+    },
+    "parsed_at": "2026-05-27T15:31:03.853058Z",
+    "entry_count": 63
   }
 ]
