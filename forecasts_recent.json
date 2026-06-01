@@ -1,29 +1,53 @@
 {
-  "updated": "2026-04-20",
+  "updated": "2026-06-01",
   "weeks": [
     {
-      "as_of": "2026-04-20",
-      "source_url": "https://honestcattle.net/2026/04/20/2026-04-20-honest-cattle/",
-      "source_title": "2026-04-20 Honest Cattle Weekly Market Forecast",
-      "class_note": "550–650 lb Montana-origin steers / heifers, FOB auction, quality-graded average to above-average",
+      "as_of": "2026-06-01",
+      "source_url": "https://honestcattle.net/2026/06/01/2026-06-01-honest-cattle-weekly-marketing-forecast/",
+      "source_title": "2026-06-01 Honest Cattle Weekly Marketing Forecast",
+      "class_note": "550–650 lb Montana-origin steers / heifers, FOB auction",
       "quarters": [
         {
           "label": "Q2 2026",
           "status": "HELD",
-          "steer":  {"low": 460, "high": 495, "mid": 478},
-          "heifer": null
+          "steer": {
+            "low": 470.0,
+            "high": 500.0,
+            "mid": 485.0
+          },
+          "heifer": {
+            "low": 450.0,
+            "high": 480.0,
+            "mid": 465.0
+          }
         },
         {
           "label": "Q3 2026",
-          "status": "ADJUSTED UP",
-          "steer":  {"low": 470, "high": 510, "mid": 490},
-          "heifer": null
+          "status": "HELD",
+          "steer": {
+            "low": 475.0,
+            "high": 515.0,
+            "mid": 495.0
+          },
+          "heifer": {
+            "low": 455.0,
+            "high": 495.0,
+            "mid": 475.0
+          }
         },
         {
           "label": "Q4 2026",
           "status": "HELD",
-          "steer":  {"low": 440, "high": 485, "mid": 460},
-          "heifer": null
+          "steer": {
+            "low": 435.0,
+            "high": 480.0,
+            "mid": 455.0
+          },
+          "heifer": {
+            "low": 415.0,
+            "high": 460.0,
+            "mid": 437.0
+          }
         }
       ]
     }
