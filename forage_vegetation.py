@@ -9,7 +9,8 @@ Approach
 The vegetation-response signal (VR, 0-100) is a *percentile rank* of the
 current season's herbaceous productivity against the county's own history.
 
-For each year 1986..present we:
+For each year in a rolling 10-year baseline (most recent
+BASELINE_YEARS, inclusive of the current year) we:
 
   1. Sum the herbaceous net-primary-production bands ``afgNPP`` (annual forbs
      and grasses) + ``pfgNPP`` (perennial forbs and grasses) from the RAP
@@ -20,7 +21,7 @@ For each year 1986..present we:
      71 (grassland/herbaceous).
   4. Reduce to the county mean.
 
-The current year is then percentile-ranked against the full historical
+The current year is then percentile-ranked against that 10-year
 distribution:  vr = (rank - 0.5) / N * 100 (mid-rank, never pinned to
 exactly 0 or 100).
 
@@ -60,8 +61,11 @@ HAY_PASTURE_NLCD_CLASS = 81
 # Growing-season window start (month, day). Apr 1.
 SEASON_START = (4, 1)
 
-# Percentile baseline: full RAP record.
+# Percentile baseline: rolling window of the most recent BASELINE_YEARS
+# (inclusive of the current year). RAP_FIRST_YEAR is the hard floor so we
+# never request composites from before the RAP record begins (1986).
 RAP_FIRST_YEAR = 1986
+BASELINE_YEARS = 10
 
 # MODIS NDVI, secondary QA signal only.
 MODIS_NDVI = "MODIS/061/MOD13Q1"
@@ -147,8 +151,17 @@ def _herb_npp_image(ee, year: int, doy_end: int):
 def _county_mean(ee, image, geom, mask):
     return (image.updateMask(mask)
             .reduceRegion(reducer=ee.Reducer.mean(),
-                          geometry=geom, scale=30, maxPixels=1e10)
+                          geometry=geom, scale=30, maxPixels=1e10,
+                          tileScale=4)
             .get("herbNPP"))
+
+
+def _year_window(today: dt.date) -> list[int]:
+    """Rolling percentile baseline: the most recent BASELINE_YEARS, inclusive
+    of the current year, floored at RAP_FIRST_YEAR so we never request
+    composites from before the RAP record begins."""
+    first = max(RAP_FIRST_YEAR, today.year - (BASELINE_YEARS - 1))
+    return list(range(first, today.year + 1))
 
 
 def compute_county_vr(ee, fips5: str, geom, today: dt.date) -> dict | None:
@@ -158,15 +171,30 @@ def compute_county_vr(ee, fips5: str, geom, today: dt.date) -> dict | None:
     percentile and provenance, or None if RAP lacks data / history.
     """
     doy_end = today.timetuple().tm_yday
-    years = list(range(RAP_FIRST_YEAR, today.year + 1))
+    years = _year_window(today)
+
+    # Rangeland mask is year-independent (latest NLCD); build it once.
+    mask = _rangeland_mask(ee, today.year)
+
+    def _year_mean(y):
+        y = ee.Number(y).toInt()
+        img = _herb_npp_image(ee, y, doy_end)
+        val = (img.updateMask(mask)
+               .reduceRegion(reducer=ee.Reducer.mean(),
+                             geometry=geom, scale=30, maxPixels=1e10,
+                             tileScale=4)
+               .get("herbNPP"))
+        return ee.Feature(None, {"year": y, "val": val})
+
+    # One server-side graph for the whole window -> a single getInfo().
+    fc = ee.FeatureCollection(ee.List(years).map(_year_mean)).getInfo()
 
     series: dict[int, float] = {}
-    for y in years:
-        img = _herb_npp_image(ee, y, doy_end)
-        mask = _rangeland_mask(ee, y)
-        v = _county_mean(ee, img, geom, mask).getInfo()
+    for feat in fc["features"]:
+        props = feat["properties"]
+        v = props.get("val")
         if v is not None:
-            series[y] = float(v)
+            series[int(props["year"])] = float(v)
 
     cur = series.get(today.year)
     history = [v for y, v in series.items() if y != today.year]
@@ -201,7 +229,8 @@ def _ndvi_season_mean(ee, year: int, doy_end: int, geom, mask):
     ndvi = coll.mean().multiply(0.0001).rename("ndvi")
     return (ndvi.updateMask(mask)
             .reduceRegion(reducer=ee.Reducer.mean(),
-                          geometry=geom, scale=250, maxPixels=1e10)
+                          geometry=geom, scale=250, maxPixels=1e10,
+                          tileScale=4)
             .get("ndvi"))
 
 
@@ -226,20 +255,30 @@ def compute_county_hay_pasture(ee, fips5: str, geom, today: dt.date) -> dict | N
     # Negligible-area gate: count class-81 pixels in the county.
     px = (hp_mask.selfMask()
           .reduceRegion(reducer=ee.Reducer.count(),
-                        geometry=geom, scale=30, maxPixels=1e10)
+                        geometry=geom, scale=30, maxPixels=1e10,
+                        tileScale=4)
           .get("landcover"))
     n_px = px.getInfo() if px is not None else 0
     if not n_px or n_px < HAY_PASTURE_MIN_PIXELS:
         return None
 
     doy_end = today.timetuple().tm_yday
-    years = list(range(RAP_FIRST_YEAR, today.year + 1))
+    years = _year_window(today)
+
+    def _year_ndvi(y):
+        y = ee.Number(y).toInt()
+        val = _ndvi_season_mean(ee, y, doy_end, geom, hp_mask)
+        return ee.Feature(None, {"year": y, "val": val})
+
+    # One server-side graph for the whole window -> a single getInfo().
+    fc = ee.FeatureCollection(ee.List(years).map(_year_ndvi)).getInfo()
 
     series: dict = {}
-    for y in years:
-        v = _ndvi_season_mean(ee, y, doy_end, geom, hp_mask).getInfo()
+    for feat in fc["features"]:
+        props = feat["properties"]
+        v = props.get("val")
         if v is not None:
-            series[y] = float(v)
+            series[int(props["year"])] = float(v)
 
     cur = series.get(today.year)
     history = [v for y, v in series.items() if y != today.year]
