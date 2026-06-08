@@ -1282,7 +1282,8 @@ def build_record(slug: str, today: dt.date,
                  soil_moisture: dict | None,
                  precip_anomaly: dict | None,
                  nass_condition: dict | None = None,
-                 vegetation: tuple[float | None, str] | None = None) -> dict:
+                 vegetation: tuple[float | None, str] | None = None,
+                 hay_pasture: dict | None = None) -> dict:
     precip_ytd = aggregate_precip(prec_current, prec_medians)
 
     if not swe_current:
@@ -1305,6 +1306,11 @@ def build_record(slug: str, today: dt.date,
             "streamflow": streamflow,
             "soil_moisture": soil_moisture,
             "precip_anomaly": precip_anomaly,
+            # Irrigated Hay/Pasture (NLCD 81) NDVI greenness vs local normal
+            # (beta). SEPARATE from the rangeland forage score; never folded
+            # into vr/mi/forage_model. None where the class-81 footprint is
+            # negligible (dryland east).
+            "hay_pasture": hay_pasture,
         }
 
     swe = round(sum(swe_current) / len(swe_current), 2)
@@ -1340,6 +1346,10 @@ def build_record(slug: str, today: dt.date,
         "streamflow": streamflow,
         "soil_moisture": soil_moisture,
         "precip_anomaly": precip_anomaly,
+        # Irrigated Hay/Pasture (NLCD 81) NDVI greenness vs local normal
+        # (beta). SEPARATE from the rangeland forage score; never folded into
+        # vr/mi/forage_model. None where the class-81 footprint is negligible.
+        "hay_pasture": hay_pasture,
     }
 
 
@@ -1503,12 +1513,20 @@ def main() -> int:
         vegetation = forage_vegetation.vr_for_county(
             vegetation_data, slug, today)
 
+        # Irrigated Hay/Pasture (NLCD 81) NDVI sub-layer, passed straight
+        # through as its own top-level block. It is NEVER fed into vr, mi,
+        # forage_model, or the score -- it is a separate beta indicator.
+        hay_pasture = None
+        if vegetation_data:
+            _vc = (vegetation_data.get("counties") or {}).get(slug) or {}
+            hay_pasture = _vc.get("hay_pasture")
+
         record = build_record(
             slug, today,
             swe_current, swe_medians, swe_serieses,
             prec_current, prec_medians,
             drought, streamflow, soil_moisture, precip_anomaly,
-            nass_condition, vegetation,
+            nass_condition, vegetation, hay_pasture,
         )
         path = args.out / f"{slug}.json"
 
