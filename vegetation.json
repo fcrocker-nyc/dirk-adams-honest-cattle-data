@@ -1,0 +1,624 @@
+{
+  "updated": "2026-06-08",
+  "source": "RAP npp-partitioned-16day-v3 (afgNPP+pfgNPP)",
+  "method": "season-to-date herbaceous NPP percentile vs RAP record",
+  "hay_pasture_note": "Irrigated Hay/Pasture (NLCD 81) -- NDVI greenness vs local normal (beta); separate from the Rangeland Forage Condition score, never folded into VR/mi/score.",
+  "counties": {
+    "beaverhead": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 55.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "big_horn": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 65.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "blaine": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 35.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "broadwater": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 65.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "carbon": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 25.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "carter": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 85.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "cascade": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 45.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "chouteau": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 25.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "custer": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 75.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "daniels": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 15.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "dawson": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 25.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "deer_lodge": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 65.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "fallon": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 65.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "fergus": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 65.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "flathead": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 95.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "gallatin": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 75.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "garfield": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 45.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "glacier": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 25.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "golden_valley": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 85.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "granite": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 75.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "hill": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 15.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "jefferson": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 45.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "judith_basin": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 55.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "lake": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 95.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "lewis_clark": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 85.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "liberty": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 15.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "lincoln": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 95.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "madison": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 65.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "mccone": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 35.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "meagher": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 75.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "mineral": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 95.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "missoula": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 95.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "musselshell": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 55.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "park": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 65.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "petroleum": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 65.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "phillips": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 35.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "pondera": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 15.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "powder_river": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 75.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "powell": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 85.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "prairie": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 55.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "ravalli": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 85.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "richland": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 25.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "roosevelt": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 25.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "rosebud": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 85.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "sanders": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 95.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "sheridan": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 15.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "silver_bow": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 65.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "stillwater": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 25.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "sweet_grass": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 35.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "teton": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 15.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "toole": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 15.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "treasure": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 75.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "valley": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 45.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "wheatland": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 35.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "wibaux": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 35.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    },
+    "yellowstone": {
+      "vr": null,
+      "hay_pasture": {
+        "ndvi_pctl": 65.0,
+        "rap_pctl": null,
+        "n_years": 10,
+        "asof": "2026-06-08",
+        "nlcd_class": 81,
+        "signal": "modis_ndvi"
+      }
+    }
+  }
+}
