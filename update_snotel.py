@@ -28,7 +28,8 @@ Output schema (v2.0 — forage_model added with full component breakdown):
       "forage_model": {
         "sp": 62.0, "mi": 32.5, "vr": 40.0, "dc": 45.0, "lu": 50.0,
         "category": "Poor", "confidence": "Medium",
-        "model": "HC Forage v2.0"
+        "mi_source": "ncei_rank",
+        "model": "HC Forage v2.2"
       },
       "precip_ytd": { ... },
       "drought":    { ... },
@@ -63,6 +64,8 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
+
+import forage_percentiles
 
 # ---------------------------------------------------------------------------
 # Unified transient-network-error tuple
@@ -847,6 +850,9 @@ def fetch_cag_precip_anomaly(today: dt.date) -> dict:
     # By-county accumulator.
     by_county: dict[str, dict] = {}
     month_end_used: str | None = None
+    # Record length (years in the period of record), parsed once from the
+    # NCEI response description block. Per-county objects do not carry it.
+    n_years: int | None = None
 
     for period_key, n_months in periods:
         data = None
@@ -870,6 +876,17 @@ def fetch_cag_precip_anomaly(today: dt.date) -> dict:
             continue
         if month_end_used is None:
             month_end_used = month_used
+        if n_years is None:
+            desc = data.get("description") if isinstance(data, dict) else None
+            if isinstance(desc, dict):
+                por = desc.get("period of record")
+                if por is not None:
+                    m = re.search(r"\d+", str(por))
+                    if m:
+                        try:
+                            n_years = int(m.group(0))
+                        except (TypeError, ValueError):
+                            n_years = None
         for key, v in (data.get("data") or {}).items():
             if not isinstance(v, dict):
                 continue
@@ -886,6 +903,12 @@ def fetch_cag_precip_anomaly(today: dt.date) -> dict:
                 "anomaly": _num("anomaly"),
                 "rank":    v.get("rank"),
             }
+
+    # Attach the parsed record length to every county so the forage model can
+    # turn an NCEI rank into a percentile. Defaults to the NCEI MT county POR.
+    resolved_n = n_years if n_years else forage_percentiles.DEFAULT_RECORD_LENGTH
+    for entry in by_county.values():
+        entry["n_years"] = resolved_n
 
     return by_county
 
@@ -1151,9 +1174,19 @@ def forage_score(
     if precip_ytd:
         basin_pct = precip_ytd.get("percent_of_median")
 
-    mi = (0.45 * _precip_component(precip_pct) +
-          0.35 * _swe_component(swe_pct) +
-          0.20 * _basin_precip_component(basin_pct))
+    # Moisture-input (MI) signal. Preferred path: the NCEI 3-month (m3) rank
+    # converted to a 0-100 percentile (1=driest..N=wettest). When the rank or
+    # record length is unavailable, fall back to the existing "% of normal"
+    # blend so the model never breaks if NCEI is down.
+    mi_pctile = forage_percentiles.mi_from_ncei_rank(precip_anomaly)
+    if mi_pctile is not None:
+        mi = mi_pctile
+        mi_source = "ncei_rank"
+    else:
+        mi = (0.45 * _precip_component(precip_pct) +
+              0.35 * _swe_component(swe_pct) +
+              0.20 * _basin_precip_component(basin_pct))
+        mi_source = "pct_normal"
 
     vr_val = _soil_vr_proxy(soil_moisture, precip_anomaly)
     vr = vr_val if vr_val is not None else 50.0
@@ -1185,7 +1218,8 @@ def forage_score(
         "lu": round(lu, 1),
         "category": _forage_category(score),
         "confidence": "High" if missing == 0 else ("Medium" if missing <= 1 else "Low"),
-        "model": "HC Forage v2.1",
+        "mi_source": mi_source,
+        "model": "HC Forage v2.2",
     }
     if nass_live:
         detail["nass_week"] = nass_condition.get("week_ending")
