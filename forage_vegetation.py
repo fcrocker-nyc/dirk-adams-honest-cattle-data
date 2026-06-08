@@ -341,6 +341,7 @@ def compute_county_hay_pasture(ee, fips5: str, geom, today: dt.date) -> dict | N
         "n_years": n_years,
         "asof": today.isoformat(),
         "nlcd_class": HAY_PASTURE_NLCD_CLASS,
+        "n_pixels": n_px,
         "signal": "modis_ndvi",
     }
 
