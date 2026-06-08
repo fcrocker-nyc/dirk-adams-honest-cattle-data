@@ -1,0 +1,50 @@
+name: Update rangeland vegetation (RAP)
+
+# Computes the RAP herbaceous-NPP vegetation-response (VR) percentile for
+# each Montana county via Google Earth Engine and commits vegetation.json.
+# Runs weekly; the forage model reads vegetation.json with a 3-week
+# freshness gate and falls back to the soil-moisture proxy when stale.
+
+on:
+  schedule:
+    # 12:00 UTC Mondays (~06:00 Mountain). RAP 16-day composites lag, so
+    # weekly cadence is sufficient.
+    - cron: '0 12 * * 1'
+  workflow_dispatch: {}  # allow manual runs from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  vegetation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+
+      - name: Install Earth Engine API
+        run: pip install earthengine-api
+
+      - name: Compute vegetation VR percentiles
+        env:
+          GEE_SERVICE_ACCOUNT: ${{ secrets.GEE_SERVICE_ACCOUNT }}
+          GEE_SA_KEY: ${{ secrets.GEE_SA_KEY }}
+        run: python forage_vegetation.py --run --verbose
+
+      - name: Commit vegetation.json
+        run: |
+          git config user.name "vegetation-bot"
+          git config user.email "vegetation-bot@users.noreply.github.com"
+          if [[ -n "$(git status --porcelain vegetation.json)" ]]; then
+            git add vegetation.json
+            git commit -m "auto update: RAP vegetation refresh $(date -u +%Y-%m-%d)"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push
+          else
+            echo "No changes to commit."
+          fi
