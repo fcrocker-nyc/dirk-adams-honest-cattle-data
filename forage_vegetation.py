@@ -223,6 +223,61 @@ def vr_for_county(veg, slug: str, today: dt.date):
     return float(rec["vr"]), "rap_npp"
 
 
+
+# --------------------------------------------------------------------------
+# Earth Engine runner (invoked by the vegetation-update workflow).
+# --------------------------------------------------------------------------
+
+# US Census TIGER counties in Earth Engine; county geometry is selected by
+# 5-digit GEOID (state FIPS 30 for Montana + 3-digit county code).
+TIGER_COUNTIES = "TIGER/2018/Counties"
+
+
+def _county_geom(ee, fips5: str):
+    """ee.Geometry for the county whose GEOID == fips5."""
+    fc = (ee.FeatureCollection(TIGER_COUNTIES)
+          .filter(ee.Filter.eq("GEOID", fips5)))
+    return fc.first().geometry()
+
+
+def run_all(verbose: bool = False) -> int:
+    """Compute VR for every active county and write vegetation.json.
+
+    Slug->FIPS comes from update_snotel.COUNTY_FIPS (the single source of
+    truth). Earth Engine auth failures propagate so the workflow stops with
+    a clear EE error rather than writing a partial/empty file.
+    """
+    ee = _ee()  # raises on auth failure -> workflow surfaces EE error
+    if verbose:
+        print("[vegetation] Earth Engine initialised")
+
+    # Import lazily so the module's pure-Python helpers stay importable
+    # without pulling in the full updater.
+    from update_snotel import COUNTY_FIPS
+
+    today = dt.date.today()
+    records: dict = {}
+    for slug, fips5 in COUNTY_FIPS.items():
+        try:
+            geom = _county_geom(ee, fips5)
+            rec = compute_county_vr(ee, fips5, geom, today)
+        except Exception as exc:  # noqa: BLE001 - per-county fail-soft
+            print(f"[vegetation] {slug} ({fips5}) failed: "
+                  f"{type(exc).__name__}: {exc}")
+            rec = None
+        if rec is not None:
+            records[slug] = rec
+            if verbose:
+                print(f"[vegetation] {slug}: vr={rec['vr']} "
+                      f"(n={rec['n_years']})")
+        elif verbose:
+            print(f"[vegetation] {slug}: no VR (insufficient RAP data)")
+
+    write_vegetation_json(records, today)
+    if verbose:
+        print(f"[vegetation] wrote {OUT_PATH} with {len(records)} counties")
+    return 0
+
 def _self_test() -> None:
     """Self-test for the pure-Python helpers (no Earth Engine)."""
     hist = [10, 20, 30, 40]  # N=5 with current
@@ -252,4 +307,8 @@ def _self_test() -> None:
 
 
 if __name__ == "__main__":
+    import sys
+    if "--run" in sys.argv:
+        verbose = "--verbose" in sys.argv
+        raise SystemExit(run_all(verbose=verbose))
     _self_test()
