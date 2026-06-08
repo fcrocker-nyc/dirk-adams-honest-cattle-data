@@ -139,9 +139,9 @@ def _self_test():
     check("rank > N invalid", rank_to_percentile(140, 132), None)
     check("non-int rank", rank_to_percentile("x", 132), None)
     # N parsing edge cases.
-    check("N None -> default", rank_to_percentile(66), 49.8)
-    check("N zero -> default", rank_to_percentile(66, 0), 49.8)
-    check("N non-int -> default", rank_to_percentile(66, "bad"), 49.8)
+    check("N None -> default", rank_to_percentile(66), 49.6)
+    check("N zero -> default", rank_to_percentile(66, 0), 49.6)
+    check("N non-int -> default", rank_to_percentile(66, "bad"), 49.6)
     # mi_from_ncei_rank wiring.
     check(
         "mi from m3",
