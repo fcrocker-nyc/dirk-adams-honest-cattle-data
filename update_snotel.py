@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+undefined#!/usr/bin/env python3
 """
 update_snotel.py
 ================
@@ -29,7 +29,8 @@ Output schema (v2.0 — forage_model added with full component breakdown):
         "sp": 62.0, "mi": 32.5, "vr": 40.0, "dc": 45.0, "lu": 50.0,
         "category": "Poor", "confidence": "Medium",
         "mi_source": "ncei_rank",
-        "model": "HC Forage v2.2"
+        "vr_source": "rap_npp",
+        "model": "HC Forage v2.3"
       },
       "precip_ytd": { ... },
       "drought":    { ... },
@@ -66,6 +67,7 @@ import urllib.request
 from pathlib import Path
 
 import forage_percentiles
+import forage_vegetation
 
 # ---------------------------------------------------------------------------
 # Unified transient-network-error tuple
@@ -1156,8 +1158,15 @@ def forage_score(
     soil_moisture: dict | None,
     precip_anomaly: dict | None,
     nass_condition: dict | None = None,
+    vegetation: tuple[float | None, str] | None = None,
 ) -> tuple[int, dict]:
-    """Full forage model. Returns (score, model_detail_dict)."""
+    """Full forage model. Returns (score, model_detail_dict).
+
+    ``vegetation`` is an optional (vr, vr_source) pair from the RAP vegetation
+    layer (already freshness-gated by the caller). When vr is present it drives
+    the vegetation-response component; otherwise the soil-moisture proxy is
+    used as the fallback.
+    """
     sp = float(STRUCTURAL_POTENTIAL.get(slug, 55))
 
     precip_pct = None
@@ -1188,8 +1197,23 @@ def forage_score(
               0.20 * _basin_precip_component(basin_pct))
         mi_source = "pct_normal"
 
-    vr_val = _soil_vr_proxy(soil_moisture, precip_anomaly)
-    vr = vr_val if vr_val is not None else 50.0
+    # Vegetation-response (VR). Preferred path: the RAP herbaceous-NPP
+    # percentile (already freshness-gated by the caller). Fallback: the
+    # soil-moisture + precip proxy, then a neutral 50 if neither is available.
+    veg_vr, veg_source = (vegetation if vegetation else (None, "unavailable"))
+    soil_vr = _soil_vr_proxy(soil_moisture, precip_anomaly)
+    if veg_vr is not None:
+        vr = veg_vr
+        vr_source = veg_source  # "rap_npp"
+        vr_live = True
+    elif soil_vr is not None:
+        vr = soil_vr
+        vr_source = "soil_proxy"
+        vr_live = True
+    else:
+        vr = 50.0
+        vr_source = "none"
+        vr_live = False
 
     nass_score = 50.0
     nass_live = False
@@ -1207,7 +1231,7 @@ def forage_score(
 
     missing = 0
     if precip_pct is None: missing += 1
-    if vr_val is None: missing += 1
+    if not vr_live: missing += 1
     if not nass_live: missing += 1
 
     detail = {
@@ -1219,7 +1243,8 @@ def forage_score(
         "category": _forage_category(score),
         "confidence": "High" if missing == 0 else ("Medium" if missing <= 1 else "Low"),
         "mi_source": mi_source,
-        "model": "HC Forage v2.2",
+        "vr_source": vr_source,
+        "model": "HC Forage v2.3",
     }
     if nass_live:
         detail["nass_week"] = nass_condition.get("week_ending")
@@ -1256,14 +1281,15 @@ def build_record(slug: str, today: dt.date,
                  streamflow: dict | None,
                  soil_moisture: dict | None,
                  precip_anomaly: dict | None,
-                 nass_condition: dict | None = None) -> dict:
+                 nass_condition: dict | None = None,
+                 vegetation: tuple[float | None, str] | None = None) -> dict:
     precip_ytd = aggregate_precip(prec_current, prec_medians)
 
     if not swe_current:
         score, model = forage_score(
             slug, 0, "No Snowpack",
             precip_ytd, drought, streamflow, soil_moisture, precip_anomaly,
-            nass_condition,
+            nass_condition, vegetation,
         )
         return {
             "county": slug,
@@ -1298,7 +1324,7 @@ def build_record(slug: str, today: dt.date,
     score, model = forage_score(
         slug, percent, status,
         precip_ytd, drought, streamflow, soil_moisture, precip_anomaly,
-        nass_condition,
+        nass_condition, vegetation,
     )
     return {
         "county": slug,
@@ -1404,6 +1430,16 @@ def main() -> int:
             nass_reason = "no API key" if not NASS_API_KEY else "no data (off-season?)"
             print(f"[snotel] NASS: skipped ({nass_reason})")
 
+    # -------- RAP vegetation layer (one read; freshness-gated per county) --------
+    vegetation_data = forage_vegetation.load_vegetation()
+    if args.verbose:
+        if vegetation_data:
+            vcount = len(vegetation_data.get("counties", {}))
+            print(f"[snotel] RAP vegetation: {vcount} counties "
+                  f"(updated {vegetation_data.get('updated')})")
+        else:
+            print("[snotel] RAP vegetation: none (soil proxy fallback)")
+
     # -------- Per-county assembly --------
     changed = 0
     for county, slug in ACTIVE_COUNTIES.items():
@@ -1463,12 +1499,16 @@ def main() -> int:
         cag_key = f"MT-{fips[-3:]}" if fips else None
         precip_anomaly = cag_by_county.get(cag_key) if cag_key else None
 
+        # RAP vegetation VR for this county (freshness gate applied inside).
+        vegetation = forage_vegetation.vr_for_county(
+            vegetation_data, slug, today)
+
         record = build_record(
             slug, today,
             swe_current, swe_medians, swe_serieses,
             prec_current, prec_medians,
             drought, streamflow, soil_moisture, precip_anomaly,
-            nass_condition,
+            nass_condition, vegetation,
         )
         path = args.out / f"{slug}.json"
 
