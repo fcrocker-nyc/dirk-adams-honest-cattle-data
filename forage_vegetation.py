@@ -48,9 +48,14 @@ RAP_NPP_YEARLY = "projects/rap-data-365417/assets/npp-partitioned-v3"
 # Herbaceous bands: annual + perennial forb-and-grass NPP. Sum them.
 HERB_NPP_BANDS = ["afgNPP", "pfgNPP"]
 
-# Rangeland mask: NLCD shrubland (52) + grassland/herbaceous (71).
-# (Pasture/hay 81 intentionally excluded for now -- native rangeland only.)
+# Rangeland mask: NLCD shrubland (52) + grassland/herbaceous (71) ONLY.
+# Pasture/hay (81) and cultivated crops (82) are deliberately EXCLUDED so
+# that irrigated hay and cropland never inflate the rangeland VR signal.
 RANGELAND_NLCD_CLASSES = [52, 71]
+
+# Irrigated hay/pasture mask: NLCD class 81 only. Reported as a SEPARATE
+# sub-layer (never folded into VR or the forage score).
+HAY_PASTURE_NLCD_CLASS = 81
 
 # Growing-season window start (month, day). Apr 1.
 SEASON_START = (4, 1)
@@ -97,20 +102,31 @@ def _ee():
     return ee
 
 
-def _rangeland_mask(ee, year: int):
-    """Boolean rangeland mask (NLCD 52 + 71).
+def _nlcd_landcover(ee):
+    """Most recent NLCD annual land-cover image.
 
-    NLCD is published less often than RAP, so we use the most recent annual
-    release image available.
+    NLCD is published less often than RAP, so we use the latest available
+    annual release.
     """
     nlcd = (ee.ImageCollection("USGS/NLCD_RELEASES/2021_REL/NLCD")
             .select("landcover"))
     img = nlcd.sort("system:time_start", False).first()
-    lc = ee.Image(img).select("landcover")
-    mask = lc.eq(RANGELAND_NLCD_CLASSES[0])
-    for cls in RANGELAND_NLCD_CLASSES[1:]:
+    return ee.Image(img).select("landcover")
+
+
+def _class_mask(ee, classes):
+    """Boolean mask for the given NLCD land-cover class value(s)."""
+    lc = _nlcd_landcover(ee)
+    cls_list = classes if isinstance(classes, (list, tuple)) else [classes]
+    mask = lc.eq(cls_list[0])
+    for cls in cls_list[1:]:
         mask = mask.Or(lc.eq(cls))
     return mask
+
+
+def _rangeland_mask(ee, year: int):
+    """Boolean rangeland mask (NLCD 52 + 71 only)."""
+    return _class_mask(ee, RANGELAND_NLCD_CLASSES)
 
 
 def _herb_npp_image(ee, year: int, doy_end: int):
@@ -170,12 +186,87 @@ def compute_county_vr(ee, fips5: str, geom, today: dt.date) -> dict | None:
     }
 
 
+def _ndvi_season_mean(ee, year: int, doy_end: int, geom, mask):
+    """County-mean MODIS NDVI over Apr 1..doy_end for ``year`` within mask.
+
+    MODIS/061/MOD13Q1 NDVI is scaled by 1e4 in the source; we divide so the
+    returned value is a conventional -1..1 NDVI. Returns a server-side number
+    (may be None if no pixels fall in the mask).
+    """
+    start = ee.Date.fromYMD(year, SEASON_START[0], SEASON_START[1])
+    end = ee.Date.fromYMD(year, 1, 1).advance(doy_end, "day")
+    coll = (ee.ImageCollection(MODIS_NDVI)
+            .filterDate(start, end)
+            .select("NDVI"))
+    ndvi = coll.mean().multiply(0.0001).rename("ndvi")
+    return (ndvi.updateMask(mask)
+            .reduceRegion(reducer=ee.Reducer.mean(),
+                          geometry=geom, scale=250, maxPixels=1e10)
+            .get("ndvi"))
+
+
+# Minimum class-81 pixel count for a county to get a hay/pasture layer.
+# Below this we treat the irrigated-ag footprint as negligible (dryland east)
+# and emit null. NLCD is 30 m, so ~500 px ~= 0.45 sq km.
+HAY_PASTURE_MIN_PIXELS = 500
+
+
+def compute_county_hay_pasture(ee, fips5: str, geom, today: dt.date) -> dict | None:
+    """Irrigated hay/pasture (NLCD 81) greenness percentile via MODIS NDVI.
+
+    SEPARATE from VR: this is reported on its own and never folded into the
+    rangeland forage score. RAP is rangeland-focused and is typically null
+    over cultivated pasture/hay, so MODIS NDVI is the primary signal here and
+    a null RAP percentile never blocks the layer.
+
+    Returns None for counties whose class-81 footprint is negligible.
+    """
+    hp_mask = _class_mask(ee, HAY_PASTURE_NLCD_CLASS)
+
+    # Negligible-area gate: count class-81 pixels in the county.
+    px = (hp_mask.selfMask()
+          .reduceRegion(reducer=ee.Reducer.count(),
+                        geometry=geom, scale=30, maxPixels=1e10)
+          .get("landcover"))
+    n_px = px.getInfo() if px is not None else 0
+    if not n_px or n_px < HAY_PASTURE_MIN_PIXELS:
+        return None
+
+    doy_end = today.timetuple().tm_yday
+    years = list(range(RAP_FIRST_YEAR, today.year + 1))
+
+    series: dict = {}
+    for y in years:
+        v = _ndvi_season_mean(ee, y, doy_end, geom, hp_mask).getInfo()
+        if v is not None:
+            series[y] = float(v)
+
+    cur = series.get(today.year)
+    history = [v for y, v in series.items() if y != today.year]
+    if cur is None or len(history) < 5:
+        ndvi_pctl = None
+        n_years = len(history) + (1 if cur is not None else 0)
+    else:
+        ndvi_pctl = round(_percentile_midrank(cur, history), 1)
+        n_years = len(history) + 1
+
+    return {
+        "ndvi_pctl": ndvi_pctl,
+        "rap_pctl": None,  # RAP is rangeland-focused; null over cultivated ag
+        "n_years": n_years,
+        "asof": today.isoformat(),
+        "nlcd_class": HAY_PASTURE_NLCD_CLASS,
+        "signal": "modis_ndvi",
+    }
+
+
 def write_vegetation_json(records: dict, today: dt.date) -> None:
     """Write vegetation.json keyed by county slug."""
     out = {
         "updated": today.isoformat(),
         "source": "RAP npp-partitioned-16day-v3 (afgNPP+pfgNPP)",
         "method": "season-to-date herbaceous NPP percentile vs RAP record",
+        "hay_pasture_note": ("Irrigated Hay/Pasture (NLCD 81) -- NDVI greenness vs local normal (beta); separate from the Rangeland Forage Condition score, never folded into VR/mi/score."),
         "counties": records,
     }
     OUT_PATH.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n",
@@ -258,20 +349,40 @@ def run_all(verbose: bool = False) -> int:
     today = dt.date.today()
     records: dict = {}
     for slug, fips5 in COUNTY_FIPS.items():
+        geom = None
         try:
             geom = _county_geom(ee, fips5)
             rec = compute_county_vr(ee, fips5, geom, today)
         except Exception as exc:  # noqa: BLE001 - per-county fail-soft
-            print(f"[vegetation] {slug} ({fips5}) failed: "
+            print(f"[vegetation] {slug} ({fips5}) VR failed: "
                   f"{type(exc).__name__}: {exc}")
             rec = None
-        if rec is not None:
-            records[slug] = rec
+
+        # Irrigated hay/pasture (NLCD 81) is a SEPARATE sub-layer computed
+        # independently of VR; a null RAP/VR never blocks it. Reuse the
+        # same county geometry.
+        hay = None
+        if geom is not None:
+            try:
+                hay = compute_county_hay_pasture(ee, fips5, geom, today)
+            except Exception as exc:  # noqa: BLE001 - per-county fail-soft
+                print(f"[vegetation] {slug} ({fips5}) hay_pasture failed: "
+                      f"{type(exc).__name__}: {exc}")
+                hay = None
+
+        if rec is None and hay is None:
             if verbose:
-                print(f"[vegetation] {slug}: vr={rec['vr']} "
-                      f"(n={rec['n_years']})")
-        elif verbose:
-            print(f"[vegetation] {slug}: no VR (insufficient RAP data)")
+                print(f"[vegetation] {slug}: no VR, no hay/pasture")
+            continue
+
+        out_rec = dict(rec) if rec is not None else {"vr": None}
+        if hay is not None:
+            out_rec["hay_pasture"] = hay
+        records[slug] = out_rec
+        if verbose:
+            vr_txt = rec["vr"] if rec is not None else "--"
+            hp_txt = hay["ndvi_pctl"] if hay is not None else "--"
+            print(f"[vegetation] {slug}: vr={vr_txt} hay_ndvi_pctl={hp_txt}")
 
     write_vegetation_json(records, today)
     if verbose:
