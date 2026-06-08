@@ -1,11 +1,28 @@
 {
   "updated": "2026-06-08",
   "source": "RAP npp-partitioned-16day-v3 (afgNPP+pfgNPP)",
-  "method": "season-to-date herbaceous NPP percentile vs RAP record",
+  "method": "season-to-date herbaceous NPP percentile vs the county's own rolling 10-year RAP baseline",
+  "vr_data_note": "VR is the percentile rank of this year's season-to-date rangeland (NLCD 52+71) herbaceous productivity against the prior 9 years. RAP's 16-day NPP is released with a lag, so early each season the current year has no data yet and VR is reported as null with a vr_status of 'awaiting_current_year_rap'; the forage score uses the soil-moisture proxy until RAP publishes. Each county also carries vr_status and vr_note explaining any null.",
+  "resolution_note": "Percentiles are computed over a 10-year window, so their resolution is coarse (~10 points); read them as broad bands, not exact ranks.",
   "hay_pasture_note": "Irrigated Hay/Pasture (NLCD 81) -- NDVI greenness vs local normal (beta); separate from the Rangeland Forage Condition score, never folded into VR/mi/score.",
   "counties": {
     "beaverhead": {
+      "fips5": "30001",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 55.0,
         "rap_pctl": null,
@@ -16,7 +33,22 @@
       }
     },
     "big_horn": {
+      "fips5": "30003",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 65.0,
         "rap_pctl": null,
@@ -27,7 +59,22 @@
       }
     },
     "blaine": {
+      "fips5": "30005",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 35.0,
         "rap_pctl": null,
@@ -38,7 +85,22 @@
       }
     },
     "broadwater": {
+      "fips5": "30007",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 65.0,
         "rap_pctl": null,
@@ -49,7 +111,22 @@
       }
     },
     "carbon": {
+      "fips5": "30009",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 25.0,
         "rap_pctl": null,
@@ -60,7 +137,22 @@
       }
     },
     "carter": {
+      "fips5": "30011",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 85.0,
         "rap_pctl": null,
@@ -71,7 +163,22 @@
       }
     },
     "cascade": {
+      "fips5": "30013",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 45.0,
         "rap_pctl": null,
@@ -82,7 +189,22 @@
       }
     },
     "chouteau": {
+      "fips5": "30015",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 25.0,
         "rap_pctl": null,
@@ -93,7 +215,22 @@
       }
     },
     "custer": {
+      "fips5": "30017",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 75.0,
         "rap_pctl": null,
@@ -104,7 +241,22 @@
       }
     },
     "daniels": {
+      "fips5": "30019",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 15.0,
         "rap_pctl": null,
@@ -115,7 +267,22 @@
       }
     },
     "dawson": {
+      "fips5": "30021",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 25.0,
         "rap_pctl": null,
@@ -126,7 +293,22 @@
       }
     },
     "deer_lodge": {
+      "fips5": "30023",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 65.0,
         "rap_pctl": null,
@@ -137,7 +319,22 @@
       }
     },
     "fallon": {
+      "fips5": "30025",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 65.0,
         "rap_pctl": null,
@@ -148,7 +345,22 @@
       }
     },
     "fergus": {
+      "fips5": "30027",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 65.0,
         "rap_pctl": null,
@@ -159,7 +371,22 @@
       }
     },
     "flathead": {
+      "fips5": "30029",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 95.0,
         "rap_pctl": null,
@@ -170,7 +397,22 @@
       }
     },
     "gallatin": {
+      "fips5": "30031",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 75.0,
         "rap_pctl": null,
@@ -181,7 +423,22 @@
       }
     },
     "garfield": {
+      "fips5": "30033",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 45.0,
         "rap_pctl": null,
@@ -192,7 +449,22 @@
       }
     },
     "glacier": {
+      "fips5": "30035",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 25.0,
         "rap_pctl": null,
@@ -203,7 +475,22 @@
       }
     },
     "golden_valley": {
+      "fips5": "30037",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 85.0,
         "rap_pctl": null,
@@ -214,7 +501,22 @@
       }
     },
     "granite": {
+      "fips5": "30039",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 75.0,
         "rap_pctl": null,
@@ -225,7 +527,22 @@
       }
     },
     "hill": {
+      "fips5": "30041",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 15.0,
         "rap_pctl": null,
@@ -236,7 +553,22 @@
       }
     },
     "jefferson": {
+      "fips5": "30043",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 45.0,
         "rap_pctl": null,
@@ -247,7 +579,22 @@
       }
     },
     "judith_basin": {
+      "fips5": "30045",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 55.0,
         "rap_pctl": null,
@@ -258,7 +605,22 @@
       }
     },
     "lake": {
+      "fips5": "30047",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 95.0,
         "rap_pctl": null,
@@ -269,7 +631,22 @@
       }
     },
     "lewis_clark": {
+      "fips5": "30049",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 85.0,
         "rap_pctl": null,
@@ -280,7 +657,22 @@
       }
     },
     "liberty": {
+      "fips5": "30051",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 15.0,
         "rap_pctl": null,
@@ -291,7 +683,22 @@
       }
     },
     "lincoln": {
+      "fips5": "30053",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 95.0,
         "rap_pctl": null,
@@ -302,7 +709,22 @@
       }
     },
     "madison": {
+      "fips5": "30057",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 65.0,
         "rap_pctl": null,
@@ -313,7 +735,22 @@
       }
     },
     "mccone": {
+      "fips5": "30055",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 35.0,
         "rap_pctl": null,
@@ -324,7 +761,22 @@
       }
     },
     "meagher": {
+      "fips5": "30059",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 75.0,
         "rap_pctl": null,
@@ -335,7 +787,22 @@
       }
     },
     "mineral": {
+      "fips5": "30061",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 95.0,
         "rap_pctl": null,
@@ -346,7 +813,22 @@
       }
     },
     "missoula": {
+      "fips5": "30063",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 95.0,
         "rap_pctl": null,
@@ -357,7 +839,22 @@
       }
     },
     "musselshell": {
+      "fips5": "30065",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 55.0,
         "rap_pctl": null,
@@ -368,7 +865,22 @@
       }
     },
     "park": {
+      "fips5": "30067",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 65.0,
         "rap_pctl": null,
@@ -379,7 +891,22 @@
       }
     },
     "petroleum": {
+      "fips5": "30069",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 65.0,
         "rap_pctl": null,
@@ -390,7 +917,22 @@
       }
     },
     "phillips": {
+      "fips5": "30071",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 35.0,
         "rap_pctl": null,
@@ -401,7 +943,22 @@
       }
     },
     "pondera": {
+      "fips5": "30073",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 15.0,
         "rap_pctl": null,
@@ -412,7 +969,22 @@
       }
     },
     "powder_river": {
+      "fips5": "30075",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 75.0,
         "rap_pctl": null,
@@ -423,7 +995,22 @@
       }
     },
     "powell": {
+      "fips5": "30077",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 85.0,
         "rap_pctl": null,
@@ -434,7 +1021,22 @@
       }
     },
     "prairie": {
+      "fips5": "30079",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 55.0,
         "rap_pctl": null,
@@ -445,7 +1047,22 @@
       }
     },
     "ravalli": {
+      "fips5": "30081",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 85.0,
         "rap_pctl": null,
@@ -456,7 +1073,22 @@
       }
     },
     "richland": {
+      "fips5": "30083",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 25.0,
         "rap_pctl": null,
@@ -467,7 +1099,22 @@
       }
     },
     "roosevelt": {
+      "fips5": "30085",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 25.0,
         "rap_pctl": null,
@@ -478,7 +1125,22 @@
       }
     },
     "rosebud": {
+      "fips5": "30087",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 85.0,
         "rap_pctl": null,
@@ -489,7 +1151,22 @@
       }
     },
     "sanders": {
+      "fips5": "30089",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 95.0,
         "rap_pctl": null,
@@ -500,7 +1177,22 @@
       }
     },
     "sheridan": {
+      "fips5": "30091",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 15.0,
         "rap_pctl": null,
@@ -511,7 +1203,22 @@
       }
     },
     "silver_bow": {
+      "fips5": "30093",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 65.0,
         "rap_pctl": null,
@@ -522,7 +1229,22 @@
       }
     },
     "stillwater": {
+      "fips5": "30095",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 25.0,
         "rap_pctl": null,
@@ -533,7 +1255,22 @@
       }
     },
     "sweet_grass": {
+      "fips5": "30097",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 35.0,
         "rap_pctl": null,
@@ -544,7 +1281,22 @@
       }
     },
     "teton": {
+      "fips5": "30099",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 15.0,
         "rap_pctl": null,
@@ -555,7 +1307,22 @@
       }
     },
     "toole": {
+      "fips5": "30101",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 15.0,
         "rap_pctl": null,
@@ -566,7 +1333,22 @@
       }
     },
     "treasure": {
+      "fips5": "30103",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 75.0,
         "rap_pctl": null,
@@ -577,7 +1359,22 @@
       }
     },
     "valley": {
+      "fips5": "30105",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 45.0,
         "rap_pctl": null,
@@ -588,7 +1385,22 @@
       }
     },
     "wheatland": {
+      "fips5": "30107",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 35.0,
         "rap_pctl": null,
@@ -599,7 +1411,22 @@
       }
     },
     "wibaux": {
+      "fips5": "30109",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 35.0,
         "rap_pctl": null,
@@ -610,7 +1437,22 @@
       }
     },
     "yellowstone": {
+      "fips5": "30111",
       "vr": null,
+      "n_years": 9,
+      "window": "04-01..doy159",
+      "asset": "projects/rap-data-365417/assets/npp-partitioned-16day-v3",
+      "bands": [
+        "afgNPP",
+        "pfgNPP"
+      ],
+      "nlcd_classes": [
+        52,
+        71
+      ],
+      "baseline_years": 10,
+      "vr_status": "awaiting_current_year_rap",
+      "vr_note": "RAP npp-partitioned-16day-v3 has not yet published 2026 composites for the Apr 1..doy159 window, so the current-season value needed for a percentile is unavailable. VR will populate automatically once RAP releases the data; until then the score uses the soil-moisture proxy.",
       "hay_pasture": {
         "ndvi_pctl": 65.0,
         "rap_pctl": null,
