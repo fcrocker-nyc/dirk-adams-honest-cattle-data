@@ -29,6 +29,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 326639,
         "signal": "modis_ndvi"
       }
     },
@@ -55,6 +56,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 114993,
         "signal": "modis_ndvi"
       }
     },
@@ -81,6 +83,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 198496,
         "signal": "modis_ndvi"
       }
     },
@@ -107,6 +110,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 97347,
         "signal": "modis_ndvi"
       }
     },
@@ -133,6 +137,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 229913,
         "signal": "modis_ndvi"
       }
     },
@@ -159,6 +164,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 110511,
         "signal": "modis_ndvi"
       }
     },
@@ -185,6 +191,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 126377,
         "signal": "modis_ndvi"
       }
     },
@@ -211,6 +218,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 213229,
         "signal": "modis_ndvi"
       }
     },
@@ -237,6 +245,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 96109,
         "signal": "modis_ndvi"
       }
     },
@@ -263,6 +272,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 235849,
         "signal": "modis_ndvi"
       }
     },
@@ -289,6 +299,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 94242,
         "signal": "modis_ndvi"
       }
     },
@@ -315,6 +326,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 34697,
         "signal": "modis_ndvi"
       }
     },
@@ -341,6 +353,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 71223,
         "signal": "modis_ndvi"
       }
     },
@@ -367,6 +380,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 96403,
         "signal": "modis_ndvi"
       }
     },
@@ -393,6 +407,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 251858,
         "signal": "modis_ndvi"
       }
     },
@@ -419,6 +434,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 300936,
         "signal": "modis_ndvi"
       }
     },
@@ -445,6 +461,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 157170,
         "signal": "modis_ndvi"
       }
     },
@@ -471,6 +488,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 104124,
         "signal": "modis_ndvi"
       }
     },
@@ -497,6 +515,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 53198,
         "signal": "modis_ndvi"
       }
     },
@@ -523,6 +542,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 152732,
         "signal": "modis_ndvi"
       }
     },
@@ -549,6 +569,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 351393,
         "signal": "modis_ndvi"
       }
     },
@@ -575,6 +596,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 106163,
         "signal": "modis_ndvi"
       }
     },
@@ -601,6 +623,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 80400,
         "signal": "modis_ndvi"
       }
     },
@@ -627,6 +650,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 312997,
         "signal": "modis_ndvi"
       }
     },
@@ -653,6 +677,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 80883,
         "signal": "modis_ndvi"
       }
     },
@@ -679,6 +704,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 166973,
         "signal": "modis_ndvi"
       }
     },
@@ -705,6 +731,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 12916,
         "signal": "modis_ndvi"
       }
     },
@@ -731,6 +758,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 326661,
         "signal": "modis_ndvi"
       }
     },
@@ -757,6 +785,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 85372,
         "signal": "modis_ndvi"
       }
     },
@@ -783,6 +812,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 164218,
         "signal": "modis_ndvi"
       }
     },
@@ -809,6 +839,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 5252,
         "signal": "modis_ndvi"
       }
     },
@@ -835,6 +866,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 112476,
         "signal": "modis_ndvi"
       }
     },
@@ -861,6 +893,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 53604,
         "signal": "modis_ndvi"
       }
     },
@@ -887,6 +920,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 107856,
         "signal": "modis_ndvi"
       }
     },
@@ -913,6 +947,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 24788,
         "signal": "modis_ndvi"
       }
     },
@@ -939,6 +974,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 249191,
         "signal": "modis_ndvi"
       }
     },
@@ -965,6 +1001,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 93479,
         "signal": "modis_ndvi"
       }
     },
@@ -991,6 +1028,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 74601,
         "signal": "modis_ndvi"
       }
     },
@@ -1017,6 +1055,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 227526,
         "signal": "modis_ndvi"
       }
     },
@@ -1043,6 +1082,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 91150,
         "signal": "modis_ndvi"
       }
     },
@@ -1069,6 +1109,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 320613,
         "signal": "modis_ndvi"
       }
     },
@@ -1095,6 +1136,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 95289,
         "signal": "modis_ndvi"
       }
     },
@@ -1121,6 +1163,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 208166,
         "signal": "modis_ndvi"
       }
     },
@@ -1147,6 +1190,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 70798,
         "signal": "modis_ndvi"
       }
     },
@@ -1173,6 +1217,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 141056,
         "signal": "modis_ndvi"
       }
     },
@@ -1199,6 +1244,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 142943,
         "signal": "modis_ndvi"
       }
     },
@@ -1225,6 +1271,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 17259,
         "signal": "modis_ndvi"
       }
     },
@@ -1251,6 +1298,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 135239,
         "signal": "modis_ndvi"
       }
     },
@@ -1277,6 +1325,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 70570,
         "signal": "modis_ndvi"
       }
     },
@@ -1303,6 +1352,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 152664,
         "signal": "modis_ndvi"
       }
     },
@@ -1329,6 +1379,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 242492,
         "signal": "modis_ndvi"
       }
     },
@@ -1355,6 +1406,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 17764,
         "signal": "modis_ndvi"
       }
     },
@@ -1381,6 +1433,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 264741,
         "signal": "modis_ndvi"
       }
     },
@@ -1407,6 +1460,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 148334,
         "signal": "modis_ndvi"
       }
     },
@@ -1433,6 +1487,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 81928,
         "signal": "modis_ndvi"
       }
     },
@@ -1459,6 +1514,7 @@
         "n_years": 10,
         "asof": "2026-06-08",
         "nlcd_class": 81,
+        "n_pixels": 128877,
         "signal": "modis_ndvi"
       }
     }
