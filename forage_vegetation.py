@@ -145,7 +145,15 @@ def _herb_npp_image(ee, year: int, doy_end: int):
             .filterDate(start, end)
             .select(HERB_NPP_BANDS))
     herb = coll.map(lambda im: im.reduce(ee.Reducer.sum()))
-    return herb.sum().rename("herbNPP")
+    summed = herb.sum().rename("herbNPP")
+    # RAP's 16-day NPP is published with a lag, so the current (and any not-
+    # yet-released) year returns an empty collection -> a 0-band image, which
+    # would crash updateMask. Guarantee a single "herbNPP" band: when the
+    # window is empty, return a fully-masked constant so the downstream
+    # reduceRegion yields None for that year (handled as "no data") instead
+    # of throwing and poisoning the whole server-side series.
+    empty = ee.Image.constant(0).rename("herbNPP").updateMask(ee.Image(0))
+    return ee.Image(ee.Algorithms.If(coll.size().gt(0), summed, empty))
 
 
 def _county_mean(ee, image, geom, mask):
@@ -167,8 +175,10 @@ def _year_window(today: dt.date) -> list[int]:
 def compute_county_vr(ee, fips5: str, geom, today: dt.date) -> dict | None:
     """Compute the VR percentile for one county.
 
-    ``geom`` is an ee.Geometry for the county. Returns a dict with the
-    percentile and provenance, or None if RAP lacks data / history.
+    ``geom`` is an ee.Geometry for the county. Always returns a dict carrying
+    ``vr`` (the 0-100 percentile, or None) plus ``vr_status`` and ``vr_note``
+    that disclose to the reader exactly why VR is null when it is (e.g. RAP
+    has not yet published the current year, or too little history exists).
     """
     doy_end = today.timetuple().tm_yday
     years = _year_window(today)
@@ -198,20 +208,56 @@ def compute_county_vr(ee, fips5: str, geom, today: dt.date) -> dict | None:
 
     cur = series.get(today.year)
     history = [v for y, v in series.items() if y != today.year]
-    if cur is None or len(history) < 5:
-        return None
 
-    vr = _percentile_midrank(cur, history)
-    return {
+    # Provenance shared by every return path so the reader always knows what
+    # the VR number means -- or, when it is null, exactly why.
+    base = {
         "fips5": fips5,
-        "vr": round(vr, 1),
-        "n_years": len(history) + 1,
-        "current_npp": round(cur, 2),
+        "vr": None,
+        "n_years": len(history),
         "window": f"{SEASON_START[0]:02d}-{SEASON_START[1]:02d}..doy{doy_end}",
         "asset": RAP_NPP_16DAY,
         "bands": HERB_NPP_BANDS,
         "nlcd_classes": RANGELAND_NLCD_CLASSES,
+        "baseline_years": BASELINE_YEARS,
     }
+
+    if cur is None:
+        # RAP publishes its 16-day NPP with a lag, so early in the season the
+        # current year has no composites yet. VR (current-vs-history) cannot
+        # exist until that data lands; the forage model falls back to the soil
+        # proxy in the meantime.
+        base["vr_status"] = "awaiting_current_year_rap"
+        base["vr_note"] = (
+            f"RAP {RAP_NPP_16DAY.split('/')[-1]} has not yet published "
+            f"{today.year} composites for the Apr 1..doy{doy_end} window, so "
+            "the current-season value needed for a percentile is unavailable. "
+            "VR will populate automatically once RAP releases the data; until "
+            "then the score uses the soil-moisture proxy."
+        )
+        return base
+
+    if len(history) < 5:
+        base["vr_status"] = "insufficient_history"
+        base["current_npp"] = round(cur, 2)
+        base["vr_note"] = (
+            f"Only {len(history)} prior year(s) of RAP data fall in the "
+            f"{BASELINE_YEARS}-year baseline window -- too few for a stable "
+            "percentile (minimum 5)."
+        )
+        return base
+
+    vr = _percentile_midrank(cur, history)
+    base["vr"] = round(vr, 1)
+    base["n_years"] = len(history) + 1
+    base["current_npp"] = round(cur, 2)
+    base["vr_status"] = "ok"
+    base["vr_note"] = (
+        f"Percentile rank of {today.year} season-to-date herbaceous NPP "
+        f"against the prior {len(history)} years (mid-rank; resolution is "
+        f"limited by the {BASELINE_YEARS}-year baseline)."
+    )
+    return base
 
 
 def _ndvi_season_mean(ee, year: int, doy_end: int, geom, mask):
@@ -304,8 +350,28 @@ def write_vegetation_json(records: dict, today: dt.date) -> None:
     out = {
         "updated": today.isoformat(),
         "source": "RAP npp-partitioned-16day-v3 (afgNPP+pfgNPP)",
-        "method": "season-to-date herbaceous NPP percentile vs RAP record",
-        "hay_pasture_note": ("Irrigated Hay/Pasture (NLCD 81) -- NDVI greenness vs local normal (beta); separate from the Rangeland Forage Condition score, never folded into VR/mi/score."),
+        "method": ("season-to-date herbaceous NPP percentile vs the county's "
+                   "own rolling " + str(BASELINE_YEARS) + "-year RAP baseline"),
+        "vr_data_note": ("VR is the percentile rank of this year's "
+                         "season-to-date rangeland (NLCD 52+71) herbaceous "
+                         "productivity against the prior " + str(BASELINE_YEARS - 1) +
+                         " years. RAP's 16-day NPP is released with a lag, so "
+                         "early each season the current year has no data yet "
+                         "and VR is reported as null with a vr_status of "
+                         "'awaiting_current_year_rap'; the forage score uses "
+                         "the soil-moisture proxy until RAP publishes. Each "
+                         "county also carries vr_status and vr_note explaining "
+                         "any null."),
+        "resolution_note": ("Percentiles are computed over a " +
+                            str(BASELINE_YEARS) + "-year window, so their "
+                            "resolution is coarse (~" +
+                            str(round(100 / BASELINE_YEARS)) +
+                            " points); read them as broad bands, not exact "
+                            "ranks."),
+        "hay_pasture_note": ("Irrigated Hay/Pasture (NLCD 81) -- NDVI greenness "
+                             "vs local normal (beta); separate from the "
+                             "Rangeland Forage Condition score, never folded "
+                             "into VR/mi/score."),
         "counties": records,
     }
     OUT_PATH.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n",
@@ -409,17 +475,32 @@ def run_all(verbose: bool = False) -> int:
                       f"{type(exc).__name__}: {exc}")
                 hay = None
 
+        # rec is always a dict from compute_county_vr (carrying vr + status +
+        # note), or None if the EE call hard-errored. A county is emitted if
+        # it has either a VR record or a hay/pasture record.
         if rec is None and hay is None:
             if verbose:
-                print(f"[vegetation] {slug}: no VR, no hay/pasture")
+                print(f"[vegetation] {slug}: no VR record, no hay/pasture")
             continue
 
-        out_rec = dict(rec) if rec is not None else {"vr": None}
+        if rec is not None:
+            out_rec = dict(rec)
+        else:
+            out_rec = {
+                "vr": None,
+                "vr_status": "compute_error",
+                "vr_note": "RAP VR computation raised an error for this "
+                           "county; see the workflow log. The score falls "
+                           "back to the soil-moisture proxy.",
+            }
         if hay is not None:
             out_rec["hay_pasture"] = hay
         records[slug] = out_rec
         if verbose:
-            vr_txt = rec["vr"] if rec is not None else "--"
+            if rec is not None:
+                vr_txt = rec["vr"] if rec["vr"] is not None else f"--({rec.get('vr_status')})"
+            else:
+                vr_txt = "--(compute_error)"
             hp_txt = hay["ndvi_pctl"] if hay is not None else "--"
             print(f"[vegetation] {slug}: vr={vr_txt} hay_ndvi_pctl={hp_txt}")
 
