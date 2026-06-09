@@ -309,6 +309,7 @@ STRUCTURAL_POTENTIAL: dict[str, int] = {
 # Classification thresholds on percent-of-median SWE. See SOURCES.md §5.
 STATUS_THRESHOLDS = [
     (0,   "No Snowpack"),
+    (50,  "Well Below Normal"),
     (70,  "Below Normal"),
     (110, "Normal"),
     (200, "Above Normal"),
@@ -316,14 +317,16 @@ STATUS_THRESHOLDS = [
 
 # Same percent-of-median thresholds applied to water-year precipitation.
 PRECIP_STATUS_THRESHOLDS = [
+    (50,  "Well Below Normal"),
     (70,  "Below Normal"),
     (110, "Normal"),
     (200, "Above Normal"),
 ]
 
 # Streamflow status bands, based on day-of-year percentile.
-# Below 25th percentile = below normal, 25-75 = normal, above 75 = above normal.
+# <10 = well below normal, 10-25 = below normal, 25-75 = normal, >75 = above normal.
 STREAMFLOW_STATUS_THRESHOLDS = [
+    (10,  "Well Below Normal"),
     (25,  "Below Normal"),
     (75,  "Normal"),
     (101, "Above Normal"),
