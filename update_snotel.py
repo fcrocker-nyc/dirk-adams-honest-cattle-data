@@ -1132,9 +1132,9 @@ def _streamflow_adjustment(streamflow: dict | None) -> float:
 
 def _forage_category(score: int) -> str:
     if score >= 80: return "Excellent"
-    if score >= 65: return "Good"
-    if score >= 50: return "Fair"
-    if score >= 35: return "Poor"
+    if score >= 60: return "Good"
+    if score >= 40: return "Fair"
+    if score >= 20: return "Poor"
     return "Very Poor"
 
 
