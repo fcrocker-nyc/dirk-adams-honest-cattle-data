@@ -111,12 +111,15 @@ _RETRY_BACKOFF_SECONDS = (5, 15)
 # HTTP helpers (retry with backoff) — copied from update_snotel.py
 # ---------------------------------------------------------------------------
 
-def _request(url: str, params: dict | None = None) -> bytes:
+def _request(url: str, params: dict | None = None, accept: str | None = None) -> bytes:
     if params:
-        url = f"{url}?{urllib.parse.urlencode(params)}"
-    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+        url = f"{url}?{urllib.parse.urlencode({k: v for k, v in params.items() if v is not None}, doseq=True)}"
+    headers = {"User-Agent": USER_AGENT}
+    if accept:
+        headers["Accept"] = accept
+    req = urllib.request.Request(url, headers=headers)
     last_exc = None
-    for attempt in range(3):
+    for attempt in range(len(_RETRY_BACKOFF_SECONDS) + 1):
         try:
             with urllib.request.urlopen(req, timeout=REQUEST_TIMEOUT) as resp:
                 return resp.read()
@@ -133,7 +136,8 @@ def _request(url: str, params: dict | None = None) -> bytes:
 
 
 def _get(url: str, params: dict | None = None) -> object:
-    return json.loads(_request(url, params).decode("utf-8", "replace"))
+    # USDM (and some others) default to CSV/XML and only return JSON when asked.
+    return json.loads(_request(url, params, accept="application/json").decode("utf-8", "replace"))
 
 
 def _get_text(url: str, params: dict | None = None) -> str:
