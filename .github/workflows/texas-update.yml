@@ -1,0 +1,44 @@
+name: Update Texas county data
+
+# Runs update_texas.py every morning and commits refreshed Texas county
+# JSON files (texas/<slug>.json) back to main. Sibling of snotel-update.yml.
+# Staggered ~20 min after the Montana job to avoid concurrent-push rebases.
+
+on:
+  schedule:
+    # 11:50 UTC = ~05:50 Mountain / 06:50 Central (after USDM Thu release + NCEI/KBDI daily roll-up)
+    - cron: '50 11 * * *'
+  workflow_dispatch: {}   # allow manual runs from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+
+      - name: Run Texas updater
+        env:
+          NASS_API_KEY: ${{ secrets.NASS_API_KEY }}   # reuses the Montana NASS key; optional
+        run: python update_texas.py --out . --verbose
+
+      - name: Commit updated Texas county files
+        run: |
+          git config user.name "texas-bot"
+          git config user.email "texas-bot@users.noreply.github.com"
+          if [[ -n "$(git status --porcelain 'texas/*.json')" ]]; then
+            git add texas/*.json
+            git commit -m "auto update: Texas refresh $(date -u +%Y-%m-%d)"
+            git pull --rebase origin main
+            git push
+          else
+            echo "No changes to commit."
+          fi
