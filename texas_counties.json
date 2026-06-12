@@ -1,0 +1,314 @@
+[
+  {
+    "name": "Bell",
+    "slug": "bell-county-texas",
+    "fips": "48027",
+    "region": "central",
+    "structural_potential": 60,
+    "gauge": null
+  },
+  {
+    "name": "Bosque",
+    "slug": "bosque-county-texas",
+    "fips": "48035",
+    "region": "north",
+    "structural_potential": 55,
+    "gauge": null
+  },
+  {
+    "name": "Brazoria",
+    "slug": "brazoria-county-texas",
+    "fips": "48039",
+    "region": "gulf",
+    "structural_potential": 62,
+    "gauge": null
+  },
+  {
+    "name": "Brazos",
+    "slug": "brazos-county-texas",
+    "fips": "48041",
+    "region": "central",
+    "structural_potential": 60,
+    "gauge": null
+  },
+  {
+    "name": "Burleson",
+    "slug": "burleson-county-texas",
+    "fips": "48051",
+    "region": "central",
+    "structural_potential": 60,
+    "gauge": null
+  },
+  {
+    "name": "Chambers",
+    "slug": "chambers-county-texas",
+    "fips": "48071",
+    "region": "gulf",
+    "structural_potential": 62,
+    "gauge": null
+  },
+  {
+    "name": "Comanche",
+    "slug": "comanche-county-texas",
+    "fips": "48093",
+    "region": "north",
+    "structural_potential": 55,
+    "gauge": null
+  },
+  {
+    "name": "Coryell",
+    "slug": "coryell-county-texas",
+    "fips": "48099",
+    "region": "central",
+    "structural_potential": 60,
+    "gauge": null
+  },
+  {
+    "name": "Eastland",
+    "slug": "eastland-county-texas",
+    "fips": "48133",
+    "region": "north",
+    "structural_potential": 55,
+    "gauge": null
+  },
+  {
+    "name": "Ellis",
+    "slug": "ellis-county-texas",
+    "fips": "48139",
+    "region": "north",
+    "structural_potential": 55,
+    "gauge": null
+  },
+  {
+    "name": "Erath",
+    "slug": "erath-county-texas",
+    "fips": "48143",
+    "region": "north",
+    "structural_potential": 55,
+    "gauge": null
+  },
+  {
+    "name": "Falls",
+    "slug": "falls-county-texas",
+    "fips": "48145",
+    "region": "central",
+    "structural_potential": 60,
+    "gauge": null
+  },
+  {
+    "name": "Fort Bend",
+    "slug": "fort-bend-county-texas",
+    "fips": "48157",
+    "region": "gulf",
+    "structural_potential": 62,
+    "gauge": null
+  },
+  {
+    "name": "Freestone",
+    "slug": "freestone-county-texas",
+    "fips": "48161",
+    "region": "central",
+    "structural_potential": 60,
+    "gauge": null
+  },
+  {
+    "name": "Galveston",
+    "slug": "galveston-county-texas",
+    "fips": "48167",
+    "region": "gulf",
+    "structural_potential": 62,
+    "gauge": null
+  },
+  {
+    "name": "Grimes",
+    "slug": "grimes-county-texas",
+    "fips": "48185",
+    "region": "central",
+    "structural_potential": 60,
+    "gauge": null
+  },
+  {
+    "name": "Hamilton",
+    "slug": "hamilton-county-texas",
+    "fips": "48193",
+    "region": "north",
+    "structural_potential": 55,
+    "gauge": null
+  },
+  {
+    "name": "Hardin",
+    "slug": "hardin-county-texas",
+    "fips": "48199",
+    "region": "gulf",
+    "structural_potential": 62,
+    "gauge": null
+  },
+  {
+    "name": "Harris",
+    "slug": "harris-county-texas",
+    "fips": "48201",
+    "region": "gulf",
+    "structural_potential": 62,
+    "gauge": null
+  },
+  {
+    "name": "Hill",
+    "slug": "hill-county-texas",
+    "fips": "48217",
+    "region": "north",
+    "structural_potential": 55,
+    "gauge": null
+  },
+  {
+    "name": "Hood",
+    "slug": "hood-county-texas",
+    "fips": "48221",
+    "region": "north",
+    "structural_potential": 55,
+    "gauge": null
+  },
+  {
+    "name": "Jefferson",
+    "slug": "jefferson-county-texas",
+    "fips": "48245",
+    "region": "gulf",
+    "structural_potential": 62,
+    "gauge": null
+  },
+  {
+    "name": "Johnson",
+    "slug": "johnson-county-texas",
+    "fips": "48251",
+    "region": "north",
+    "structural_potential": 55,
+    "gauge": null
+  },
+  {
+    "name": "Lee",
+    "slug": "lee-county-texas",
+    "fips": "48287",
+    "region": "central",
+    "structural_potential": 60,
+    "gauge": null
+  },
+  {
+    "name": "Leon",
+    "slug": "leon-county-texas",
+    "fips": "48289",
+    "region": "central",
+    "structural_potential": 60,
+    "gauge": null
+  },
+  {
+    "name": "Liberty",
+    "slug": "liberty-county-texas",
+    "fips": "48291",
+    "region": "gulf",
+    "structural_potential": 62,
+    "gauge": null
+  },
+  {
+    "name": "Limestone",
+    "slug": "limestone-county-texas",
+    "fips": "48293",
+    "region": "central",
+    "structural_potential": 60,
+    "gauge": null
+  },
+  {
+    "name": "Madison",
+    "slug": "madison-county-texas",
+    "fips": "48313",
+    "region": "central",
+    "structural_potential": 60,
+    "gauge": null
+  },
+  {
+    "name": "McLennan",
+    "slug": "mclennan-county-texas",
+    "fips": "48309",
+    "region": "central",
+    "structural_potential": 60,
+    "gauge": null
+  },
+  {
+    "name": "Milam",
+    "slug": "milam-county-texas",
+    "fips": "48331",
+    "region": "central",
+    "structural_potential": 60,
+    "gauge": null
+  },
+  {
+    "name": "Montgomery",
+    "slug": "montgomery-county-texas",
+    "fips": "48339",
+    "region": "gulf",
+    "structural_potential": 62,
+    "gauge": null
+  },
+  {
+    "name": "Navarro",
+    "slug": "navarro-county-texas",
+    "fips": "48349",
+    "region": "north",
+    "structural_potential": 55,
+    "gauge": null
+  },
+  {
+    "name": "Orange",
+    "slug": "orange-county-texas",
+    "fips": "48361",
+    "region": "gulf",
+    "structural_potential": 62,
+    "gauge": null
+  },
+  {
+    "name": "Robertson",
+    "slug": "robertson-county-texas",
+    "fips": "48395",
+    "region": "central",
+    "structural_potential": 60,
+    "gauge": null
+  },
+  {
+    "name": "San Jacinto",
+    "slug": "san-jacinto-county-texas",
+    "fips": "48407",
+    "region": "gulf",
+    "structural_potential": 62,
+    "gauge": null
+  },
+  {
+    "name": "Somervell",
+    "slug": "somervell-county-texas",
+    "fips": "48425",
+    "region": "north",
+    "structural_potential": 55,
+    "gauge": null
+  },
+  {
+    "name": "Walker",
+    "slug": "walker-county-texas",
+    "fips": "48471",
+    "region": "gulf",
+    "structural_potential": 62,
+    "gauge": null
+  },
+  {
+    "name": "Waller",
+    "slug": "waller-county-texas",
+    "fips": "48473",
+    "region": "gulf",
+    "structural_potential": 62,
+    "gauge": null
+  },
+  {
+    "name": "Williamson",
+    "slug": "williamson-county-texas",
+    "fips": "48491",
+    "region": "central",
+    "structural_potential": 60,
+    "gauge": null
+  }
+]
