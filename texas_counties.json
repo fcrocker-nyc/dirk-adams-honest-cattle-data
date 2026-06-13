@@ -5,7 +5,10 @@
     "fips": "48027",
     "region": "central",
     "structural_potential": 60,
-    "gauge": null
+    "gauge": [
+      "08104500",
+      "Little Rv nr Little River, TX"
+    ]
   },
   {
     "name": "Bosque",
@@ -13,7 +16,10 @@
     "fips": "48035",
     "region": "north",
     "structural_potential": 55,
-    "gauge": null
+    "gauge": [
+      "08093100",
+      "Brazos Rv nr Aquilla, TX"
+    ]
   },
   {
     "name": "Brazoria",
@@ -21,7 +27,10 @@
     "fips": "48039",
     "region": "gulf",
     "structural_potential": 62,
-    "gauge": null
+    "gauge": [
+      "08117705",
+      "San Bernard Rv nr Sweeny, TX"
+    ]
   },
   {
     "name": "Brazos",
@@ -29,7 +38,10 @@
     "fips": "48041",
     "region": "central",
     "structural_potential": 60,
-    "gauge": null
+    "gauge": [
+      "08108700",
+      "Brazos Rv at SH 21 nr Bryan, TX"
+    ]
   },
   {
     "name": "Burleson",
@@ -37,7 +49,10 @@
     "fips": "48051",
     "region": "central",
     "structural_potential": 60,
-    "gauge": null
+    "gauge": [
+      "08108700",
+      "Brazos Rv at SH 21 nr Bryan, TX"
+    ]
   },
   {
     "name": "Chambers",
@@ -45,7 +60,10 @@
     "fips": "48071",
     "region": "gulf",
     "structural_potential": 62,
-    "gauge": null
+    "gauge": [
+      "08067252",
+      "Trinity Rv at Wallisville, TX"
+    ]
   },
   {
     "name": "Comanche",
@@ -53,7 +71,10 @@
     "fips": "48093",
     "region": "north",
     "structural_potential": 55,
-    "gauge": null
+    "gauge": [
+      "08099500",
+      "Leon Rv nr Hasse, TX"
+    ]
   },
   {
     "name": "Coryell",
@@ -61,7 +82,10 @@
     "fips": "48099",
     "region": "central",
     "structural_potential": 60,
-    "gauge": null
+    "gauge": [
+      "08100500",
+      "Leon Rv at Gatesville, TX"
+    ]
   },
   {
     "name": "Eastland",
@@ -77,7 +101,10 @@
     "fips": "48139",
     "region": "north",
     "structural_potential": 55,
-    "gauge": null
+    "gauge": [
+      "08062500",
+      "Trinity Rv nr Rosser, TX"
+    ]
   },
   {
     "name": "Erath",
@@ -93,7 +120,10 @@
     "fips": "48145",
     "region": "central",
     "structural_potential": 60,
-    "gauge": null
+    "gauge": [
+      "08098290",
+      "Brazos Rv nr Highbank, TX"
+    ]
   },
   {
     "name": "Fort Bend",
@@ -101,7 +131,10 @@
     "fips": "48157",
     "region": "gulf",
     "structural_potential": 62,
-    "gauge": null
+    "gauge": [
+      "08114000",
+      "Brazos Rv at Richmond, TX"
+    ]
   },
   {
     "name": "Freestone",
@@ -109,7 +142,10 @@
     "fips": "48161",
     "region": "central",
     "structural_potential": 60,
-    "gauge": null
+    "gauge": [
+      "08064700",
+      "Tehuacana Ck nr Streetman, TX"
+    ]
   },
   {
     "name": "Galveston",
@@ -117,7 +153,10 @@
     "fips": "48167",
     "region": "gulf",
     "structural_potential": 62,
-    "gauge": null
+    "gauge": [
+      "08077600",
+      "Clear Ck nr Friendswood, TX"
+    ]
   },
   {
     "name": "Grimes",
@@ -133,7 +172,10 @@
     "fips": "48193",
     "region": "north",
     "structural_potential": 55,
-    "gauge": null
+    "gauge": [
+      "08100000",
+      "Leon Rv nr Hamilton, TX"
+    ]
   },
   {
     "name": "Hardin",
@@ -141,7 +183,10 @@
     "fips": "48199",
     "region": "gulf",
     "structural_potential": 62,
-    "gauge": null
+    "gauge": [
+      "08041500",
+      "Village Ck nr Kountze, TX"
+    ]
   },
   {
     "name": "Harris",
@@ -149,7 +194,10 @@
     "fips": "48201",
     "region": "gulf",
     "structural_potential": 62,
-    "gauge": null
+    "gauge": [
+      "08069500",
+      "W Fk San Jacinto Rv nr Humble, TX"
+    ]
   },
   {
     "name": "Hill",
@@ -157,7 +205,10 @@
     "fips": "48217",
     "region": "north",
     "structural_potential": 55,
-    "gauge": null
+    "gauge": [
+      "08092000",
+      "Nolan Rv at Blum, TX"
+    ]
   },
   {
     "name": "Hood",
@@ -165,7 +216,10 @@
     "fips": "48221",
     "region": "north",
     "structural_potential": 55,
-    "gauge": null
+    "gauge": [
+      "08090905",
+      "Brazos Rv ds Lk Granbury nr Granbury, TX"
+    ]
   },
   {
     "name": "Jefferson",
@@ -173,7 +227,10 @@
     "fips": "48245",
     "region": "gulf",
     "structural_potential": 62,
-    "gauge": null
+    "gauge": [
+      "08041700",
+      "Pine Island Bayou nr Sour Lake, TX"
+    ]
   },
   {
     "name": "Johnson",
@@ -181,7 +238,10 @@
     "fips": "48251",
     "region": "north",
     "structural_potential": 55,
-    "gauge": null
+    "gauge": [
+      "08049580",
+      "Mountain Ck nr Venus, TX"
+    ]
   },
   {
     "name": "Lee",
@@ -189,7 +249,10 @@
     "fips": "48287",
     "region": "central",
     "structural_potential": 60,
-    "gauge": null
+    "gauge": [
+      "08109700",
+      "Middle Yegua Ck nr Dime Box, TX"
+    ]
   },
   {
     "name": "Leon",
@@ -197,7 +260,10 @@
     "fips": "48289",
     "region": "central",
     "structural_potential": 60,
-    "gauge": null
+    "gauge": [
+      "08110500",
+      "Navasota Rv nr Easterly, TX"
+    ]
   },
   {
     "name": "Liberty",
@@ -205,7 +271,10 @@
     "fips": "48291",
     "region": "gulf",
     "structural_potential": 62,
-    "gauge": null
+    "gauge": [
+      "08067000",
+      "Trinity Rv at Liberty, TX"
+    ]
   },
   {
     "name": "Limestone",
@@ -213,7 +282,10 @@
     "fips": "48293",
     "region": "central",
     "structural_potential": 60,
-    "gauge": null
+    "gauge": [
+      "08110325",
+      "Navasota Rv abv Groesbeck, TX"
+    ]
   },
   {
     "name": "Madison",
@@ -221,7 +293,10 @@
     "fips": "48313",
     "region": "central",
     "structural_potential": 60,
-    "gauge": null
+    "gauge": [
+      "08065800",
+      "Bedias Ck nr Madisonville, TX"
+    ]
   },
   {
     "name": "McLennan",
@@ -229,7 +304,10 @@
     "fips": "48309",
     "region": "central",
     "structural_potential": 60,
-    "gauge": null
+    "gauge": [
+      "08096500",
+      "Brazos Rv at Waco, TX"
+    ]
   },
   {
     "name": "Milam",
@@ -237,7 +315,10 @@
     "fips": "48331",
     "region": "central",
     "structural_potential": 60,
-    "gauge": null
+    "gauge": [
+      "08106500",
+      "Little Rv nr Cameron, TX"
+    ]
   },
   {
     "name": "Montgomery",
@@ -245,7 +326,10 @@
     "fips": "48339",
     "region": "gulf",
     "structural_potential": 62,
-    "gauge": null
+    "gauge": [
+      "08068000",
+      "W Fk San Jacinto Rv nr Conroe, TX"
+    ]
   },
   {
     "name": "Navarro",
@@ -253,7 +337,10 @@
     "fips": "48349",
     "region": "north",
     "structural_potential": 55,
-    "gauge": null
+    "gauge": [
+      "08064100",
+      "Chambers Ck nr Rice, TX"
+    ]
   },
   {
     "name": "Orange",
@@ -261,7 +348,10 @@
     "fips": "48361",
     "region": "gulf",
     "structural_potential": 62,
-    "gauge": null
+    "gauge": [
+      "08031000",
+      "Cow Bayou nr Mauriceville, TX"
+    ]
   },
   {
     "name": "Robertson",
@@ -269,7 +359,10 @@
     "fips": "48395",
     "region": "central",
     "structural_potential": 60,
-    "gauge": null
+    "gauge": [
+      "08110800",
+      "Navasota Rv at Old San Antonio Rd nr Bryan, TX"
+    ]
   },
   {
     "name": "San Jacinto",
@@ -277,7 +370,10 @@
     "fips": "48407",
     "region": "gulf",
     "structural_potential": 62,
-    "gauge": null
+    "gauge": [
+      "08069800",
+      "E Fk San Jacinto Rv at SH 150 nr Coldspring, TX"
+    ]
   },
   {
     "name": "Somervell",
@@ -285,7 +381,10 @@
     "fips": "48425",
     "region": "north",
     "structural_potential": 55,
-    "gauge": null
+    "gauge": [
+      "08091000",
+      "Brazos Rv nr Glen Rose, TX"
+    ]
   },
   {
     "name": "Walker",
@@ -293,7 +392,10 @@
     "fips": "48471",
     "region": "gulf",
     "structural_potential": 62,
-    "gauge": null
+    "gauge": [
+      "08066000",
+      "Trinity Rv at Riverside, TX"
+    ]
   },
   {
     "name": "Waller",
@@ -301,7 +403,10 @@
     "fips": "48473",
     "region": "gulf",
     "structural_potential": 62,
-    "gauge": null
+    "gauge": [
+      "08111850",
+      "Brazos Rv at San Felipe, TX"
+    ]
   },
   {
     "name": "Williamson",
@@ -309,6 +414,9 @@
     "fips": "48491",
     "region": "central",
     "structural_potential": 60,
-    "gauge": null
+    "gauge": [
+      "08105700",
+      "San Gabriel Rv at Laneport, TX"
+    ]
   }
 ]
