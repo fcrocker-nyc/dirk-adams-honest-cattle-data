@@ -8,7 +8,9 @@
     "gauge": [
       "08104500",
       "Little Rv nr Little River, TX"
-    ]
+    ],
+    "lat": 31.04,
+    "lon": -97.48
   },
   {
     "name": "Bosque",
@@ -19,7 +21,9 @@
     "gauge": [
       "08093100",
       "Brazos Rv nr Aquilla, TX"
-    ]
+    ],
+    "lat": 31.9,
+    "lon": -97.63
   },
   {
     "name": "Brazoria",
@@ -30,7 +34,9 @@
     "gauge": [
       "08117705",
       "San Bernard Rv nr Sweeny, TX"
-    ]
+    ],
+    "lat": 29.17,
+    "lon": -95.43
   },
   {
     "name": "Brazos",
@@ -41,7 +47,9 @@
     "gauge": [
       "08108700",
       "Brazos Rv at SH 21 nr Bryan, TX"
-    ]
+    ],
+    "lat": 30.66,
+    "lon": -96.3
   },
   {
     "name": "Burleson",
@@ -52,7 +60,9 @@
     "gauge": [
       "08108700",
       "Brazos Rv at SH 21 nr Bryan, TX"
-    ]
+    ],
+    "lat": 30.49,
+    "lon": -96.62
   },
   {
     "name": "Chambers",
@@ -63,7 +73,9 @@
     "gauge": [
       "08067252",
       "Trinity Rv at Wallisville, TX"
-    ]
+    ],
+    "lat": 29.71,
+    "lon": -94.62
   },
   {
     "name": "Comanche",
@@ -74,7 +86,9 @@
     "gauge": [
       "08099500",
       "Leon Rv nr Hasse, TX"
-    ]
+    ],
+    "lat": 31.95,
+    "lon": -98.55
   },
   {
     "name": "Coryell",
@@ -85,7 +99,9 @@
     "gauge": [
       "08100500",
       "Leon Rv at Gatesville, TX"
-    ]
+    ],
+    "lat": 31.39,
+    "lon": -97.8
   },
   {
     "name": "Eastland",
@@ -93,7 +109,9 @@
     "fips": "48133",
     "region": "north",
     "structural_potential": 55,
-    "gauge": null
+    "gauge": null,
+    "lat": 32.32,
+    "lon": -98.83
   },
   {
     "name": "Ellis",
@@ -104,7 +122,9 @@
     "gauge": [
       "08062500",
       "Trinity Rv nr Rosser, TX"
-    ]
+    ],
+    "lat": 32.35,
+    "lon": -96.79
   },
   {
     "name": "Erath",
@@ -112,7 +132,9 @@
     "fips": "48143",
     "region": "north",
     "structural_potential": 55,
-    "gauge": null
+    "gauge": null,
+    "lat": 32.24,
+    "lon": -98.22
   },
   {
     "name": "Falls",
@@ -123,7 +145,9 @@
     "gauge": [
       "08098290",
       "Brazos Rv nr Highbank, TX"
-    ]
+    ],
+    "lat": 31.25,
+    "lon": -96.93
   },
   {
     "name": "Fort Bend",
@@ -134,7 +158,9 @@
     "gauge": [
       "08114000",
       "Brazos Rv at Richmond, TX"
-    ]
+    ],
+    "lat": 29.53,
+    "lon": -95.77
   },
   {
     "name": "Freestone",
@@ -145,7 +171,9 @@
     "gauge": [
       "08064700",
       "Tehuacana Ck nr Streetman, TX"
-    ]
+    ],
+    "lat": 31.7,
+    "lon": -96.15
   },
   {
     "name": "Galveston",
@@ -156,7 +184,9 @@
     "gauge": [
       "08077600",
       "Clear Ck nr Friendswood, TX"
-    ]
+    ],
+    "lat": 29.39,
+    "lon": -94.95
   },
   {
     "name": "Grimes",
@@ -164,7 +194,9 @@
     "fips": "48185",
     "region": "central",
     "structural_potential": 60,
-    "gauge": null
+    "gauge": null,
+    "lat": 30.54,
+    "lon": -95.99
   },
   {
     "name": "Hamilton",
@@ -175,7 +207,9 @@
     "gauge": [
       "08100000",
       "Leon Rv nr Hamilton, TX"
-    ]
+    ],
+    "lat": 31.7,
+    "lon": -98.11
   },
   {
     "name": "Hardin",
@@ -186,7 +220,9 @@
     "gauge": [
       "08041500",
       "Village Ck nr Kountze, TX"
-    ]
+    ],
+    "lat": 30.33,
+    "lon": -94.39
   },
   {
     "name": "Harris",
@@ -197,7 +233,9 @@
     "gauge": [
       "08069500",
       "W Fk San Jacinto Rv nr Humble, TX"
-    ]
+    ],
+    "lat": 29.86,
+    "lon": -95.39
   },
   {
     "name": "Hill",
@@ -208,7 +246,9 @@
     "gauge": [
       "08092000",
       "Nolan Rv at Blum, TX"
-    ]
+    ],
+    "lat": 32.01,
+    "lon": -97.13
   },
   {
     "name": "Hood",
@@ -219,7 +259,9 @@
     "gauge": [
       "08090905",
       "Brazos Rv ds Lk Granbury nr Granbury, TX"
-    ]
+    ],
+    "lat": 32.43,
+    "lon": -97.83
   },
   {
     "name": "Jefferson",
@@ -230,7 +272,9 @@
     "gauge": [
       "08041700",
       "Pine Island Bayou nr Sour Lake, TX"
-    ]
+    ],
+    "lat": 29.86,
+    "lon": -94.15
   },
   {
     "name": "Johnson",
@@ -241,7 +285,9 @@
     "gauge": [
       "08049580",
       "Mountain Ck nr Venus, TX"
-    ]
+    ],
+    "lat": 32.38,
+    "lon": -97.37
   },
   {
     "name": "Lee",
@@ -252,7 +298,9 @@
     "gauge": [
       "08109700",
       "Middle Yegua Ck nr Dime Box, TX"
-    ]
+    ],
+    "lat": 30.31,
+    "lon": -96.96
   },
   {
     "name": "Leon",
@@ -263,7 +311,9 @@
     "gauge": [
       "08110500",
       "Navasota Rv nr Easterly, TX"
-    ]
+    ],
+    "lat": 31.3,
+    "lon": -95.99
   },
   {
     "name": "Liberty",
@@ -274,7 +324,9 @@
     "gauge": [
       "08067000",
       "Trinity Rv at Liberty, TX"
-    ]
+    ],
+    "lat": 30.15,
+    "lon": -94.81
   },
   {
     "name": "Limestone",
@@ -285,7 +337,9 @@
     "gauge": [
       "08110325",
       "Navasota Rv abv Groesbeck, TX"
-    ]
+    ],
+    "lat": 31.55,
+    "lon": -96.58
   },
   {
     "name": "Madison",
@@ -296,7 +350,9 @@
     "gauge": [
       "08065800",
       "Bedias Ck nr Madisonville, TX"
-    ]
+    ],
+    "lat": 30.97,
+    "lon": -95.92
   },
   {
     "name": "McLennan",
@@ -307,7 +363,9 @@
     "gauge": [
       "08096500",
       "Brazos Rv at Waco, TX"
-    ]
+    ],
+    "lat": 31.55,
+    "lon": -97.2
   },
   {
     "name": "Milam",
@@ -318,7 +376,9 @@
     "gauge": [
       "08106500",
       "Little Rv nr Cameron, TX"
-    ]
+    ],
+    "lat": 30.79,
+    "lon": -96.98
   },
   {
     "name": "Montgomery",
@@ -329,7 +389,9 @@
     "gauge": [
       "08068000",
       "W Fk San Jacinto Rv nr Conroe, TX"
-    ]
+    ],
+    "lat": 30.3,
+    "lon": -95.5
   },
   {
     "name": "Navarro",
@@ -340,7 +402,9 @@
     "gauge": [
       "08064100",
       "Chambers Ck nr Rice, TX"
-    ]
+    ],
+    "lat": 32.05,
+    "lon": -96.47
   },
   {
     "name": "Orange",
@@ -351,7 +415,9 @@
     "gauge": [
       "08031000",
       "Cow Bayou nr Mauriceville, TX"
-    ]
+    ],
+    "lat": 30.12,
+    "lon": -93.9
   },
   {
     "name": "Robertson",
@@ -362,7 +428,9 @@
     "gauge": [
       "08110800",
       "Navasota Rv at Old San Antonio Rd nr Bryan, TX"
-    ]
+    ],
+    "lat": 31.03,
+    "lon": -96.51
   },
   {
     "name": "San Jacinto",
@@ -373,7 +441,9 @@
     "gauge": [
       "08069800",
       "E Fk San Jacinto Rv at SH 150 nr Coldspring, TX"
-    ]
+    ],
+    "lat": 30.58,
+    "lon": -95.17
   },
   {
     "name": "Somervell",
@@ -384,7 +454,9 @@
     "gauge": [
       "08091000",
       "Brazos Rv nr Glen Rose, TX"
-    ]
+    ],
+    "lat": 32.22,
+    "lon": -97.77
   },
   {
     "name": "Walker",
@@ -395,7 +467,9 @@
     "gauge": [
       "08066000",
       "Trinity Rv at Riverside, TX"
-    ]
+    ],
+    "lat": 30.74,
+    "lon": -95.57
   },
   {
     "name": "Waller",
@@ -406,7 +480,9 @@
     "gauge": [
       "08111850",
       "Brazos Rv at San Felipe, TX"
-    ]
+    ],
+    "lat": 30.01,
+    "lon": -95.99
   },
   {
     "name": "Williamson",
@@ -417,6 +493,8 @@
     "gauge": [
       "08105700",
       "San Gabriel Rv at Laneport, TX"
-    ]
+    ],
+    "lat": 30.65,
+    "lon": -97.6
   }
 ]
