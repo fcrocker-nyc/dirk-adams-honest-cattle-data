@@ -88,6 +88,7 @@ NCEI_CAG_BASE = "https://www.ncei.noaa.gov/cag/county/mapping"
 NASS_BASE  = "https://quickstats.nass.usda.gov/api/api_GET"
 KBDI_QUERY = ("https://twcgis.tamu.edu/arcgis/rest/services/KBDI/"
               "KBDI_Current_Map/FeatureServer/0/query")
+NASA_POWER_BASE = "https://power.larc.nasa.gov/api/temporal/daily/point"
 
 USER_AGENT = "honestcattle-texas-updater/1.0 (+https://honestcattle.net)"
 REQUEST_TIMEOUT = 30
@@ -487,6 +488,72 @@ def _drought_component(drought: dict | None) -> float:
     return max(5.0, min(95.0, 100 - weighted))
 
 
+def _soil_status(root_pct: float) -> str:
+    """Coarse status band for root-zone soil wetness (0-100, fraction of
+    available water capacity rendered as a percent)."""
+    if root_pct < 20: return "Very Dry"
+    if root_pct < 35: return "Dry"
+    if root_pct < 55: return "Adequate"
+    if root_pct < 75: return "Moist"
+    return "Wet"
+
+
+def fetch_soil_moisture(lat, lon, today: dt.date) -> dict | None:
+    """NASA POWER (MERRA-2) daily root-zone & surface soil wetness for a county
+    centroid. Wetness is a 0-1 fraction of available water capacity; presented
+    here as a percent. Returns the most recent valid day, or None (fail-soft).
+
+    No API key required. Grid is ~0.5 deg, so the county centroid is sufficient.
+    POWER publishes a few days behind real time and will reject a request whose
+    end date is past what it has, so we end the window a few days back and take
+    the latest non-fill (-999) day in it. `community` must be lowercase."""
+    if lat is None or lon is None:
+        return None
+    end_d = today - dt.timedelta(days=3)          # stay within POWER's published range
+    start_d = end_d - dt.timedelta(days=16)
+    try:
+        data = _get(NASA_POWER_BASE, {
+            "parameters": "GWETROOT,GWETTOP,GWETPROF",
+            "community": "ag",
+            "latitude": round(float(lat), 4),
+            "longitude": round(float(lon), 4),
+            "start": start_d.strftime("%Y%m%d"),
+            "end": end_d.strftime("%Y%m%d"),
+            "format": "JSON",
+        })
+    except TRANSIENT_NET_ERRORS as exc:
+        print(f"[tx] NASA POWER soil fetch failed ({lat},{lon}): {exc}", file=sys.stderr)
+        return None
+    params = (((data or {}).get("properties") or {}).get("parameter") or {})
+    # root-zone preferred; fall back to full-profile soil wetness if absent
+    root = params.get("GWETROOT") or params.get("GWETPROF") or {}
+    surf = params.get("GWETTOP") or {}
+    if not isinstance(root, dict) or not root:
+        return None
+
+    def _latest_valid(series):
+        for day in sorted(series.keys(), reverse=True):
+            v = series.get(day)
+            if v is not None and float(v) > -900:
+                return day, float(v)
+        return None, None
+
+    day, root_val = _latest_valid(root)
+    if day is None:
+        return None
+    surf_val = surf.get(day) if isinstance(surf, dict) else None
+    surf_pct = (round(float(surf_val) * 100, 1)
+                if (surf_val is not None and float(surf_val) > -900) else None)
+    root_pct = round(root_val * 100, 1)
+    return {
+        "source": "NASA POWER MERRA-2",
+        "date": f"{day[:4]}-{day[4:6]}-{day[6:]}",
+        "root_pct": root_pct,
+        "surface_pct": surf_pct,
+        "status": _soil_status(root_pct),
+    }
+
+
 def _soil_vr_proxy(soil_moisture: dict | None, precip: dict | None) -> float | None:
     """Vegetation-response proxy. Soil moisture is null for TX v1 (enrichment),
     so this leans on the recent precip anomaly until TexMesonet/TxSON is wired."""
@@ -648,7 +715,11 @@ def main() -> int:
 
         kbdi = kbdi_by_name.get(c["name"].lower())
         precip = cag_by_county.get(f"TX-{fips[-3:]}")
-        soil_moisture = None  # enrichment (TexMesonet / TxSON / SCAN) — added later
+        try:
+            soil_moisture = fetch_soil_moisture(c.get("lat"), c.get("lon"), today)
+        except TRANSIENT_NET_ERRORS as exc:
+            print(f"[tx] {c['slug']}: soil failed ({type(exc).__name__}): {exc}", file=sys.stderr)
+            soil_moisture = None
 
         record = build_record(c, today, kbdi, precip, drought, streamflow,
                               soil_moisture, nass_condition)
@@ -664,9 +735,10 @@ def main() -> int:
             kb = (kbdi or {}).get("mean")
             dr = (drought or {}).get("worst_class")
             pa = (precip or {}).get("m1", {}).get("pctavg")
+            sm = (soil_moisture or {}).get("root_pct")
             print(f"[tx] {c['slug']}: forage {record['forage_score']} "
                   f"({record['forage_model']['category']}) "
-                  f"KBDI={kb} drought={dr} precip%={pa}")
+                  f"KBDI={kb} drought={dr} precip%={pa} soil%={sm}")
 
     print(f"[tx] {changed} of {len(counties)} Texas county files updated")
     return 0
