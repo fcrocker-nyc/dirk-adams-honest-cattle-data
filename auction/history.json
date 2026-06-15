@@ -1936,5 +1936,98 @@
     },
     "parsed_at": "2026-06-12T14:49:51.245669Z",
     "entry_count": 55
+  },
+  {
+    "source_key": "mt_weekly",
+    "auction": "Montana Weekly Summary",
+    "report_id": "AMS_1778",
+    "sale_day": "Monday",
+    "sale_date": "2026-06-15",
+    "period_start": "6/7/2026",
+    "period_end": "6/13/2026",
+    "total_receipts": 4627,
+    "breakdown": {
+      "feeder": {
+        "head": 878,
+        "pct": 19.0
+      },
+      "slaughter": {
+        "head": 1901,
+        "pct": 41.1
+      },
+      "replacement": {
+        "head": 1848,
+        "pct": 39.9
+      }
+    },
+    "narrative": "Compared to last week: Feeder cattle were all too lightly tested to develop any market trend. Quality this week was mixed from plain to attractive. Most cattle were offered in small groups or as singles. Rains have helped improve pasture and range conditions across much of the state. Some renewed demand was seen this week for cattle suitable to turn out on grass. A few sets of fall calves continue to be seen. These offerings sold with moderate to good demand. Overall demand for feeder cattle was mostly good. CME positions were volatile this past week. A confirmed case of New World screw worm whip sawed futures before pushing them the limit higher on Thursday. The August contract closed Friday at 357.425, 3.525 higher than last Fridays close. The September contract closed Friday at 354.55, 3.725 higher than last Fridays close. The October contract closed Friday at 350.925, 3.705 higher than last Fridays close. Market activity was mostly moderate to active despite a small buyer pool. Weigh up cows sold on mostly good demand for moderate to heavy offerings. Feeding cow demand remains very good. Feeding cows sold mostly steady to 1.00 lower on breaking and boning cows. Thin lean feeding cows sold steady to 3.00 lower. Good demand was seen this week from both private feeders and Canadian buyers. Canadian buyers were active again this week as they bought thinner fleshed, lower yielding offering to put on feed. American packers showed a desire to buy cows lower. They picked around trying to find cows to fit their orders and budget but purchased very few cows throughout the week. Slaughter cow demand was mostly light to moderate this week and significantly lower than the last few weeks. The best demand continues to be for fleshy breaking cows as these offerings have the most yield and heaviest carcass at harvest. Breaking cows sold 2.00-4.00 lower. Boning and lean cows sold 2.00-3.00 lower in a narrow comparison. Very few cows are being sold to go to harvest immediately. Most purchased for slaughter are too blemished to feed. Slaughter bulls sold steady to 2.00 lower. Feeding bulls sold 4.00-5.00 lower. Demand for feeding bulls was light to moderate this week. Demand for young age cows suitable to feed or rebreed was mostly good. Rain continues to give buyers some relief as pastures have greened in many places and some buyers continue to buy cows to turn out and breed. Cows and heifers which lost calves sold on very good demand this week. Feeding demand for young cows which are still eligible to grade choice was good. Buyers took heifers up to 3 years old to put on feed again this week. Young cows sold generally steady. Quality was mostly average to attractive. Supply included: 19% Feeder Cattle (30% Steers, 1% Dairy Steers, 47% Heifers, 13% Bulls, 5% Beef/Dairy Steers, 5% Beef/Dairy Heifers); 41% Slaughter Cattle (90% Cows, 10% Bulls); 40% Replacement Cattle (50% Stock Cows, 10% Bred Cows, 1% Bred Heifers, 36% Cow-Calf Pairs, 3% Heifer Pairs, 1% Bulls).",
+    "summary": {
+      "steers": {
+        "600_649": {
+          "head": 2,
+          "wtd_avg_price": 442.5,
+          "price_low": 442.5,
+          "price_high": 442.5
+        },
+        "700_749": {
+          "head": 1,
+          "wtd_avg_price": 405.0,
+          "price_low": 405.0,
+          "price_high": 405.0
+        }
+      },
+      "heifers": {
+        "550_599": {
+          "head": 1,
+          "wtd_avg_price": 430.0,
+          "price_low": 430.0,
+          "price_high": 430.0
+        },
+        "650_699": {
+          "head": 9,
+          "wtd_avg_price": 381.0,
+          "price_low": 381.0,
+          "price_high": 381.0
+        },
+        "700_749": {
+          "head": 59,
+          "wtd_avg_price": 370.39,
+          "price_low": 350.0,
+          "price_high": 375.0
+        },
+        "750_799": {
+          "head": 41,
+          "wtd_avg_price": 362.5,
+          "price_low": 362.5,
+          "price_high": 362.5
+        },
+        "900_plus": {
+          "head": 28,
+          "wtd_avg_price": 259.0,
+          "price_low": 259.0,
+          "price_high": 259.0
+        },
+        "400_499": {
+          "head": 19,
+          "wtd_avg_price": 462.44,
+          "price_low": 420.0,
+          "price_high": 470.0
+        },
+        "500_549": {
+          "head": 6,
+          "wtd_avg_price": 445.0,
+          "price_low": 445.0,
+          "price_high": 445.0
+        },
+        "800_899": {
+          "head": 2,
+          "wtd_avg_price": 325.0,
+          "price_low": 325.0,
+          "price_high": 325.0
+        }
+      }
+    },
+    "parsed_at": "2026-06-15T17:09:18.249058Z",
+    "entry_count": 83
   }
 ]
