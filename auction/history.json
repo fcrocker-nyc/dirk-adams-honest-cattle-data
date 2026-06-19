@@ -2029,5 +2029,84 @@
     },
     "parsed_at": "2026-06-15T17:09:18.249058Z",
     "entry_count": 83
+  },
+  {
+    "source_key": "bls",
+    "auction": "Billings Livestock Commission",
+    "report_id": "AMS_1777",
+    "sale_day": "Thursday",
+    "sale_date": "2026-06-18",
+    "total_receipts": 692,
+    "breakdown": {
+      "feeder": {
+        "head": 96,
+        "pct": 13.9
+      },
+      "slaughter": {
+        "head": 437,
+        "pct": 63.2
+      },
+      "replacement": {
+        "head": 159,
+        "pct": 23.0
+      }
+    },
+    "narrative": "Compared to last sale (6-11-26): Feeder cattle were all too lightly tested to develop an accurate market trend, however higher undertones were noticed on all offerings. Quality this week was mixed from plain to average. Demand was moderate to good for very light offerings. Group sizes were small with many singles noticed. Market activity was mostly moderate to active with a moderate size buyer pool noticed. Weigh up cows sold on moderate to good demand and light offerings. Demand for feeding cows was mostly moderate to good. Canadian buyers continue to buy cows to ship north and feed. American packers purchased most of the cow offering to hold for the upcoming 4th of July holiday week. Many of these cows were slightly blemished or slightly lame. Boning and lean flesh feeding cows sold mostly steady to 2.00 higher. Breaking flesh feeding cows sold mostly 4.00-8.00 lower as buyers showed lighter demand for heavily fleshed feeding cows. Most fleshy cows were purchased for slaughter this week. Cow quality this week was mostly average to attractive. Demand for slaughter cows was mostly good to very good as packers showed very good demand for lean grinding materials. Boning and lean cows sold mostly 4.00-8.00 higher, with a significantly larger portion being purchased for slaughter this week. Breaking cows sold mostly 3.00-4.00 lower. Slaughter bulls sold mostly 2.00-4.00 higher on a higher quality and higher yielding bull offering. Feeding bulls sold mostly 5.00 higher. Feeding bull quality was significantly higher this week and more bulls were purchased to feed as a result. Weigh up conditions were mostly average for cows and bulls both this week. Young age offerings suitable to feed or rebreed sold mostly 10.00-15.00 higher in a narrow comparison. Demand for young rebreed cows continues to improved as rains helped improve pasture and range conditions across the Northern plains. Supply included: 14% Feeder Cattle (43% Steers, 23% Heifers, 34% Bulls); 63% Slaughter Cattle (77% Cows, 23% Bulls, 0% Dairy Cows); 23% Replacement Cattle (66% Stock Cows, 28% Bred Cows, 1% Bred Heifers, 4% Cow-Calf Pairs, 1% Bulls). Feeder cattle supply over 600 lbs was 75%.",
+    "summary": {
+      "steers": {
+        "550_599": {
+          "head": 10,
+          "wtd_avg_price": 467.98,
+          "price_low": 440.0,
+          "price_high": 480.0
+        },
+        "700_749": {
+          "head": 5,
+          "wtd_avg_price": 411.0,
+          "price_low": 411.0,
+          "price_high": 411.0
+        },
+        "750_799": {
+          "head": 2,
+          "wtd_avg_price": 360.0,
+          "price_low": 360.0,
+          "price_high": 360.0
+        }
+      },
+      "heifers": {
+        "400_499": {
+          "head": 1,
+          "wtd_avg_price": 460.0,
+          "price_low": 460.0,
+          "price_high": 460.0
+        },
+        "600_649": {
+          "head": 1,
+          "wtd_avg_price": 405.0,
+          "price_low": 405.0,
+          "price_high": 405.0
+        },
+        "under_400": {
+          "head": 1,
+          "wtd_avg_price": 480.0,
+          "price_low": 480.0,
+          "price_high": 480.0
+        },
+        "650_699": {
+          "head": 1,
+          "wtd_avg_price": 355.0,
+          "price_low": 355.0,
+          "price_high": 355.0
+        },
+        "750_799": {
+          "head": 3,
+          "wtd_avg_price": 345.0,
+          "price_low": 345.0,
+          "price_high": 345.0
+        }
+      }
+    },
+    "parsed_at": "2026-06-19T14:55:47.324238Z",
+    "entry_count": 39
   }
 ]
