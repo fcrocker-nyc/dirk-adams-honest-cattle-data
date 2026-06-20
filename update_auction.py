@@ -12,6 +12,12 @@ Data sources (all publicly accessible, no auth):
     AMS_1776  Public Auction Yards (PAYS) - Billings, MT (Fri)
     AMS_1777  Billings Livestock Commission (BLS) - Billings, MT (Thu)
     AMS_1778  Montana Weekly Livestock Auction Summary
+    AMS_2772  Northern Livestock Video Auction (NLVA)   - seasonal video
+    AMS_2713  Superior Livestock Auction                 - seasonal video
+    AMS_3242  Western Video Market (WVM)                 - seasonal video
+
+The three video sales are consolidated into auction/video_latest.json (the
+freshest sale across them), which backs the iOS Market page video card.
 
 Each PDF is a USDA AMS Livestock Weighted Average Report containing:
     - Sale date, total receipts, category breakdown
@@ -46,10 +52,20 @@ USER_AGENT = "honestcattle-auction-updater/1.0 (+https://honestcattle.net)"
 REQUEST_TIMEOUT = 30
 
 REPORTS = {
-    "pays": {"id": "AMS_1776", "name": "Public Auction Yards", "day": "Friday"},
-    "bls":  {"id": "AMS_1777", "name": "Billings Livestock Commission", "day": "Thursday"},
-    "mt_weekly": {"id": "AMS_1778", "name": "Montana Weekly Summary", "day": "Monday"},
+    "pays": {"id": "AMS_1776", "name": "Public Auction Yards", "day": "Friday", "channel": "auction"},
+    "bls":  {"id": "AMS_1777", "name": "Billings Livestock Commission", "day": "Thursday", "channel": "auction"},
+    "mt_weekly": {"id": "AMS_1778", "name": "Montana Weekly Summary", "day": "Monday", "channel": "auction"},
 }
+
+# Video / satellite auctions — seasonal (summer), USDA AMS same report format.
+# NLVA is Montana's home video sale; Superior and WVM carry Montana consignments.
+VIDEO_REPORTS = {
+    "nlva":     {"id": "AMS_2772", "name": "Northern Livestock Video Auction", "day": "Seasonal", "channel": "video"},
+    "superior": {"id": "AMS_2713", "name": "Superior Livestock Auction", "day": "Ongoing", "channel": "video"},
+    "wvm":      {"id": "AMS_3242", "name": "Western Video Market", "day": "Seasonal", "channel": "video"},
+}
+
+ALL_REPORTS = {**REPORTS, **VIDEO_REPORTS}
 
 PDFTOTEXT = os.environ.get("PDFTOTEXT", "pdftotext")
 
@@ -120,31 +136,37 @@ def pdf_to_text(pdf_bytes: bytes) -> str:
 # Report parser
 # ---------------------------------------------------------------------------
 
+def _to_iso_named(s: str) -> str | None:
+    """'June 18, 2026' or 'Jun 18, 2026' -> '2026-06-18'."""
+    for fmt in ("%B %d, %Y", "%b %d, %Y"):
+        try:
+            return dt.datetime.strptime(s.strip(), fmt).strftime("%Y-%m-%d")
+        except ValueError:
+            continue
+    return None
+
+
+def _to_iso_slash(s: str) -> str | None:
+    """'6/17/2026' -> '2026-06-17'."""
+    try:
+        return dt.datetime.strptime(s.strip(), "%m/%d/%Y").strftime("%Y-%m-%d")
+    except ValueError:
+        return None
+
+
 def parse_report(text: str, key: str) -> dict | None:
     if not text.strip():
         return None
 
     report: dict = {"source_key": key}
-    info = REPORTS[key]
+    info = ALL_REPORTS[key]
     report["auction"] = info["name"]
     report["report_id"] = info["id"]
     report["sale_day"] = info["day"]
+    report["channel"] = info.get("channel", "auction")
 
-    # Sale date
-    date_match = re.search(
-        r"(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)\s+(\w+\s+\d+,\s+\d{4})", text
-    )
-    if date_match:
-        try:
-            report["sale_date"] = dt.datetime.strptime(
-                date_match.group(1), "%b %d, %Y"
-            ).strftime("%Y-%m-%d")
-        except ValueError:
-            report["sale_date"] = date_match.group(1)
-    else:
-        return None
-
-    # Report period (for weekly summary)
+    # Report period (barn weekly + video sale window) — parsed first so it can
+    # serve as a sale-date fallback for video reports.
     period_match = re.search(
         r"Livestock Weighted Average Report for (\d+/\d+/\d+)\s*-\s*(\d+/\d+/\d+)",
         text,
@@ -153,35 +175,85 @@ def parse_report(text: str, key: str) -> dict | None:
         report["period_start"] = period_match.group(1)
         report["period_end"] = period_match.group(2)
 
-    # Total receipts
-    receipts_match = re.search(r"Total Receipts:\s+([\d,]+)", text)
-    if receipts_match:
-        report["total_receipts"] = int(receipts_match.group(1).replace(",", ""))
+    # Sale date. Barn reports prefix a weekday ("Mon June 18, 2026"); video
+    # reports print a bare "June 18, 2026" header plus the window above. Try
+    # weekday-prefixed → sale-window end → any bare "Month DD, YYYY".
+    sale_date = None
+    m = re.search(
+        r"(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)[a-z]*\.?,?\s+(\w+\s+\d+,\s+\d{4})", text
+    )
+    if m:
+        sale_date = _to_iso_named(m.group(1))
+    if sale_date is None and period_match:
+        sale_date = _to_iso_slash(period_match.group(2))
+    if sale_date is None:
+        m = re.search(
+            r"\b((?:January|February|March|April|May|June|July|August|"
+            r"September|October|November|December)\s+\d{1,2},\s+\d{4})\b",
+            text,
+        )
+        if m:
+            sale_date = _to_iso_named(m.group(1))
+    if sale_date is None:
+        return None
+    report["sale_date"] = sale_date
 
-    # Breakdown
+    # Total receipts. Barn reports list a single head count; video reports list
+    # two columns — Offered then Reported (sold) — followed by a %PO. Capture
+    # the sold count as total_receipts (the meaningful sale size), and record
+    # offered separately when present.
+    vid_receipts = re.search(
+        r"Total Receipts:\s+([\d,]+)\s+([\d,]+)\s+[\d.]+\s*%", text
+    )
+    if vid_receipts:
+        report["receipts_offered"] = int(vid_receipts.group(1).replace(",", ""))
+        report["total_receipts"] = int(vid_receipts.group(2).replace(",", ""))
+    else:
+        receipts_match = re.search(r"Total Receipts:\s+([\d,]+)", text)
+        if receipts_match:
+            report["total_receipts"] = int(receipts_match.group(1).replace(",", ""))
+
+    # Breakdown. Barn: "Feeder Cattle: 1,234(56.7%)". Video: an Offered and a
+    # Reported count precede the pct, e.g. "Feeder Cattle: 75,424 64,503 (99.4%)"
+    # — take the reported (sold) head when both are present.
     breakdown = {}
     for cat, bkey in [
         ("Feeder", "feeder"),
         ("Slaughter", "slaughter"),
         ("Replacement", "replacement"),
     ]:
-        m = re.search(rf"{cat} Cattle:\s+([\d,]+)\((\d+\.?\d*)%\)", text)
+        m = re.search(
+            rf"{cat} Cattle:\s+([\d,]+)(?:\s+([\d,]+))?\s*\((\d+\.?\d*)%\)", text
+        )
         if m:
-            breakdown[bkey] = {
-                "head": int(m.group(1).replace(",", "")),
-                "pct": float(m.group(2)),
-            }
+            head = int((m.group(2) or m.group(1)).replace(",", ""))
+            breakdown[bkey] = {"head": head, "pct": float(m.group(3))}
     report["breakdown"] = breakdown
 
-    # Market narrative
+    # Market narrative. Barn reports open with "Compared to/Special Note/The
+    # last"; video reports (esp. NLVA/WVM) run a free-form paragraph right after
+    # the receipts/breakdown block. Try the keyed opener, then fall back to the
+    # prose that sits between the breakdown lines and the first price table.
     narr_match = re.search(
         r"((?:Compared to|Special Note:|The last).*?)(?=\n\s*FEEDER CATTLE|\n\s*SLAUGHTER|\n\s*STOCK SUMMARY)",
         text,
         re.DOTALL,
     )
     if narr_match:
-        narrative = re.sub(r"\s+", " ", narr_match.group(1).strip())
-        report["narrative"] = narrative[:3000]
+        report["narrative"] = re.sub(r"\s+", " ", narr_match.group(1).strip())[:3000]
+    else:
+        anchor = 0
+        for mm in re.finditer(r"(?:Feeder|Slaughter|Replacement) Cattle:[^\n]*", text):
+            anchor = mm.end()
+        tail = text[anchor:]
+        stop = re.search(
+            r"\n\s*(?:FEEDER CATTLE|SLAUGHTER|STOCK SUMMARY|STEERS|HEIFERS|"
+            r"COWS|BULLS|Source:|Email us)",
+            tail,
+        )
+        chunk = re.sub(r"\s+", " ", (tail[:stop.start()] if stop else tail[:2000]).strip())
+        if len(chunk) > 40 and "." in chunk:
+            report["narrative"] = chunk[:3000]
 
     # Parse price tables
     entries = _parse_price_tables(text)
@@ -362,9 +434,9 @@ def main() -> int:
     parser.add_argument(
         "--reports",
         nargs="*",
-        default=list(REPORTS.keys()),
-        choices=list(REPORTS.keys()),
-        help="Which reports to fetch (default: all).",
+        default=list(ALL_REPORTS.keys()),
+        choices=list(ALL_REPORTS.keys()),
+        help="Which reports to fetch (default: all auction + video).",
     )
     parser.add_argument("--verbose", "-v", action="store_true")
     args = parser.parse_args()
@@ -374,7 +446,7 @@ def main() -> int:
 
     changed = 0
     for key in args.reports:
-        info = REPORTS[key]
+        info = ALL_REPORTS[key]
         if args.verbose:
             print(f"[auction] Fetching {info['id']} ({info['name']})...")
 
@@ -434,8 +506,57 @@ def main() -> int:
                 f"{'added to history' if added else 'already in history'}"
             )
 
+    # Consolidate the freshest video sale across NLVA / Superior / WVM into a
+    # single video_latest.json the app reads. Reads from disk (not just this
+    # run's results) so an unchanged-but-present sale still surfaces. The app
+    # decides seasonality from sale_date freshness.
+    consolidate_video_latest(auction_dir, verbose=args.verbose)
+
     print(f"[auction] {changed} of {len(args.reports)} reports updated")
     return 0
+
+
+def consolidate_video_latest(auction_dir: Path, verbose: bool = False) -> None:
+    candidates: list[dict] = []
+    for key in VIDEO_REPORTS:
+        path = auction_dir / f"{key}_latest.json"
+        if not path.exists():
+            continue
+        try:
+            candidates.append(json.loads(path.read_text(encoding="utf-8")))
+        except (json.JSONDecodeError, ValueError):
+            continue
+
+    if not candidates:
+        if verbose:
+            print("[auction] video: no per-sale files yet — video_latest.json not written")
+        return
+
+    # Freshest by sale_date (ISO sorts lexically); ties broken by receipts.
+    freshest = max(
+        candidates,
+        key=lambda r: (r.get("sale_date", ""), r.get("total_receipts", 0)),
+    )
+    freshest = dict(freshest)
+    freshest["channel"] = "video"
+    # Roster of the sales we track, so the app can name the series even off-season.
+    freshest["series_roster"] = [
+        {"key": k, "name": v["name"], "report_id": v["id"]}
+        for k, v in VIDEO_REPORTS.items()
+    ]
+
+    out_path = auction_dir / "video_latest.json"
+    new_text = json.dumps(freshest, ensure_ascii=False, indent=2) + "\n"
+    if out_path.exists() and out_path.read_text(encoding="utf-8") == new_text:
+        if verbose:
+            print(f"[auction] video_latest.json unchanged ({freshest.get('sale_date')})")
+        return
+    out_path.write_text(new_text, encoding="utf-8")
+    if verbose:
+        print(
+            f"[auction] video_latest.json → {freshest.get('auction')} "
+            f"{freshest.get('sale_date')} ({freshest.get('total_receipts', '?')} head)"
+        )
 
 
 if __name__ == "__main__":
