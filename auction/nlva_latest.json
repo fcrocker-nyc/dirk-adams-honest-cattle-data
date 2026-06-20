@@ -1,0 +1,113 @@
+{
+  "source_key": "nlva",
+  "auction": "Northern Livestock Video Auction",
+  "report_id": "AMS_2772",
+  "sale_day": "Seasonal",
+  "channel": "video",
+  "sale_date": "2026-05-19",
+  "receipts_offered": 10118,
+  "total_receipts": 9828,
+  "breakdown": {
+    "feeder": {
+      "head": 9296,
+      "pct": 94.59
+    },
+    "replacement": {
+      "head": 532,
+      "pct": 5.41
+    }
+  },
+  "narrative": "Northern Livestock video auction held its first ever Early Bird Special sale today. Demand was very good for all offerings. Many cattle were consigned for early delivery as drought conditions grip parts of Montana, Wyoming and Nebraska. Many sets of yearlings were sold instead of turning out this year. Several sets were out of backgrounding lots as buyers put cattle in the lot waiting for turnout time, however with limited spring rains many have offered to sell them early instead of turning out. A few early consignments of calves were seen. Most of these offerings delivered earlier in the fall due to drought conditions as well. Demand was very good for light offerings. Record high prices were seen again this summer as feeders were eager to put cattle into inventory. Tight supplies of cattle continue to drive prices higher. PO's were very light this sale as ranchers received record high bids again this summer. Demand for bred cows and pairs was mostly moderate. With a large swath of Montana currently under drought conditions the price for bred cows and pairs has moderated as ranchers struggle to find feed and grazing space for additional livestock. Market activity was mostly very active throughout the sale. Bidders were active, bidding rapidly, ringside, over the phone, as well as over the internet. Calves weaned over 45 days were left untagged. Most of these offerings sold for December and later delivery. Cattle tagged as Value added were enrolled in two or more programs and had to be verified by a 3rd party. The largest premiums given were for cattle sold as All Natural, NHTC and GAP combined. Current delivery cattle deliver before June, 2nd 2026. Supply included: 95% Feeder Cattle (75% Steers, 25% Heifers); 5% Replacement Cattle (8% Bred Cows, 92% Cow-Calf Pairs). Feeder cattle over 600 lbs was 90%. Feeder Cattle prices FOB based on net weights after a 0-3% pencil shrink or equivalent, with a 12-28 cent slide > 600 lbs and 24-44 cent slide < 600 lbs.",
+  "entries": [
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 170,
+      "wt_low": 710,
+      "wt_high": 710,
+      "avg_wt": 710,
+      "price_low": 446.0,
+      "price_high": 446.0,
+      "avg_price": 446.0,
+      "note": "NHTC"
+    },
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 78,
+      "wt_low": 725,
+      "wt_high": 725,
+      "avg_wt": 725,
+      "price_low": 423.0,
+      "price_high": 423.0,
+      "avg_price": 423.0,
+      "note": "Value"
+    },
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 210,
+      "wt_low": 740,
+      "wt_high": 740,
+      "avg_wt": 740,
+      "price_low": 415.0,
+      "price_high": 415.0,
+      "avg_price": 415.0,
+      "note": "80"
+    },
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 146,
+      "wt_low": 835,
+      "wt_high": 835,
+      "avg_wt": 835,
+      "price_low": 376.0,
+      "price_high": 376.0,
+      "avg_price": 376.0,
+      "note": "290"
+    },
+    {
+      "type": "HEIFERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 350,
+      "wt_low": 845,
+      "wt_high": 845,
+      "avg_wt": 845,
+      "price_low": 342.0,
+      "price_high": 342.0,
+      "avg_price": 342.0,
+      "note": "77"
+    }
+  ],
+  "summary": {
+    "steers": {
+      "700_749": {
+        "head": 458,
+        "wtd_avg_price": 427.87,
+        "price_low": 415.0,
+        "price_high": 446.0
+      },
+      "800_899": {
+        "head": 146,
+        "wtd_avg_price": 376.0,
+        "price_low": 376.0,
+        "price_high": 376.0
+      }
+    },
+    "heifers": {
+      "800_899": {
+        "head": 350,
+        "wtd_avg_price": 342.0,
+        "price_low": 342.0,
+        "price_high": 342.0
+      }
+    }
+  },
+  "parsed_at": "2026-06-20T20:20:18.455613Z"
+}
