@@ -58,44 +58,40 @@ def fetch_recent_posts(limit: int = HISTORY_LIMIT) -> list[dict]:
 
 # ---------- HTML table extractor ----------------------------------------------
 
-class ForecastTableFinder(HTMLParser):
+class TableCollector(HTMLParser):
     """
-    Streams a WP post body and captures rows of the first <table> whose
-    class attribute contains the target class. Only <th>/<td> text content
-    is recorded; nested formatting (<strong>, <em>, etc.) is flattened.
+    Streams a WP post body and records EVERY top-level <table> as
+    (class_attr, rows), where each row is a list of flattened <th>/<td>
+    texts. The forecast table is then chosen by class OR header signature
+    (see ``select_forecast_rows``), so a dropped ``hc-forecast`` class on a
+    post no longer silently breaks the parse and freezes the app forecast.
     """
 
-    def __init__(self, target_class: str = TARGET_TABLE_CLASS) -> None:
+    def __init__(self) -> None:
         super().__init__()
-        self.target_class = target_class
-        self.in_target_table = False
-        self.captured = False  # we only take the first matching table per post
+        self.tables: list[tuple[str, list[list[str]]]] = []
+        self._depth = 0  # table nesting depth
+        self._cur_class = ""
+        self._cur_rows: list[list[str]] | None = None
         self.in_row = False
         self.in_cell = False
         self.current_row: list[str] = []
         self.current_cell: list[str] = []
-        self.rows: list[list[str]] = []
-        self._table_depth = 0  # handle nested tables defensively
 
     def handle_starttag(self, tag, attrs):
         if tag == "table":
-            classes = ""
-            for k, v in attrs:
-                if k == "class" and v:
-                    classes = v
-                    break
-            if not self.captured and self._matches(classes):
-                self.in_target_table = True
-                self._table_depth = 1
-                return
-            if self.in_target_table:
-                self._table_depth += 1
+            self._depth += 1
+            if self._depth == 1:
+                self._cur_rows = []
+                self._cur_class = ""
+                for k, v in attrs:
+                    if k == "class" and v:
+                        self._cur_class = v
+                        break
             return
-
-        if not self.in_target_table:
+        if self._depth == 0:
             return
-
-        if tag == "tr" and self._table_depth == 1:
+        if tag == "tr" and self._depth == 1:
             self.in_row = True
             self.current_row = []
         elif tag in ("td", "th") and self.in_row:
@@ -106,33 +102,45 @@ class ForecastTableFinder(HTMLParser):
 
     def handle_endtag(self, tag):
         if tag == "table":
-            if self.in_target_table:
-                self._table_depth -= 1
-                if self._table_depth <= 0:
-                    self.in_target_table = False
-                    self.captured = True
+            if self._depth == 1 and self._cur_rows is not None:
+                self.tables.append((self._cur_class, self._cur_rows))
+                self._cur_rows = None
+            if self._depth > 0:
+                self._depth -= 1
             return
-
-        if not self.in_target_table:
+        if self._depth == 0:
             return
-
         if tag in ("td", "th") and self.in_cell:
-            text = "".join(self.current_cell).strip()
-            text = re.sub(r"\s+", " ", text)
+            text = re.sub(r"\s+", " ", "".join(self.current_cell)).strip()
             self.current_row.append(text)
             self.in_cell = False
         elif tag == "tr" and self.in_row:
-            if self.current_row:
-                self.rows.append(self.current_row)
+            if self.current_row and self._cur_rows is not None:
+                self._cur_rows.append(self.current_row)
             self.in_row = False
 
     def handle_data(self, data):
         if self.in_cell:
             self.current_cell.append(data)
 
-    def _matches(self, class_attr: str) -> bool:
-        tokens = class_attr.split()
-        return self.target_class in tokens
+
+def _is_forecast_header(row: list[str]) -> bool:
+    joined = " ".join(c.lower() for c in row)
+    return "quarter" in joined and "steer" in joined
+
+
+def select_forecast_rows(
+    tables: list[tuple[str, list[list[str]]]],
+) -> list[list[str]] | None:
+    """Pick the forecast table: prefer the hc-forecast class, else a table
+    whose header row carries the Quarter/Steer signature."""
+    for cls, rows in tables:
+        if TARGET_TABLE_CLASS in cls.split() and rows:
+            return rows
+    for _cls, rows in tables:
+        if rows and _is_forecast_header(rows[0]):
+            return rows
+    return None
 
 
 # ---------- Row parsing -------------------------------------------------------
@@ -223,14 +231,14 @@ def _band(range_cell: str, mid_cell: str) -> dict | None:
 
 def post_to_week(post: dict) -> dict | None:
     body = (post.get("content") or {}).get("rendered") or ""
-    finder = ForecastTableFinder()
-    finder.feed(body)
+    collector = TableCollector()
+    collector.feed(body)
 
-    if not finder.rows:
+    rows = select_forecast_rows(collector.tables)
+    if not rows:
         return None
 
     # Detect & skip a header row by looking for the literal "Quarter" cell.
-    rows = finder.rows
     if rows and rows[0] and rows[0][0].strip().lower() == "quarter":
         rows = rows[1:]
 
@@ -270,7 +278,7 @@ def build_payload(verbose: bool = False) -> dict | None:
             if verbose:
                 date = (post.get("date") or "")[:10]
                 link = post.get("link") or ""
-                print(f"[forecasts] skipped {date} ({link}): no '{TARGET_TABLE_CLASS}' table or unparseable rows", file=sys.stderr)
+                print(f"[forecasts] skipped {date} ({link}): no forecast table (hc-forecast class or Quarter/Steer header) or unparseable rows", file=sys.stderr)
             continue
         weeks.append(week)
 

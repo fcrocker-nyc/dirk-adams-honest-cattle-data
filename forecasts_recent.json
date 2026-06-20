@@ -1,6 +1,106 @@
 {
-  "updated": "2026-06-01",
+  "updated": "2026-06-15",
   "weeks": [
+    {
+      "as_of": "2026-06-15",
+      "source_url": "https://honestcattle.net/2026/06/15/2026-06-15-honest-cattle-weekly-forecast/",
+      "source_title": "2026-06-15 Honest Cattle Weekly Forecast",
+      "class_note": "550–650 lb Montana-origin steers / heifers, FOB auction",
+      "quarters": [
+        {
+          "label": "Q2 2026",
+          "status": "HELD",
+          "steer": {
+            "low": 470.0,
+            "high": 500.0,
+            "mid": 485.0
+          },
+          "heifer": {
+            "low": 450.0,
+            "high": 480.0,
+            "mid": 465.0
+          }
+        },
+        {
+          "label": "Q3 2026",
+          "status": "HELD",
+          "steer": {
+            "low": 480.0,
+            "high": 520.0,
+            "mid": 500.0
+          },
+          "heifer": {
+            "low": 460.0,
+            "high": 500.0,
+            "mid": 480.0
+          }
+        },
+        {
+          "label": "Q4 2026",
+          "status": "HELD",
+          "steer": {
+            "low": 435.0,
+            "high": 480.0,
+            "mid": 455.0
+          },
+          "heifer": {
+            "low": 415.0,
+            "high": 460.0,
+            "mid": 437.0
+          }
+        }
+      ]
+    },
+    {
+      "as_of": "2026-06-08",
+      "source_url": "https://honestcattle.net/2026/06/08/2026-06-08-hc-weekly-market-forecast/",
+      "source_title": "2026-06-08 HC Weekly Market Forecast",
+      "class_note": "550–650 lb Montana-origin steers / heifers, FOB auction",
+      "quarters": [
+        {
+          "label": "Q2 2026",
+          "status": "HELD",
+          "steer": {
+            "low": 470.0,
+            "high": 500.0,
+            "mid": 485.0
+          },
+          "heifer": {
+            "low": 450.0,
+            "high": 480.0,
+            "mid": 465.0
+          }
+        },
+        {
+          "label": "Q3 2026",
+          "status": "ADJUSTED UP",
+          "steer": {
+            "low": 480.0,
+            "high": 520.0,
+            "mid": 500.0
+          },
+          "heifer": {
+            "low": 460.0,
+            "high": 500.0,
+            "mid": 480.0
+          }
+        },
+        {
+          "label": "Q4 2026",
+          "status": "HELD",
+          "steer": {
+            "low": 435.0,
+            "high": 480.0,
+            "mid": 455.0
+          },
+          "heifer": {
+            "low": 415.0,
+            "high": 460.0,
+            "mid": 437.0
+          }
+        }
+      ]
+    },
     {
       "as_of": "2026-06-01",
       "source_url": "https://honestcattle.net/2026/06/01/2026-06-01-honest-cattle-weekly-marketing-forecast/",
