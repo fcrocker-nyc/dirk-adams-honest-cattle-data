@@ -4,6 +4,8 @@
   "report_id": "AMS_2772",
   "sale_day": "Seasonal",
   "channel": "video",
+  "base": "Billings, MT",
+  "owner_group": "billings",
   "sale_date": "2026-05-19",
   "receipts_offered": 10118,
   "total_receipts": 9828,
@@ -18,7 +20,31 @@
     }
   },
   "narrative": "Northern Livestock video auction held its first ever Early Bird Special sale today. Demand was very good for all offerings. Many cattle were consigned for early delivery as drought conditions grip parts of Montana, Wyoming and Nebraska. Many sets of yearlings were sold instead of turning out this year. Several sets were out of backgrounding lots as buyers put cattle in the lot waiting for turnout time, however with limited spring rains many have offered to sell them early instead of turning out. A few early consignments of calves were seen. Most of these offerings delivered earlier in the fall due to drought conditions as well. Demand was very good for light offerings. Record high prices were seen again this summer as feeders were eager to put cattle into inventory. Tight supplies of cattle continue to drive prices higher. PO's were very light this sale as ranchers received record high bids again this summer. Demand for bred cows and pairs was mostly moderate. With a large swath of Montana currently under drought conditions the price for bred cows and pairs has moderated as ranchers struggle to find feed and grazing space for additional livestock. Market activity was mostly very active throughout the sale. Bidders were active, bidding rapidly, ringside, over the phone, as well as over the internet. Calves weaned over 45 days were left untagged. Most of these offerings sold for December and later delivery. Cattle tagged as Value added were enrolled in two or more programs and had to be verified by a 3rd party. The largest premiums given were for cattle sold as All Natural, NHTC and GAP combined. Current delivery cattle deliver before June, 2nd 2026. Supply included: 95% Feeder Cattle (75% Steers, 25% Heifers); 5% Replacement Cattle (8% Bred Cows, 92% Cow-Calf Pairs). Feeder cattle over 600 lbs was 90%. Feeder Cattle prices FOB based on net weights after a 0-3% pencil shrink or equivalent, with a 12-28 cent slide > 600 lbs and 24-44 cent slide < 600 lbs.",
+  "mt_region_label": "North Central (CO, IA, MT, ND, NE, SD, WY)",
+  "has_mt_region": true,
+  "mt_region_note": "USDA groups Montana cattle into this multi-state region; figures are regional, not Montana-only.",
+  "terms": {
+    "pencil_shrink_pct": "0-3",
+    "slide_over_600_cents": "12-28",
+    "slide_under_600_cents": "24-44",
+    "fob_net_weights": true,
+    "current_delivery": "before June, 2nd 2026"
+  },
   "entries": [
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 185,
+      "wt_low": 605,
+      "wt_high": 605,
+      "avg_wt": 605,
+      "price_low": 491.0,
+      "price_high": 491.0,
+      "avg_price": 491.0,
+      "delivery": "Current",
+      "note": "Value Added"
+    },
     {
       "type": "STEERS",
       "grade": "Medium and Large 1",
@@ -43,7 +69,7 @@
       "price_low": 423.0,
       "price_high": 423.0,
       "avg_price": 423.0,
-      "note": "Value"
+      "note": "Value Added"
     },
     {
       "type": "STEERS",
@@ -55,8 +81,20 @@
       "avg_wt": 740,
       "price_low": 415.0,
       "price_high": 415.0,
-      "avg_price": 415.0,
-      "note": "80"
+      "avg_price": 415.0
+    },
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 80,
+      "wt_low": 815,
+      "wt_high": 815,
+      "avg_wt": 815,
+      "price_low": 382.0,
+      "price_high": 382.0,
+      "avg_price": 382.0,
+      "note": "Value Added"
     },
     {
       "type": "STEERS",
@@ -68,8 +106,344 @@
       "avg_wt": 835,
       "price_low": 376.0,
       "price_high": 376.0,
-      "avg_price": 376.0,
-      "note": "290"
+      "avg_price": 376.0
+    },
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 290,
+      "wt_low": 840,
+      "wt_high": 840,
+      "avg_wt": 840,
+      "price_low": 411.0,
+      "price_high": 411.0,
+      "avg_price": 411.0,
+      "note": "NHTC"
+    },
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 473,
+      "wt_low": 855,
+      "wt_high": 865,
+      "avg_wt": 860,
+      "price_low": 367.0,
+      "price_high": 373.0,
+      "avg_price": 369.91
+    },
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 1335,
+      "wt_low": 910,
+      "wt_high": 930,
+      "avg_wt": 919,
+      "price_low": 345.0,
+      "price_high": 347.5,
+      "avg_price": 346.37,
+      "note": "Value Added"
+    },
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 185,
+      "wt_low": 960,
+      "wt_high": 960,
+      "avg_wt": 960,
+      "price_low": 358.0,
+      "price_high": 358.0,
+      "avg_price": 358.0,
+      "note": "Value Added"
+    },
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 56,
+      "wt_low": 1080,
+      "wt_high": 1080,
+      "avg_wt": 1080,
+      "price_low": 315.0,
+      "price_high": 315.0,
+      "avg_price": 315.0
+    },
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 140,
+      "wt_low": 850,
+      "wt_high": 850,
+      "avg_wt": 850,
+      "price_low": 364.0,
+      "price_high": 364.0,
+      "avg_price": 364.0,
+      "delivery": "May-Jun"
+    },
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 122,
+      "wt_low": 875,
+      "wt_high": 875,
+      "avg_wt": 875,
+      "price_low": 366.0,
+      "price_high": 366.0,
+      "avg_price": 366.0,
+      "delivery": "Jun"
+    },
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 420,
+      "wt_low": 925,
+      "wt_high": 925,
+      "avg_wt": 925,
+      "price_low": 350.5,
+      "price_high": 350.5,
+      "avg_price": 350.5
+    },
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 140,
+      "wt_low": 875,
+      "wt_high": 875,
+      "avg_wt": 875,
+      "price_low": 374.0,
+      "price_high": 374.0,
+      "avg_price": 374.0,
+      "delivery": "Jul"
+    },
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 130,
+      "wt_low": 925,
+      "wt_high": 925,
+      "avg_wt": 925,
+      "price_low": 365.0,
+      "price_high": 365.0,
+      "avg_price": 365.0,
+      "delivery": "Aug"
+    },
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 300,
+      "wt_low": 975,
+      "wt_high": 975,
+      "avg_wt": 975,
+      "price_low": 352.0,
+      "price_high": 352.0,
+      "avg_price": 352.0
+    },
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 495,
+      "wt_low": 1035,
+      "wt_high": 1035,
+      "avg_wt": 1035,
+      "price_low": 341.0,
+      "price_high": 341.0,
+      "avg_price": 341.0
+    },
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 36,
+      "wt_low": 490,
+      "wt_high": 490,
+      "avg_wt": 490,
+      "price_low": 489.0,
+      "price_high": 489.0,
+      "avg_price": 489.0,
+      "delivery": "Oct",
+      "note": "Split Loads"
+    },
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 636,
+      "wt_low": 550,
+      "wt_high": 585,
+      "avg_wt": 558,
+      "price_low": 491.0,
+      "price_high": 530.0,
+      "avg_price": 518.29,
+      "note": "Unweaned"
+    },
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 295,
+      "wt_low": 625,
+      "wt_high": 645,
+      "avg_wt": 633,
+      "price_low": 452.0,
+      "price_high": 468.0,
+      "avg_price": 458.09,
+      "note": "Unweaned"
+    },
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 240,
+      "wt_low": 675,
+      "wt_high": 690,
+      "avg_wt": 680,
+      "price_low": 438.0,
+      "price_high": 446.0,
+      "avg_price": 440.71,
+      "note": "Unweaned"
+    },
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 99,
+      "wt_low": 700,
+      "wt_high": 700,
+      "avg_wt": 700,
+      "price_low": 420.0,
+      "price_high": 426.0,
+      "avg_price": 423.03,
+      "note": "Split Loads"
+    },
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 155,
+      "wt_low": 750,
+      "wt_high": 750,
+      "avg_wt": 750,
+      "price_low": 422.0,
+      "price_high": 422.0,
+      "avg_price": 422.0,
+      "note": "Unweaned"
+    },
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 95,
+      "wt_low": 650,
+      "wt_high": 650,
+      "avg_wt": 650,
+      "price_low": 458.0,
+      "price_high": 458.0,
+      "avg_price": 458.0,
+      "delivery": "Oct-Nov",
+      "note": "Unweaned"
+    },
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 100,
+      "wt_low": 550,
+      "wt_high": 550,
+      "avg_wt": 550,
+      "price_low": 525.0,
+      "price_high": 525.0,
+      "avg_price": 525.0,
+      "delivery": "Nov",
+      "note": "Unweaned"
+    },
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 100,
+      "wt_low": 630,
+      "wt_high": 630,
+      "avg_wt": 630,
+      "price_low": 471.0,
+      "price_high": 471.0,
+      "avg_price": 471.0,
+      "delivery": "Jan",
+      "note": "Unweaned"
+    },
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 39,
+      "wt_low": 690,
+      "wt_high": 690,
+      "avg_wt": 690,
+      "price_low": 417.0,
+      "price_high": 417.0,
+      "avg_price": 417.0,
+      "note": "Split Loads"
+    },
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 1-2",
+      "pricing": "cwt",
+      "head": 75,
+      "wt_low": 795,
+      "wt_high": 795,
+      "avg_wt": 795,
+      "price_low": 380.0,
+      "price_high": 380.0,
+      "avg_price": 380.0,
+      "delivery": "Current"
+    },
+    {
+      "type": "STEERS",
+      "grade": "Large 1",
+      "pricing": "cwt",
+      "head": 160,
+      "wt_low": 650,
+      "wt_high": 650,
+      "avg_wt": 650,
+      "price_low": 451.0,
+      "price_high": 451.0,
+      "avg_price": 451.0,
+      "delivery": "Oct",
+      "note": "Unweaned"
+    },
+    {
+      "type": "HEIFERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 80,
+      "wt_low": 625,
+      "wt_high": 625,
+      "avg_wt": 625,
+      "price_low": 425.0,
+      "price_high": 425.0,
+      "avg_price": 425.0,
+      "delivery": "Current"
+    },
+    {
+      "type": "HEIFERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 465,
+      "wt_low": 725,
+      "wt_high": 745,
+      "avg_wt": 739,
+      "price_low": 383.0,
+      "price_high": 384.0,
+      "avg_price": 383.3
     },
     {
       "type": "HEIFERS",
@@ -81,33 +455,296 @@
       "avg_wt": 845,
       "price_low": 342.0,
       "price_high": 342.0,
-      "avg_price": 342.0,
-      "note": "77"
+      "avg_price": 342.0
+    },
+    {
+      "type": "HEIFERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 77,
+      "wt_low": 865,
+      "wt_high": 865,
+      "avg_wt": 865,
+      "price_low": 339.0,
+      "price_high": 339.0,
+      "avg_price": 339.0
+    },
+    {
+      "type": "HEIFERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 75,
+      "wt_low": 800,
+      "wt_high": 800,
+      "avg_wt": 800,
+      "price_low": 360.0,
+      "price_high": 360.0,
+      "avg_price": 360.0,
+      "delivery": "May-Jun",
+      "note": "NHTC"
+    },
+    {
+      "type": "HEIFERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 120,
+      "wt_low": 885,
+      "wt_high": 885,
+      "avg_wt": 885,
+      "price_low": 333.0,
+      "price_high": 333.0,
+      "avg_price": 333.0,
+      "delivery": "Jun",
+      "note": "Spayed"
+    },
+    {
+      "type": "HEIFERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 300,
+      "wt_low": 865,
+      "wt_high": 865,
+      "avg_wt": 865,
+      "price_low": 358.0,
+      "price_high": 358.0,
+      "avg_price": 358.0,
+      "delivery": "Sep",
+      "note": "Spayed"
+    },
+    {
+      "type": "HEIFERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 55,
+      "wt_low": 900,
+      "wt_high": 900,
+      "avg_wt": 900,
+      "price_low": 350.0,
+      "price_high": 350.0,
+      "avg_price": 350.0,
+      "delivery": "Sep-Oct",
+      "note": "Value Added"
+    },
+    {
+      "type": "HEIFERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 70,
+      "wt_low": 470,
+      "wt_high": 470,
+      "avg_wt": 470,
+      "price_low": 459.0,
+      "price_high": 459.0,
+      "avg_price": 459.0,
+      "delivery": "Oct",
+      "note": "Split Loads"
+    },
+    {
+      "type": "HEIFERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 200,
+      "wt_low": 600,
+      "wt_high": 630,
+      "avg_wt": 615,
+      "price_low": 435.0,
+      "price_high": 442.0,
+      "avg_price": 438.41,
+      "note": "Replacement"
+    },
+    {
+      "type": "HEIFERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 70,
+      "wt_low": 650,
+      "wt_high": 680,
+      "avg_wt": 669,
+      "price_low": 400.0,
+      "price_high": 408.0,
+      "avg_price": 405.23,
+      "note": "Split Loads"
+    },
+    {
+      "type": "HEIFERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 100,
+      "wt_low": 500,
+      "wt_high": 500,
+      "avg_wt": 500,
+      "price_low": 481.0,
+      "price_high": 481.0,
+      "avg_price": 481.0,
+      "delivery": "Nov",
+      "note": "Unweaned"
+    },
+    {
+      "type": "HEIFERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 39,
+      "wt_low": 690,
+      "wt_high": 690,
+      "avg_wt": 690,
+      "price_low": 397.0,
+      "price_high": 397.0,
+      "avg_price": 397.0,
+      "delivery": "Jan",
+      "note": "Split Loads"
+    },
+    {
+      "type": "HEIFERS",
+      "grade": "Medium and Large 1-2",
+      "pricing": "cwt",
+      "head": 220,
+      "wt_low": 880,
+      "wt_high": 880,
+      "avg_wt": 880,
+      "price_low": 320.0,
+      "price_high": 320.0,
+      "avg_price": 320.0,
+      "delivery": "Current"
+    },
+    {
+      "type": "HEIFERS",
+      "grade": "Large 1",
+      "pricing": "cwt",
+      "head": 90,
+      "wt_low": 640,
+      "wt_high": 640,
+      "avg_wt": 640,
+      "price_low": 410.0,
+      "price_high": 410.0,
+      "avg_price": 410.0,
+      "delivery": "Oct",
+      "note": "Unweaned"
     }
   ],
   "summary": {
     "steers": {
+      "600_649": {
+        "head": 580,
+        "wtd_avg_price": 470.81,
+        "price_low": 452.0,
+        "price_high": 491.0,
+        "thin": false
+      },
       "700_749": {
-        "head": 458,
-        "wtd_avg_price": 427.87,
+        "head": 557,
+        "wtd_avg_price": 427.01,
         "price_low": 415.0,
-        "price_high": 446.0
+        "price_high": 446.0,
+        "thin": false
       },
       "800_899": {
-        "head": 146,
-        "wtd_avg_price": 376.0,
-        "price_low": 376.0,
-        "price_high": 376.0
+        "head": 1391,
+        "wtd_avg_price": 379.28,
+        "price_low": 364.0,
+        "price_high": 411.0,
+        "thin": false
+      },
+      "900_plus": {
+        "head": 2921,
+        "wtd_avg_price": 347.6,
+        "price_low": 315.0,
+        "price_high": 365.0,
+        "thin": false
+      },
+      "400_499": {
+        "head": 36,
+        "wtd_avg_price": 489.0,
+        "price_low": 489.0,
+        "price_high": 489.0,
+        "thin": true
+      },
+      "550_599": {
+        "head": 736,
+        "wtd_avg_price": 519.2,
+        "price_low": 491.0,
+        "price_high": 530.0,
+        "thin": false
+      },
+      "650_699": {
+        "head": 374,
+        "wtd_avg_price": 442.63,
+        "price_low": 417.0,
+        "price_high": 458.0,
+        "thin": false
+      },
+      "750_799": {
+        "head": 230,
+        "wtd_avg_price": 408.3,
+        "price_low": 380.0,
+        "price_high": 422.0,
+        "thin": false
+      },
+      "550_649_combined": {
+        "head": 1316,
+        "wtd_avg_price": 497.88,
+        "price_low": 452.0,
+        "price_high": 530.0,
+        "thin": false
       }
     },
     "heifers": {
+      "600_649": {
+        "head": 280,
+        "wtd_avg_price": 434.58,
+        "price_low": 425.0,
+        "price_high": 442.0,
+        "thin": false
+      },
+      "700_749": {
+        "head": 465,
+        "wtd_avg_price": 383.3,
+        "price_low": 383.0,
+        "price_high": 384.0,
+        "thin": false
+      },
       "800_899": {
-        "head": 350,
+        "head": 1142,
         "wtd_avg_price": 342.0,
-        "price_low": 342.0,
-        "price_high": 342.0
+        "price_low": 320.0,
+        "price_high": 360.0,
+        "thin": false
+      },
+      "900_plus": {
+        "head": 55,
+        "wtd_avg_price": 350.0,
+        "price_low": 350.0,
+        "price_high": 350.0,
+        "thin": false
+      },
+      "400_499": {
+        "head": 70,
+        "wtd_avg_price": 459.0,
+        "price_low": 459.0,
+        "price_high": 459.0,
+        "thin": false
+      },
+      "650_699": {
+        "head": 109,
+        "wtd_avg_price": 402.29,
+        "price_low": 397.0,
+        "price_high": 408.0,
+        "thin": false
+      },
+      "500_549": {
+        "head": 100,
+        "wtd_avg_price": 481.0,
+        "price_low": 481.0,
+        "price_high": 481.0,
+        "thin": false
+      },
+      "550_649_combined": {
+        "head": 280,
+        "wtd_avg_price": 434.58,
+        "price_low": 425.0,
+        "price_high": 442.0,
+        "thin": false
       }
     }
   },
-  "parsed_at": "2026-06-20T20:20:18.455613Z"
+  "parsed_at": "2026-06-21T14:35:34.836367Z"
 }

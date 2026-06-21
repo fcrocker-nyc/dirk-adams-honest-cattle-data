@@ -59,15 +59,35 @@ REPORTS = {
 
 # Video / satellite auctions — seasonal (summer), USDA AMS same report format.
 # NLVA is Montana's home video sale; Superior and WVM carry Montana consignments.
+#
+# IMPORTANT: USDA video reports do NOT break consignments out by state of
+# origin — every Montana lot is grouped into a multi-state "North Central
+# (CO, IA, MT, ND, NE, SD, WY)" region. Superior in particular publishes five
+# regions in one report (North Central, South Central, Southeast, NE/Upper
+# Midwest, West). Parsing the whole report would blend southern/eastern markets
+# into the Montana number (observed ~$50/cwt understatement on calves), so for
+# video we restrict the price tables to the North Central (MT) region block.
+#
+# owner_group flags the two commonly-owned Billings outfits (NLVA + BLC share
+# ownership with the Billings auction yards) so the page does not lean on them.
 VIDEO_REPORTS = {
-    "nlva":     {"id": "AMS_2772", "name": "Northern Livestock Video Auction", "day": "Seasonal", "channel": "video"},
-    "superior": {"id": "AMS_2713", "name": "Superior Livestock Auction", "day": "Ongoing", "channel": "video"},
-    "wvm":      {"id": "AMS_3242", "name": "Western Video Market", "day": "Seasonal", "channel": "video"},
+    "nlva":      {"id": "AMS_2772", "name": "Northern Livestock Video Auction", "day": "Seasonal", "channel": "video",
+                  "base": "Billings, MT", "owner_group": "billings"},
+    "blc_video": {"id": "AMS_3631", "name": "Billings Livestock Commission Video", "day": "Seasonal", "channel": "video",
+                  "base": "Billings, MT", "owner_group": "billings"},
+    "wvm":       {"id": "AMS_3242", "name": "Western Video Market", "day": "Seasonal", "channel": "video",
+                  "base": "Cottonwood, CA", "owner_group": "independent"},
+    "superior":  {"id": "AMS_2713", "name": "Superior Livestock Auction", "day": "Ongoing", "channel": "video",
+                  "base": "Fort Worth, TX", "owner_group": "independent"},
 }
 
 ALL_REPORTS = {**REPORTS, **VIDEO_REPORTS}
 
 PDFTOTEXT = os.environ.get("PDFTOTEXT", "pdftotext")
+
+# Below this many head, a 50-lb feeder band is too thin to publish on its own
+# (flagged "thin"); consumers fall back to the combined 550_649 view.
+THIN_BAND_HEAD_FLOOR = 50
 
 
 # ---------------------------------------------------------------------------
@@ -154,6 +174,75 @@ def _to_iso_slash(s: str) -> str | None:
         return None
 
 
+# A region divider in a video report is a bare state-list line, e.g.
+# "(CO, IA, MT, ND, NE, SD, WY)", preceded by the region name on its own line.
+_STATE_LIST_RE = re.compile(r"^\s*\(([A-Z]{2}(?:,\s*[A-Z]{2})+)\)\s*$")
+MT_STATE = "MT"
+
+
+def _select_mt_region(text: str) -> tuple[str | None, str]:
+    """For multi-region video reports, return (label, text) for the region
+    block that contains Montana. If the report has no region dividers (barn
+    reports, or single-region video), return (None, text) unchanged.
+
+    Receipts/narrative/terms are parsed from the full text by the caller;
+    only the price tables are restricted to the MT region so southern/eastern
+    consignments don't blend into the Montana number.
+    """
+    lines = text.splitlines()
+    blocks: list[tuple[str, list[str], list[str]]] = []  # (name, states, body)
+    cur = None
+    prev_nonempty = ""
+    for ln in lines:
+        m = _STATE_LIST_RE.match(ln)
+        if m:
+            if cur is not None:
+                blocks.append(cur)
+            states = [s.strip() for s in m.group(1).split(",")]
+            label = f"{prev_nonempty.strip()} ({', '.join(states)})".strip()
+            cur = (label, states, [])
+        elif cur is not None:
+            cur[2].append(ln)
+        if ln.strip():
+            prev_nonempty = ln
+    if cur is not None:
+        blocks.append(cur)
+
+    if not blocks:
+        return None, text  # no region dividers → barn report; use full text
+    for label, states, body in blocks:
+        if MT_STATE in states:
+            return label, "\n".join(body)
+    # Region dividers present but none list MT (e.g. an off-season southern-only
+    # Superior sale) → no Montana-relevant data this sale.
+    return None, ""
+
+
+def _parse_video_terms(text: str) -> dict:
+    """Extract the sale terms producers compare across video houses:
+    pencil shrink, price slide above/below 600 lb, FOB basis, delivery window."""
+    flat = re.sub(r"\s+", " ", text)
+    terms: dict = {}
+    m = re.search(r"(\d+(?:-\d+)?)\s*%\s*pencil shrink", flat, re.I)
+    if m:
+        terms["pencil_shrink_pct"] = m.group(1)
+    m = re.search(r"(\d+(?:-\d+)?)\s*cent slide\s*>\s*600", flat, re.I)
+    if m:
+        terms["slide_over_600_cents"] = m.group(1)
+    m = re.search(r"(\d+(?:-\d+)?)\s*cent slide\s*<\s*600", flat, re.I)
+    if m:
+        terms["slide_under_600_cents"] = m.group(1)
+    terms["fob_net_weights"] = bool(re.search(r"FOB based on net weights", flat, re.I))
+    m = re.search(r"[Cc]urrent delivery is ([^.]+)\.", flat) \
+        or re.search(r"[Cc]urrent delivery cattle deliver ([^.]+)\.", flat)
+    if m:
+        terms["current_delivery"] = m.group(1).strip()[:160]
+    m = re.search(r"Deliveries are ([^.]+)\.", flat)
+    if m:
+        terms["delivery_window"] = m.group(1).strip()[:160]
+    return terms
+
+
 def parse_report(text: str, key: str) -> dict | None:
     if not text.strip():
         return None
@@ -164,6 +253,10 @@ def parse_report(text: str, key: str) -> dict | None:
     report["report_id"] = info["id"]
     report["sale_day"] = info["day"]
     report["channel"] = info.get("channel", "auction")
+    if info.get("base"):
+        report["base"] = info["base"]
+    if info.get("owner_group"):
+        report["owner_group"] = info["owner_group"]
 
     # Report period (barn weekly + video sale window) — parsed first so it can
     # serve as a sale-date fallback for video reports.
@@ -255,8 +348,23 @@ def parse_report(text: str, key: str) -> dict | None:
         if len(chunk) > 40 and "." in chunk:
             report["narrative"] = chunk[:3000]
 
-    # Parse price tables
-    entries = _parse_price_tables(text)
+    # Price tables. For video reports, restrict to the North Central (MT)
+    # region so southern/eastern consignments don't blend into the Montana
+    # number. Barn reports have no region dividers and parse unchanged.
+    if report["channel"] == "video":
+        mt_label, region_text = _select_mt_region(text)
+        report["mt_region_label"] = mt_label
+        report["has_mt_region"] = mt_label is not None
+        report["mt_region_note"] = (
+            "USDA groups Montana cattle into this multi-state region; "
+            "figures are regional, not Montana-only."
+        )
+        report["terms"] = _parse_video_terms(text)
+        table_text = region_text
+    else:
+        table_text = text
+
+    entries = _parse_price_tables(table_text)
     report["entries"] = entries
 
     # Build summary by weight class for quick access
@@ -285,43 +393,55 @@ def _parse_price_tables(text: str) -> list[dict]:
         pricing = section_match.group(3).strip()
         start = section_match.end()
 
-        # Find the end of this section (next category header or end of text)
+        # Find the end of this section (next category header or end of text).
+        # NOTE: we deliberately do NOT bound on "Source:" — video reports print
+        # a "Source:" footer on every page, which would truncate a multi-page
+        # price table at the first page break. Rows are matched individually, so
+        # repeated page headers/footers between rows are simply skipped.
         next_section = re.search(
-            r"\n\s*(?:STEERS|HEIFERS|COWS|BULLS|STOCK|BRED|COW-CALF|REPLACEMENT|SLAUGHTER|Source:)",
+            r"\n\s*(?:STEERS|HEIFERS|COWS|BULLS|STOCK|BRED|COW-CALF|REPLACEMENT|SLAUGHTER)",
             text[start:],
         )
         end = start + next_section.start() if next_section else len(text)
         table_text = text[start:end]
 
-        # Parse data rows
+        # Parse data rows. Barn rows start with Head; video rows may carry an
+        # optional leading Delivery token ("Current", "Jun", "May-Jun") and use
+        # spaced hyphens in ranges plus multi-word notes ("Value Added"). The
+        # optional/whitespace-tolerant pattern handles both without changing
+        # barn behavior.
         row_pattern = re.compile(
-            r"^\s*(\d+)\s+"  # Head
-            r"([\d,]+-?[\d,]*)\s+"  # Wt Range
-            r"([\d,]+)\s+"  # Avg Wt
-            r"([\d,.]+(?:-[\d,.]+)?)\s+"  # Price Range
-            r"([\d,.]+)"  # Avg Price
-            r"(?:\s+(\w+))?",  # Optional note (Fleshy, Full, Thin, etc.)
+            r"^[ \t]*"
+            r"(?:(Current|[A-Z][a-z]{2}(?:-[A-Z][a-z]{2})?)\s+)?"  # opt Delivery
+            r"(\d{1,4})\s+"                                          # Head
+            r"([\d,]+(?:\s*-\s*[\d,]+)?)\s+"                         # Wt Range
+            r"([\d,]+)\s+"                                           # Avg Wt
+            r"([\d,.]+(?:\s*-\s*[\d,.]+)?)\s+"                       # Price Range
+            r"([\d,.]+)"                                             # Avg Price
+            r"(?:\s+([A-Za-z][A-Za-z ]*?))?[ \t]*$",                # opt note
             re.MULTILINE,
         )
 
         for m in row_pattern.finditer(table_text):
-            wt_parts = m.group(2).replace(",", "").split("-")
-            price_parts = m.group(4).replace(",", "").split("-")
+            wt_parts = m.group(3).replace(",", "").replace(" ", "").split("-")
+            price_parts = m.group(5).replace(",", "").replace(" ", "").split("-")
 
             entry = {
                 "type": animal_type,
                 "grade": grade,
                 "pricing": pricing.lower(),
-                "head": int(m.group(1)),
+                "head": int(m.group(2)),
                 "wt_low": int(wt_parts[0]),
                 "wt_high": int(wt_parts[-1]),
-                "avg_wt": int(m.group(3).replace(",", "")),
+                "avg_wt": int(m.group(4).replace(",", "")),
                 "price_low": float(price_parts[0]),
                 "price_high": float(price_parts[-1]),
-                "avg_price": float(m.group(5).replace(",", "")),
+                "avg_price": float(m.group(6).replace(",", "")),
             }
-            if m.group(6):
-                entry["note"] = m.group(6)
+            if m.group(1):
+                entry["delivery"] = m.group(1).strip()
+            if m.group(7):
+                entry["note"] = m.group(7).strip()
             entries.append(entry)
 
     return entries
@@ -343,21 +463,31 @@ def _build_summary(entries: list[dict]) -> dict:
             if bucket:
                 summary["heifers"].setdefault(bucket, []).append(e)
 
-    # Aggregate each bucket
+    def _agg(rows: list[dict]) -> dict:
+        total_head = sum(r["head"] for r in rows)
+        wtd_price = (
+            sum(r["avg_price"] * r["head"] for r in rows) / total_head
+            if total_head else 0
+        )
+        return {
+            "head": total_head,
+            "wtd_avg_price": round(wtd_price, 2),
+            "price_low": min(r["price_low"] for r in rows),
+            "price_high": max(r["price_high"] for r in rows),
+            # A 50-lb band thinner than this is too sparse to trust on its own;
+            # consumers should fall back to the 550_649_combined view.
+            "thin": total_head < THIN_BAND_HEAD_FLOOR,
+        }
+
+    # Keep the 550-599 / 600-649 split AND a combined 550-649 view, because on
+    # seasonal video sales a 50-lb band can be too thin to publish alone.
+    raw = {g: dict(summary[g]) for g in ("steers", "heifers")}
     for gender in ("steers", "heifers"):
-        for bucket, rows in summary[gender].items():
-            total_head = sum(r["head"] for r in rows)
-            wtd_price = (
-                sum(r["avg_price"] * r["head"] for r in rows) / total_head
-                if total_head
-                else 0
-            )
-            summary[gender][bucket] = {
-                "head": total_head,
-                "wtd_avg_price": round(wtd_price, 2),
-                "price_low": min(r["price_low"] for r in rows),
-                "price_high": max(r["price_high"] for r in rows),
-            }
+        for bucket, rows in raw[gender].items():
+            summary[gender][bucket] = _agg(rows)
+        combined = raw[gender].get("550_599", []) + raw[gender].get("600_649", [])
+        if combined:
+            summary[gender]["550_649_combined"] = _agg(combined)
 
     return summary
 
@@ -543,6 +673,46 @@ def consolidate_video_latest(auction_dir: Path, verbose: bool = False) -> None:
     freshest["series_roster"] = [
         {"key": k, "name": v["name"], "report_id": v["id"]}
         for k, v in VIDEO_REPORTS.items()
+    ]
+
+    # Seasonality + cross-house sale-terms comparison for the website page.
+    today = dt.date.today()
+    latest_iso = freshest.get("sale_date", "")
+    days_since = None
+    try:
+        days_since = (today - dt.date.fromisoformat(latest_iso)).days
+    except ValueError:
+        pass
+    in_window = 4 <= today.month <= 10  # video season ~Apr-Oct
+    freshest["season"] = {
+        "in_season_window": in_window,
+        "latest_sale_date": latest_iso or None,
+        "days_since_latest": days_since,
+        "stale": days_since is not None and days_since > 45,
+        "banner": (
+            "Video auction season is active — figures update as sales report."
+            if in_window else
+            "Off-season — video auctions are seasonal (≈April–October). "
+            "Figures are from the most recent sales."
+        ),
+    }
+    freshest["mt_region_disclaimer"] = (
+        "USDA AMS video reports group Montana cattle into a multi-state North "
+        "Central region (CO, IA, MT, ND, NE, SD, WY). Figures are regional, "
+        "not Montana-only."
+    )
+    freshest["terms_comparison"] = [
+        {
+            "key": c.get("source_key"),
+            "auction": c.get("auction"),
+            "base": c.get("base"),
+            "owner_group": c.get("owner_group"),
+            "report_id": c.get("report_id"),
+            "sale_date": c.get("sale_date"),
+            "has_mt_region": c.get("has_mt_region"),
+            **(c.get("terms") or {}),
+        }
+        for c in sorted(candidates, key=lambda r: r.get("source_key", ""))
     ]
 
     out_path = auction_dir / "video_latest.json"

@@ -1,0 +1,76 @@
+{
+  "source_key": "blc_video",
+  "auction": "Billings Livestock Commission Video",
+  "report_id": "AMS_3631",
+  "sale_day": "Seasonal",
+  "channel": "video",
+  "base": "Billings, MT",
+  "owner_group": "billings",
+  "sale_date": "2022-03-31",
+  "total_receipts": 750,
+  "breakdown": {
+    "feeder": {
+      "head": 750,
+      "pct": 100.0
+    }
+  },
+  "narrative": "Billings livestock hosted its first in house video auction today. Demand was mostly good. Only 4 lots sold today all off one ranch. These cattle were backgrounded and in mostly moderate flesh. Market activity was moderate to active. Supply included: 100% Feeder Cattle (60% Steers, 40% Heifers). Feeder cattle over 600 lbs was 100%. Feeder Cattle prices FOB based on net weights after a 3% pencil shrink or equivalent, with a 8 cent slide > 600 lbs and 0 cent slide < 600 lbs.",
+  "mt_region_label": "North Central (CO, IA, MT, ND, NE, SD, WY)",
+  "has_mt_region": true,
+  "mt_region_note": "USDA groups Montana cattle into this multi-state region; figures are regional, not Montana-only.",
+  "terms": {
+    "pencil_shrink_pct": "3",
+    "slide_over_600_cents": "8",
+    "slide_under_600_cents": "0",
+    "fob_net_weights": true
+  },
+  "entries": [
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 450,
+      "wt_low": 790,
+      "wt_high": 790,
+      "avg_wt": 790,
+      "price_low": 153.0,
+      "price_high": 153.0,
+      "avg_price": 153.0,
+      "delivery": "Current"
+    },
+    {
+      "type": "HEIFERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 300,
+      "wt_low": 775,
+      "wt_high": 775,
+      "avg_wt": 775,
+      "price_low": 147.5,
+      "price_high": 149.0,
+      "avg_price": 148.25,
+      "delivery": "Current"
+    }
+  ],
+  "summary": {
+    "steers": {
+      "750_799": {
+        "head": 450,
+        "wtd_avg_price": 153.0,
+        "price_low": 153.0,
+        "price_high": 153.0,
+        "thin": false
+      }
+    },
+    "heifers": {
+      "750_799": {
+        "head": 300,
+        "wtd_avg_price": 148.25,
+        "price_low": 147.5,
+        "price_high": 149.0,
+        "thin": false
+      }
+    }
+  },
+  "parsed_at": "2026-06-21T14:35:34.846499Z"
+}
