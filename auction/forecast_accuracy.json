@@ -1,33 +1,82 @@
 {
-  "generated_at": "2026-06-21T19:33:19.115242+00:00",
+  "generated_at": "2026-06-21T19:42:50.913270+00:00",
   "realized_source": "mt_weekly",
   "forecast_field": "steer mid, $/cwt",
   "min_n_for_significance": 8,
   "overall": {
-    "n": 0,
+    "n": 3,
+    "bias_cwt": 8.04,
+    "mpe_pct": 1.24,
+    "mad_cwt": 30.66,
+    "mape_pct": 6.25,
+    "mse": 1004.45,
+    "rmse_cwt": 31.69,
+    "sufficient": false,
     "calibration": {
-      "n": 0,
-      "note": "need >=3 pairs for a regression"
+      "n": 3,
+      "note": "no variance in forecast values"
     }
   },
   "by_band": {
     "550_599": {
-      "n": 0,
+      "n": 2,
+      "bias_cwt": 29.02,
+      "mpe_pct": 5.62,
+      "mad_cwt": 29.02,
+      "mape_pct": 5.62,
+      "mse": 930.72,
+      "rmse_cwt": 30.51,
+      "sufficient": false,
       "calibration": {
-        "n": 0,
+        "n": 2,
         "note": "need >=3 pairs for a regression"
       }
     },
     "600_649": {
-      "n": 0,
+      "n": 1,
+      "bias_cwt": -33.94,
+      "mpe_pct": -7.52,
+      "mad_cwt": 33.94,
+      "mape_pct": 7.52,
+      "mse": 1151.92,
+      "rmse_cwt": 33.94,
+      "sufficient": false,
       "calibration": {
-        "n": 0,
+        "n": 1,
         "note": "need >=3 pairs for a regression"
       }
     }
   },
-  "n_forecasts_available": 3,
+  "n_forecasts_available": 6,
   "n_realized_obs": 4,
-  "pairs": [],
+  "pairs": [
+    {
+      "date": "2026-05-04",
+      "band": "550_599",
+      "quarter": "Q2 2026",
+      "forecast_as_of": "2026-05-04",
+      "forecast": 485.0,
+      "actual": 523.42,
+      "error_cwt": 38.42
+    },
+    {
+      "date": "2026-05-11",
+      "band": "550_599",
+      "quarter": "Q2 2026",
+      "forecast_as_of": "2026-05-11",
+      "forecast": 485.0,
+      "actual": 504.63,
+      "error_cwt": 19.63
+    },
+    {
+      "date": "2026-05-18",
+      "band": "600_649",
+      "quarter": "Q2 2026",
+      "forecast_as_of": "2026-05-18",
+      "forecast": 485.0,
+      "actual": 451.06,
+      "error_cwt": -33.94
+    }
+  ],
   "note": "Metrics pair each realized mt_weekly steer wtd-avg with the HC quarterly forecast mid in effect that week. Driver regression (calf price ~ Choice-Select / feeder-corn / PTI / slaughter) is the next stage once a signifier time-series is logged. Treat metrics with n < 8 as indicative."
 }
