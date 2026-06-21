@@ -1648,5 +1648,110 @@
       "current_delivery": "14 days from the last day of the sale and is up to and including June 26, 2026",
       "delivery_window": "Current through July 2026"
     }
+  ],
+  "houses": [
+    {
+      "key": "superior",
+      "name": "Superior Livestock Auction",
+      "owner_group": "independent",
+      "sale_date": "2026-06-17",
+      "total_receipts": 64911,
+      "has_mt_region": true,
+      "mt_region_label": "North Central (CO, IA, MT, ND, NE, SD, WY)",
+      "steers": {
+        "550_599": {
+          "head": 2158,
+          "wtd_avg_price": 518.26,
+          "price_low": 475.0,
+          "price_high": 552.5,
+          "thin": false
+        },
+        "600_649": {
+          "head": 2277,
+          "wtd_avg_price": 479.68,
+          "price_low": 460.0,
+          "price_high": 500.0,
+          "thin": false
+        },
+        "550_649_combined": {
+          "head": 4435,
+          "wtd_avg_price": 498.45,
+          "price_low": 460.0,
+          "price_high": 552.5,
+          "thin": false
+        }
+      },
+      "heifers": {
+        "550_599": {
+          "head": 1004,
+          "wtd_avg_price": 467.5,
+          "price_low": 440.0,
+          "price_high": 490.0,
+          "thin": false
+        },
+        "600_649": {
+          "head": 1064,
+          "wtd_avg_price": 439.59,
+          "price_low": 425.0,
+          "price_high": 480.0,
+          "thin": false
+        },
+        "550_649_combined": {
+          "head": 2068,
+          "wtd_avg_price": 453.14,
+          "price_low": 425.0,
+          "price_high": 490.0,
+          "thin": false
+        }
+      }
+    },
+    {
+      "key": "nlva",
+      "name": "Northern Livestock Video Auction",
+      "owner_group": "billings",
+      "sale_date": "2026-05-19",
+      "total_receipts": 9828,
+      "has_mt_region": true,
+      "mt_region_label": "North Central (CO, IA, MT, ND, NE, SD, WY)",
+      "steers": {
+        "550_599": {
+          "head": 736,
+          "wtd_avg_price": 519.2,
+          "price_low": 491.0,
+          "price_high": 530.0,
+          "thin": false
+        },
+        "600_649": {
+          "head": 580,
+          "wtd_avg_price": 470.81,
+          "price_low": 452.0,
+          "price_high": 491.0,
+          "thin": false
+        },
+        "550_649_combined": {
+          "head": 1316,
+          "wtd_avg_price": 497.88,
+          "price_low": 452.0,
+          "price_high": 530.0,
+          "thin": false
+        }
+      },
+      "heifers": {
+        "600_649": {
+          "head": 280,
+          "wtd_avg_price": 434.58,
+          "price_low": 425.0,
+          "price_high": 442.0,
+          "thin": false
+        },
+        "550_649_combined": {
+          "head": 280,
+          "wtd_avg_price": 434.58,
+          "price_low": 425.0,
+          "price_high": 442.0,
+          "thin": false
+        }
+      }
+    }
   ]
 }

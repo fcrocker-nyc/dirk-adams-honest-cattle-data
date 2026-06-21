@@ -715,6 +715,41 @@ def consolidate_video_latest(auction_dir: Path, verbose: bool = False) -> None:
         for c in sorted(candidates, key=lambda r: r.get("source_key", ""))
     ]
 
+    # Per-house calf-band summary so the app can show more than one house
+    # (e.g. Superior + NLVA) with the tight 550-599 / 600-649 bands. Only houses
+    # that actually have North Central steer calf data this season are included
+    # (drops dormant/off-region houses like BLC or a heifers-only WVM sale).
+    _BANDS = ("550_599", "600_649", "550_649_combined")
+
+    def _bands(summary, sex):
+        out = {}
+        for b in _BANDS:
+            s = (summary or {}).get(sex, {}).get(b)
+            if s and s.get("head"):
+                out[b] = {"head": s["head"], "wtd_avg_price": s.get("wtd_avg_price"),
+                          "price_low": s.get("price_low"), "price_high": s.get("price_high"),
+                          "thin": s.get("thin", False)}
+        return out
+
+    houses = []
+    for c in sorted(candidates, key=lambda r: r.get("sale_date", ""), reverse=True):
+        steers = _bands(c.get("summary"), "steers")
+        heifers = _bands(c.get("summary"), "heifers")
+        if not steers:  # no calf-weight steer data in the MT region this sale
+            continue
+        houses.append({
+            "key": c.get("source_key"),
+            "name": c.get("auction"),
+            "owner_group": c.get("owner_group"),
+            "sale_date": c.get("sale_date"),
+            "total_receipts": c.get("total_receipts"),
+            "has_mt_region": c.get("has_mt_region"),
+            "mt_region_label": c.get("mt_region_label"),
+            "steers": steers,
+            "heifers": heifers,
+        })
+    freshest["houses"] = houses
+
     out_path = auction_dir / "video_latest.json"
     new_text = json.dumps(freshest, ensure_ascii=False, indent=2) + "\n"
     if out_path.exists() and out_path.read_text(encoding="utf-8") == new_text:
