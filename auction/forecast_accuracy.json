@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-06-21T19:33:19.115242+00:00",
+  "realized_source": "mt_weekly",
+  "forecast_field": "steer mid, $/cwt",
+  "min_n_for_significance": 8,
+  "overall": {
+    "n": 0,
+    "calibration": {
+      "n": 0,
+      "note": "need >=3 pairs for a regression"
+    }
+  },
+  "by_band": {
+    "550_599": {
+      "n": 0,
+      "calibration": {
+        "n": 0,
+        "note": "need >=3 pairs for a regression"
+      }
+    },
+    "600_649": {
+      "n": 0,
+      "calibration": {
+        "n": 0,
+        "note": "need >=3 pairs for a regression"
+      }
+    }
+  },
+  "n_forecasts_available": 3,
+  "n_realized_obs": 4,
+  "pairs": [],
+  "note": "Metrics pair each realized mt_weekly steer wtd-avg with the HC quarterly forecast mid in effect that week. Driver regression (calf price ~ Choice-Select / feeder-corn / PTI / slaughter) is the next stage once a signifier time-series is logged. Treat metrics with n < 8 as indicative."
+}
