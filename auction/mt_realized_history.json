@@ -1,0 +1,1579 @@
+{
+  "source": "AMS_1778 Montana Weekly Livestock Auction Summary (marsapi)",
+  "generated_at": "2026-06-21T20:17:24.295952+00:00",
+  "note": "Feeder steer M&L 1, head-weighted by avg_weight band. Realized actuals for the forecast accuracy backtest (forecast_accuracy.py).",
+  "records": [
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-01-08",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 58,
+            "wtd_avg_price": 266.59
+          },
+          "550_599": {
+            "head": 51,
+            "wtd_avg_price": 278.2
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-01-15",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 320,
+            "wtd_avg_price": 299.85
+          },
+          "600_649": {
+            "head": 187,
+            "wtd_avg_price": 277.95
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-01-22",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 68,
+            "wtd_avg_price": 295.19
+          },
+          "550_599": {
+            "head": 133,
+            "wtd_avg_price": 299.31
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-01-29",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 381,
+            "wtd_avg_price": 308.27
+          },
+          "600_649": {
+            "head": 370,
+            "wtd_avg_price": 286.78
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-02-05",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 183,
+            "wtd_avg_price": 291.0
+          },
+          "550_599": {
+            "head": 425,
+            "wtd_avg_price": 308.12
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-02-12",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 395,
+            "wtd_avg_price": 320.17
+          },
+          "600_649": {
+            "head": 438,
+            "wtd_avg_price": 297.71
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-02-19",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 118,
+            "wtd_avg_price": 314.05
+          },
+          "550_599": {
+            "head": 108,
+            "wtd_avg_price": 325.34
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-02-26",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 300,
+            "wtd_avg_price": 314.94
+          },
+          "550_599": {
+            "head": 336,
+            "wtd_avg_price": 320.4
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-03-04",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 4,
+            "wtd_avg_price": 294.0
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-03-11",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 280,
+            "wtd_avg_price": 317.32
+          },
+          "550_599": {
+            "head": 292,
+            "wtd_avg_price": 331.72
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-03-18",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 2,
+            "wtd_avg_price": 323.97
+          },
+          "600_649": {
+            "head": 53,
+            "wtd_avg_price": 309.47
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-03-25",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 131,
+            "wtd_avg_price": 335.62
+          },
+          "600_649": {
+            "head": 97,
+            "wtd_avg_price": 313.76
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-04-01",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 32,
+            "wtd_avg_price": 334.0
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-04-08",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 419,
+            "wtd_avg_price": 315.18
+          },
+          "550_599": {
+            "head": 171,
+            "wtd_avg_price": 334.71
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-04-15",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 17,
+            "wtd_avg_price": 306.25
+          },
+          "550_599": {
+            "head": 32,
+            "wtd_avg_price": 321.62
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-04-22",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 192,
+            "wtd_avg_price": 319.46
+          },
+          "550_599": {
+            "head": 229,
+            "wtd_avg_price": 335.85
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-04-29",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 9,
+            "wtd_avg_price": 323.55
+          },
+          "600_649": {
+            "head": 24,
+            "wtd_avg_price": 306.6
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-05-06",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 95,
+            "wtd_avg_price": 311.13
+          },
+          "550_599": {
+            "head": 80,
+            "wtd_avg_price": 328.86
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-05-20",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 33,
+            "wtd_avg_price": 316.06
+          },
+          "550_599": {
+            "head": 56,
+            "wtd_avg_price": 330.21
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-05-27",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 30,
+            "wtd_avg_price": 332.0
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-06-03",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 11,
+            "wtd_avg_price": 335.21
+          },
+          "600_649": {
+            "head": 180,
+            "wtd_avg_price": 321.02
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-06-10",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 6,
+            "wtd_avg_price": 347.48
+          },
+          "600_649": {
+            "head": 7,
+            "wtd_avg_price": 318.0
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-06-24",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 1,
+            "wtd_avg_price": 320.0
+          },
+          "550_599": {
+            "head": 32,
+            "wtd_avg_price": 328.01
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-07-01",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 12,
+            "wtd_avg_price": 315.0
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-07-15",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 1,
+            "wtd_avg_price": 317.0
+          },
+          "600_649": {
+            "head": 3,
+            "wtd_avg_price": 297.0
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-09-16",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 103,
+            "wtd_avg_price": 276.28
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-09-23",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 8,
+            "wtd_avg_price": 274.31
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-09-30",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 29,
+            "wtd_avg_price": 267.62
+          },
+          "600_649": {
+            "head": 58,
+            "wtd_avg_price": 264.47
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-10-07",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 56,
+            "wtd_avg_price": 281.08
+          },
+          "550_599": {
+            "head": 56,
+            "wtd_avg_price": 280.37
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-10-14",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 216,
+            "wtd_avg_price": 286.55
+          },
+          "550_599": {
+            "head": 353,
+            "wtd_avg_price": 290.39
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-10-21",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 236,
+            "wtd_avg_price": 281.14
+          },
+          "550_599": {
+            "head": 851,
+            "wtd_avg_price": 292.07
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-10-28",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 592,
+            "wtd_avg_price": 279.25
+          },
+          "550_599": {
+            "head": 845,
+            "wtd_avg_price": 288.84
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-11-04",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 659,
+            "wtd_avg_price": 295.24
+          },
+          "600_649": {
+            "head": 602,
+            "wtd_avg_price": 278.49
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-11-11",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 764,
+            "wtd_avg_price": 296.52
+          },
+          "600_649": {
+            "head": 498,
+            "wtd_avg_price": 278.4
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-11-18",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 559,
+            "wtd_avg_price": 289.26
+          },
+          "550_599": {
+            "head": 1166,
+            "wtd_avg_price": 307.57
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-11-25",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 322,
+            "wtd_avg_price": 314.67
+          },
+          "600_649": {
+            "head": 280,
+            "wtd_avg_price": 297.15
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-12-02",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 81,
+            "wtd_avg_price": 325.99
+          },
+          "600_649": {
+            "head": 46,
+            "wtd_avg_price": 299.34
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-12-09",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 444,
+            "wtd_avg_price": 325.65
+          },
+          "600_649": {
+            "head": 403,
+            "wtd_avg_price": 303.89
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-12-16",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 560,
+            "wtd_avg_price": 324.34
+          },
+          "600_649": {
+            "head": 389,
+            "wtd_avg_price": 309.15
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2024-12-23",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 83,
+            "wtd_avg_price": 327.4
+          },
+          "600_649": {
+            "head": 212,
+            "wtd_avg_price": 312.32
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-01-13",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 237,
+            "wtd_avg_price": 331.25
+          },
+          "550_599": {
+            "head": 196,
+            "wtd_avg_price": 348.44
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-01-20",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 551,
+            "wtd_avg_price": 327.41
+          },
+          "550_599": {
+            "head": 539,
+            "wtd_avg_price": 345.36
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-01-27",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 146,
+            "wtd_avg_price": 322.92
+          },
+          "550_599": {
+            "head": 166,
+            "wtd_avg_price": 344.42
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-02-03",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 353,
+            "wtd_avg_price": 338.61
+          },
+          "550_599": {
+            "head": 285,
+            "wtd_avg_price": 360.36
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-02-10",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 35,
+            "wtd_avg_price": 337.22
+          },
+          "600_649": {
+            "head": 73,
+            "wtd_avg_price": 331.11
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-02-17",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 109,
+            "wtd_avg_price": 342.91
+          },
+          "600_649": {
+            "head": 31,
+            "wtd_avg_price": 315.86
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-02-24",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 56,
+            "wtd_avg_price": 319.13
+          },
+          "550_599": {
+            "head": 116,
+            "wtd_avg_price": 346.7
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-03-03",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 160,
+            "wtd_avg_price": 353.56
+          },
+          "600_649": {
+            "head": 301,
+            "wtd_avg_price": 337.4
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-03-10",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 56,
+            "wtd_avg_price": 331.84
+          },
+          "550_599": {
+            "head": 377,
+            "wtd_avg_price": 359.69
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-03-17",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 9,
+            "wtd_avg_price": 325.44
+          },
+          "550_599": {
+            "head": 21,
+            "wtd_avg_price": 345.38
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-03-24",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 100,
+            "wtd_avg_price": 350.9
+          },
+          "550_599": {
+            "head": 184,
+            "wtd_avg_price": 377.75
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-03-31",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 23,
+            "wtd_avg_price": 355.24
+          },
+          "600_649": {
+            "head": 40,
+            "wtd_avg_price": 341.67
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-04-07",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 282,
+            "wtd_avg_price": 350.83
+          },
+          "550_599": {
+            "head": 102,
+            "wtd_avg_price": 374.76
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-04-14",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 5,
+            "wtd_avg_price": 337.09
+          },
+          "550_599": {
+            "head": 14,
+            "wtd_avg_price": 366.0
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-04-21",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 117,
+            "wtd_avg_price": 341.34
+          },
+          "550_599": {
+            "head": 85,
+            "wtd_avg_price": 375.01
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-04-28",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 1,
+            "wtd_avg_price": 342.0
+          },
+          "550_599": {
+            "head": 44,
+            "wtd_avg_price": 368.21
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-05-05",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 169,
+            "wtd_avg_price": 387.67
+          },
+          "600_649": {
+            "head": 152,
+            "wtd_avg_price": 370.84
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-05-12",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 15,
+            "wtd_avg_price": 341.93
+          },
+          "550_599": {
+            "head": 12,
+            "wtd_avg_price": 374.13
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-05-19",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 44,
+            "wtd_avg_price": 393.49
+          },
+          "600_649": {
+            "head": 79,
+            "wtd_avg_price": 365.09
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-06-02",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 13,
+            "wtd_avg_price": 368.1
+          },
+          "550_599": {
+            "head": 75,
+            "wtd_avg_price": 390.07
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-06-09",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 1,
+            "wtd_avg_price": 365.0
+          },
+          "600_649": {
+            "head": 24,
+            "wtd_avg_price": 353.83
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-06-16",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 79,
+            "wtd_avg_price": 401.46
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-07-14",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 5,
+            "wtd_avg_price": 351.0
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-08-18",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 4,
+            "wtd_avg_price": 420.0
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-09-01",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 20,
+            "wtd_avg_price": 387.5
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-09-08",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 7,
+            "wtd_avg_price": 410.93
+          },
+          "600_649": {
+            "head": 11,
+            "wtd_avg_price": 403.6
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-09-15",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 95,
+            "wtd_avg_price": 429.42
+          },
+          "600_649": {
+            "head": 3,
+            "wtd_avg_price": 416.0
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-09-22",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 44,
+            "wtd_avg_price": 413.24
+          },
+          "600_649": {
+            "head": 23,
+            "wtd_avg_price": 390.84
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-09-29",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 30,
+            "wtd_avg_price": 412.08
+          },
+          "550_599": {
+            "head": 53,
+            "wtd_avg_price": 428.28
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-10-06",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 150,
+            "wtd_avg_price": 417.28
+          },
+          "550_599": {
+            "head": 89,
+            "wtd_avg_price": 425.38
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-10-13",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 364,
+            "wtd_avg_price": 428.78
+          },
+          "550_599": {
+            "head": 971,
+            "wtd_avg_price": 454.71
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-10-20",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 843,
+            "wtd_avg_price": 465.2
+          },
+          "600_649": {
+            "head": 720,
+            "wtd_avg_price": 435.68
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-10-27",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 1105,
+            "wtd_avg_price": 423.17
+          },
+          "550_599": {
+            "head": 957,
+            "wtd_avg_price": 441.85
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-11-03",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 894,
+            "wtd_avg_price": 396.76
+          },
+          "550_599": {
+            "head": 871,
+            "wtd_avg_price": 414.92
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-11-10",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 1055,
+            "wtd_avg_price": 414.51
+          },
+          "600_649": {
+            "head": 655,
+            "wtd_avg_price": 394.3
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-11-17",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 602,
+            "wtd_avg_price": 418.71
+          },
+          "600_649": {
+            "head": 400,
+            "wtd_avg_price": 397.07
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-11-24",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 532,
+            "wtd_avg_price": 420.99
+          },
+          "600_649": {
+            "head": 573,
+            "wtd_avg_price": 392.27
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-12-01",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 32,
+            "wtd_avg_price": 360.41
+          },
+          "550_599": {
+            "head": 74,
+            "wtd_avg_price": 379.17
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-12-08",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 178,
+            "wtd_avg_price": 418.64
+          },
+          "600_649": {
+            "head": 229,
+            "wtd_avg_price": 396.55
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-12-15",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 397,
+            "wtd_avg_price": 437.81
+          },
+          "600_649": {
+            "head": 215,
+            "wtd_avg_price": 408.48
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2025-12-22",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 209,
+            "wtd_avg_price": 457.79
+          },
+          "600_649": {
+            "head": 78,
+            "wtd_avg_price": 420.55
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2026-01-12",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 262,
+            "wtd_avg_price": 438.47
+          },
+          "550_599": {
+            "head": 175,
+            "wtd_avg_price": 465.74
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2026-01-19",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 550,
+            "wtd_avg_price": 481.64
+          },
+          "600_649": {
+            "head": 479,
+            "wtd_avg_price": 446.63
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2026-01-26",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 439,
+            "wtd_avg_price": 437.88
+          },
+          "550_599": {
+            "head": 198,
+            "wtd_avg_price": 473.99
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2026-02-02",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 118,
+            "wtd_avg_price": 434.17
+          },
+          "550_599": {
+            "head": 127,
+            "wtd_avg_price": 474.9
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2026-02-09",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 142,
+            "wtd_avg_price": 445.69
+          },
+          "550_599": {
+            "head": 132,
+            "wtd_avg_price": 488.79
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2026-02-16",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 194,
+            "wtd_avg_price": 459.52
+          },
+          "550_599": {
+            "head": 241,
+            "wtd_avg_price": 483.84
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2026-02-23",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 27,
+            "wtd_avg_price": 489.59
+          },
+          "600_649": {
+            "head": 38,
+            "wtd_avg_price": 451.65
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2026-03-02",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 136,
+            "wtd_avg_price": 465.08
+          },
+          "550_599": {
+            "head": 160,
+            "wtd_avg_price": 493.75
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2026-03-09",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 143,
+            "wtd_avg_price": 484.72
+          },
+          "600_649": {
+            "head": 86,
+            "wtd_avg_price": 453.39
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2026-03-16",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 42,
+            "wtd_avg_price": 426.69
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2026-03-23",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 140,
+            "wtd_avg_price": 448.15
+          },
+          "550_599": {
+            "head": 33,
+            "wtd_avg_price": 484.89
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2026-04-06",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 247,
+            "wtd_avg_price": 471.23
+          },
+          "550_599": {
+            "head": 131,
+            "wtd_avg_price": 498.52
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2026-04-13",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 3,
+            "wtd_avg_price": 456.52
+          },
+          "550_599": {
+            "head": 16,
+            "wtd_avg_price": 492.0
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2026-04-20",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 100,
+            "wtd_avg_price": 496.04
+          },
+          "600_649": {
+            "head": 120,
+            "wtd_avg_price": 457.89
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2026-04-27",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 5,
+            "wtd_avg_price": 452.69
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2026-05-04",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 81,
+            "wtd_avg_price": 523.42
+          },
+          "600_649": {
+            "head": 49,
+            "wtd_avg_price": 489.92
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2026-05-11",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 3,
+            "wtd_avg_price": 474.0
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2026-05-18",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 13,
+            "wtd_avg_price": 487.56
+          },
+          "600_649": {
+            "head": 27,
+            "wtd_avg_price": 451.06
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2026-06-01",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 5,
+            "wtd_avg_price": 479.4
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2026-06-08",
+      "summary": {
+        "steers": {
+          "550_599": {
+            "head": 21,
+            "wtd_avg_price": 483.91
+          },
+          "600_649": {
+            "head": 10,
+            "wtd_avg_price": 442.01
+          }
+        }
+      }
+    },
+    {
+      "source_key": "mt_weekly",
+      "sale_date": "2026-06-15",
+      "summary": {
+        "steers": {
+          "600_649": {
+            "head": 2,
+            "wtd_avg_price": 442.5
+          }
+        }
+      }
+    }
+  ]
+}

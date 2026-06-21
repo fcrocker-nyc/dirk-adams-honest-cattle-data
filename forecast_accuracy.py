@@ -103,17 +103,37 @@ def forecast_mid(quarter: dict, band: str, sex: str = "steer") -> float | None:
 
 # --------------------------------------------------------------------------- realized actuals
 def realized_observations(repo: Path) -> list[dict]:
-    """[{date, band, actual}] from history.json mt_weekly steer wtd-avg prices."""
-    hist = load_json(repo / "auction" / "history.json") or []
+    """[{date, band, actual, head}] of mt_weekly feeder-steer wtd-avg prices.
+
+    Prefers the deep AMS_1778 backfill (mt_realized_history.json, built by
+    backfill_mt_realized.py) and merges in any newer weeks from the daily
+    history.json, deduped by (date, band) — backfill wins on overlap.
+    """
+    records: list[dict] = []
+    deep = load_json(repo / "auction" / "mt_realized_history.json") or {}
+    deep_records = deep.get("records", [])
+    records += deep_records
+    # Only add history.json weeks NEWER than the deep series covers — the two
+    # sources are the same AMS_1778 report and label the same week differently
+    # (Monday report_date vs the PDF's parsed date), so overlapping them would
+    # double-count a week under two labels.
+    latest_deep = max((r.get("sale_date", "") for r in deep_records), default="")
+    records += [r for r in (load_json(repo / "auction" / "history.json") or [])
+                if r.get("source_key") == REALIZED_SOURCE
+                and (r.get("sale_date", "") > latest_deep)]
+
+    seen: set[tuple[str, str]] = set()
     obs = []
-    for r in hist:
-        if r.get("source_key") != REALIZED_SOURCE:
-            continue
+    for r in records:  # backfill records come first → win on dedup
         date = r.get("sale_date")
         steers = (r.get("summary") or {}).get("steers") or {}
         for band in BANDS:
+            key = (date, band)
+            if key in seen:
+                continue
             cell = steers.get(band)
             if cell and cell.get("wtd_avg_price") and (cell.get("head") or 0) >= MIN_HEAD:
+                seen.add(key)
                 obs.append({"date": date, "band": band,
                             "actual": float(cell["wtd_avg_price"]), "head": cell.get("head")})
     return obs
