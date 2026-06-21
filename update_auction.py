@@ -642,6 +642,22 @@ def main() -> int:
     # decides seasonality from sale_date freshness.
     consolidate_video_latest(auction_dir, verbose=args.verbose)
 
+    # Refresh the forecast accuracy scorecard (MPE/MAD/MSE + calibration
+    # regression) now that this run has freshened the realized actuals in
+    # history.json. Lives here because the auction workflow commits auction/.
+    # Best-effort: never fail the auction job over the scorecard.
+    try:
+        import forecast_accuracy as fa
+        acc = fa.build(args.out, fetch=True)
+        (auction_dir / "forecast_accuracy.json").write_text(
+            json.dumps(acc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        if args.verbose:
+            o = acc.get("overall", {})
+            print(f"[auction] accuracy: {o.get('n', 0)} pairs | MPE {o.get('mpe_pct', '-')}% "
+                  f"RMSE {o.get('rmse_cwt', '-')} (sufficient={o.get('sufficient', False)})")
+    except Exception as exc:  # noqa: BLE001
+        print(f"[auction] accuracy refresh skipped: {exc}", file=sys.stderr)
+
     print(f"[auction] {changed} of {len(args.reports)} reports updated")
     return 0
 
