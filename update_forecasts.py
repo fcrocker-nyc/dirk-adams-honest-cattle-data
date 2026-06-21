@@ -229,6 +229,53 @@ def _band(range_cell: str, mid_cell: str) -> dict | None:
 
 # ---------- Post → week record ------------------------------------------------
 
+def _band_key(disp: str) -> str | None:
+    """'550–599' / '600-649' → '550_599' / '600_649'."""
+    nums = re.findall(r"\d+", disp or "")
+    return f"{nums[0]}_{nums[1]}" if len(nums) >= 2 else None
+
+
+def parse_quarter_band_row(row: list[str]) -> dict | None:
+    """v1.6 split-band row:
+        0 Quarter  1 Band  2 Status  3 Steer Range  4 Steer Mid  5 Heifer Range  6 Heifer Mid
+    """
+    if len(row) < 7:
+        return None
+    label = row[0].strip()
+    if not re.match(r"^Q[1-4]\s+\d{4}$", label):
+        return None
+    band = _band_key(row[1])
+    if not band:
+        return None
+    return {
+        "label": label,
+        "band": band,
+        "status": normalize_status(row[2]),
+        "steer": _band(row[3], row[4]),
+        "heifer": _band(row[5], row[6]),
+    }
+
+
+def _blend(bands: dict) -> dict | None:
+    """Quarter-level steer/heifer (550–650 equivalent) blended from the two
+    bands, so consumers reading the legacy flat fields keep working."""
+    out: dict = {}
+    for sex in ("steer", "heifer"):
+        parts = [b[sex] for b in bands.values() if b.get(sex)]
+        if not parts:
+            out[sex] = None
+            continue
+        lows = [p["low"] for p in parts if p.get("low") is not None]
+        highs = [p["high"] for p in parts if p.get("high") is not None]
+        mids = [p["mid"] for p in parts if p.get("mid") is not None]
+        out[sex] = {
+            "low": min(lows) if lows else None,
+            "high": max(highs) if highs else None,
+            "mid": round(sum(mids) / len(mids)) if mids else None,
+        }
+    return out
+
+
 def post_to_week(post: dict) -> dict | None:
     body = (post.get("content") or {}).get("rendered") or ""
     collector = TableCollector()
@@ -238,15 +285,37 @@ def post_to_week(post: dict) -> dict | None:
     if not rows:
         return None
 
-    # Detect & skip a header row by looking for the literal "Quarter" cell.
+    # Detect the header row + whether this is the v1.6 split-band layout
+    # (a "Band" column → two rows per quarter).
+    split = False
     if rows and rows[0] and rows[0][0].strip().lower() == "quarter":
+        split = "band" in " ".join(c.lower() for c in rows[0])
         rows = rows[1:]
 
     quarters: list[dict] = []
-    for r in rows:
-        q = parse_quarter_row(r)
-        if q:
-            quarters.append(q)
+    if split:
+        by_quarter: dict[str, dict] = {}
+        order: list[str] = []
+        for r in rows:
+            q = parse_quarter_band_row(r)
+            if not q:
+                continue
+            label = q["label"]
+            if label not in by_quarter:
+                by_quarter[label] = {"label": label, "status": q["status"], "bands": {}}
+                order.append(label)
+            by_quarter[label]["bands"][q["band"]] = {"steer": q["steer"], "heifer": q["heifer"]}
+        for label in order:
+            qd = by_quarter[label]
+            blended = _blend(qd["bands"])
+            qd["steer"] = blended.get("steer")
+            qd["heifer"] = blended.get("heifer")
+            quarters.append(qd)
+    else:
+        for r in rows:
+            q = parse_quarter_row(r)
+            if q:
+                quarters.append(q)
 
     if not quarters:
         return None
@@ -259,7 +328,9 @@ def post_to_week(post: dict) -> dict | None:
         "as_of": iso_date,
         "source_url": post.get("link") or "",
         "source_title": title,
-        "class_note": "550–650 lb Montana-origin steers / heifers, FOB auction",
+        "class_note": ("550–599 and 600–649 lb Montana-origin steers / heifers, FOB auction"
+                       if split else
+                       "550–650 lb Montana-origin steers / heifers, FOB auction"),
         "quarters": quarters,
     }
 
