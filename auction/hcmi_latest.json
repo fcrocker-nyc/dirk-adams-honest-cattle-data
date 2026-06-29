@@ -1,0 +1,36 @@
+{
+  "week_ending": "06/27/2026",
+  "hcmi": 149.5,
+  "wow_pts": 1.2,
+  "pct_vs_2024": 49.5,
+  "base_year": 2024,
+  "components": {
+    "feeder_gf": {
+      "now": 369.85,
+      "base": 248.08,
+      "index": 149.1,
+      "weight": 0.421
+    },
+    "live_le": {
+      "now": 257.45,
+      "base": 183.66,
+      "index": 140.2,
+      "weight": 0.263
+    },
+    "mt_steer": {
+      "now": 481.74,
+      "base": 296.03,
+      "index": 162.7,
+      "weight": 0.211,
+      "source": "carry"
+    },
+    "boning": {
+      "now": 184.85,
+      "base": 125.09,
+      "index": 147.8,
+      "weight": 0.105
+    }
+  },
+  "computed_at": "2026-06-29",
+  "source": "Honest Cattle Market Index v1.1 \u2014 CME GF/LE settlements + USDA AMS_1778 head-weighted; base 2024 = 100"
+}
