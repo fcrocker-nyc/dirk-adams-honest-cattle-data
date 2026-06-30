@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-06-29T15:39:05.226083+00:00",
+  "generated_at": "2026-06-30T14:09:45.693778+00:00",
   "realized_source": "mt_weekly",
   "forecast_field": "steer mid, $/cwt",
   "min_n_for_significance": 8,
   "overall": {
     "n": 5,
-    "bias_cwt": -2.27,
-    "mpe_pct": -0.69,
-    "mad_cwt": 19.6,
-    "mape_pct": 4.03,
-    "mse": 607.91,
-    "rmse_cwt": 24.66,
+    "bias_cwt": -2.87,
+    "mpe_pct": -0.81,
+    "mad_cwt": 20.2,
+    "mape_pct": 4.15,
+    "mse": 633.29,
+    "rmse_cwt": 25.17,
     "sufficient": false,
     "calibration": {
       "n": 5,
-      "slope": -0.086,
-      "intercept_cwt": 528.97,
+      "slope": -0.075,
+      "intercept_cwt": 523.51,
       "r_squared": 0.001,
       "sufficient": false
     }
@@ -23,17 +23,17 @@
   "by_band": {
     "550_599": {
       "n": 3,
-      "bias_cwt": 5.89,
-      "mpe_pct": 1.02,
-      "mad_cwt": 19.72,
-      "mape_pct": 3.87,
-      "mse": 621.14,
-      "rmse_cwt": 24.92,
+      "bias_cwt": 4.89,
+      "mpe_pct": 0.82,
+      "mad_cwt": 20.72,
+      "mape_pct": 4.08,
+      "mse": 663.44,
+      "rmse_cwt": 25.76,
       "sufficient": false,
       "calibration": {
         "n": 3,
-        "slope": -0.916,
-        "intercept_cwt": 947.8,
+        "slope": -0.796,
+        "intercept_cwt": 889.87,
         "r_squared": 0.223,
         "sufficient": false
       }
@@ -53,7 +53,7 @@
       }
     }
   },
-  "n_forecasts_available": 7,
+  "n_forecasts_available": 8,
   "n_realized_obs": 157,
   "pairs": [
     {
@@ -96,10 +96,10 @@
       "date": "2026-06-29",
       "band": "550_599",
       "quarter": "Q2 2026",
-      "forecast_as_of": "2026-06-22",
-      "forecast": 505.0,
+      "forecast_as_of": "2026-06-29",
+      "forecast": 508.0,
       "actual": 485.35,
-      "error_cwt": -19.65
+      "error_cwt": -22.65
     }
   ],
   "note": "Metrics pair each realized mt_weekly steer wtd-avg with the HC quarterly forecast mid in effect that week. Driver regression (calf price ~ Choice-Select / feeder-corn / PTI / slaughter) is the next stage once a signifier time-series is logged. Treat metrics with n < 8 as indicative."
