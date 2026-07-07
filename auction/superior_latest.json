@@ -6,54 +6,33 @@
   "channel": "video",
   "base": "Fort Worth, TX",
   "owner_group": "independent",
-  "sale_date": "2026-06-26",
-  "receipts_offered": 5738,
-  "total_receipts": 5614,
+  "period_start": "7/6/2026",
+  "period_end": "7/10/2026",
+  "sale_date": "2026-07-10",
+  "receipts_offered": 240422,
+  "total_receipts": 46775,
   "breakdown": {
     "feeder": {
-      "head": 5572,
-      "pct": 99.25
+      "head": 46775,
+      "pct": 100.0
     }
   },
-  "narrative": "Compared to last sale: Bulk of the supply was for future delivery. Supply included 75 percent South Central; 2 percent North Central and 23 percent Southeast. Deliveries are current through November 2026. Current delivery is 14 days from the last day of the video and is up to and including July 9, 2026. Supply included: 99% Feeder Cattle (61% Steers, 32% Heifers, 3% Beef/Dairy Steers, 4% Beef/Dairy Heifers); 1% Replacement Cattle (100% Bred Heifers). Feeder cattle over 600 lbs was 68%. Feeder Cattle prices FOB based on net weights after a 2% pencil shrink or equivalent, with a 0-25 cent slide > 600 lbs and 15-50 cent slide < 600 lbs.",
-  "mt_region_label": "North Central (CO, IA, MT, ND, NE, SD, WY)",
-  "has_mt_region": true,
+  "narrative": "Supply included 82 percent the South Central region and 18 percent from the South East region. Deliveries are current through December 2026. Current delivery is 14 days from the last day of the video (July 10th) and is up to and including July 24, 2026. Supply included: 100% Feeder Cattle (65% Steers, 35% Heifers). Feeder cattle over 600 lbs was 41%. Feeder Cattle prices FOB based on net weights after a 0-3% pencil shrink or equivalent, with up to a 35 cent slide > 600 lbs. and up to a 50 cent slide < 600 lbs. Some cattle sold with a .90-1.40 right slide.",
+  "mt_region_label": null,
+  "has_mt_region": false,
   "mt_region_note": "USDA groups Montana cattle into this multi-state region; figures are regional, not Montana-only.",
   "terms": {
-    "pencil_shrink_pct": "2",
-    "slide_over_600_cents": "0-25",
-    "slide_under_600_cents": "15-50",
+    "pencil_shrink_pct": "0-3",
+    "slide_over_600_cents": "35",
+    "slide_under_600_cents": "50",
     "fob_net_weights": true,
-    "current_delivery": "14 days from the last day of the video and is up to and including July 9, 2026",
-    "delivery_window": "current through November 2026"
+    "current_delivery": "14 days from the last day of the video (July 10th) and is up to and including July 24, 2026",
+    "delivery_window": "current through December 2026"
   },
-  "entries": [
-    {
-      "type": "HEIFERS",
-      "grade": "Medium and Large 1-2",
-      "pricing": "cwt",
-      "head": 84,
-      "wt_low": 675,
-      "wt_high": 675,
-      "avg_wt": 675,
-      "price_low": 412.5,
-      "price_high": 412.5,
-      "avg_price": 412.5,
-      "delivery": "Jul",
-      "note": "South Central"
-    }
-  ],
+  "entries": [],
   "summary": {
     "steers": {},
-    "heifers": {
-      "650_699": {
-        "head": 84,
-        "wtd_avg_price": 412.5,
-        "price_low": 412.5,
-        "price_high": 412.5,
-        "thin": false
-      }
-    }
+    "heifers": {}
   },
-  "parsed_at": "2026-06-26T14:15:05.698001Z"
+  "parsed_at": "2026-07-07T14:22:15.923955Z"
 }

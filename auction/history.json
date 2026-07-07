@@ -3251,5 +3251,43 @@
     },
     "parsed_at": "2026-07-03T13:53:28.367393Z",
     "entry_count": 52
+  },
+  {
+    "source_key": "superior",
+    "auction": "Superior Livestock Auction",
+    "report_id": "AMS_2713",
+    "sale_day": "Ongoing",
+    "channel": "video",
+    "base": "Fort Worth, TX",
+    "owner_group": "independent",
+    "period_start": "7/6/2026",
+    "period_end": "7/10/2026",
+    "sale_date": "2026-07-10",
+    "receipts_offered": 240422,
+    "total_receipts": 46775,
+    "breakdown": {
+      "feeder": {
+        "head": 46775,
+        "pct": 100.0
+      }
+    },
+    "narrative": "Supply included 82 percent the South Central region and 18 percent from the South East region. Deliveries are current through December 2026. Current delivery is 14 days from the last day of the video (July 10th) and is up to and including July 24, 2026. Supply included: 100% Feeder Cattle (65% Steers, 35% Heifers). Feeder cattle over 600 lbs was 41%. Feeder Cattle prices FOB based on net weights after a 0-3% pencil shrink or equivalent, with up to a 35 cent slide > 600 lbs. and up to a 50 cent slide < 600 lbs. Some cattle sold with a .90-1.40 right slide.",
+    "mt_region_label": null,
+    "has_mt_region": false,
+    "mt_region_note": "USDA groups Montana cattle into this multi-state region; figures are regional, not Montana-only.",
+    "terms": {
+      "pencil_shrink_pct": "0-3",
+      "slide_over_600_cents": "35",
+      "slide_under_600_cents": "50",
+      "fob_net_weights": true,
+      "current_delivery": "14 days from the last day of the video (July 10th) and is up to and including July 24, 2026",
+      "delivery_window": "current through December 2026"
+    },
+    "summary": {
+      "steers": {},
+      "heifers": {}
+    },
+    "parsed_at": "2026-07-07T14:22:15.923955Z",
+    "entry_count": 0
   }
 ]
