@@ -3289,5 +3289,82 @@
     },
     "parsed_at": "2026-07-07T14:22:15.923955Z",
     "entry_count": 0
+  },
+  {
+    "source_key": "wvm",
+    "auction": "Western Video Market",
+    "report_id": "AMS_3242",
+    "sale_day": "Seasonal",
+    "channel": "video",
+    "base": "Cottonwood, CA",
+    "owner_group": "independent",
+    "period_start": "7/13/2026",
+    "period_end": "7/15/2026",
+    "sale_date": "2026-07-15",
+    "total_receipts": 45372,
+    "breakdown": {
+      "feeder": {
+        "head": 45372,
+        "pct": 100.0
+      },
+      "replacement": {
+        "head": 481,
+        "pct": 9.72
+      }
+    },
+    "narrative": "This is the first day of a 3-day sale held at the Silver Legacy Resort in Reno, NV. Demand and seller interest good to very good despite the downward pressure of Live and Feeder futures last week. Deliveries so far are current through December 2026. Current delivery is 14 days from the last day of the video (July 15th) and is up to and including July 29, 2026. Supply included: 100% Feeder Cattle (70% Steers, 30% Heifers). Feeder cattle over 600 lbs was 98%. Feeder Cattle prices FOB based on net weights after a 1-3% pencil shrink or equivalent, with a 12-25 cent slide > 600 lbs and 22-26 cent slide < 600 lbs.",
+    "mt_region_label": "North Central (CO, IA, MT, ND, NE, SD, WY)",
+    "has_mt_region": true,
+    "mt_region_note": "USDA groups Montana cattle into this multi-state region; figures are regional, not Montana-only.",
+    "terms": {
+      "pencil_shrink_pct": "1-3",
+      "slide_over_600_cents": "12-25",
+      "slide_under_600_cents": "22-26",
+      "fob_net_weights": true,
+      "current_delivery": "14 days from the last day of the video (July 15th) and is up to and including July 29, 2026"
+    },
+    "summary": {
+      "steers": {
+        "900_plus": {
+          "head": 12887,
+          "wtd_avg_price": 354.87,
+          "price_low": 330.0,
+          "price_high": 382.0,
+          "thin": false
+        },
+        "800_899": {
+          "head": 4702,
+          "wtd_avg_price": 372.84,
+          "price_low": 363.5,
+          "price_high": 414.0,
+          "thin": false
+        },
+        "750_799": {
+          "head": 500,
+          "wtd_avg_price": 405.84,
+          "price_low": 405.0,
+          "price_high": 408.0,
+          "thin": false
+        }
+      },
+      "heifers": {
+        "800_899": {
+          "head": 3515,
+          "wtd_avg_price": 363.66,
+          "price_low": 345.0,
+          "price_high": 384.0,
+          "thin": false
+        },
+        "900_plus": {
+          "head": 609,
+          "wtd_avg_price": 334.52,
+          "price_low": 326.0,
+          "price_high": 341.5,
+          "thin": false
+        }
+      }
+    },
+    "parsed_at": "2026-07-14T13:23:59.332893Z",
+    "entry_count": 44
   }
 ]
