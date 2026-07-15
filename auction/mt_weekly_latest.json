@@ -717,6 +717,20 @@
         "price_low": 440.0,
         "price_high": 440.0,
         "thin": true
+      },
+      "650_749": {
+        "head": 2,
+        "wtd_avg_price": 387.97,
+        "price_low": 385.0,
+        "price_high": 391.0,
+        "thin": true
+      },
+      "750_849": {
+        "head": 2,
+        "wtd_avg_price": 371.0,
+        "price_low": 371.0,
+        "price_high": 371.0,
+        "thin": true
       }
     },
     "heifers": {
@@ -754,8 +768,68 @@
         "price_low": 385.0,
         "price_high": 415.0,
         "thin": true
+      },
+      "650_749": {
+        "head": 3,
+        "wtd_avg_price": 365.0,
+        "price_low": 365.0,
+        "price_high": 365.0,
+        "thin": true
+      },
+      "750_849": {
+        "head": 7,
+        "wtd_avg_price": 351.96,
+        "price_low": 332.5,
+        "price_high": 365.0,
+        "thin": true
+      }
+    },
+    "cull_cows": {
+      "breaker_75_80": {
+        "head": 121,
+        "wtd_avg_price": 176.31,
+        "price_low": 145.5,
+        "price_high": 188.5,
+        "thin": false
+      },
+      "boner_80_85": {
+        "head": 366,
+        "wtd_avg_price": 181.83,
+        "price_low": 147.0,
+        "price_high": 192.0,
+        "thin": false
+      },
+      "lean_85_90": {
+        "head": 90,
+        "wtd_avg_price": 167.08,
+        "price_low": 102.5,
+        "price_high": 187.5,
+        "thin": false
+      },
+      "all": {
+        "head": 577,
+        "wtd_avg_price": 178.37,
+        "price_low": 102.5,
+        "price_high": 192.0,
+        "thin": false
+      }
+    },
+    "bulls": {
+      "slaughter": {
+        "head": 152,
+        "wtd_avg_price": 210.62,
+        "price_low": 181.0,
+        "price_high": 247.5,
+        "thin": false
+      },
+      "feeder": {
+        "head": 12,
+        "wtd_avg_price": 396.61,
+        "price_low": 280.0,
+        "price_high": 520.0,
+        "thin": true
       }
     }
   },
-  "parsed_at": "2026-07-03T13:53:28.367393Z"
+  "parsed_at": "2026-07-15T13:54:52.605532Z"
 }
