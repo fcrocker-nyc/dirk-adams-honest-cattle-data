@@ -447,47 +447,118 @@ def _parse_price_tables(text: str) -> list[dict]:
     return entries
 
 
+_COW_CLASS_RE = re.compile(r"\b(Breaker|Boner|Lean)\b\s*(\d{2})\s*-\s*(\d{2})", re.I)
+
+# Combined weight-band views that mirror the weight classes published on the
+# Montana Cattle Auction Trends page. A single 50-lb band can be too thin on a
+# quiet sale, so consumers can fall back to these blended bands.
+_COMBINED_BANDS = {
+    "550_649": ("550_599", "600_649"),
+    "650_749": ("650_699", "700_749"),
+    "750_849": ("750_799", "800_899"),
+}
+
+
+def _cow_class(grade: str) -> str | None:
+    """'Breaker 75-80%' -> 'breaker_75_80'; 'Boner 80-85%' -> 'boner_80_85'."""
+    m = _COW_CLASS_RE.search(grade or "")
+    if not m:
+        return None
+    return f"{m.group(1).lower()}_{m.group(2)}_{m.group(3)}"
+
+
+def _agg(rows: list[dict]) -> dict:
+    """Head-weighted average + observed low/high across a set of price rows.
+    Works for both $/cwt (feeders, cows, bulls) and $/head (bred) rows — they
+    share the same numeric fields."""
+    total_head = sum(r["head"] for r in rows)
+    wtd_price = (
+        sum(r["avg_price"] * r["head"] for r in rows) / total_head
+        if total_head else 0
+    )
+    return {
+        "head": total_head,
+        "wtd_avg_price": round(wtd_price, 2),
+        "price_low": min(r["price_low"] for r in rows),
+        "price_high": max(r["price_high"] for r in rows),
+        # A band thinner than this is too sparse to trust on its own; consumers
+        # should fall back to a combined view.
+        "thin": total_head < THIN_BAND_HEAD_FLOOR,
+    }
+
+
 def _build_summary(entries: list[dict]) -> dict:
-    """Build a quick-reference summary by weight class for feeders."""
+    """Structured, quick-reference aggregates for every class the auction-trends
+    page tables track: feeder steers/heifers by weight band (Tables 3-4), cull
+    cows by lean class (Table 5), slaughter bulls (Table 6), and top bred
+    cow/heifer prices (Table 7)."""
     summary: dict = {"steers": {}, "heifers": {}}
+    raw_feeder: dict = {"steers": {}, "heifers": {}}
+    cows_by_class: dict = {}
+    bulls_by_kind: dict = {"slaughter": [], "feeder": []}
+    bred_rows: dict = {"cow": [], "heifer": []}
 
     for e in entries:
-        if e.get("pricing") != "cwt":
-            continue
-        if e["type"] == "STEERS" and "Medium and Large 1" in e["grade"]:
+        pricing = e.get("pricing")
+        typ = e.get("type", "")
+        grade = e.get("grade", "")
+
+        if pricing == "cwt" and typ in ("STEERS", "HEIFERS") \
+                and "Medium and Large 1" in grade:
+            gender = "steers" if typ == "STEERS" else "heifers"
             bucket = _weight_bucket(e["avg_wt"])
             if bucket:
-                summary["steers"].setdefault(bucket, []).append(e)
-        elif e["type"] == "HEIFERS" and "Medium and Large 1" in e["grade"]:
-            bucket = _weight_bucket(e["avg_wt"])
-            if bucket:
-                summary["heifers"].setdefault(bucket, []).append(e)
+                raw_feeder[gender].setdefault(bucket, []).append(e)
+        elif pricing == "cwt" and typ == "COWS":
+            cls = _cow_class(grade)
+            if cls:
+                cows_by_class.setdefault(cls, []).append(e)
+        elif pricing == "cwt" and typ == "BULLS":
+            # "Medium and Large" bulls are young feeding/breeding bulls (priced
+            # like feeders); yield-grade bulls (1-2, 2-3, ...) are slaughter
+            # bulls. Table 6 tracks the slaughter range only.
+            kind = "feeder" if "Medium and Large" in grade else "slaughter"
+            bulls_by_kind[kind].append(e)
+        elif pricing == "head" and typ in ("BRED COWS", "BRED HEIFERS"):
+            bred_rows["cow" if typ == "BRED COWS" else "heifer"].append(e)
 
-    def _agg(rows: list[dict]) -> dict:
-        total_head = sum(r["head"] for r in rows)
-        wtd_price = (
-            sum(r["avg_price"] * r["head"] for r in rows) / total_head
-            if total_head else 0
-        )
-        return {
-            "head": total_head,
-            "wtd_avg_price": round(wtd_price, 2),
-            "price_low": min(r["price_low"] for r in rows),
-            "price_high": max(r["price_high"] for r in rows),
-            # A 50-lb band thinner than this is too sparse to trust on its own;
-            # consumers should fall back to the 550_649_combined view.
-            "thin": total_head < THIN_BAND_HEAD_FLOOR,
-        }
-
-    # Keep the 550-599 / 600-649 split AND a combined 550-649 view, because on
-    # seasonal video sales a 50-lb band can be too thin to publish alone.
-    raw = {g: dict(summary[g]) for g in ("steers", "heifers")}
+    # Feeders: each 50-lb band, plus the combined bands the page publishes.
     for gender in ("steers", "heifers"):
-        for bucket, rows in raw[gender].items():
+        for bucket, rows in raw_feeder[gender].items():
             summary[gender][bucket] = _agg(rows)
-        combined = raw[gender].get("550_599", []) + raw[gender].get("600_649", [])
-        if combined:
-            summary[gender]["550_649_combined"] = _agg(combined)
+        for name, parts in _COMBINED_BANDS.items():
+            combined: list[dict] = []
+            for p in parts:
+                combined += raw_feeder[gender].get(p, [])
+            if combined:
+                key = "550_649_combined" if name == "550_649" else name
+                summary[gender][key] = _agg(combined)
+
+    # Cull (slaughter) cows by lean class + an all-class range (Table 5).
+    if cows_by_class:
+        cc = {cls: _agg(rows) for cls, rows in cows_by_class.items()}
+        cc["all"] = _agg([r for rows in cows_by_class.values() for r in rows])
+        summary["cull_cows"] = cc
+
+    # Bulls — slaughter (yield-grade) kept separate from feeding/breeding bulls
+    # so Table 6's slaughter range isn't inflated by high-priced feeder bulls.
+    bulls = {k: _agg(rows) for k, rows in bulls_by_kind.items() if rows}
+    if bulls:
+        summary["bulls"] = bulls
+
+    # Bred females — the single top $/head (Table 7) plus a weighted average.
+    bred: dict = {}
+    for k, rows in bred_rows.items():
+        if not rows:
+            continue
+        top = max(rows, key=lambda r: r.get("price_high", r["avg_price"]))
+        bred[k] = {
+            "top_per_head": top.get("price_high", top["avg_price"]),
+            "wtd_avg_per_head": _agg(rows)["wtd_avg_price"],
+            "head": sum(r["head"] for r in rows),
+        }
+    if bred:
+        summary["bred"] = bred
 
     return summary
 
