@@ -1,20 +1,21 @@
 {
-  "week_ending": "07/04/2026",
-  "hcmi": 145.1,
-  "wow_pts": -4.4,
-  "pct_vs_2024": 45.1,
+  "week_ending": "07/11/2026",
+  "hcmi": 143.5,
+  "wow_pts": -1.6,
+  "pct_vs_2024": 43.5,
   "base_year": 2024,
+  "provisional": true,
   "components": {
     "feeder_gf": {
-      "now": 360.62,
+      "now": 354.6,
       "base": 248.08,
-      "index": 145.4,
+      "index": 142.9,
       "weight": 0.421
     },
     "live_le": {
-      "now": 239.23,
+      "now": 235.2,
       "base": 183.66,
-      "index": 130.3,
+      "index": 128.1,
       "weight": 0.263
     },
     "mt_steer": {
@@ -28,9 +29,147 @@
       "now": 181.83,
       "base": 125.09,
       "index": 145.4,
-      "weight": 0.105
+      "weight": 0.105,
+      "source": "carry"
     }
   },
-  "computed_at": "2026-07-16",
-  "source": "Honest Cattle Market Index v1.1 \u2014 CME GF/LE settlements + USDA AMS_1778 head-weighted; base 2024 = 100"
+  "computed_at": "2026-07-17",
+  "source": "Honest Cattle Market Index v2.0 \u2014 CME GF/LE settlements + USDA AMS_1778 head-weighted; base 2024 = 100; provisional prints carry Montana legs at last USDA print; forward curve from transacted prices only",
+  "note": "Provisional: AMS_1778 for this week not yet published; Montana steer and boning-cow legs carried at last USDA print. Reconciles when USDA posts.",
+  "forward": {
+    "computed_at": "2026-07-17",
+    "convention": "Transacted prices only: deferred CME GF/LE settles; MT steer leg from forward-delivery video-auction sales (600-649 lb M&L1 steers, N. Central region, delivery-start-month buckets) when a sale within 60 days has lots for that month, else carried; boning leg carried (no forward cull market). No Honest Cattle estimates in any leg.",
+    "months": [
+      {
+        "month": "2026-08",
+        "hcmi_fwd": 140.8,
+        "legs": {
+          "feeder_gf": {
+            "contract": "GFQ26",
+            "settle": 347.4
+          },
+          "live_le": {
+            "contract": "LEQ26",
+            "settle": 225.32
+          },
+          "mt_steer": {
+            "source": "carry",
+            "price": 481.74
+          },
+          "boning": {
+            "source": "carry",
+            "price": 181.83
+          }
+        }
+      },
+      {
+        "month": "2026-09",
+        "hcmi_fwd": 138.8,
+        "legs": {
+          "feeder_gf": {
+            "contract": "GFU26",
+            "settle": 340.4
+          },
+          "live_le": {
+            "contract": "LEV26",
+            "settle": 221.68
+          },
+          "mt_steer": {
+            "source": "video 600-649",
+            "price": 477.5,
+            "head": 100,
+            "sales": [
+              "Northern Livestock Video Auction 2026-06-26"
+            ],
+            "region": "North Central (CO, IA, MT, ND, NE, SD, WY)"
+          },
+          "boning": {
+            "source": "carry",
+            "price": 181.83
+          }
+        }
+      },
+      {
+        "month": "2026-10",
+        "hcmi_fwd": 138.2,
+        "legs": {
+          "feeder_gf": {
+            "contract": "GFV26",
+            "settle": 333.75
+          },
+          "live_le": {
+            "contract": "LEV26",
+            "settle": 221.68
+          },
+          "mt_steer": {
+            "source": "video 600-649",
+            "price": 484.29,
+            "head": 4356,
+            "sales": [
+              "Northern Livestock Video Auction 2026-06-26"
+            ],
+            "region": "North Central (CO, IA, MT, ND, NE, SD, WY)"
+          },
+          "boning": {
+            "source": "carry",
+            "price": 181.83
+          }
+        }
+      },
+      {
+        "month": "2026-11",
+        "hcmi_fwd": 137.3,
+        "legs": {
+          "feeder_gf": {
+            "contract": "GFX26",
+            "settle": 329.0
+          },
+          "live_le": {
+            "contract": "LEZ26",
+            "settle": 221.32
+          },
+          "mt_steer": {
+            "source": "video 600-649",
+            "price": 484.3,
+            "head": 635,
+            "sales": [
+              "Northern Livestock Video Auction 2026-06-26"
+            ],
+            "region": "North Central (CO, IA, MT, ND, NE, SD, WY)"
+          },
+          "boning": {
+            "source": "carry",
+            "price": 181.83
+          }
+        }
+      },
+      {
+        "month": "2026-12",
+        "hcmi_fwd": 138.7,
+        "legs": {
+          "feeder_gf": {
+            "contract": "GFF27",
+            "settle": 322.85
+          },
+          "live_le": {
+            "contract": "LEZ26",
+            "settle": 221.32
+          },
+          "mt_steer": {
+            "source": "video 600-649",
+            "price": 518.0,
+            "head": 340,
+            "sales": [
+              "Northern Livestock Video Auction 2026-06-26"
+            ],
+            "region": "North Central (CO, IA, MT, ND, NE, SD, WY)"
+          },
+          "boning": {
+            "source": "carry",
+            "price": 181.83
+          }
+        }
+      }
+    ]
+  }
 }
