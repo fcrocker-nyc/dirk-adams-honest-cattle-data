@@ -667,7 +667,7 @@
   "season": {
     "in_season_window": true,
     "latest_sale_date": "2026-07-15",
-    "days_since_latest": 4,
+    "days_since_latest": 5,
     "stale": false,
     "banner": "Video auction season is active — figures update as sales report."
   },
