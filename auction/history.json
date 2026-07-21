@@ -4077,5 +4077,120 @@
     },
     "parsed_at": "2026-07-20T13:56:32.163615Z",
     "entry_count": 87
+  },
+  {
+    "source_key": "nlva",
+    "auction": "Northern Livestock Video Auction",
+    "report_id": "AMS_2772",
+    "sale_day": "Seasonal",
+    "channel": "video",
+    "base": "Billings, MT",
+    "owner_group": "billings",
+    "period_start": "7/20/2026",
+    "period_end": "7/22/2026",
+    "sale_date": "2026-07-22",
+    "receipts_offered": 48693,
+    "total_receipts": 48383,
+    "breakdown": {
+      "feeder": {
+        "head": 48383,
+        "pct": 100.0
+      }
+    },
+    "narrative": "***Preliminary report. Day one of a three day sale. Full market commentary will be available at the conclusion of the sale on Wednesday July 22, 2026*** Supply included: 100% Feeder Cattle (73% Steers, 27% Heifers). Feeder cattle over 600 lbs was 13%. Feeder Cattle prices FOB based on net weights after a 0-3% pencil shrink or equivalent, with a 24-34 cent slide > 600 lbs and 28-60 cent slide < 600 lbs.",
+    "mt_region_label": "North Central (CO, IA, MT, ND, NE, SD, WY)",
+    "has_mt_region": true,
+    "mt_region_note": "USDA groups Montana cattle into this multi-state region; figures are regional, not Montana-only.",
+    "terms": {
+      "pencil_shrink_pct": "0-3",
+      "slide_over_600_cents": "24-34",
+      "slide_under_600_cents": "28-60",
+      "fob_net_weights": true
+    },
+    "summary": {
+      "steers": {
+        "400_499": {
+          "head": 5148,
+          "wtd_avg_price": 563.75,
+          "price_low": 510.0,
+          "price_high": 635.0,
+          "thin": false
+        },
+        "500_549": {
+          "head": 14096,
+          "wtd_avg_price": 516.31,
+          "price_low": 485.0,
+          "price_high": 598.0,
+          "thin": false
+        },
+        "550_599": {
+          "head": 10643,
+          "wtd_avg_price": 498.58,
+          "price_low": 462.0,
+          "price_high": 530.0,
+          "thin": false
+        },
+        "under_400": {
+          "head": 350,
+          "wtd_avg_price": 686.07,
+          "price_low": 682.5,
+          "price_high": 695.0,
+          "thin": false
+        },
+        "600_649": {
+          "head": 4259,
+          "wtd_avg_price": 469.47,
+          "price_low": 446.0,
+          "price_high": 490.0,
+          "thin": false
+        },
+        "550_649_combined": {
+          "head": 14902,
+          "wtd_avg_price": 490.26,
+          "price_low": 446.0,
+          "price_high": 530.0,
+          "thin": false
+        }
+      },
+      "heifers": {
+        "400_499": {
+          "head": 4279,
+          "wtd_avg_price": 534.18,
+          "price_low": 470.0,
+          "price_high": 627.5,
+          "thin": false
+        },
+        "500_549": {
+          "head": 5228,
+          "wtd_avg_price": 498.42,
+          "price_low": 442.5,
+          "price_high": 537.5,
+          "thin": false
+        },
+        "under_400": {
+          "head": 260,
+          "wtd_avg_price": 642.5,
+          "price_low": 642.5,
+          "price_high": 642.5,
+          "thin": false
+        },
+        "550_599": {
+          "head": 1176,
+          "wtd_avg_price": 451.67,
+          "price_low": 436.0,
+          "price_high": 477.5,
+          "thin": false
+        },
+        "550_649_combined": {
+          "head": 1176,
+          "wtd_avg_price": 451.67,
+          "price_low": 436.0,
+          "price_high": 477.5,
+          "thin": false
+        }
+      }
+    },
+    "parsed_at": "2026-07-21T13:28:42.491540Z",
+    "entry_count": 107
   }
 ]
