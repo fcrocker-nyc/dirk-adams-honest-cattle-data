@@ -1,0 +1,960 @@
+{
+  "manifest_version": 1,
+  "as_of": "2026-07-22",
+  "repo": "fcrocker-nyc/dirk-adams-honest-cattle-data",
+  "raw_base": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/",
+  "default_branch": "main",
+  "encoding": "utf-8",
+  "content_type": "application/json",
+  "docs": "FEEDS.md",
+  "note": "Platform-neutral feed manifest for the HonestCattle apps. Every feed is plain UTF-8 JSON over HTTPS with no platform-specific encoding, so the iOS and Android clients consume an identical surface. Fetch this file first to discover feeds instead of hard-coding URLs.",
+  "cadence_note": "Times are UTC. Feeds only commit when content changes, so a client should treat refresh_utc as 'not before' and use each payload's own date/as_of field as the source of truth.",
+  "feeds": [
+    {
+      "id": "county_conditions_mt",
+      "title": "Montana county conditions (snowpack / moisture / drought / forage)",
+      "group": "conditions",
+      "consumers": [
+        "ios-app",
+        "android-app",
+        "wordpress"
+      ],
+      "url_pattern": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/{key}.json",
+      "index": "counties.montana",
+      "count": 56,
+      "cadence": "daily",
+      "refresh_utc": "11:30",
+      "schema_doc": "FEEDS.md#county-conditions",
+      "nullable_blocks": [
+        "precip_ytd",
+        "drought",
+        "streamflow",
+        "soil_moisture",
+        "precip_anomaly",
+        "hay_pasture"
+      ],
+      "notes": "Additive/nullable blocks: a missing data source serializes as null, never as an absent key on the core fields."
+    },
+    {
+      "id": "county_roster_mt",
+      "title": "Montana county roster (name / page slug / region / data flags)",
+      "group": "conditions",
+      "consumers": [
+        "ios-app",
+        "android-app",
+        "wordpress"
+      ],
+      "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/counties.json",
+      "cadence": "on-change",
+      "schema_doc": "FEEDS.md#county-roster",
+      "notes": "Static list. For the county->feed-URL map use the counties.montana index in this manifest (roster 'slug' is the WordPress page slug, NOT the data-file key)."
+    },
+    {
+      "id": "vegetation_rap",
+      "title": "Rangeland vegetation VR + irrigated hay/pasture (RAP percentiles)",
+      "group": "conditions",
+      "consumers": [
+        "ios-app",
+        "android-app",
+        "wordpress"
+      ],
+      "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/vegetation.json",
+      "cadence": "weekly",
+      "refresh_utc": "Mon 12:00",
+      "schema_doc": "FEEDS.md#vegetation",
+      "notes": "Per-county vr / hay_pasture keyed by county. May lag current year (RAP publication delay); carries vr_status/vr_note explaining any null."
+    },
+    {
+      "id": "county_conditions_tx",
+      "title": "Texas county conditions",
+      "group": "conditions",
+      "consumers": [
+        "ios-app",
+        "android-app",
+        "wordpress"
+      ],
+      "url_pattern": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/{key}.json",
+      "index": "counties.texas",
+      "count": 39,
+      "cadence": "daily",
+      "refresh_utc": "11:50",
+      "schema_doc": "FEEDS.md#county-conditions"
+    },
+    {
+      "id": "county_roster_tx",
+      "title": "Texas county roster",
+      "group": "conditions",
+      "consumers": [
+        "ios-app",
+        "android-app",
+        "wordpress"
+      ],
+      "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas_counties.json",
+      "cadence": "on-change",
+      "schema_doc": "FEEDS.md#county-roster"
+    },
+    {
+      "id": "market_forecast",
+      "title": "4-week calf-price market forecast",
+      "group": "market",
+      "consumers": [
+        "ios-app",
+        "android-app",
+        "wordpress"
+      ],
+      "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/forecasts_recent.json",
+      "cadence": "daily",
+      "refresh_utc": "13:30",
+      "schema_doc": "FEEDS.md#market-forecast",
+      "notes": "Rolling window of the 4 most recent weekly forecasts. A heifer band not yet published serializes as null."
+    },
+    {
+      "id": "auction_video_latest",
+      "title": "Consolidated video-auction card (Market tab video card)",
+      "group": "market",
+      "consumers": [
+        "ios-app",
+        "android-app",
+        "wordpress"
+      ],
+      "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/auction/video_latest.json",
+      "cadence": "daily",
+      "refresh_utc": "12:00",
+      "schema_doc": "FEEDS.md#auction-latest",
+      "notes": "Freshest of the tracked video houses; carries season{} banner + series_roster + per-house calf-band summary. Video sales are seasonal (~Apr-Oct); off-season it holds the last sale."
+    },
+    {
+      "id": "auction_house_latest",
+      "title": "Per-house latest auction reports",
+      "group": "market",
+      "consumers": [
+        "ios-app",
+        "android-app",
+        "wordpress"
+      ],
+      "url_pattern": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/auction/{house}_latest.json",
+      "houses": [
+        "pays",
+        "bls",
+        "mt_weekly",
+        "superior",
+        "nlva",
+        "wvm",
+        "blc_video"
+      ],
+      "cadence": "daily",
+      "refresh_utc": "12:00",
+      "schema_doc": "FEEDS.md#auction-latest",
+      "notes": "pays/bls/mt_weekly are the year-round Montana yards; the video houses are seasonal and may hold a stale sale_date off-season (check sale_date freshness client-side)."
+    },
+    {
+      "id": "auction_history",
+      "title": "Auction price history (trend series)",
+      "group": "market",
+      "consumers": [
+        "ios-app",
+        "android-app"
+      ],
+      "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/auction/history.json",
+      "cadence": "daily",
+      "refresh_utc": "12:00",
+      "schema_doc": "FEEDS.md#auction-history"
+    },
+    {
+      "id": "forecast_accuracy",
+      "title": "Forecast accuracy scorecard (MPE/MAD/RMSE + calibration)",
+      "group": "market",
+      "consumers": [
+        "ios-app",
+        "android-app"
+      ],
+      "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/auction/forecast_accuracy.json",
+      "cadence": "daily",
+      "refresh_utc": "12:00",
+      "schema_doc": "FEEDS.md#forecast-accuracy"
+    }
+  ],
+  "counties": {
+    "montana": [
+      {
+        "key": "beaverhead",
+        "name": "Beaverhead",
+        "page_slug": "beaverhead-county-montana",
+        "region": "western",
+        "has_snotel": true,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/beaverhead.json"
+      },
+      {
+        "key": "big_horn",
+        "name": "Big Horn",
+        "page_slug": "big-horn-county",
+        "region": "central",
+        "has_snotel": false,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/big_horn.json"
+      },
+      {
+        "key": "blaine",
+        "name": "Blaine",
+        "page_slug": "blaine-county-montana",
+        "region": "eastern",
+        "has_snotel": false,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/blaine.json"
+      },
+      {
+        "key": "broadwater",
+        "name": "Broadwater",
+        "page_slug": "broadwater-county-montana",
+        "region": "central",
+        "has_snotel": false,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/broadwater.json"
+      },
+      {
+        "key": "carbon",
+        "name": "Carbon",
+        "page_slug": "carbon-county",
+        "region": "central",
+        "has_snotel": true,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/carbon.json"
+      },
+      {
+        "key": "carter",
+        "name": "Carter",
+        "page_slug": "carter-county-montana",
+        "region": "eastern",
+        "has_snotel": false,
+        "has_streamflow": false,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/carter.json"
+      },
+      {
+        "key": "cascade",
+        "name": "Cascade",
+        "page_slug": "cascade-county-montana",
+        "region": "central",
+        "has_snotel": false,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/cascade.json"
+      },
+      {
+        "key": "chouteau",
+        "name": "Chouteau",
+        "page_slug": "chouteau-county-montana",
+        "region": "central",
+        "has_snotel": false,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/chouteau.json"
+      },
+      {
+        "key": "custer",
+        "name": "Custer",
+        "page_slug": "custer-county-montana",
+        "region": "eastern",
+        "has_snotel": false,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/custer.json"
+      },
+      {
+        "key": "daniels",
+        "name": "Daniels",
+        "page_slug": "daniels-county-montana",
+        "region": "eastern",
+        "has_snotel": false,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/daniels.json"
+      },
+      {
+        "key": "dawson",
+        "name": "Dawson",
+        "page_slug": "dawson-county-montana",
+        "region": "eastern",
+        "has_snotel": false,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/dawson.json"
+      },
+      {
+        "key": "deer_lodge",
+        "name": "Deer Lodge",
+        "page_slug": "deer-lodge-county-montana",
+        "region": "western",
+        "has_snotel": true,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/deer_lodge.json"
+      },
+      {
+        "key": "fallon",
+        "name": "Fallon",
+        "page_slug": "fallon-county-montana",
+        "region": "eastern",
+        "has_snotel": false,
+        "has_streamflow": false,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/fallon.json"
+      },
+      {
+        "key": "fergus",
+        "name": "Fergus",
+        "page_slug": "fergus-county-montana",
+        "region": "central",
+        "has_snotel": true,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/fergus.json"
+      },
+      {
+        "key": "flathead",
+        "name": "Flathead",
+        "page_slug": "flathead-county-montana",
+        "region": "western",
+        "has_snotel": true,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/flathead.json"
+      },
+      {
+        "key": "gallatin",
+        "name": "Gallatin",
+        "page_slug": "gallatin-county",
+        "region": "central",
+        "has_snotel": true,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/gallatin.json"
+      },
+      {
+        "key": "garfield",
+        "name": "Garfield",
+        "page_slug": "garfield-county-montana",
+        "region": "eastern",
+        "has_snotel": false,
+        "has_streamflow": false,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/garfield.json"
+      },
+      {
+        "key": "glacier",
+        "name": "Glacier",
+        "page_slug": "glacier-county-montana",
+        "region": "western",
+        "has_snotel": true,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/glacier.json"
+      },
+      {
+        "key": "golden_valley",
+        "name": "Golden Valley",
+        "page_slug": "golden-valley-county-montana",
+        "region": "central",
+        "has_snotel": false,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/golden_valley.json"
+      },
+      {
+        "key": "granite",
+        "name": "Granite",
+        "page_slug": "granite-county-montana",
+        "region": "western",
+        "has_snotel": true,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/granite.json"
+      },
+      {
+        "key": "hill",
+        "name": "Hill",
+        "page_slug": "hill-county-montana",
+        "region": "central",
+        "has_snotel": true,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/hill.json"
+      },
+      {
+        "key": "jefferson",
+        "name": "Jefferson",
+        "page_slug": "jefferson-county-montana",
+        "region": "central",
+        "has_snotel": true,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/jefferson.json"
+      },
+      {
+        "key": "judith_basin",
+        "name": "Judith Basin",
+        "page_slug": "judith-basin-county-montana",
+        "region": "central",
+        "has_snotel": true,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/judith_basin.json"
+      },
+      {
+        "key": "lake",
+        "name": "Lake",
+        "page_slug": "lake-county-montana",
+        "region": "western",
+        "has_snotel": true,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/lake.json"
+      },
+      {
+        "key": "lewis_clark",
+        "name": "Lewis Clark",
+        "page_slug": null,
+        "region": null,
+        "has_snotel": null,
+        "has_streamflow": null,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/lewis_clark.json"
+      },
+      {
+        "key": "liberty",
+        "name": "Liberty",
+        "page_slug": "liberty-county-montana",
+        "region": "central",
+        "has_snotel": false,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/liberty.json"
+      },
+      {
+        "key": "lincoln",
+        "name": "Lincoln",
+        "page_slug": "lincoln-county-montana",
+        "region": "western",
+        "has_snotel": true,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/lincoln.json"
+      },
+      {
+        "key": "madison",
+        "name": "Madison",
+        "page_slug": "madison-county-montana",
+        "region": "western",
+        "has_snotel": true,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/madison.json"
+      },
+      {
+        "key": "mccone",
+        "name": "McCone",
+        "page_slug": "mccone-county-montana",
+        "region": "eastern",
+        "has_snotel": false,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/mccone.json"
+      },
+      {
+        "key": "meagher",
+        "name": "Meagher",
+        "page_slug": "meagher-county-montana",
+        "region": "central",
+        "has_snotel": true,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/meagher.json"
+      },
+      {
+        "key": "mineral",
+        "name": "Mineral",
+        "page_slug": "mineral-county-montana",
+        "region": "western",
+        "has_snotel": true,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/mineral.json"
+      },
+      {
+        "key": "missoula",
+        "name": "Missoula",
+        "page_slug": "missoula-county-montana",
+        "region": "western",
+        "has_snotel": true,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/missoula.json"
+      },
+      {
+        "key": "musselshell",
+        "name": "Musselshell",
+        "page_slug": "musselshell-county-montana",
+        "region": "central",
+        "has_snotel": false,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/musselshell.json"
+      },
+      {
+        "key": "park",
+        "name": "Park",
+        "page_slug": "park-county-montana",
+        "region": "central",
+        "has_snotel": true,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/park.json"
+      },
+      {
+        "key": "petroleum",
+        "name": "Petroleum",
+        "page_slug": "petroleum-county-montana",
+        "region": "central",
+        "has_snotel": false,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/petroleum.json"
+      },
+      {
+        "key": "phillips",
+        "name": "Phillips",
+        "page_slug": "phillips-county-montana",
+        "region": "eastern",
+        "has_snotel": false,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/phillips.json"
+      },
+      {
+        "key": "pondera",
+        "name": "Pondera",
+        "page_slug": "pondera-county-montana",
+        "region": "western",
+        "has_snotel": true,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/pondera.json"
+      },
+      {
+        "key": "powder_river",
+        "name": "Powder River",
+        "page_slug": "powder-river-county-montana",
+        "region": "eastern",
+        "has_snotel": false,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/powder_river.json"
+      },
+      {
+        "key": "powell",
+        "name": "Powell",
+        "page_slug": "powell-county-montana",
+        "region": "western",
+        "has_snotel": true,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/powell.json"
+      },
+      {
+        "key": "prairie",
+        "name": "Prairie",
+        "page_slug": "prairie-county-montana",
+        "region": "eastern",
+        "has_snotel": false,
+        "has_streamflow": false,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/prairie.json"
+      },
+      {
+        "key": "ravalli",
+        "name": "Ravalli",
+        "page_slug": "ravalli-county-montana",
+        "region": "western",
+        "has_snotel": true,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/ravalli.json"
+      },
+      {
+        "key": "richland",
+        "name": "Richland",
+        "page_slug": "richland-county-montana",
+        "region": "eastern",
+        "has_snotel": false,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/richland.json"
+      },
+      {
+        "key": "roosevelt",
+        "name": "Roosevelt",
+        "page_slug": "roosevelt-county-montana",
+        "region": "eastern",
+        "has_snotel": false,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/roosevelt.json"
+      },
+      {
+        "key": "rosebud",
+        "name": "Rosebud",
+        "page_slug": "rosebud-county-montana",
+        "region": "eastern",
+        "has_snotel": false,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/rosebud.json"
+      },
+      {
+        "key": "sanders",
+        "name": "Sanders",
+        "page_slug": "sanders-county-montana",
+        "region": "western",
+        "has_snotel": true,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/sanders.json"
+      },
+      {
+        "key": "sheridan",
+        "name": "Sheridan",
+        "page_slug": "sheridan-county-montana",
+        "region": "eastern",
+        "has_snotel": false,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/sheridan.json"
+      },
+      {
+        "key": "silver_bow",
+        "name": "Silver Bow",
+        "page_slug": "silver-bow-county-montana",
+        "region": "western",
+        "has_snotel": true,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/silver_bow.json"
+      },
+      {
+        "key": "stillwater",
+        "name": "Stillwater",
+        "page_slug": "stillwater-county-montana",
+        "region": "central",
+        "has_snotel": false,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/stillwater.json"
+      },
+      {
+        "key": "sweet_grass",
+        "name": "Sweet Grass",
+        "page_slug": "sweet-grass-county-montana",
+        "region": "central",
+        "has_snotel": true,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/sweet_grass.json"
+      },
+      {
+        "key": "teton",
+        "name": "Teton",
+        "page_slug": "teton-county-montana",
+        "region": "western",
+        "has_snotel": true,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/teton.json"
+      },
+      {
+        "key": "toole",
+        "name": "Toole",
+        "page_slug": "toole-county-montana",
+        "region": "western",
+        "has_snotel": false,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/toole.json"
+      },
+      {
+        "key": "treasure",
+        "name": "Treasure",
+        "page_slug": "treasure-county-montana",
+        "region": "eastern",
+        "has_snotel": false,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/treasure.json"
+      },
+      {
+        "key": "valley",
+        "name": "Valley",
+        "page_slug": "valley-county-montana",
+        "region": "eastern",
+        "has_snotel": false,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/valley.json"
+      },
+      {
+        "key": "wheatland",
+        "name": "Wheatland",
+        "page_slug": "wheatland-county-montana",
+        "region": "central",
+        "has_snotel": false,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/wheatland.json"
+      },
+      {
+        "key": "wibaux",
+        "name": "Wibaux",
+        "page_slug": "wibaux-county-montana",
+        "region": "eastern",
+        "has_snotel": false,
+        "has_streamflow": false,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/wibaux.json"
+      },
+      {
+        "key": "yellowstone",
+        "name": "Yellowstone",
+        "page_slug": "yellowstone-county-montana",
+        "region": "central",
+        "has_snotel": false,
+        "has_streamflow": true,
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/yellowstone.json"
+      }
+    ],
+    "texas": [
+      {
+        "key": "bell-county-texas",
+        "name": "Bell",
+        "fips": "48027",
+        "region": "central",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/bell-county-texas.json"
+      },
+      {
+        "key": "bosque-county-texas",
+        "name": "Bosque",
+        "fips": "48035",
+        "region": "north",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/bosque-county-texas.json"
+      },
+      {
+        "key": "brazoria-county-texas",
+        "name": "Brazoria",
+        "fips": "48039",
+        "region": "gulf",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/brazoria-county-texas.json"
+      },
+      {
+        "key": "brazos-county-texas",
+        "name": "Brazos",
+        "fips": "48041",
+        "region": "central",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/brazos-county-texas.json"
+      },
+      {
+        "key": "burleson-county-texas",
+        "name": "Burleson",
+        "fips": "48051",
+        "region": "central",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/burleson-county-texas.json"
+      },
+      {
+        "key": "chambers-county-texas",
+        "name": "Chambers",
+        "fips": "48071",
+        "region": "gulf",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/chambers-county-texas.json"
+      },
+      {
+        "key": "comanche-county-texas",
+        "name": "Comanche",
+        "fips": "48093",
+        "region": "north",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/comanche-county-texas.json"
+      },
+      {
+        "key": "coryell-county-texas",
+        "name": "Coryell",
+        "fips": "48099",
+        "region": "central",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/coryell-county-texas.json"
+      },
+      {
+        "key": "eastland-county-texas",
+        "name": "Eastland",
+        "fips": "48133",
+        "region": "north",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/eastland-county-texas.json"
+      },
+      {
+        "key": "ellis-county-texas",
+        "name": "Ellis",
+        "fips": "48139",
+        "region": "north",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/ellis-county-texas.json"
+      },
+      {
+        "key": "erath-county-texas",
+        "name": "Erath",
+        "fips": "48143",
+        "region": "north",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/erath-county-texas.json"
+      },
+      {
+        "key": "falls-county-texas",
+        "name": "Falls",
+        "fips": "48145",
+        "region": "central",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/falls-county-texas.json"
+      },
+      {
+        "key": "fort-bend-county-texas",
+        "name": "Fort Bend",
+        "fips": "48157",
+        "region": "gulf",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/fort-bend-county-texas.json"
+      },
+      {
+        "key": "freestone-county-texas",
+        "name": "Freestone",
+        "fips": "48161",
+        "region": "central",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/freestone-county-texas.json"
+      },
+      {
+        "key": "galveston-county-texas",
+        "name": "Galveston",
+        "fips": "48167",
+        "region": "gulf",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/galveston-county-texas.json"
+      },
+      {
+        "key": "grimes-county-texas",
+        "name": "Grimes",
+        "fips": "48185",
+        "region": "central",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/grimes-county-texas.json"
+      },
+      {
+        "key": "hamilton-county-texas",
+        "name": "Hamilton",
+        "fips": "48193",
+        "region": "north",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/hamilton-county-texas.json"
+      },
+      {
+        "key": "hardin-county-texas",
+        "name": "Hardin",
+        "fips": "48199",
+        "region": "gulf",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/hardin-county-texas.json"
+      },
+      {
+        "key": "harris-county-texas",
+        "name": "Harris",
+        "fips": "48201",
+        "region": "gulf",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/harris-county-texas.json"
+      },
+      {
+        "key": "hill-county-texas",
+        "name": "Hill",
+        "fips": "48217",
+        "region": "north",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/hill-county-texas.json"
+      },
+      {
+        "key": "hood-county-texas",
+        "name": "Hood",
+        "fips": "48221",
+        "region": "north",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/hood-county-texas.json"
+      },
+      {
+        "key": "jefferson-county-texas",
+        "name": "Jefferson",
+        "fips": "48245",
+        "region": "gulf",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/jefferson-county-texas.json"
+      },
+      {
+        "key": "johnson-county-texas",
+        "name": "Johnson",
+        "fips": "48251",
+        "region": "north",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/johnson-county-texas.json"
+      },
+      {
+        "key": "lee-county-texas",
+        "name": "Lee",
+        "fips": "48287",
+        "region": "central",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/lee-county-texas.json"
+      },
+      {
+        "key": "leon-county-texas",
+        "name": "Leon",
+        "fips": "48289",
+        "region": "central",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/leon-county-texas.json"
+      },
+      {
+        "key": "liberty-county-texas",
+        "name": "Liberty",
+        "fips": "48291",
+        "region": "gulf",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/liberty-county-texas.json"
+      },
+      {
+        "key": "limestone-county-texas",
+        "name": "Limestone",
+        "fips": "48293",
+        "region": "central",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/limestone-county-texas.json"
+      },
+      {
+        "key": "madison-county-texas",
+        "name": "Madison",
+        "fips": "48313",
+        "region": "central",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/madison-county-texas.json"
+      },
+      {
+        "key": "mclennan-county-texas",
+        "name": "McLennan",
+        "fips": "48309",
+        "region": "central",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/mclennan-county-texas.json"
+      },
+      {
+        "key": "milam-county-texas",
+        "name": "Milam",
+        "fips": "48331",
+        "region": "central",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/milam-county-texas.json"
+      },
+      {
+        "key": "montgomery-county-texas",
+        "name": "Montgomery",
+        "fips": "48339",
+        "region": "gulf",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/montgomery-county-texas.json"
+      },
+      {
+        "key": "navarro-county-texas",
+        "name": "Navarro",
+        "fips": "48349",
+        "region": "north",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/navarro-county-texas.json"
+      },
+      {
+        "key": "orange-county-texas",
+        "name": "Orange",
+        "fips": "48361",
+        "region": "gulf",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/orange-county-texas.json"
+      },
+      {
+        "key": "robertson-county-texas",
+        "name": "Robertson",
+        "fips": "48395",
+        "region": "central",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/robertson-county-texas.json"
+      },
+      {
+        "key": "san-jacinto-county-texas",
+        "name": "San Jacinto",
+        "fips": "48407",
+        "region": "gulf",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/san-jacinto-county-texas.json"
+      },
+      {
+        "key": "somervell-county-texas",
+        "name": "Somervell",
+        "fips": "48425",
+        "region": "north",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/somervell-county-texas.json"
+      },
+      {
+        "key": "walker-county-texas",
+        "name": "Walker",
+        "fips": "48471",
+        "region": "gulf",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/walker-county-texas.json"
+      },
+      {
+        "key": "waller-county-texas",
+        "name": "Waller",
+        "fips": "48473",
+        "region": "gulf",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/waller-county-texas.json"
+      },
+      {
+        "key": "williamson-county-texas",
+        "name": "Williamson",
+        "fips": "48491",
+        "region": "central",
+        "url": "https://raw.githubusercontent.com/fcrocker-nyc/dirk-adams-honest-cattle-data/main/texas/williamson-county-texas.json"
+      }
+    ]
+  }
+}
