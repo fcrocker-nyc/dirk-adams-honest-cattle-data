@@ -45,15 +45,15 @@
     "months": [
       {
         "month": "2026-08",
-        "hcmi_fwd": 140.1,
+        "hcmi_fwd": 140.2,
         "legs": {
           "feeder_gf": {
             "contract": "GFQ26",
-            "settle": 342.67
+            "settle": 343.02
           },
           "live_le": {
             "contract": "LEQ26",
-            "settle": 224.02
+            "settle": 224.32
           },
           "mt_steer": {
             "source": "carry",
@@ -67,15 +67,15 @@
       },
       {
         "month": "2026-09",
-        "hcmi_fwd": 138.7,
+        "hcmi_fwd": 138.8,
         "legs": {
           "feeder_gf": {
             "contract": "GFU26",
-            "settle": 337.77
+            "settle": 338.02
           },
           "live_le": {
             "contract": "LEV26",
-            "settle": 219.93
+            "settle": 220.12
           },
           "mt_steer": {
             "source": "video MT 600-649",
@@ -98,16 +98,16 @@
         "legs": {
           "feeder_gf": {
             "contract": "GFV26",
-            "settle": 331.62
+            "settle": 331.88
           },
           "live_le": {
             "contract": "LEV26",
-            "settle": 219.93
+            "settle": 220.12
           },
           "mt_steer": {
             "source": "video MT 600-649",
-            "price": 466.89,
-            "head": 3229,
+            "price": 465.71,
+            "head": 3439,
             "sales": [
               "Northern Livestock Video 2026-07-21",
               "Superior Livestock 2026-06-17",
@@ -124,15 +124,15 @@
       },
       {
         "month": "2026-11",
-        "hcmi_fwd": 135.5,
+        "hcmi_fwd": 135.7,
         "legs": {
           "feeder_gf": {
             "contract": "GFX26",
-            "settle": 327.12
+            "settle": 327.83
           },
           "live_le": {
             "contract": "LEZ26",
-            "settle": 219.62
+            "settle": 219.82
           },
           "mt_steer": {
             "source": "video MT 600-649",
@@ -161,7 +161,7 @@
           },
           "live_le": {
             "contract": "LEZ26",
-            "settle": 219.62
+            "settle": 219.82
           },
           "mt_steer": {
             "source": "video MT 600-649",
@@ -183,7 +183,7 @@
       },
       {
         "month": "2027-01",
-        "hcmi_fwd": 135.9,
+        "hcmi_fwd": 136.0,
         "legs": {
           "feeder_gf": {
             "contract": "GFF27",
@@ -191,7 +191,7 @@
           },
           "live_le": {
             "contract": "LEG27",
-            "settle": 220.75
+            "settle": 220.95
           },
           "mt_steer": {
             "source": "carry",
