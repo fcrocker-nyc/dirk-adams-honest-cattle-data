@@ -31,8 +31,8 @@
   {
    "house": "Northern Livestock Video",
    "sale_date": "2026-07-21",
-   "mt_lots": 29,
-   "mt_head": 5039
+   "mt_lots": 53,
+   "mt_head": 8878
   }
  ],
  "forward_buckets": {
@@ -45,9 +45,9 @@
    ]
   },
   "2026-10": {
-   "price": 465.71,
-   "head": 3439,
-   "lots": 26,
+   "price": 458.43,
+   "head": 6198,
+   "lots": 45,
    "sales": [
     "Northern Livestock Video 2026-07-21",
     "Superior Livestock 2026-06-17",
@@ -56,9 +56,9 @@
    ]
   },
   "2026-11": {
-   "price": 464.41,
-   "head": 2633,
-   "lots": 17,
+   "price": 459.54,
+   "head": 3713,
+   "lots": 22,
    "sales": [
     "Northern Livestock Video 2026-07-21",
     "Superior Livestock 2026-06-17",

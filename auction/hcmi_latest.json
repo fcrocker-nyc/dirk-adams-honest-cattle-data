@@ -45,15 +45,15 @@
     "months": [
       {
         "month": "2026-08",
-        "hcmi_fwd": 140.2,
+        "hcmi_fwd": 140.1,
         "legs": {
           "feeder_gf": {
             "contract": "GFQ26",
-            "settle": 343.02
+            "settle": 343.0
           },
           "live_le": {
             "contract": "LEQ26",
-            "settle": 224.32
+            "settle": 223.62
           },
           "mt_steer": {
             "source": "carry",
@@ -67,15 +67,15 @@
       },
       {
         "month": "2026-09",
-        "hcmi_fwd": 138.8,
+        "hcmi_fwd": 138.7,
         "legs": {
           "feeder_gf": {
             "contract": "GFU26",
-            "settle": 338.02
+            "settle": 338.0
           },
           "live_le": {
             "contract": "LEV26",
-            "settle": 220.12
+            "settle": 219.62
           },
           "mt_steer": {
             "source": "video MT 600-649",
@@ -94,20 +94,20 @@
       },
       {
         "month": "2026-10",
-        "hcmi_fwd": 136.5,
+        "hcmi_fwd": 135.9,
         "legs": {
           "feeder_gf": {
             "contract": "GFV26",
-            "settle": 331.88
+            "settle": 331.62
           },
           "live_le": {
             "contract": "LEV26",
-            "settle": 220.12
+            "settle": 219.62
           },
           "mt_steer": {
             "source": "video MT 600-649",
-            "price": 465.71,
-            "head": 3439,
+            "price": 458.43,
+            "head": 6198,
             "sales": [
               "Northern Livestock Video 2026-07-21",
               "Superior Livestock 2026-06-17",
@@ -124,20 +124,20 @@
       },
       {
         "month": "2026-11",
-        "hcmi_fwd": 135.7,
+        "hcmi_fwd": 135.2,
         "legs": {
           "feeder_gf": {
             "contract": "GFX26",
-            "settle": 327.83
+            "settle": 327.42
           },
           "live_le": {
             "contract": "LEZ26",
-            "settle": 219.82
+            "settle": 219.38
           },
           "mt_steer": {
             "source": "video MT 600-649",
-            "price": 464.41,
-            "head": 2633,
+            "price": 459.54,
+            "head": 3713,
             "sales": [
               "Northern Livestock Video 2026-07-21",
               "Superior Livestock 2026-06-17",
@@ -153,15 +153,15 @@
       },
       {
         "month": "2026-12",
-        "hcmi_fwd": 134.9,
+        "hcmi_fwd": 134.8,
         "legs": {
           "feeder_gf": {
             "contract": "GFF27",
-            "settle": 321.17
+            "settle": 321.1
           },
           "live_le": {
             "contract": "LEZ26",
-            "settle": 219.82
+            "settle": 219.38
           },
           "mt_steer": {
             "source": "video MT 600-649",
@@ -183,15 +183,15 @@
       },
       {
         "month": "2027-01",
-        "hcmi_fwd": 136.0,
+        "hcmi_fwd": 135.9,
         "legs": {
           "feeder_gf": {
             "contract": "GFF27",
-            "settle": 321.17
+            "settle": 321.1
           },
           "live_le": {
             "contract": "LEG27",
-            "settle": 220.95
+            "settle": 220.48
           },
           "mt_steer": {
             "source": "carry",
