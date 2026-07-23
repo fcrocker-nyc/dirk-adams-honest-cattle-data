@@ -1,0 +1,205 @@
+{
+ "computed_at": "2026-07-23T10:43:06.331542-04:00",
+ "charter": "Honest Cattle holds no futures or options positions and recommends none. Interpretation inputs only.",
+ "modules": {
+  "ownership": {
+   "disagg": {
+    "ZC": {
+     "oi": 1707063,
+     "pm_long": 341967,
+     "pm_short": 759067,
+     "swap_long": 343455,
+     "swap_short": 21331,
+     "swap_spread": 17927,
+     "mm_long": 294328,
+     "mm_short": 282967,
+     "mm_spread": 221360,
+     "other_long": 187895,
+     "other_short": 67793,
+     "other_spread": 159463,
+     "totrep_long": 1566395,
+     "totrep_short": 1529908,
+     "nonrep_long": 140668,
+     "nonrep_short": 177155,
+     "report_date": "2026-07-14",
+     "integrity_ok": true,
+     "conc": {
+      "gross4_long": 11.6,
+      "gross4_short": 10.9,
+      "gross8_long": 19.7,
+      "gross8_short": 18.4,
+      "net4_long": 10.0,
+      "net4_short": 7.3,
+      "net8_long": 16.8,
+      "net8_short": 13.4
+     },
+     "trader_counts": {
+      "total": 820,
+      "mm_long": 81,
+      "mm_short": 66,
+      "pm_long": 289,
+      "pm_short": 330
+     },
+     "mm_contracts_per_long_trader": 3634,
+     "pm_net": -417100,
+     "swap_net": 322124,
+     "mm_net": 11361,
+     "other_net": 120102,
+     "nonrep_net": -36487,
+     "context": {
+      "n_history_weeks": 1
+     }
+    },
+    "LE": {
+     "oi": 311766,
+     "pm_long": 36080,
+     "pm_short": 157341,
+     "swap_long": 66211,
+     "swap_short": 6274,
+     "swap_spread": 2054,
+     "mm_long": 109102,
+     "mm_short": 10967,
+     "mm_spread": 44806,
+     "other_long": 13250,
+     "other_short": 41680,
+     "other_spread": 12358,
+     "totrep_long": 283861,
+     "totrep_short": 275480,
+     "nonrep_long": 27905,
+     "nonrep_short": 36286,
+     "report_date": "2026-07-14",
+     "integrity_ok": true,
+     "conc": {
+      "gross4_long": 13.3,
+      "gross4_short": 14.1,
+      "gross8_long": 22.0,
+      "gross8_short": 23.7,
+      "net4_long": 12.7,
+      "net4_short": 13.3,
+      "net8_long": 20.7,
+      "net8_short": 22.0
+     },
+     "trader_counts": {
+      "total": 380,
+      "mm_long": 79,
+      "mm_short": 26,
+      "pm_long": 89,
+      "pm_short": 147
+     },
+     "mm_contracts_per_long_trader": 1381,
+     "pm_net": -121261,
+     "swap_net": 59937,
+     "mm_net": 98135,
+     "other_net": -28430,
+     "nonrep_net": -8381,
+     "context": {
+      "n_history_weeks": 1
+     }
+    },
+    "GF": {
+     "oi": 65681,
+     "pm_long": 8381,
+     "pm_short": 12163,
+     "swap_long": 7663,
+     "swap_short": 994,
+     "swap_spread": 1604,
+     "mm_long": 18889,
+     "mm_short": 7603,
+     "mm_spread": 11135,
+     "other_long": 1776,
+     "other_short": 14039,
+     "other_spread": 6742,
+     "totrep_long": 56190,
+     "totrep_short": 54280,
+     "nonrep_long": 9491,
+     "nonrep_short": 11401,
+     "report_date": "2026-07-14",
+     "integrity_ok": true,
+     "conc": {
+      "gross4_long": 12.7,
+      "gross4_short": 15.8,
+      "gross8_long": 23.2,
+      "gross8_short": 24.4,
+      "net4_long": 10.4,
+      "net4_short": 14.0,
+      "net8_long": 19.2,
+      "net8_short": 20.3
+     },
+     "trader_counts": {
+      "total": 265,
+      "mm_long": 43,
+      "mm_short": 29,
+      "pm_long": 52,
+      "pm_short": 73
+     },
+     "mm_contracts_per_long_trader": 439,
+     "pm_net": -3782,
+     "swap_net": 6669,
+     "mm_net": 11286,
+     "other_net": -12263,
+     "nonrep_net": -1910,
+     "context": {
+      "n_history_weeks": 1
+     }
+    }
+   },
+   "cit": {
+    "ZC": {
+     "oi": 2326231,
+     "nc_long": 252658,
+     "nc_short": 290574,
+     "nc_spread": 780277,
+     "comm_long": 666852,
+     "comm_short": 890940,
+     "totrep_long": 2135874,
+     "totrep_short": 2106189,
+     "nonrep_long": 190357,
+     "nonrep_short": 220041,
+     "cit_long": 436087,
+     "cit_short": 144398,
+     "report_date": "2026-07-14",
+     "integrity_ok": true,
+     "cit_net": 291689
+    },
+    "LE": {
+     "oi": 432767,
+     "nc_long": 88453,
+     "nc_short": 19068,
+     "nc_spread": 144353,
+     "comm_long": 88670,
+     "comm_short": 209575,
+     "totrep_long": 400000,
+     "totrep_short": 383434,
+     "nonrep_long": 32767,
+     "nonrep_short": 49333,
+     "cit_long": 78523,
+     "cit_short": 10438,
+     "report_date": "2026-07-14",
+     "integrity_ok": true,
+     "cit_net": 68085
+    },
+    "GF": {
+     "oi": 101825,
+     "nc_long": 14158,
+     "nc_short": 17613,
+     "nc_spread": 46295,
+     "comm_long": 17726,
+     "comm_short": 21145,
+     "totrep_long": 90115,
+     "totrep_short": 86399,
+     "nonrep_long": 11710,
+     "nonrep_short": 15426,
+     "cit_long": 11936,
+     "cit_short": 1347,
+     "report_date": "2026-07-14",
+     "integrity_ok": true,
+     "cit_net": 10589
+    }
+   },
+   "as_of_note": "positions as of the Tuesday of the report_date shown; released Friday ~3:30 ET"
+  }
+ },
+ "notes": [
+  "CME modules skipped by design (CME Data Terms of Use prohibit scripted collection); market modules are computed in the weekly forecast build from Barchart"
+ ]
+}
