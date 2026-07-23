@@ -1,5 +1,5 @@
 {
- "computed_at": "2026-07-23T10:45:38.061856-04:00",
+ "computed_at": "2026-07-23T10:45:59.416198-04:00",
  "charter": "Honest Cattle holds no futures or options positions and recommends none. Interpretation inputs only.",
  "modules": {
   "ownership": {
@@ -47,10 +47,10 @@
      "other_net": 120102,
      "nonrep_net": -36487,
      "context": {
-      "n_history_weeks": 575,
-      "mm_net_wow": 34109,
-      "mm_net_percentile": 55.0,
-      "percentile_note": "percentile over 575 archived weeks; 5-yr claim requires the archive backfill"
+      "n_history_weeks": 602,
+      "mm_net_wow": 26360,
+      "mm_net_percentile": 54.7,
+      "percentile_note": "percentile over 602 archived weeks; 5-yr claim requires the archive backfill"
      }
     },
     "LE": {
@@ -96,10 +96,10 @@
      "other_net": -28430,
      "nonrep_net": -8381,
      "context": {
-      "n_history_weeks": 575,
-      "mm_net_wow": 5921,
-      "mm_net_percentile": 77.6,
-      "percentile_note": "percentile over 575 archived weeks; 5-yr claim requires the archive backfill"
+      "n_history_weeks": 602,
+      "mm_net_wow": -16773,
+      "mm_net_percentile": 74.3,
+      "percentile_note": "percentile over 602 archived weeks; 5-yr claim requires the archive backfill"
      }
     },
     "GF": {
@@ -145,10 +145,10 @@
      "other_net": -12263,
      "nonrep_net": -1910,
      "context": {
-      "n_history_weeks": 575,
-      "mm_net_wow": -4543,
-      "mm_net_percentile": 78.8,
-      "percentile_note": "percentile over 575 archived weeks; 5-yr claim requires the archive backfill"
+      "n_history_weeks": 602,
+      "mm_net_wow": -3280,
+      "mm_net_percentile": 75.4,
+      "percentile_note": "percentile over 602 archived weeks; 5-yr claim requires the archive backfill"
      }
     }
    },
