@@ -4192,5 +4192,174 @@
     },
     "parsed_at": "2026-07-21T13:28:42.491540Z",
     "entry_count": 107
+  },
+  {
+    "source_key": "bls",
+    "auction": "Billings Livestock Commission",
+    "report_id": "AMS_1777",
+    "sale_day": "Thursday",
+    "channel": "auction",
+    "sale_date": "2026-07-23",
+    "total_receipts": 931,
+    "breakdown": {
+      "feeder": {
+        "head": 401,
+        "pct": 43.1
+      },
+      "slaughter": {
+        "head": 409,
+        "pct": 43.9
+      },
+      "replacement": {
+        "head": 121,
+        "pct": 13.0
+      }
+    },
+    "narrative": "Compared to last week (7-16-26): Feeder cattle were all too lightly tested last week to develop an accurate market trend, however lower undertones were noticed on all offerings. Quality this week was mixed from plain to attractive. Several sets of yearlings coming off grass were seen this sale. Demand was mostly moderate to good for light offerings. CME positions have fallen drastically over the last week and buyers showed slightly lighter demand for feeders as a result. Group sizes were small to moderate with many singles noticed. Market activity was mostly moderate to active with a small to moderate size buyer pool noticed. Weigh up cows sold on moderate demand and light offerings. Demand for feeding cows was mostly moderate. Canadian buyers continue to buy cows to ship north and feed. American packers showed a desire to purchase cows lower and showed slightly lighter demand for all cows on offer. Boning and lean fleshed feeding cows sold mostly 2.00-5.00 lower, while breaking flesh cows sold 1.00-2.00 lower. Cow quality was mostly plain to average and overall not as attractive as the previous week. Demand for slaughter cows was mostly moderate with moderate to good demand seen at times. Slaughter cows sold generally steady to weak in a narrow comparison. Slaughter bulls sold mostly 3.00-5.00 lower. Feeding bulls were too lightly tested to develop an accurate market trend, however lower undertones were noticed. Weigh up conditions were mixed with both full and empty cows noticed. Young age offerings suitable to feed or rebreed were too lightly tested to develop any market trend. Demand for young rebreed cows was mostly moderate to good on an average quality offering. Supply included: 43% Feeder Cattle (27% Steers, 46% Heifers, 5% Bulls, 13% Beef/Dairy Steers, 9% Beef/Dairy Heifers); 44% Slaughter Cattle (63% Cows, 37% Bulls); 13% Replacement Cattle (67% Stock Cows, 15% Bred Heifers, 17% Cow-Calf Pairs). Feeder cattle supply over 600 lbs was 93%.",
+    "summary": {
+      "steers": {
+        "under_400": {
+          "head": 1,
+          "wtd_avg_price": 630.0,
+          "price_low": 630.0,
+          "price_high": 630.0,
+          "thin": true
+        },
+        "800_899": {
+          "head": 56,
+          "wtd_avg_price": 349.77,
+          "price_low": 339.0,
+          "price_high": 355.0,
+          "thin": false
+        },
+        "900_plus": {
+          "head": 26,
+          "wtd_avg_price": 328.69,
+          "price_low": 316.0,
+          "price_high": 334.0,
+          "thin": true
+        },
+        "700_749": {
+          "head": 4,
+          "wtd_avg_price": 385.0,
+          "price_low": 385.0,
+          "price_high": 385.0,
+          "thin": true
+        },
+        "650_749": {
+          "head": 4,
+          "wtd_avg_price": 385.0,
+          "price_low": 385.0,
+          "price_high": 385.0,
+          "thin": true
+        },
+        "750_849": {
+          "head": 56,
+          "wtd_avg_price": 349.77,
+          "price_low": 339.0,
+          "price_high": 355.0,
+          "thin": false
+        }
+      },
+      "heifers": {
+        "650_699": {
+          "head": 16,
+          "wtd_avg_price": 370.0,
+          "price_low": 370.0,
+          "price_high": 370.0,
+          "thin": true
+        },
+        "700_749": {
+          "head": 16,
+          "wtd_avg_price": 346.62,
+          "price_low": 336.0,
+          "price_high": 352.0,
+          "thin": true
+        },
+        "750_799": {
+          "head": 7,
+          "wtd_avg_price": 331.07,
+          "price_low": 327.5,
+          "price_high": 340.0,
+          "thin": true
+        },
+        "800_899": {
+          "head": 74,
+          "wtd_avg_price": 331.18,
+          "price_low": 295.0,
+          "price_high": 338.5,
+          "thin": false
+        },
+        "900_plus": {
+          "head": 36,
+          "wtd_avg_price": 312.28,
+          "price_low": 274.0,
+          "price_high": 321.0,
+          "thin": true
+        },
+        "650_749": {
+          "head": 32,
+          "wtd_avg_price": 358.31,
+          "price_low": 336.0,
+          "price_high": 370.0,
+          "thin": true
+        },
+        "750_849": {
+          "head": 81,
+          "wtd_avg_price": 331.17,
+          "price_low": 295.0,
+          "price_high": 340.0,
+          "thin": false
+        }
+      },
+      "cull_cows": {
+        "breaker_75_80": {
+          "head": 27,
+          "wtd_avg_price": 170.74,
+          "price_low": 151.0,
+          "price_high": 182.0,
+          "thin": true
+        },
+        "boner_80_85": {
+          "head": 121,
+          "wtd_avg_price": 174.16,
+          "price_low": 121.0,
+          "price_high": 189.0,
+          "thin": false
+        },
+        "lean_85_90": {
+          "head": 32,
+          "wtd_avg_price": 156.35,
+          "price_low": 127.5,
+          "price_high": 182.0,
+          "thin": true
+        },
+        "all": {
+          "head": 180,
+          "wtd_avg_price": 170.48,
+          "price_low": 121.0,
+          "price_high": 189.0,
+          "thin": false
+        }
+      },
+      "bulls": {
+        "slaughter": {
+          "head": 115,
+          "wtd_avg_price": 219.07,
+          "price_low": 167.5,
+          "price_high": 405.0,
+          "thin": false
+        },
+        "feeder": {
+          "head": 10,
+          "wtd_avg_price": 409.0,
+          "price_low": 305.0,
+          "price_high": 452.5,
+          "thin": true
+        }
+      }
+    },
+    "parsed_at": "2026-07-24T13:27:04.060280Z",
+    "entry_count": 69
   }
 ]
