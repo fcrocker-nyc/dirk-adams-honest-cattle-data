@@ -1237,6 +1237,14 @@ def forage_score(
     if not vr_live: missing += 1
     if not nass_live: missing += 1
 
+    # Confidence must reflect *observed* inputs, not substituted ones. The
+    # soil-moisture proxy stands in for the satellite vegetation (RAP) signal
+    # whenever RAP has not yet published the current season — it keeps the score
+    # running, but it is an estimate, not the measured vegetation input, so it
+    # cannot read as full confidence. Count it toward the effective shortfall.
+    missing_eff = missing + (1 if vr_source == "soil_proxy" else 0)
+    confidence = "High" if missing_eff == 0 else ("Medium" if missing_eff == 1 else "Low")
+
     detail = {
         "sp": round(sp, 1),
         "mi": round(mi, 1),
@@ -1244,7 +1252,7 @@ def forage_score(
         "dc": round(dc, 1),
         "lu": round(lu, 1),
         "category": _forage_category(score),
-        "confidence": "High" if missing == 0 else ("Medium" if missing <= 1 else "Low"),
+        "confidence": confidence,
         "mi_source": mi_source,
         "vr_source": vr_source,
         "model": "HC Forage v2.3",
