@@ -1569,6 +1569,18 @@ def main() -> int:
             )
 
     print(f"[snotel] {changed} of {len(ACTIVE_COUNTIES)} county files updated")
+
+    # Regenerate the statewide hub forage map from the just-written county files so
+    # /counties-in-montana-counties/ stays current and consistent with the county pages.
+    try:
+        import build_forage_map
+        frag = build_forage_map.build_html(str(args.out))
+        (args.out / "forage_map.json").write_text(
+            json.dumps(frag, ensure_ascii=False) + "\n", encoding="utf-8")
+        print(f"[snotel] forage_map.json rebuilt (as of {frag.get('as_of')})")
+    except Exception as e:  # never fail the whole run on the map
+        print(f"[snotel] WARN: forage map rebuild skipped: {e}")
+
     return 0
 
 
