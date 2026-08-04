@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-03T14:28:51.670077+00:00",
+  "generated_at": "2026-08-04T13:59:55.915356+00:00",
   "realized_source": "mt_weekly",
   "forecast_field": "steer mid, $/cwt",
   "min_n_for_significance": 8,
@@ -53,7 +53,7 @@
       }
     }
   },
-  "n_forecasts_available": 13,
+  "n_forecasts_available": 14,
   "n_realized_obs": 157,
   "pairs": [
     {
