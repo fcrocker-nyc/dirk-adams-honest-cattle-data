@@ -874,7 +874,10 @@ def fetch_cag_precip_anomaly(today: dt.date) -> dict:
                     continue
                 print(f"[snotel] NCEI CAG {period_key} fetch failed: {exc}", file=sys.stderr)
                 break
-            except urllib.error.URLError as exc:
+            except TRANSIENT_NET_ERRORS as exc:
+                # NCEI CAG is a flaky, non-critical source (5xx, redirects, read
+                # timeouts). Fail soft like every other fetcher so one bad
+                # source can't abort the whole run — precip_anomaly is optional.
                 print(f"[snotel] NCEI CAG {period_key} fetch failed: {exc}", file=sys.stderr)
                 break
         if data is None:
