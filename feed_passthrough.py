@@ -7,10 +7,14 @@ Method (Marsh): what a feedlot pays for a calf = expected fed-cattle value minus
 gain (corn) minus margin. So calf price rises with the fed-cattle (output) price and falls as
 corn rises; controlling for the output price isolates the corn (feed-cost) effect.
 
-Data: USDA NASS Quick Stats monthly U.S. prices received —
-  calves  = CATTLE, CALVES ($/cwt)                        (the Montana cow-calf product)
+Model data: USDA NASS Quick Stats monthly U.S. prices received —
+  calves  = CATTLE, CALVES ($/cwt)  — used for regression only (long national series)
   steers  = CATTLE, STEERS & HEIFERS, GE 500 LBS ($/cwt)  (output / fed-cattle side)
-  corn    = CORN, GRAIN ($/bu)                             (feed cost)
+  corn    = CORN, GRAIN ($/bu)                              (feed cost)
+
+Actual comparison: MT 600-649 lb feeder steers (AMS_1778 weekly auction data, head-weighted
+monthly averages) from auction/mt_realized_history.json. The scarcity residual = what MT
+feeder steers are actually trading vs what national feed-cost fundamentals imply.
 
 Writes auction/feed_passthrough_latest.json. The forecast runner reads it (no key, no compute)
 and folds the cross-check into Section 3. Run: python3 feed_passthrough.py --emit
@@ -28,7 +32,8 @@ KEY = os.environ.get("NASS_API_KEY", "0691EF2C-4DDB-3FE9-A995-70B703130032")
 API = "https://quickstats.nass.usda.gov/api/api_GET/"
 MON = {m: i for i, m in enumerate(
     ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"], 1)}
-OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "auction", "feed_passthrough_latest.json")
+OUT  = os.path.join(os.path.dirname(os.path.abspath(__file__)), "auction", "feed_passthrough_latest.json")
+MT_H = os.path.join(os.path.dirname(os.path.abspath(__file__)), "auction", "mt_realized_history.json")
 
 
 def nass(commodity, short_desc, y0=2000, y1=2027):
@@ -51,6 +56,38 @@ def nass(commodity, short_desc, y0=2000, y1=2027):
     return out
 
 
+def _mt_monthly():
+    """Load mt_realized_history.json, aggregate weekly → monthly head-weighted averages.
+    Prefers 600-649 lb band; falls back to 550-599 when a week has no 600-649 data.
+    Returns dict keyed (year, month) → $/cwt (head-weighted mean across weeks in that month).
+    """
+    if not os.path.exists(MT_H):
+        return {}
+    records = json.load(open(MT_H)).get("records", [])
+    buckets = {}  # (year, month) → [head, total_dollars]
+    for r in records:
+        sd = r.get("sale_date", "")
+        if not sd:
+            continue
+        try:
+            parts = sd.split("-"); yr, mo = int(parts[0]), int(parts[1])
+        except (ValueError, IndexError):
+            continue
+        steers = r.get("summary", {}).get("steers", {})
+        b6 = steers.get("600_649", {})
+        b5 = steers.get("550_599", {})
+        head  = b6.get("head", 0); price = b6.get("wtd_avg_price", 0)
+        if head == 0:  # fall back to 550-599 if 600-649 absent this week
+            head  = b5.get("head", 0); price = b5.get("wtd_avg_price", 0)
+        if head > 0 and price > 0:
+            key = (yr, mo)
+            if key not in buckets:
+                buckets[key] = [0, 0.0]
+            buckets[key][0] += head
+            buckets[key][1] += head * price
+    return {k: v[1] / v[0] for k, v in buckets.items() if v[0] > 0}
+
+
 def _ols(X, y):
     XtXi = np.linalg.inv(X.T @ X)
     beta = XtXi @ X.T @ y
@@ -63,13 +100,15 @@ def compute():
     calf   = nass("CATTLE", "CATTLE, CALVES - PRICE RECEIVED, MEASURED IN $ / CWT")
     steers = nass("CATTLE", "CATTLE, STEERS & HEIFERS, GE 500 LBS - PRICE RECEIVED, MEASURED IN $ / CWT")
     corn   = nass("CORN",   "CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU")
+    mt     = _mt_monthly()  # MT 600-649 lb feeder steers, head-weighted monthly averages
+
     keys = sorted(set(calf) & set(steers) & set(corn))
     if len(keys) < 60:
         raise RuntimeError(f"too few merged obs: {len(keys)}")
     yv = np.array([calf[k] for k in keys]); sv = np.array([steers[k] for k in keys]); cv = np.array([corn[k] for k in keys])
     ly, ls, lc = np.log(yv), np.log(sv), np.log(cv)
 
-    # Spec A: log-levels (long-run elasticities)
+    # Spec A: log-levels (long-run elasticities) — regression on national series
     bA, r2A = _ols(np.column_stack([np.ones_like(ly), ls, lc]), ly)
     # Spec B: log first differences (one-month pass-through)
     dY, dS, dC = np.diff(ly), np.diff(ls), np.diff(lc)
@@ -81,10 +120,50 @@ def compute():
     mape = float(np.mean(np.abs(pred - yv[te]) / yv[te]) * 100)
     corr = float(np.corrcoef(pred, yv[te])[0, 1])
 
-    # Current read: latest month vs 12 months earlier
+    # Current read: use MT auction prices as "actual"; model-implied from national corn+fed-cattle
     k = keys[-1]; ky = (k[0] - 1, k[1])
     cur = None
-    if ky in calf:
+    # Find most-recent MT month with data (working back up to 3 months for thin weeks)
+    mt_keys = sorted(mt.keys())
+    mk = mk_prev = None
+    for candidate in reversed(mt_keys):
+        if candidate <= k:
+            if mk is None:
+                mk = candidate
+            elif (mk[0] - candidate[0]) * 12 + (mk[1] - candidate[1]) == 12:
+                mk_prev = candidate
+                break
+        if mk is not None and mk_prev is None:
+            # try direct 12-month-ago key
+            mk_prev_try = (mk[0] - 1, mk[1])
+            if mk_prev_try in mt:
+                mk_prev = mk_prev_try
+                break
+    corn_k  = corn.get(mk) or corn.get(k)
+    corn_ky = corn.get(mk_prev) or corn.get(ky) if mk_prev else corn.get(ky)
+    st_k  = steers.get(mk) or steers.get(k)
+    st_ky = steers.get(mk_prev) or steers.get(ky) if mk_prev else steers.get(ky)
+    if mk and mk_prev and corn_k and corn_ky and st_k and st_ky and mk in mt and mk_prev in mt:
+        dcorn = float(np.log(corn_k / corn_ky))
+        dst   = float(np.log(st_k / st_ky))
+        imp_corn = float(bA[2] * dcorn * 100)
+        imp_out  = float(bA[1] * dst * 100)
+        implied  = imp_corn + imp_out
+        actual   = float((mt[mk] / mt[mk_prev] - 1) * 100)
+        cur = {
+            "window": f"{mk_prev[0]}-{mk_prev[1]:02d} to {mk[0]}-{mk[1]:02d}",
+            "mt_price_now": round(mt[mk], 2),
+            "mt_price_yoy_pct": round(actual, 1),
+            "corn_now": round(corn_k, 2),
+            "corn_yoy_pct": round(dcorn * 100),
+            "fedcattle_yoy_pct": round(dst * 100),
+            "implied_calf_pct": round(implied, 1),
+            "actual_calf_pct": round(actual, 1),  # kept for SKILL.md back-compat
+            "scarcity_residual_pct": round(actual - implied, 1),
+            "actual_series": "MT 600-649 lb feeder steers (AMS_1778 weighted monthly avg)",
+        }
+    elif ky in calf:
+        # fall back to national NASS calves if MT data unavailable
         dcorn = float(np.log(corn[k] / corn[ky])); dst = float(np.log(steers[k] / steers[ky]))
         imp_corn = float(bA[2] * dcorn * 100); imp_out = float(bA[1] * dst * 100)
         implied = imp_corn + imp_out
@@ -93,25 +172,31 @@ def compute():
                "corn_now": round(corn[k], 2), "corn_yoy_pct": round(dcorn * 100),
                "fedcattle_yoy_pct": round(dst * 100),
                "implied_calf_pct": round(implied, 1), "actual_calf_pct": round(actual, 1),
-               "scarcity_residual_pct": round(actual - implied, 1)}
+               "scarcity_residual_pct": round(actual - implied, 1),
+               "actual_series": "U.S. national NASS calves (MT auction data unavailable)"}
 
     e_corn = round(float(bA[2]), 3); e_out = round(float(bA[1]), 3); e_corn_1m = round(float(bB[2]), 3)
     prose = _prose(e_corn, e_out, cur)
     return {
-        "model": "HC feed-cost pass-through v1.0 (AMPC/Marsh method, re-estimated)",
+        "model": "HC feed-cost pass-through v1.1 (AMPC/Marsh method, re-estimated; MT-actual)",
         "computed_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "as_of_data_month": f"{k[0]}-{k[1]:02d}",
         "sample": f"{keys[0][0]}-{keys[0][1]:02d} to {keys[-1][0]}-{keys[-1][1]:02d} monthly (n={len(keys)})",
+        "mt_actual_months": len(mt),
         "elasticity": {"corn_longrun": e_corn, "corn_one_month": e_corn_1m, "output_longrun": e_out},
         "fit": {"r2_levels": round(float(r2A), 3), "backtest_mape_pct": round(mape, 1),
                 "backtest_corr": round(corr, 3), "backtest_window": "train<=2022, test 2023+"},
         "current_read": cur,
         "prose": prose,
         "attribution": ("Method from MSU Agricultural Marketing Policy Center (John Marsh); "
-                        "coefficients re-estimated by Honest Cattle on current USDA data. "
+                        "coefficients re-estimated by Honest Cattle on national USDA data (2000-present). "
+                        "Actual comparison uses Montana AMS_1778 feeder steer auction prices. "
                         "Descriptive association, not trading advice."),
-        "sources": ["USDA NASS Quick Stats, U.S. monthly prices received: CATTLE CALVES, "
-                    "CATTLE STEERS & HEIFERS GE 500 LBS, CORN GRAIN"],
+        "sources": [
+            "USDA NASS Quick Stats, U.S. monthly prices received: CATTLE CALVES, "
+            "CATTLE STEERS & HEIFERS GE 500 LBS, CORN GRAIN (regression base)",
+            "USDA AMS Report 1778 — Montana Weekly Livestock Auction Summary (actual comparison)",
+        ],
     }
 
 
@@ -121,13 +206,16 @@ def _prose(e_corn, e_out, cur):
             f"fed-cattle prices held constant, while a +10% fed-cattle move lifts calves about "
             f"{e_out*10:.0f}%.")
     if cur:
+        mt_clause = ""
+        if cur.get("mt_price_now"):
+            mt_clause = f"MT 600-649 lb feeder steers near ${cur['mt_price_now']:.0f}/cwt, "
         base += (f" Right now, corn near ${cur['corn_now']:.2f}/bu ({cur['corn_yoy_pct']:+d}% YoY) and "
-                 f"fed cattle {cur['fedcattle_yoy_pct']:+d}% imply calves about "
-                 f"{cur['implied_calf_pct']:+.0f}% vs a year ago; calves are actually running "
+                 f"fed cattle {cur['fedcattle_yoy_pct']:+d}% YoY imply feeder prices about "
+                 f"{cur['implied_calf_pct']:+.0f}% vs a year ago; {mt_clause}actually "
                  f"{cur['actual_calf_pct']:+.0f}%, leaving roughly {cur['scarcity_residual_pct']:+.0f} "
                  f"points as herd-cycle scarcity beyond what feed and fed-cattle prices explain.")
-    base += (" Method borrowed from MSU AMPC (Marsh); estimates are Honest Cattle's, current, and "
-             "descriptive, not advice.")
+    base += (" Method borrowed from MSU AMPC (Marsh); elasticities estimated on national data, "
+             "actual comparison uses Montana AMS auction prices. Descriptive, not advice.")
     return base
 
 
