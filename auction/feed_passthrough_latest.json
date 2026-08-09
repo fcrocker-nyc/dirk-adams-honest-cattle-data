@@ -1,0 +1,31 @@
+{
+ "model": "HC feed-cost pass-through v1.0 (AMPC/Marsh method, re-estimated)",
+ "computed_at": "2026-08-09T13:46:04Z",
+ "as_of_data_month": "2026-06",
+ "sample": "2000-01 to 2026-06 monthly (n=318)",
+ "elasticity": {
+  "corn_longrun": -0.225,
+  "corn_one_month": -0.085,
+  "output_longrun": 1.425
+ },
+ "fit": {
+  "r2_levels": 0.96,
+  "backtest_mape_pct": 7.4,
+  "backtest_corr": 0.966,
+  "backtest_window": "train<=2022, test 2023+"
+ },
+ "current_read": {
+  "window": "2025-06 to 2026-06",
+  "corn_now": 4.28,
+  "corn_yoy_pct": -4,
+  "fedcattle_yoy_pct": 11,
+  "implied_calf_pct": 16.7,
+  "actual_calf_pct": 24.2,
+  "scarcity_residual_pct": 7.5
+ },
+ "prose": "Feed-cost pass-through check (AMPC/Marsh method, re-estimated on 2000-present USDA monthly data): each +10% in corn shaves about 2% off calf value with fed-cattle prices held constant, while a +10% fed-cattle move lifts calves about 14%. Right now, corn near $4.28/bu (-4% YoY) and fed cattle +11% imply calves about +17% vs a year ago; calves are actually running +24%, leaving roughly +8 points as herd-cycle scarcity beyond what feed and fed-cattle prices explain. Method borrowed from MSU AMPC (Marsh); estimates are Honest Cattle's, current, and descriptive, not advice.",
+ "attribution": "Method from MSU Agricultural Marketing Policy Center (John Marsh); coefficients re-estimated by Honest Cattle on current USDA data. Descriptive association, not trading advice.",
+ "sources": [
+  "USDA NASS Quick Stats, U.S. monthly prices received: CATTLE CALVES, CATTLE STEERS & HEIFERS GE 500 LBS, CORN GRAIN"
+ ]
+}
