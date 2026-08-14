@@ -5054,5 +5054,132 @@
     },
     "parsed_at": "2026-08-11T12:53:31.582429Z",
     "entry_count": 27
+  },
+  {
+    "source_key": "bls",
+    "auction": "Billings Livestock Commission",
+    "report_id": "AMS_1777",
+    "sale_day": "Thursday",
+    "channel": "auction",
+    "sale_date": "2026-08-13",
+    "total_receipts": 1034,
+    "breakdown": {
+      "feeder": {
+        "head": 313,
+        "pct": 30.3
+      },
+      "slaughter": {
+        "head": 599,
+        "pct": 57.9
+      },
+      "replacement": {
+        "head": 122,
+        "pct": 11.8
+      }
+    },
+    "narrative": "Compared to last sale (7-23-26): Feeder cattle were all too lightly tested last sale to develop an accurate market trend, however lower undertones were noticed on all offerings. Quality this week was mixed from plain to attractive. Several sets of yearlings coming off grass were seen this sale. Demand was mostly moderate to good for light offerings. Group sizes were small to moderate with many singles noticed. Market activity was mostly moderate with a small buyer pool noticed. Weigh up cows sold on moderate demand and light offerings. Demand for feeding cows was mostly moderate. Canadian buyers continue to buy cows to ship north and feed. American packers showed a desire to purchase cows lower and showed slightly lighter demand for all cows on offer. All feeding cows sold mostly 5.00 lower compared to the last sale, three weeks ago. Cow quality was mostly plain to average and overall not as attractive as the previous sale. Demand for slaughter cows was mostly moderate to good. Slaughter cows sold generally steady on breaking cows and mostly 3.00 to 5.00 higher on boning and lean cows in a narrow comparison. Slaughter bulls sold mostly steady to 2.00 lower. Feeding bulls were too lightly tested to develop an accurate market trend, however steady to lower undertones were noticed. Weigh up conditions were mixed with both full and empty cows noticed. Young age offerings suitable to feed or rebreed were too lightly tested to develop any market trend. Demand for young rebreed cows was mostly moderate on a plain to average quality offering. Supply included: 30% Feeder Cattle (8% Steers, 88% Heifers, 4% Bulls); 58% Slaughter Cattle (78% Cows, 22% Bulls, 0% Dairy Cows); 12% Replacement Cattle (67% Stock Cows, 5% Bred Cows, 16% Cow-Calf Pairs, 13% Bulls). Feeder cattle supply over 600 lbs was 89%.",
+    "summary": {
+      "steers": {
+        "500_549": {
+          "head": 2,
+          "wtd_avg_price": 422.5,
+          "price_low": 422.5,
+          "price_high": 422.5,
+          "thin": true
+        },
+        "700_749": {
+          "head": 5,
+          "wtd_avg_price": 380.0,
+          "price_low": 380.0,
+          "price_high": 380.0,
+          "thin": true
+        },
+        "900_plus": {
+          "head": 8,
+          "wtd_avg_price": 327.0,
+          "price_low": 327.0,
+          "price_high": 327.0,
+          "thin": true
+        },
+        "650_749": {
+          "head": 5,
+          "wtd_avg_price": 380.0,
+          "price_low": 380.0,
+          "price_high": 380.0,
+          "thin": true
+        }
+      },
+      "heifers": {
+        "800_899": {
+          "head": 42,
+          "wtd_avg_price": 312.93,
+          "price_low": 295.0,
+          "price_high": 327.0,
+          "thin": true
+        },
+        "900_plus": {
+          "head": 127,
+          "wtd_avg_price": 303.16,
+          "price_low": 250.0,
+          "price_high": 314.5,
+          "thin": false
+        },
+        "750_849": {
+          "head": 42,
+          "wtd_avg_price": 312.93,
+          "price_low": 295.0,
+          "price_high": 327.0,
+          "thin": true
+        }
+      },
+      "cull_cows": {
+        "breaker_75_80": {
+          "head": 103,
+          "wtd_avg_price": 170.85,
+          "price_low": 152.0,
+          "price_high": 179.0,
+          "thin": false
+        },
+        "boner_80_85": {
+          "head": 195,
+          "wtd_avg_price": 168.32,
+          "price_low": 140.0,
+          "price_high": 183.0,
+          "thin": false
+        },
+        "lean_85_90": {
+          "head": 70,
+          "wtd_avg_price": 158.31,
+          "price_low": 127.5,
+          "price_high": 175.0,
+          "thin": false
+        },
+        "all": {
+          "head": 368,
+          "wtd_avg_price": 167.12,
+          "price_low": 127.5,
+          "price_high": 183.0,
+          "thin": false
+        }
+      },
+      "bulls": {
+        "slaughter": {
+          "head": 107,
+          "wtd_avg_price": 206.29,
+          "price_low": 175.0,
+          "price_high": 240.0,
+          "thin": false
+        },
+        "feeder": {
+          "head": 7,
+          "wtd_avg_price": 303.93,
+          "price_low": 302.5,
+          "price_high": 305.0,
+          "thin": true
+        }
+      }
+    },
+    "parsed_at": "2026-08-14T12:55:03.967455Z",
+    "entry_count": 55
   }
 ]
