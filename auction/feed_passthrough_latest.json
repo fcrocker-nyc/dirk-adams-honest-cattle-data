@@ -1,6 +1,6 @@
 {
  "model": "HC feed-cost pass-through v1.1 (AMPC/Marsh method, re-estimated; MT-actual)",
- "computed_at": "2026-08-09T14:12:04Z",
+ "computed_at": "2026-08-15T11:19:54Z",
  "as_of_data_month": "2026-06",
  "sample": "2000-01 to 2026-06 monthly (n=318)",
  "mt_actual_months": 29,
