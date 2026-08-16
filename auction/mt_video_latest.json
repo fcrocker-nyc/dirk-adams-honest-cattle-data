@@ -1,11 +1,10 @@
 {
- "generated_at": "2026-08-11",
+ "generated_at": "2026-08-16",
  "region": "Montana only",
  "region_note": "Every lot counted here has a published shipping or delivery point in Montana. Unlike the USDA AMS video reports, no other state is pooled in.",
  "band": "600-649 lb M&L1 steer calves",
  "weighting": "head-and-weight weighted (dollars*lbs / lbs), delivery-window start month",
  "houses": [
-  "Northern Livestock Video",
   "Superior Livestock",
   "Western Video Market"
  ],
@@ -23,65 +22,54 @@
    "mt_head": 2604
   },
   {
-   "house": "Western Video Market",
-   "sale_date": "2026-07-13",
-   "mt_lots": 3,
-   "mt_head": 740
-  },
-  {
-   "house": "Northern Livestock Video",
-   "sale_date": "2026-07-21",
-   "mt_lots": 90,
-   "mt_head": 13685
-  },
-  {
    "house": "Superior Livestock",
    "sale_date": "2026-07-30",
    "mt_lots": 3,
    "mt_head": 372
+  },
+  {
+   "house": "Western Video Market",
+   "sale_date": "2026-08-10",
+   "mt_lots": 1,
+   "mt_head": 100
   }
  ],
  "forward_buckets": {
   "2026-09": {
-   "price": 453.58,
-   "head": 675,
-   "lots": 4,
+   "price": 482.91,
+   "head": 285,
+   "lots": 2,
    "sales": [
-    "Northern Livestock Video 2026-07-21",
     "Superior Livestock 2026-06-17"
    ]
   },
   "2026-10": {
-   "price": 452.06,
-   "head": 9303,
-   "lots": 68,
+   "price": 467.99,
+   "head": 2359,
+   "lots": 19,
    "sales": [
-    "Northern Livestock Video 2026-07-21",
     "Superior Livestock 2026-06-17",
     "Superior Livestock 2026-07-10",
-    "Western Video Market 2026-07-13"
+    "Western Video Market 2026-08-10"
    ]
   },
   "2026-11": {
-   "price": 452.94,
-   "head": 5182,
-   "lots": 36,
+   "price": 460.63,
+   "head": 1330,
+   "lots": 10,
    "sales": [
-    "Northern Livestock Video 2026-07-21",
     "Superior Livestock 2026-06-17",
     "Superior Livestock 2026-07-10",
     "Superior Livestock 2026-07-30"
    ]
   },
   "2026-12": {
-   "price": 469.08,
-   "head": 3527,
-   "lots": 17,
+   "price": 471.3,
+   "head": 388,
+   "lots": 2,
    "sales": [
-    "Northern Livestock Video 2026-07-21",
     "Superior Livestock 2026-06-17",
-    "Superior Livestock 2026-07-10",
-    "Western Video Market 2026-07-13"
+    "Superior Livestock 2026-07-10"
    ]
   },
   "2027-01": {
