@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-08-16",
+ "generated_at": "2026-08-17",
  "region": "Montana only",
  "region_note": "Every lot counted here has a published shipping or delivery point in Montana. Unlike the USDA AMS video reports, no other state is pooled in.",
  "band": "600-649 lb M&L1 steer calves",
@@ -9,12 +9,6 @@
   "Western Video Market"
  ],
  "sales": [
-  {
-   "house": "Superior Livestock",
-   "sale_date": "2026-06-17",
-   "mt_lots": 13,
-   "mt_head": 1501
-  },
   {
    "house": "Superior Livestock",
    "sale_date": "2026-07-10",
@@ -35,40 +29,29 @@
   }
  ],
  "forward_buckets": {
-  "2026-09": {
-   "price": 482.91,
-   "head": 285,
-   "lots": 2,
-   "sales": [
-    "Superior Livestock 2026-06-17"
-   ]
-  },
   "2026-10": {
-   "price": 467.99,
-   "head": 2359,
-   "lots": 19,
+   "price": 458.55,
+   "head": 1323,
+   "lots": 10,
    "sales": [
-    "Superior Livestock 2026-06-17",
     "Superior Livestock 2026-07-10",
     "Western Video Market 2026-08-10"
    ]
   },
   "2026-11": {
-   "price": 460.63,
-   "head": 1330,
-   "lots": 10,
+   "price": 459.24,
+   "head": 1250,
+   "lots": 9,
    "sales": [
-    "Superior Livestock 2026-06-17",
     "Superior Livestock 2026-07-10",
     "Superior Livestock 2026-07-30"
    ]
   },
   "2026-12": {
-   "price": 471.3,
-   "head": 388,
-   "lots": 2,
+   "price": 470.0,
+   "head": 288,
+   "lots": 1,
    "sales": [
-    "Superior Livestock 2026-06-17",
     "Superior Livestock 2026-07-10"
    ]
   },
