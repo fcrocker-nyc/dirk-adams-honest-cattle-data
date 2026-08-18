@@ -5181,5 +5181,387 @@
     },
     "parsed_at": "2026-08-14T12:55:03.967455Z",
     "entry_count": 55
+  },
+  {
+    "source_key": "mt_weekly",
+    "auction": "Montana Weekly Summary",
+    "report_id": "AMS_1778",
+    "sale_day": "Monday",
+    "channel": "auction",
+    "period_start": "8/9/2026",
+    "period_end": "8/15/2026",
+    "sale_date": "2026-08-17",
+    "total_receipts": 1034,
+    "breakdown": {
+      "feeder": {
+        "head": 313,
+        "pct": 30.3
+      },
+      "slaughter": {
+        "head": 599,
+        "pct": 57.9
+      },
+      "replacement": {
+        "head": 122,
+        "pct": 11.8
+      }
+    },
+    "narrative": "Compared to last week: Feeder steers were too lightly tested to develop any market trend. Feeder heifers were all too lightly tested to develop an accurate market trend, however lower undertones were noticed. Quality this week was mixed from plain to average. Cattle were offered in small groups with many singles noticed. Demand was mostly moderate to good. Too few cattle were seen this week for buyers to build loads. CME feeder cattle positions traded lower met by pressure from lower live cattle prices. Market activity was mostly moderate with a small buyer pool was noticed. Weigh up cows sold on mostly moderate to good demand for light to moderate offerings. Feeding cow demand remains very good. A large pool of buyers were in the market this week. Canadian buyers remain in the market as they continue to buy cows to send north to feed. Cow quality was mostly plain to average this week. Many cows were coming off summer breeding pastures and many blemished cows were seen. Slaughter cows sold generally steady on breaking cows, boning and lean cows sold steady to 3.00 higher as limited offerings continue to force packer buyers to fight over limited offerings. Demand for lean cows remains very good as packers continue to search for lean grinding materials as cows come off summer pastures in mostly breaking and boning flesh. Slaughter bulls sold mostly steady to 3.00 higher. Feeding bulls were too lightly tested to develop an accurate market trend. Bull quality was not the quality this week that buyers were looking for to feed. Fewer bulls were purchased to feed this week as a result. Feeding bull quality this week was mostly plain to average. Demand for young age cows suitable to feed or rebreed was mostly moderate. Young age cows were too lightly tested to develop any market trend. Supply included: 30% Feeder Cattle (8% Steers, 88% Heifers, 4% Bulls); 58% Slaughter Cattle (78% Cows, 22% Bulls, 0% Dairy Cows); 12% Replacement Cattle (67% Stock Cows, 5% Bred Cows, 16% Cow-Calf Pairs, 13% Bulls). Feeder cattle supply over 600 lbs was 89%.",
+    "summary": {
+      "steers": {
+        "500_549": {
+          "head": 2,
+          "wtd_avg_price": 422.5,
+          "price_low": 422.5,
+          "price_high": 422.5,
+          "thin": true
+        },
+        "700_749": {
+          "head": 5,
+          "wtd_avg_price": 380.0,
+          "price_low": 380.0,
+          "price_high": 380.0,
+          "thin": true
+        },
+        "900_plus": {
+          "head": 8,
+          "wtd_avg_price": 327.0,
+          "price_low": 327.0,
+          "price_high": 327.0,
+          "thin": true
+        },
+        "650_749": {
+          "head": 5,
+          "wtd_avg_price": 380.0,
+          "price_low": 380.0,
+          "price_high": 380.0,
+          "thin": true
+        }
+      },
+      "heifers": {
+        "800_899": {
+          "head": 42,
+          "wtd_avg_price": 312.93,
+          "price_low": 295.0,
+          "price_high": 327.0,
+          "thin": true
+        },
+        "900_plus": {
+          "head": 127,
+          "wtd_avg_price": 303.16,
+          "price_low": 250.0,
+          "price_high": 314.5,
+          "thin": false
+        },
+        "750_849": {
+          "head": 42,
+          "wtd_avg_price": 312.93,
+          "price_low": 295.0,
+          "price_high": 327.0,
+          "thin": true
+        }
+      },
+      "cull_cows": {
+        "breaker_75_80": {
+          "head": 103,
+          "wtd_avg_price": 170.85,
+          "price_low": 152.0,
+          "price_high": 179.0,
+          "thin": false
+        },
+        "boner_80_85": {
+          "head": 195,
+          "wtd_avg_price": 168.32,
+          "price_low": 140.0,
+          "price_high": 183.0,
+          "thin": false
+        },
+        "lean_85_90": {
+          "head": 70,
+          "wtd_avg_price": 158.31,
+          "price_low": 127.5,
+          "price_high": 175.0,
+          "thin": false
+        },
+        "all": {
+          "head": 368,
+          "wtd_avg_price": 167.12,
+          "price_low": 127.5,
+          "price_high": 183.0,
+          "thin": false
+        }
+      },
+      "bulls": {
+        "slaughter": {
+          "head": 107,
+          "wtd_avg_price": 206.29,
+          "price_low": 175.0,
+          "price_high": 240.0,
+          "thin": false
+        },
+        "feeder": {
+          "head": 7,
+          "wtd_avg_price": 303.93,
+          "price_low": 302.5,
+          "price_high": 305.0,
+          "thin": true
+        }
+      }
+    },
+    "parsed_at": "2026-08-18T12:36:48.947298Z",
+    "entry_count": 55
+  },
+  {
+    "source_key": "nlva",
+    "auction": "Northern Livestock Video Auction",
+    "report_id": "AMS_2772",
+    "sale_day": "Seasonal",
+    "channel": "video",
+    "base": "Billings, MT",
+    "owner_group": "billings",
+    "sale_date": "2026-08-17",
+    "receipts_offered": 49119,
+    "total_receipts": 48445,
+    "breakdown": {
+      "feeder": {
+        "head": 46530,
+        "pct": 96.05
+      },
+      "replacement": {
+        "head": 1915,
+        "pct": 3.95
+      }
+    },
+    "narrative": "This is a preliminary report. The final report along with market commentary will be available tomorrow morning 8/18/26. Supply included: 96% Feeder Cattle (60% Steers, 40% Heifers); 4% Replacement Cattle (44% Bred Cows, 56% Bred Heifers). Feeder cattle over 600 lbs was 48%. Feeder Cattle prices FOB based on net weights after a 0-3% pencil shrink or equivalent, with a 14-28 cent slide > 600 lbs and 24-60 cent slide < 600 lbs.",
+    "mt_region_label": "North Central (CO, IA, MT, ND, NE, SD, WY)",
+    "has_mt_region": true,
+    "mt_region_note": "USDA groups Montana cattle into this multi-state region; figures are regional, not Montana-only.",
+    "terms": {
+      "pencil_shrink_pct": "0-3",
+      "slide_over_600_cents": "14-28",
+      "slide_under_600_cents": "24-60",
+      "fob_net_weights": true
+    },
+    "summary": {
+      "steers": {
+        "700_749": {
+          "head": 700,
+          "wtd_avg_price": 397.14,
+          "price_low": 386.0,
+          "price_high": 407.0,
+          "thin": false
+        },
+        "750_799": {
+          "head": 425,
+          "wtd_avg_price": 385.0,
+          "price_low": 379.0,
+          "price_high": 397.0,
+          "thin": false
+        },
+        "900_plus": {
+          "head": 2907,
+          "wtd_avg_price": 349.12,
+          "price_low": 332.0,
+          "price_high": 367.0,
+          "thin": false
+        },
+        "800_899": {
+          "head": 1992,
+          "wtd_avg_price": 358.13,
+          "price_low": 345.0,
+          "price_high": 388.0,
+          "thin": false
+        },
+        "400_499": {
+          "head": 2935,
+          "wtd_avg_price": 572.65,
+          "price_low": 497.5,
+          "price_high": 632.5,
+          "thin": false
+        },
+        "500_549": {
+          "head": 4464,
+          "wtd_avg_price": 477.64,
+          "price_low": 432.5,
+          "price_high": 513.0,
+          "thin": false
+        },
+        "550_599": {
+          "head": 4734,
+          "wtd_avg_price": 451.24,
+          "price_low": 409.0,
+          "price_high": 476.0,
+          "thin": false
+        },
+        "600_649": {
+          "head": 5482,
+          "wtd_avg_price": 428.33,
+          "price_low": 390.0,
+          "price_high": 455.0,
+          "thin": false
+        },
+        "650_699": {
+          "head": 1506,
+          "wtd_avg_price": 409.72,
+          "price_low": 388.0,
+          "price_high": 451.0,
+          "thin": false
+        },
+        "550_649_combined": {
+          "head": 10216,
+          "wtd_avg_price": 438.95,
+          "price_low": 390.0,
+          "price_high": 476.0,
+          "thin": false
+        },
+        "650_749": {
+          "head": 2206,
+          "wtd_avg_price": 405.73,
+          "price_low": 386.0,
+          "price_high": 451.0,
+          "thin": false
+        },
+        "750_849": {
+          "head": 2417,
+          "wtd_avg_price": 362.85,
+          "price_low": 345.0,
+          "price_high": 397.0,
+          "thin": false
+        }
+      },
+      "heifers": {
+        "800_899": {
+          "head": 2315,
+          "wtd_avg_price": 344.77,
+          "price_low": 340.0,
+          "price_high": 347.0,
+          "thin": false
+        },
+        "900_plus": {
+          "head": 445,
+          "wtd_avg_price": 329.07,
+          "price_low": 325.0,
+          "price_high": 337.0,
+          "thin": false
+        },
+        "750_799": {
+          "head": 917,
+          "wtd_avg_price": 356.58,
+          "price_low": 343.0,
+          "price_high": 358.0,
+          "thin": false
+        },
+        "400_499": {
+          "head": 2825,
+          "wtd_avg_price": 485.84,
+          "price_low": 412.5,
+          "price_high": 522.5,
+          "thin": false
+        },
+        "500_549": {
+          "head": 4145,
+          "wtd_avg_price": 453.35,
+          "price_low": 395.0,
+          "price_high": 500.0,
+          "thin": false
+        },
+        "550_599": {
+          "head": 2920,
+          "wtd_avg_price": 441.93,
+          "price_low": 379.0,
+          "price_high": 525.0,
+          "thin": false
+        },
+        "under_400": {
+          "head": 420,
+          "wtd_avg_price": 575.0,
+          "price_low": 575.0,
+          "price_high": 575.0,
+          "thin": false
+        },
+        "600_649": {
+          "head": 2133,
+          "wtd_avg_price": 441.27,
+          "price_low": 368.0,
+          "price_high": 495.0,
+          "thin": false
+        },
+        "650_699": {
+          "head": 245,
+          "wtd_avg_price": 432.15,
+          "price_low": 378.0,
+          "price_high": 457.5,
+          "thin": false
+        },
+        "700_749": {
+          "head": 166,
+          "wtd_avg_price": 392.4,
+          "price_low": 383.0,
+          "price_high": 402.5,
+          "thin": false
+        },
+        "550_649_combined": {
+          "head": 5053,
+          "wtd_avg_price": 441.65,
+          "price_low": 368.0,
+          "price_high": 525.0,
+          "thin": false
+        },
+        "650_749": {
+          "head": 411,
+          "wtd_avg_price": 416.09,
+          "price_low": 378.0,
+          "price_high": 457.5,
+          "thin": false
+        },
+        "750_849": {
+          "head": 3232,
+          "wtd_avg_price": 348.12,
+          "price_low": 340.0,
+          "price_high": 358.0,
+          "thin": false
+        }
+      }
+    },
+    "parsed_at": "2026-08-18T12:36:49.643180Z",
+    "entry_count": 161
+  },
+  {
+    "source_key": "superior",
+    "auction": "Superior Livestock Auction",
+    "report_id": "AMS_2713",
+    "sale_day": "Ongoing",
+    "channel": "video",
+    "base": "Fort Worth, TX",
+    "owner_group": "independent",
+    "period_start": "8/17/2026",
+    "period_end": "8/21/2026",
+    "sale_date": "2026-08-21",
+    "receipts_offered": 197164,
+    "total_receipts": 28052,
+    "breakdown": {
+      "feeder": {
+        "head": 28052,
+        "pct": 100.0
+      }
+    },
+    "narrative": "Supply included 88 percent from the South Central region, 11 percent from the South East Region, 1 percent from the West region. Deliveries are current through February 2027. Current delivery is 14 days from the last day of the video (August 21) and is up to and including September 4, 2026. Supply included: 100% Feeder Cattle (62% Steers, 38% Heifers). Feeder cattle over 600 lbs was 50%. Feeder Cattle prices FOB based on net weights after a 0-3% pencil shrink or equivalent, with a 0-30 cent slide > 600 lbs and 0-50 cent slide < 600 lbs.",
+    "mt_region_label": null,
+    "has_mt_region": false,
+    "mt_region_note": "USDA groups Montana cattle into this multi-state region; figures are regional, not Montana-only.",
+    "terms": {
+      "pencil_shrink_pct": "0-3",
+      "slide_over_600_cents": "0-30",
+      "slide_under_600_cents": "0-50",
+      "fob_net_weights": true,
+      "current_delivery": "14 days from the last day of the video (August 21) and is up to and including September 4, 2026",
+      "delivery_window": "current through February 2027"
+    },
+    "summary": {
+      "steers": {},
+      "heifers": {}
+    },
+    "parsed_at": "2026-08-18T12:36:51.922648Z",
+    "entry_count": 0
   }
 ]

@@ -6,121 +6,33 @@
   "channel": "video",
   "base": "Fort Worth, TX",
   "owner_group": "independent",
-  "period_start": "7/27/2026",
-  "period_end": "7/30/2026",
-  "sale_date": "2026-07-30",
-  "receipts_offered": 144519,
-  "total_receipts": 24909,
+  "period_start": "8/17/2026",
+  "period_end": "8/21/2026",
+  "sale_date": "2026-08-21",
+  "receipts_offered": 197164,
+  "total_receipts": 28052,
   "breakdown": {
     "feeder": {
-      "head": 24909,
+      "head": 28052,
       "pct": 100.0
     }
   },
-  "narrative": "Supply included: 100% Feeder Cattle (54% Steers, 0% Dairy Steers, 29% Heifers, 10% Beef/Dairy Steers, 7% Beef/Dairy Heifers). Feeder cattle over 600 lbs was 69%. Feeder Cattle prices FOB based on net weights after a 0-3% pencil shrink or equivalent, with a 0-30 cent slide > 600 lbs and 10-50 cent slide < 600 lbs.",
-  "mt_region_label": "North Central (CO, IA, MT, ND, NE, SD, WY)",
-  "has_mt_region": true,
+  "narrative": "Supply included 88 percent from the South Central region, 11 percent from the South East Region, 1 percent from the West region. Deliveries are current through February 2027. Current delivery is 14 days from the last day of the video (August 21) and is up to and including September 4, 2026. Supply included: 100% Feeder Cattle (62% Steers, 38% Heifers). Feeder cattle over 600 lbs was 50%. Feeder Cattle prices FOB based on net weights after a 0-3% pencil shrink or equivalent, with a 0-30 cent slide > 600 lbs and 0-50 cent slide < 600 lbs.",
+  "mt_region_label": null,
+  "has_mt_region": false,
   "mt_region_note": "USDA groups Montana cattle into this multi-state region; figures are regional, not Montana-only.",
   "terms": {
     "pencil_shrink_pct": "0-3",
     "slide_over_600_cents": "0-30",
-    "slide_under_600_cents": "10-50",
-    "fob_net_weights": true
+    "slide_under_600_cents": "0-50",
+    "fob_net_weights": true,
+    "current_delivery": "14 days from the last day of the video (August 21) and is up to and including September 4, 2026",
+    "delivery_window": "current through February 2027"
   },
-  "entries": [
-    {
-      "type": "HEIFERS",
-      "grade": "Medium and Large 1",
-      "pricing": "cwt",
-      "head": 150,
-      "wt_low": 675,
-      "wt_high": 675,
-      "avg_wt": 675,
-      "price_low": 357.0,
-      "price_high": 357.0,
-      "avg_price": 357.0,
-      "delivery": "Aug"
-    },
-    {
-      "type": "HEIFERS",
-      "grade": "Medium and Large 1",
-      "pricing": "cwt",
-      "head": 140,
-      "wt_low": 725,
-      "wt_high": 725,
-      "avg_wt": 725,
-      "price_low": 341.0,
-      "price_high": 341.0,
-      "avg_price": 341.0
-    },
-    {
-      "type": "HEIFERS",
-      "grade": "Medium and Large 1",
-      "pricing": "cwt",
-      "head": 78,
-      "wt_low": 635,
-      "wt_high": 635,
-      "avg_wt": 635,
-      "price_low": 359.0,
-      "price_high": 359.0,
-      "avg_price": 359.0,
-      "delivery": "Current",
-      "note": "South Central"
-    },
-    {
-      "type": "HEIFERS",
-      "grade": "Medium and Large 1-2",
-      "pricing": "cwt",
-      "head": 78,
-      "wt_low": 635,
-      "wt_high": 635,
-      "avg_wt": 635,
-      "price_low": 359.0,
-      "price_high": 359.0,
-      "avg_price": 359.0,
-      "delivery": "Current",
-      "note": "South Central"
-    }
-  ],
+  "entries": [],
   "summary": {
     "steers": {},
-    "heifers": {
-      "650_699": {
-        "head": 150,
-        "wtd_avg_price": 357.0,
-        "price_low": 357.0,
-        "price_high": 357.0,
-        "thin": false
-      },
-      "700_749": {
-        "head": 140,
-        "wtd_avg_price": 341.0,
-        "price_low": 341.0,
-        "price_high": 341.0,
-        "thin": false
-      },
-      "600_649": {
-        "head": 156,
-        "wtd_avg_price": 359.0,
-        "price_low": 359.0,
-        "price_high": 359.0,
-        "thin": false
-      },
-      "550_649_combined": {
-        "head": 156,
-        "wtd_avg_price": 359.0,
-        "price_low": 359.0,
-        "price_high": 359.0,
-        "thin": false
-      },
-      "650_749": {
-        "head": 290,
-        "wtd_avg_price": 349.28,
-        "price_low": 341.0,
-        "price_high": 357.0,
-        "thin": false
-      }
-    }
+    "heifers": {}
   },
-  "parsed_at": "2026-07-28T13:54:35.103044Z"
+  "parsed_at": "2026-08-18T12:36:51.922648Z"
 }
