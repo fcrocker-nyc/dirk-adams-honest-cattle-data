@@ -6,20 +6,20 @@
   "channel": "video",
   "base": "Billings, MT",
   "owner_group": "billings",
-  "sale_date": "2026-08-17",
+  "sale_date": "2026-08-18",
   "receipts_offered": 49119,
-  "total_receipts": 48445,
+  "total_receipts": 45657,
   "breakdown": {
     "feeder": {
-      "head": 46530,
-      "pct": 96.05
+      "head": 44522,
+      "pct": 97.51
     },
     "replacement": {
-      "head": 1915,
-      "pct": 3.95
+      "head": 1135,
+      "pct": 2.49
     }
   },
-  "narrative": "This is a preliminary report. The final report along with market commentary will be available tomorrow morning 8/18/26. Supply included: 96% Feeder Cattle (60% Steers, 40% Heifers); 4% Replacement Cattle (44% Bred Cows, 56% Bred Heifers). Feeder cattle over 600 lbs was 48%. Feeder Cattle prices FOB based on net weights after a 0-3% pencil shrink or equivalent, with a 14-28 cent slide > 600 lbs and 24-60 cent slide < 600 lbs.",
+  "narrative": "Northern Livestock video auction held its Early Fall Preview August 17th 2026. The day was long as the sale stretched late into the afternoon, ending just after 6:00 pm. Demand was mostly moderate to good for moderate to heavy offerings. Demand for light weight calves was good this sale as buyers showed good demand for all cattle suitable to develop into yearlings. Demand for feeder cattle destined for the feedlot was mostly moderate. CME positions have fallen since the last sale one month ago and buyers purchased cattle lower as they adjust to lower break-evens. Demand for heifers was mostly good with very good demand seen at times as replacement buyers and feeding buyers both showed interest in high quality offerings. Many sets of reputation heifers outsold their steer mates as buyers searched for high quality genetics. Demand for yearlings was moderate to good. Several sets of yearlings were located in the feedlot due to drought conditions. These offerings are tagged as fleshy in the report below. A larger volume of PO's were noticed this sale as lower prices led some producers to po or move their cattle to the September sale. Market activity was active throughout the sale with bidders participating rapidly in person, by phone, and via the internet. Calves weaned for more than 45 days were sold untagged, with most scheduled for November or later delivery. Cattle designated as \"Value Added\" were enrolled in two or more certification programs and verified by a third party. The premiums seen for value added cattle were historically light with some lots seeing little to no premium this sale. Cattle for current delivery are set to deliver within 14 days of the last day of the sale, or August 31st, 2026. Supply included: 96% Feeder Cattle (59% Steers, 41% Heifers); 4% Replacement Cattle (44% Bred Cows, 56% Bred Heifers). Feeder cattle over 600 lbs was 48%. Feeder Cattle prices FOB based on net weights after a 0-3% pencil shrink or equivalent, with a 14-28 cent slide > 600 lbs and 24-60 cent slide < 600 lbs.",
   "mt_region_label": "North Central (CO, IA, MT, ND, NE, SD, WY)",
   "has_mt_region": true,
   "mt_region_note": "USDA groups Montana cattle into this multi-state region; figures are regional, not Montana-only.",
@@ -329,13 +329,13 @@
       "type": "STEERS",
       "grade": "Medium and Large 1",
       "pricing": "cwt",
-      "head": 1560,
+      "head": 1340,
       "wt_low": 500,
       "wt_high": 540,
-      "avg_wt": 521,
+      "avg_wt": 524,
       "price_low": 456.0,
-      "price_high": 503.0,
-      "avg_price": 472.83,
+      "price_high": 487.0,
+      "avg_price": 468.11,
       "note": "Unweaned"
     },
     {
@@ -521,13 +521,13 @@
       "type": "STEERS",
       "grade": "Medium and Large 1",
       "pricing": "cwt",
-      "head": 572,
+      "head": 272,
       "wt_low": 565,
       "wt_high": 590,
-      "avg_wt": 579,
+      "avg_wt": 578,
       "price_low": 444.0,
       "price_high": 452.0,
-      "avg_price": 449.69,
+      "avg_price": 448.24,
       "note": "Unweaned"
     },
     {
@@ -572,13 +572,13 @@
       "type": "STEERS",
       "grade": "Medium and Large 1",
       "pricing": "cwt",
-      "head": 786,
+      "head": 690,
       "wt_low": 600,
       "wt_high": 640,
-      "avg_wt": 608,
+      "avg_wt": 605,
       "price_low": 413.0,
       "price_high": 440.0,
-      "avg_price": 434.86,
+      "avg_price": 436.28,
       "note": "Unweaned"
     },
     {
@@ -689,19 +689,6 @@
       "type": "STEERS",
       "grade": "Medium and Large 1",
       "pricing": "cwt",
-      "head": 40,
-      "wt_low": 580,
-      "wt_high": 580,
-      "avg_wt": 580,
-      "price_low": 415.0,
-      "price_high": 415.0,
-      "avg_price": 415.0,
-      "note": "Split Loads"
-    },
-    {
-      "type": "STEERS",
-      "grade": "Medium and Large 1",
-      "pricing": "cwt",
       "head": 90,
       "wt_low": 600,
       "wt_high": 600,
@@ -775,20 +762,6 @@
       "avg_price": 447.0,
       "delivery": "Nov-Dec",
       "note": "Split Loads"
-    },
-    {
-      "type": "STEERS",
-      "grade": "Medium and Large 1",
-      "pricing": "cwt",
-      "head": 240,
-      "wt_low": 430,
-      "wt_high": 430,
-      "avg_wt": 430,
-      "price_low": 601.0,
-      "price_high": 601.0,
-      "avg_price": 601.0,
-      "delivery": "Dec",
-      "note": "Unweaned"
     },
     {
       "type": "STEERS",
@@ -1025,20 +998,6 @@
       "type": "STEERS",
       "grade": "Medium and Large 1-2",
       "pricing": "cwt",
-      "head": 90,
-      "wt_low": 530,
-      "wt_high": 530,
-      "avg_wt": 530,
-      "price_low": 445.0,
-      "price_high": 445.0,
-      "avg_price": 445.0,
-      "delivery": "Nov",
-      "note": "Unweaned"
-    },
-    {
-      "type": "STEERS",
-      "grade": "Medium and Large 1-2",
-      "pricing": "cwt",
       "head": 50,
       "wt_low": 575,
       "wt_high": 575,
@@ -1046,6 +1005,7 @@
       "price_low": 409.0,
       "price_high": 409.0,
       "avg_price": 409.0,
+      "delivery": "Nov",
       "note": "Split Loads"
     },
     {
@@ -1128,18 +1088,6 @@
       "price_high": 343.0,
       "avg_price": 343.0,
       "delivery": "Current"
-    },
-    {
-      "type": "HEIFERS",
-      "grade": "Medium and Large 1",
-      "pricing": "cwt",
-      "head": 100,
-      "wt_low": 1000,
-      "wt_high": 1000,
-      "avg_wt": 1000,
-      "price_low": 325.0,
-      "price_high": 325.0,
-      "avg_price": 325.0
     },
     {
       "type": "HEIFERS",
@@ -1302,13 +1250,13 @@
       "type": "HEIFERS",
       "grade": "Medium and Large 1",
       "pricing": "cwt",
-      "head": 690,
+      "head": 360,
       "wt_low": 450,
       "wt_high": 490,
-      "avg_wt": 477,
+      "avg_wt": 473,
       "price_low": 465.0,
-      "price_high": 484.0,
-      "avg_price": 475.46,
+      "price_high": 480.0,
+      "avg_price": 471.55,
       "note": "Unweaned"
     },
     {
@@ -1367,13 +1315,13 @@
       "type": "HEIFERS",
       "grade": "Medium and Large 1",
       "pricing": "cwt",
-      "head": 1182,
+      "head": 1085,
       "wt_low": 500,
       "wt_high": 540,
       "avg_wt": 522,
       "price_low": 430.0,
       "price_high": 457.5,
-      "avg_price": 449.97,
+      "avg_price": 450.88,
       "note": "Unweaned"
     },
     {
@@ -1664,13 +1612,13 @@
       "type": "HEIFERS",
       "grade": "Medium and Large 1",
       "pricing": "cwt",
-      "head": 515,
+      "head": 120,
       "wt_low": 425,
-      "wt_high": 440,
-      "avg_wt": 437,
-      "price_low": 490.0,
+      "wt_high": 425,
+      "avg_wt": 425,
+      "price_low": 520.0,
       "price_high": 520.0,
-      "avg_price": 497.47,
+      "avg_price": 520.0,
       "note": "Unweaned"
     },
     {
@@ -1753,13 +1701,13 @@
       "type": "HEIFERS",
       "grade": "Medium and Large 1",
       "pricing": "cwt",
-      "head": 140,
+      "head": 80,
       "wt_low": 550,
       "wt_high": 550,
       "avg_wt": 550,
       "price_low": 384.0,
-      "price_high": 395.0,
-      "avg_price": 391.57,
+      "price_high": 394.0,
+      "avg_price": 389.0,
       "note": "Split Loads"
     },
     {
@@ -1999,27 +1947,14 @@
       "type": "HEIFERS",
       "grade": "Medium and Large 1",
       "pricing": "cwt",
-      "head": 200,
-      "wt_low": 550,
-      "wt_high": 550,
-      "avg_wt": 550,
-      "price_low": 432.0,
-      "price_high": 432.0,
-      "avg_price": 432.0,
-      "delivery": "Jan",
-      "note": "Unweaned"
-    },
-    {
-      "type": "HEIFERS",
-      "grade": "Medium and Large 1",
-      "pricing": "cwt",
       "head": 100,
       "wt_low": 585,
       "wt_high": 585,
       "avg_wt": 585,
       "price_low": 423.0,
       "price_high": 423.0,
-      "avg_price": 423.0
+      "avg_price": 423.0,
+      "delivery": "Jan"
     },
     {
       "type": "HEIFERS",
@@ -2093,19 +2028,6 @@
       "type": "HEIFERS",
       "grade": "Large 1",
       "pricing": "cwt",
-      "head": 80,
-      "wt_low": 645,
-      "wt_high": 645,
-      "avg_wt": 645,
-      "price_low": 374.0,
-      "price_high": 374.0,
-      "avg_price": 374.0,
-      "note": "Unweaned"
-    },
-    {
-      "type": "HEIFERS",
-      "grade": "Large 1",
-      "pricing": "cwt",
       "head": 100,
       "wt_low": 550,
       "wt_high": 550,
@@ -2148,29 +2070,29 @@
         "thin": false
       },
       "400_499": {
-        "head": 2935,
-        "wtd_avg_price": 572.65,
+        "head": 2695,
+        "wtd_avg_price": 570.12,
         "price_low": 497.5,
         "price_high": 632.5,
         "thin": false
       },
       "500_549": {
-        "head": 4464,
-        "wtd_avg_price": 477.64,
+        "head": 4154,
+        "wtd_avg_price": 477.08,
         "price_low": 432.5,
         "price_high": 513.0,
         "thin": false
       },
       "550_599": {
-        "head": 4734,
-        "wtd_avg_price": 451.24,
+        "head": 4394,
+        "wtd_avg_price": 451.59,
         "price_low": 409.0,
         "price_high": 476.0,
         "thin": false
       },
       "600_649": {
-        "head": 5482,
-        "wtd_avg_price": 428.33,
+        "head": 5386,
+        "wtd_avg_price": 428.39,
         "price_low": 390.0,
         "price_high": 455.0,
         "thin": false
@@ -2183,8 +2105,8 @@
         "thin": false
       },
       "550_649_combined": {
-        "head": 10216,
-        "wtd_avg_price": 438.95,
+        "head": 9780,
+        "wtd_avg_price": 438.81,
         "price_low": 390.0,
         "price_high": 476.0,
         "thin": false
@@ -2212,13 +2134,6 @@
         "price_high": 347.0,
         "thin": false
       },
-      "900_plus": {
-        "head": 445,
-        "wtd_avg_price": 329.07,
-        "price_low": 325.0,
-        "price_high": 337.0,
-        "thin": false
-      },
       "750_799": {
         "head": 917,
         "wtd_avg_price": 356.58,
@@ -2227,22 +2142,22 @@
         "thin": false
       },
       "400_499": {
-        "head": 2825,
-        "wtd_avg_price": 485.84,
+        "head": 2100,
+        "wtd_avg_price": 485.9,
         "price_low": 412.5,
         "price_high": 522.5,
         "thin": false
       },
       "500_549": {
-        "head": 4145,
-        "wtd_avg_price": 453.35,
+        "head": 4048,
+        "wtd_avg_price": 453.67,
         "price_low": 395.0,
         "price_high": 500.0,
         "thin": false
       },
       "550_599": {
-        "head": 2920,
-        "wtd_avg_price": 441.93,
+        "head": 2660,
+        "wtd_avg_price": 443.73,
         "price_low": 379.0,
         "price_high": 525.0,
         "thin": false
@@ -2261,6 +2176,13 @@
         "price_high": 495.0,
         "thin": false
       },
+      "900_plus": {
+        "head": 345,
+        "wtd_avg_price": 330.25,
+        "price_low": 325.0,
+        "price_high": 337.0,
+        "thin": false
+      },
       "650_699": {
         "head": 245,
         "wtd_avg_price": 432.15,
@@ -2276,8 +2198,8 @@
         "thin": false
       },
       "550_649_combined": {
-        "head": 5053,
-        "wtd_avg_price": 441.65,
+        "head": 4793,
+        "wtd_avg_price": 442.64,
         "price_low": 368.0,
         "price_high": 525.0,
         "thin": false
@@ -2298,5 +2220,5 @@
       }
     }
   },
-  "parsed_at": "2026-08-18T12:36:49.643180Z"
+  "parsed_at": "2026-08-19T12:37:29.242163Z"
 }

@@ -60,7 +60,7 @@
   "season": {
     "in_season_window": true,
     "latest_sale_date": "2026-08-21",
-    "days_since_latest": -3,
+    "days_since_latest": -2,
     "stale": false,
     "banner": "Video auction season is active — figures update as sales report."
   },
@@ -85,7 +85,7 @@
       "base": "Billings, MT",
       "owner_group": "billings",
       "report_id": "AMS_2772",
-      "sale_date": "2026-08-17",
+      "sale_date": "2026-08-18",
       "has_mt_region": true,
       "pencil_shrink_pct": "0-3",
       "slide_over_600_cents": "14-28",
@@ -126,28 +126,28 @@
       "key": "nlva",
       "name": "Northern Livestock Video Auction",
       "owner_group": "billings",
-      "sale_date": "2026-08-17",
-      "total_receipts": 48445,
+      "sale_date": "2026-08-18",
+      "total_receipts": 45657,
       "has_mt_region": true,
       "mt_region_label": "North Central (CO, IA, MT, ND, NE, SD, WY)",
       "steers": {
         "550_599": {
-          "head": 4734,
-          "wtd_avg_price": 451.24,
+          "head": 4394,
+          "wtd_avg_price": 451.59,
           "price_low": 409.0,
           "price_high": 476.0,
           "thin": false
         },
         "600_649": {
-          "head": 5482,
-          "wtd_avg_price": 428.33,
+          "head": 5386,
+          "wtd_avg_price": 428.39,
           "price_low": 390.0,
           "price_high": 455.0,
           "thin": false
         },
         "550_649_combined": {
-          "head": 10216,
-          "wtd_avg_price": 438.95,
+          "head": 9780,
+          "wtd_avg_price": 438.81,
           "price_low": 390.0,
           "price_high": 476.0,
           "thin": false
@@ -155,8 +155,8 @@
       },
       "heifers": {
         "550_599": {
-          "head": 2920,
-          "wtd_avg_price": 441.93,
+          "head": 2660,
+          "wtd_avg_price": 443.73,
           "price_low": 379.0,
           "price_high": 525.0,
           "thin": false
@@ -169,8 +169,8 @@
           "thin": false
         },
         "550_649_combined": {
-          "head": 5053,
-          "wtd_avg_price": 441.65,
+          "head": 4793,
+          "wtd_avg_price": 442.64,
           "price_low": 368.0,
           "price_high": 525.0,
           "thin": false
