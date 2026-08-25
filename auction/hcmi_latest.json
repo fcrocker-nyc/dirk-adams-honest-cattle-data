@@ -32,10 +32,10 @@
       "weight": 0.105
     }
   },
-  "computed_at": "2026-08-24",
+  "computed_at": "2026-08-25",
   "source": "Honest Cattle Market Index v2.0 \u2014 CME GF/LE settlements + USDA AMS_1778 head-weighted; base 2024 = 100; provisional prints carry Montana legs at last USDA print; forward curve from transacted prices only",
   "forward": {
-    "computed_at": "2026-08-24",
+    "computed_at": "2026-08-25",
     "convention": "Transacted prices only: deferred CME GF/LE settles; MT steer leg from forward-delivery video-auction sales (600-649 lb M&L1 steers, delivery-start-month buckets) within 60 days, else carried; boning leg carried (no forward cull market). No Honest Cattle estimates in any leg.",
     "steer_leg_sources": {
       "video MT 600-649": "Preferred. Built lot by lot from the auction houses' own results (Northern Livestock, Superior, Western Video Market) and filtered to lots with a published Montana shipping or delivery point. Genuinely Montana-only.",
@@ -45,15 +45,15 @@
     "months": [
       {
         "month": "2026-09",
-        "hcmi_fwd": 131.6,
+        "hcmi_fwd": 129.6,
         "legs": {
           "feeder_gf": {
             "contract": "GFU26",
-            "settle": 326.77
+            "settle": 318.55
           },
           "live_le": {
             "contract": "LEV26",
-            "settle": 215.57
+            "settle": 211.25
           },
           "mt_steer": {
             "source": "video 600-649",
@@ -73,15 +73,15 @@
       },
       {
         "month": "2026-10",
-        "hcmi_fwd": 130.1,
+        "hcmi_fwd": 128.0,
         "legs": {
           "feeder_gf": {
             "contract": "GFV26",
-            "settle": 321.25
+            "settle": 312.98
           },
           "live_le": {
             "contract": "LEV26",
-            "settle": 215.57
+            "settle": 211.25
           },
           "mt_steer": {
             "source": "video MT 600-649",
@@ -102,15 +102,15 @@
       },
       {
         "month": "2026-11",
-        "hcmi_fwd": 129.4,
+        "hcmi_fwd": 127.4,
         "legs": {
           "feeder_gf": {
             "contract": "GFX26",
-            "settle": 314.02
+            "settle": 305.73
           },
           "live_le": {
             "contract": "LEZ26",
-            "settle": 216.57
+            "settle": 212.18
           },
           "mt_steer": {
             "source": "video MT 600-649",
@@ -131,15 +131,15 @@
       },
       {
         "month": "2026-12",
-        "hcmi_fwd": 128.4,
+        "hcmi_fwd": 126.5,
         "legs": {
           "feeder_gf": {
             "contract": "GFF27",
-            "settle": 305.35
+            "settle": 297.98
           },
           "live_le": {
             "contract": "LEZ26",
-            "settle": 216.57
+            "settle": 212.18
           },
           "mt_steer": {
             "source": "video MT 600-649",
@@ -159,15 +159,15 @@
       },
       {
         "month": "2027-01",
-        "hcmi_fwd": 128.5,
+        "hcmi_fwd": 126.7,
         "legs": {
           "feeder_gf": {
             "contract": "GFF27",
-            "settle": 305.35
+            "settle": 297.98
           },
           "live_le": {
             "contract": "LEG27",
-            "settle": 217.77
+            "settle": 213.48
           },
           "mt_steer": {
             "source": "video MT 600-649",
@@ -186,15 +186,15 @@
       },
       {
         "month": "2027-02",
-        "hcmi_fwd": 130.5,
+        "hcmi_fwd": 128.7,
         "legs": {
           "feeder_gf": {
             "contract": "GFH27",
-            "settle": 301.35
+            "settle": 294.9
           },
           "live_le": {
             "contract": "LEG27",
-            "settle": 217.77
+            "settle": 213.48
           },
           "mt_steer": {
             "source": "carry",
