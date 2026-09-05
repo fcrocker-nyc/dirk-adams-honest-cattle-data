@@ -1,8 +1,8 @@
 {
  "model": "HC feed-cost pass-through v1.1 (AMPC/Marsh method, re-estimated; MT-actual)",
- "computed_at": "2026-08-29T11:15:06Z",
- "as_of_data_month": "2026-06",
- "sample": "2000-01 to 2026-06 monthly (n=318)",
+ "computed_at": "2026-09-05T11:26:10Z",
+ "as_of_data_month": "2026-07",
+ "sample": "2000-01 to 2026-07 monthly (n=319)",
  "mt_actual_months": 29,
  "elasticity": {
   "corn_longrun": -0.225,
@@ -10,9 +10,9 @@
   "output_longrun": 1.425
  },
  "fit": {
-  "r2_levels": 0.96,
+  "r2_levels": 0.961,
   "backtest_mape_pct": 7.4,
-  "backtest_corr": 0.966,
+  "backtest_corr": 0.967,
   "backtest_window": "train<=2022, test 2023+"
  },
  "current_read": {
