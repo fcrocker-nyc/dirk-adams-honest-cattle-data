@@ -9,9 +9,19 @@ the statewide weekly summary, parses them into structured JSON, and
 writes the results to the repo.
 
 Data sources (all publicly accessible, no auth):
+    AMS_1773  Miles City Livestock Commission - Miles City, MT (Tue)
+    AMS_1774  Public Auction Yards (PAYS) - Billings, MT (Wed)
     AMS_1776  Public Auction Yards (PAYS) - Billings, MT (Fri)
     AMS_1777  Billings Livestock Commission (BLS) - Billings, MT (Thu)
     AMS_1778  Montana Weekly Livestock Auction Summary
+
+The per-barn reports (1773/1774/1776/1777) post the day of or after each
+sale, while AMS_1778 only posts the Monday after its Sun-Sat week. AMS_1778
+is the sum of those barn reports, so this script also builds the week's
+statewide figures itself as soon as the barn reports land
+(auction/mt_composite_latest.json, source_key "mt_composite"), and checks
+them against AMS_1778 once it posts (auction/mt_composite_check.json).
+
     AMS_2772  Northern Livestock Video Auction (NLVA)   - seasonal video
     AMS_2713  Superior Livestock Auction                 - seasonal video
     AMS_3242  Western Video Market (WVM)                 - seasonal video
@@ -52,6 +62,8 @@ USER_AGENT = "honestcattle-auction-updater/1.0 (+https://honestcattle.net)"
 REQUEST_TIMEOUT = 30
 
 REPORTS = {
+    "miles_city": {"id": "AMS_1773", "name": "Miles City Livestock Commission", "day": "Tuesday", "channel": "auction"},
+    "pays_wed": {"id": "AMS_1774", "name": "Public Auction Yards (Wednesday)", "day": "Wednesday", "channel": "auction"},
     "pays": {"id": "AMS_1776", "name": "Public Auction Yards", "day": "Friday", "channel": "auction"},
     "bls":  {"id": "AMS_1777", "name": "Billings Livestock Commission", "day": "Thursday", "channel": "auction"},
     "mt_weekly": {"id": "AMS_1778", "name": "Montana Weekly Summary", "day": "Monday", "channel": "auction"},
@@ -707,6 +719,13 @@ def main() -> int:
                 f"{'added to history' if added else 'already in history'}"
             )
 
+    # Build this week's statewide composite from the per-barn USDA reports
+    # (current by Friday) and check it against AMS_1778 once that posts.
+    try:
+        build_mt_composite(auction_dir, verbose=args.verbose)
+    except Exception as exc:  # noqa: BLE001 — never fail the job over the composite
+        print(f"[auction] composite skipped: {exc}", file=sys.stderr)
+
     # Consolidate the freshest video sale across NLVA / Superior / WVM into a
     # single video_latest.json the app reads. Reads from disk (not just this
     # run's results) so an unchanged-but-present sale still surfaces. The app
@@ -731,6 +750,157 @@ def main() -> int:
 
     print(f"[auction] {changed} of {len(args.reports)} reports updated")
     return 0
+
+
+# ---------------------------------------------------------------------------
+# Statewide composite (same-week stand-in for AMS_1778)
+# ---------------------------------------------------------------------------
+
+# Barn reports that AMS_1778 sums. Verified 2026-09-10: for Aug 30-Sep 5,
+# AMS_1778 feeder/slaughter/replacement head = PAYS Wed + Miles City + BLS
+# exactly (1,842 / 617 / 142); for Aug 23-29 = BLS + Miles City (921 / 689 /
+# 173); single-barn weeks reproduce that barn's summary line for line. In
+# multi-barn weeks USDA merges like lots across barns, so 50-lb feeder band
+# figures can differ slightly from the composite; the check file records it.
+COMPOSITE_KEYS = ("miles_city", "pays_wed", "pays", "bls")
+
+
+def _week_bounds(iso: str) -> tuple[dt.date, dt.date]:
+    """Sunday-Saturday week containing an ISO date (AMS_1778's week)."""
+    d = dt.date.fromisoformat(iso)
+    start = d - dt.timedelta(days=(d.weekday() + 1) % 7)
+    return start, start + dt.timedelta(days=6)
+
+
+def _mdy(d: dt.date) -> str:
+    return f"{d.month}/{d.day}/{d.year}"
+
+
+def _load_json(path: Path):
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError, ValueError):
+        return None
+
+
+def _compare_summaries(comp: dict, usda: dict) -> dict:
+    """Category head and every summary band: composite vs AMS_1778."""
+    out: dict = {"breakdown": {}, "bands": [], "max_abs_price_diff": 0.0,
+                 "head_mismatches": 0}
+    for cat in ("feeder", "slaughter", "replacement"):
+        a = (comp.get("breakdown") or {}).get(cat, {}).get("head", 0)
+        b = (usda.get("breakdown") or {}).get(cat, {}).get("head", 0)
+        out["breakdown"][cat] = {"composite": a, "usda": b, "diff": a - b}
+        if a != b:
+            out["head_mismatches"] += 1
+    cs, us = comp.get("summary") or {}, usda.get("summary") or {}
+    for grp in ("steers", "heifers", "cull_cows", "bulls"):
+        for band in sorted(set(cs.get(grp, {})) | set(us.get(grp, {}))):
+            a, b = cs.get(grp, {}).get(band), us.get(grp, {}).get(band)
+            if not (isinstance(a, dict) or isinstance(b, dict)):
+                continue
+            row = {"group": grp, "band": band,
+                   "composite_head": (a or {}).get("head"), "usda_head": (b or {}).get("head"),
+                   "composite_price": (a or {}).get("wtd_avg_price"),
+                   "usda_price": (b or {}).get("wtd_avg_price")}
+            if a and b and "wtd_avg_price" in a and "wtd_avg_price" in b:
+                row["price_diff"] = round(a["wtd_avg_price"] - b["wtd_avg_price"], 2)
+                out["max_abs_price_diff"] = max(out["max_abs_price_diff"], abs(row["price_diff"]))
+            out["bands"].append(row)
+    out["status"] = ("match" if out["head_mismatches"] == 0 and out["max_abs_price_diff"] < 0.01
+                     else "category heads match; band prices differ" if out["head_mismatches"] == 0
+                     else "differs")
+    return out
+
+
+def build_mt_composite(auction_dir: Path, verbose: bool = False) -> None:
+    """Write auction/mt_composite_latest.json for the newest Sun-Sat week that
+    has per-barn reports, upsert it into history.json (one record per week,
+    source_key "mt_composite", sale_date = the week's Saturday), and, when
+    AMS_1778 for that week exists, record the check in the history record and
+    auction/mt_composite_check.json."""
+    comps = []
+    for key in COMPOSITE_KEYS:
+        rep = _load_json(auction_dir / f"{key}_latest.json")
+        if rep and rep.get("sale_date") and rep.get("entries"):
+            comps.append(rep)
+    if not comps:
+        return
+    wk_start, wk_end = _week_bounds(max(r["sale_date"] for r in comps))
+    week = [r for r in comps if wk_start <= dt.date.fromisoformat(r["sale_date"]) <= wk_end]
+    week.sort(key=lambda r: r["sale_date"])
+
+    entries = [e for r in week for e in r.get("entries", [])]
+    breakdown: dict = {}
+    for cat in ("feeder", "slaughter", "replacement"):
+        head = sum((r.get("breakdown") or {}).get(cat, {}).get("head", 0) for r in week)
+        if head:
+            breakdown[cat] = {"head": head}
+    cattle = sum(v["head"] for v in breakdown.values())
+    for v in breakdown.values():
+        v["pct"] = round(100.0 * v["head"] / cattle, 1) if cattle else 0.0
+
+    composite = {
+        "source_key": "mt_composite",
+        "auction": "Montana statewide composite (USDA per-barn reports)",
+        "report_id": "+".join(r["report_id"] for r in week),
+        "sale_day": "Saturday",
+        "channel": "auction",
+        "period_start": _mdy(wk_start),
+        "period_end": _mdy(wk_end),
+        "sale_date": wk_end.isoformat(),
+        "total_receipts": cattle,
+        "breakdown": breakdown,
+        "components": [{"key": r["source_key"], "report_id": r["report_id"],
+                        "auction": r.get("auction"), "sale_date": r["sale_date"],
+                        "total_receipts": r.get("total_receipts")} for r in week],
+        "note": ("Built from the USDA per-barn reports for this week, which AMS_1778 "
+                 "sums. Preliminary until AMS_1778 posts the Monday after the week; "
+                 "see usda_check."),
+        "summary": _build_summary(entries),
+        "entry_count": len(entries),
+    }
+
+    history_path = auction_dir / "history.json"
+    history = _load_json(history_path) or []
+    usda = next((r for r in history if r.get("source_key") == "mt_weekly"
+                 and r.get("period_start") == composite["period_start"]), None)
+    if usda:
+        check = _compare_summaries(composite, usda)
+        check.update({"period_start": composite["period_start"],
+                      "period_end": composite["period_end"],
+                      "usda_report_date": usda.get("sale_date"),
+                      "components": [c["key"] for c in composite["components"]]})
+        composite["usda_check"] = {k: check[k] for k in
+                                   ("status", "head_mismatches", "max_abs_price_diff", "usda_report_date")}
+
+    # Keep a stable parsed_at unless the content changed, so an unchanged
+    # composite doesn't churn a daily commit.
+    latest_path = auction_dir / "mt_composite_latest.json"
+    prev = _load_json(latest_path)
+    body = {k: v for k, v in composite.items()}
+    if prev and {k: v for k, v in prev.items() if k not in ("parsed_at", "entries")} == body:
+        composite["parsed_at"] = prev.get("parsed_at")
+    else:
+        composite["parsed_at"] = dt.datetime.utcnow().isoformat() + "Z"
+    latest_path.write_text(json.dumps({**composite, "entries": entries}, ensure_ascii=False, indent=2) + "\n",
+                           encoding="utf-8")
+    if usda:
+        (auction_dir / "mt_composite_check.json").write_text(
+            json.dumps(check, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+    # Upsert one composite record per week (the week fills in Tue -> Fri).
+    history = [r for r in history if not (r.get("source_key") == "mt_composite"
+                                         and r.get("period_start") == composite["period_start"])]
+    history.append(composite)
+    history.sort(key=lambda r: (r.get("sale_date", ""), r.get("source_key", "")))
+    history_path.write_text(json.dumps(history, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+    if verbose:
+        bd = {k: v["head"] for k, v in breakdown.items()}
+        print(f"[auction] composite {composite['period_start']}-{composite['period_end']}: "
+              f"{[c['key'] for c in composite['components']]} | {cattle} cattle {bd}"
+              + (f" | USDA check: {composite['usda_check']['status']}" if usda else " | AMS_1778 not yet posted"))
 
 
 def consolidate_video_latest(auction_dir: Path, verbose: bool = False) -> None:
