@@ -13,23 +13,35 @@ Called at the end of update_snotel.py's run (so the daily GitHub Actions job kee
 fresh and commits it), and runnable standalone:  python build_forage_map.py --out .
 """
 from __future__ import annotations
-import argparse, glob, json, os, re
+import argparse, glob, json, math, os, re
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 GEOMETRY = os.path.join(HERE, "mt_county_geometry.json")
 
-# Bands aligned to the county model's _forage_category thresholds (consistent site-wide).
+# 2026-09-11: score + bands now match what the county pages show (WP plugin
+# "County Conditions Dashboard" v2.0.3, hc_forage_v2 / hc_forage_category), so the hub map,
+# the hub cards and every county page print the same number and the same category.
+def v2_score(d):
+    """HCFS v2 = 0.40*VR + 0.35*MI + 0.15*DC + 0.10*LU from forage_model (PHP round =
+    half away from zero); falls back to legacy forage_score exactly like the plugin."""
+    fm = d.get("forage_model") or {}
+    try:
+        x = (0.40 * float(fm["vr"]) + 0.35 * float(fm["mi"])
+             + 0.15 * float(fm["dc"]) + 0.10 * float(fm["lu"]))
+        return max(0, min(100, int(math.floor(x + 0.5))))
+    except (KeyError, TypeError, ValueError):
+        fs = d.get("forage_score")
+        return None if fs is None else max(0, min(100, int(fs)))
+
 def band(score):
     if score is None: return ("na", "#c9c2b4", "No data")
-    if score >= 80:   return ("exc",  "#3a4b2e", "Excellent")
-    if score >= 60:   return ("good", "#4a5e3a", "Good")
-    if score >= 40:   return ("fair", "#B5651D", "Fair")
-    if score >= 20:   return ("poor", "#8B0000", "Poor")
-    return ("vpoor", "#5e0000", "Very Poor")
+    if score <= 25:   return ("poor", "#8B0000", "Poor")
+    if score <= 50:   return ("fair", "#B5651D", "Fair")
+    if score <= 75:   return ("good", "#4a5e3a", "Good")
+    return ("exc", "#3a4b2e", "Excellent")
 
-LEGEND = [("#5e0000", "Very Poor", "0-19"), ("#8B0000", "Poor", "20-39"),
-          ("#B5651D", "Fair", "40-59"), ("#4a5e3a", "Good", "60-79"),
-          ("#3a4b2e", "Excellent", "80-100")]
+LEGEND = [("#8B0000", "Poor", "0-25"), ("#B5651D", "Fair", "26-50"),
+          ("#4a5e3a", "Good", "51-75"), ("#3a4b2e", "Excellent", "76-100")]
 
 
 def _norm(s: str) -> str:
@@ -54,9 +66,9 @@ def load_counties(out_dir):
         fm = d.get("forage_model") or {}
         dr = d.get("drought") or {}
         rows[_norm(d["county"])] = {
-            "score": d.get("forage_score"),
+            "score": v2_score(d),
             "cat": fm.get("category"),
-            "drought": dr.get("worst_class") or "None",
+            "drought": dr.get("worst_class") or "No drought",
             "date": d.get("date", ""),
         }
     return rows
@@ -77,7 +89,9 @@ def build_html(out_dir):
         title = (f"{name} County — Forage {score}/100 · {drought}" if score is not None
                  else f"{name} County — no data")
         paths.append(
-            f'<a href="{url}" class="hc-fm-link" aria-label="{title}">'
+            f'<a href="{url}" class="hc-fm-link" aria-label="{title}" data-hc-county="{name}" '
+            f'data-hc-score="{"" if score is None else score}" data-hc-drought="{drought}" '
+            f'data-hc-band="{b_key}">'
             f'<path d="{g["d"]}" fill="{color}" stroke="#f4efe4" stroke-width="0.8">'
             f'<title>{title}</title></path></a>')
         lb = g.get("label")
