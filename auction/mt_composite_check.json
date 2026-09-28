@@ -1,18 +1,18 @@
 {
   "breakdown": {
     "feeder": {
-      "composite": 2188,
-      "usda": 2188,
+      "composite": 2228,
+      "usda": 2228,
       "diff": 0
     },
     "slaughter": {
-      "composite": 804,
-      "usda": 804,
+      "composite": 767,
+      "usda": 767,
       "diff": 0
     },
     "replacement": {
-      "composite": 203,
-      "usda": 203,
+      "composite": 379,
+      "usda": 379,
       "diff": 0
     }
   },
@@ -20,298 +20,298 @@
     {
       "group": "steers",
       "band": "400_499",
-      "composite_head": 142,
-      "usda_head": 142,
-      "composite_price": 452.38,
-      "usda_price": 452.34,
-      "price_diff": 0.04
+      "composite_head": 76,
+      "usda_head": 76,
+      "composite_price": 488.7,
+      "usda_price": 488.73,
+      "price_diff": -0.03
     },
     {
       "group": "steers",
       "band": "500_549",
-      "composite_head": 92,
-      "usda_head": 92,
-      "composite_price": 432.42,
-      "usda_price": 432.42,
+      "composite_head": 53,
+      "usda_head": 53,
+      "composite_price": 457.58,
+      "usda_price": 457.58,
       "price_diff": 0.0
     },
     {
       "group": "steers",
       "band": "550_599",
-      "composite_head": 6,
-      "usda_head": 6,
-      "composite_price": 372.5,
-      "usda_price": 372.3,
-      "price_diff": 0.2
+      "composite_head": 53,
+      "usda_head": 53,
+      "composite_price": 407.27,
+      "usda_price": 407.23,
+      "price_diff": 0.04
     },
     {
       "group": "steers",
       "band": "550_649_combined",
-      "composite_head": 36,
-      "usda_head": 36,
-      "composite_price": 369.95,
-      "usda_price": 369.9,
-      "price_diff": 0.05
+      "composite_head": 118,
+      "usda_head": 118,
+      "composite_price": 398.79,
+      "usda_price": 398.77,
+      "price_diff": 0.02
     },
     {
       "group": "steers",
       "band": "600_649",
-      "composite_head": 30,
-      "usda_head": 30,
-      "composite_price": 369.44,
-      "usda_price": 369.41,
-      "price_diff": 0.03
+      "composite_head": 65,
+      "usda_head": 65,
+      "composite_price": 391.87,
+      "usda_price": 391.87,
+      "price_diff": 0.0
     },
     {
       "group": "steers",
       "band": "650_699",
-      "composite_head": 25,
-      "usda_head": 25,
-      "composite_price": 373.61,
-      "usda_price": 373.61,
+      "composite_head": 13,
+      "usda_head": 13,
+      "composite_price": 375.6,
+      "usda_price": 375.6,
       "price_diff": 0.0
     },
     {
       "group": "steers",
       "band": "650_749",
-      "composite_head": 58,
-      "usda_head": 58,
-      "composite_price": 372.15,
-      "usda_price": 372.13,
-      "price_diff": 0.02
+      "composite_head": 50,
+      "usda_head": 50,
+      "composite_price": 370.69,
+      "usda_price": 370.69,
+      "price_diff": 0.0
     },
     {
       "group": "steers",
       "band": "700_749",
-      "composite_head": 33,
-      "usda_head": 33,
-      "composite_price": 371.05,
-      "usda_price": 371.01,
-      "price_diff": 0.04
+      "composite_head": 37,
+      "usda_head": 37,
+      "composite_price": 368.96,
+      "usda_price": 368.96,
+      "price_diff": 0.0
     },
     {
       "group": "steers",
       "band": "750_799",
-      "composite_head": 34,
-      "usda_head": 34,
-      "composite_price": 354.11,
-      "usda_price": 354.03,
-      "price_diff": 0.08
+      "composite_head": 69,
+      "usda_head": 69,
+      "composite_price": 354.76,
+      "usda_price": 354.76,
+      "price_diff": 0.0
     },
     {
       "group": "steers",
       "band": "750_849",
-      "composite_head": 185,
-      "usda_head": 185,
-      "composite_price": 349.7,
-      "usda_price": 349.69,
-      "price_diff": 0.01
+      "composite_head": 154,
+      "usda_head": 154,
+      "composite_price": 353.7,
+      "usda_price": 353.7,
+      "price_diff": 0.0
     },
     {
       "group": "steers",
       "band": "800_899",
-      "composite_head": 151,
-      "usda_head": 151,
-      "composite_price": 348.7,
-      "usda_price": 348.71,
-      "price_diff": -0.01
+      "composite_head": 85,
+      "usda_head": 85,
+      "composite_price": 352.85,
+      "usda_price": 352.85,
+      "price_diff": 0.0
     },
     {
       "group": "steers",
       "band": "900_plus",
-      "composite_head": 84,
-      "usda_head": 84,
-      "composite_price": 318.94,
-      "usda_price": 318.95,
-      "price_diff": -0.01
+      "composite_head": 32,
+      "usda_head": 32,
+      "composite_price": 320.81,
+      "usda_price": 320.81,
+      "price_diff": 0.0
     },
     {
       "group": "steers",
       "band": "under_400",
-      "composite_head": 25,
-      "usda_head": 25,
-      "composite_price": 545.05,
-      "usda_price": 545.0,
-      "price_diff": 0.05
+      "composite_head": 56,
+      "usda_head": 56,
+      "composite_price": 538.16,
+      "usda_price": 538.14,
+      "price_diff": 0.02
     },
     {
       "group": "heifers",
       "band": "400_499",
-      "composite_head": 195,
-      "usda_head": 195,
-      "composite_price": 414.74,
-      "usda_price": 414.74,
-      "price_diff": 0.0
+      "composite_head": 106,
+      "usda_head": 106,
+      "composite_price": 429.98,
+      "usda_price": 430.0,
+      "price_diff": -0.02
     },
     {
       "group": "heifers",
       "band": "500_549",
-      "composite_head": 35,
-      "usda_head": 35,
-      "composite_price": 397.3,
-      "usda_price": 397.1,
-      "price_diff": 0.2
+      "composite_head": 38,
+      "usda_head": 38,
+      "composite_price": 385.53,
+      "usda_price": 385.49,
+      "price_diff": 0.04
     },
     {
       "group": "heifers",
       "band": "550_599",
-      "composite_head": 19,
-      "usda_head": 19,
-      "composite_price": 347.34,
-      "usda_price": 347.34,
-      "price_diff": 0.0
+      "composite_head": 35,
+      "usda_head": 35,
+      "composite_price": 379.38,
+      "usda_price": 379.35,
+      "price_diff": 0.03
     },
     {
       "group": "heifers",
       "band": "550_649_combined",
-      "composite_head": 27,
-      "usda_head": 27,
-      "composite_price": 344.42,
-      "usda_price": 344.43,
-      "price_diff": -0.01
+      "composite_head": 43,
+      "usda_head": 43,
+      "composite_price": 377.1,
+      "usda_price": 377.09,
+      "price_diff": 0.01
     },
     {
       "group": "heifers",
       "band": "600_649",
       "composite_head": 8,
       "usda_head": 8,
-      "composite_price": 337.51,
-      "usda_price": 337.51,
+      "composite_price": 367.17,
+      "usda_price": 367.17,
       "price_diff": 0.0
     },
     {
       "group": "heifers",
       "band": "650_699",
-      "composite_head": 13,
-      "usda_head": 13,
-      "composite_price": 343.89,
-      "usda_price": 343.82,
-      "price_diff": 0.07
+      "composite_head": 11,
+      "usda_head": 11,
+      "composite_price": 344.82,
+      "usda_price": 344.82,
+      "price_diff": 0.0
     },
     {
       "group": "heifers",
       "band": "650_749",
-      "composite_head": 47,
-      "usda_head": 47,
-      "composite_price": 351.67,
-      "usda_price": 351.63,
-      "price_diff": 0.04
+      "composite_head": 50,
+      "usda_head": 50,
+      "composite_price": 347.11,
+      "usda_price": 347.11,
+      "price_diff": 0.0
     },
     {
       "group": "heifers",
       "band": "700_749",
-      "composite_head": 34,
-      "usda_head": 34,
-      "composite_price": 354.64,
-      "usda_price": 354.61,
-      "price_diff": 0.03
+      "composite_head": 39,
+      "usda_head": 39,
+      "composite_price": 347.76,
+      "usda_price": 347.76,
+      "price_diff": 0.0
     },
     {
       "group": "heifers",
       "band": "750_799",
-      "composite_head": 13,
-      "usda_head": 13,
-      "composite_price": 345.96,
-      "usda_price": 345.96,
+      "composite_head": 33,
+      "usda_head": 33,
+      "composite_price": 325.03,
+      "usda_price": 325.03,
       "price_diff": 0.0
     },
     {
       "group": "heifers",
       "band": "750_849",
-      "composite_head": 204,
-      "usda_head": 204,
-      "composite_price": 326.79,
-      "usda_price": 326.77,
-      "price_diff": 0.02
-    },
-    {
-      "group": "heifers",
-      "band": "800_899",
-      "composite_head": 191,
-      "usda_head": 191,
-      "composite_price": 325.48,
-      "usda_price": 325.46,
-      "price_diff": 0.02
-    },
-    {
-      "group": "heifers",
-      "band": "900_plus",
-      "composite_head": 457,
-      "usda_head": 457,
-      "composite_price": 305.15,
-      "usda_price": 305.15,
+      "composite_head": 170,
+      "usda_head": 170,
+      "composite_price": 323.39,
+      "usda_price": 323.39,
       "price_diff": 0.0
     },
     {
       "group": "heifers",
+      "band": "800_899",
+      "composite_head": 137,
+      "usda_head": 137,
+      "composite_price": 323.0,
+      "usda_price": 323.0,
+      "price_diff": 0.0
+    },
+    {
+      "group": "heifers",
+      "band": "900_plus",
+      "composite_head": 527,
+      "usda_head": 527,
+      "composite_price": 301.72,
+      "usda_price": 301.71,
+      "price_diff": 0.01
+    },
+    {
+      "group": "heifers",
       "band": "under_400",
-      "composite_head": 51,
-      "usda_head": 51,
-      "composite_price": 455.4,
-      "usda_price": 455.46,
-      "price_diff": -0.06
+      "composite_head": 40,
+      "usda_head": 40,
+      "composite_price": 473.23,
+      "usda_price": 473.23,
+      "price_diff": 0.0
     },
     {
       "group": "cull_cows",
       "band": "all",
-      "composite_head": 491,
-      "usda_head": 491,
-      "composite_price": 141.75,
-      "usda_price": 141.73,
-      "price_diff": 0.02
-    },
-    {
-      "group": "cull_cows",
-      "band": "boner_80_85",
-      "composite_head": 260,
-      "usda_head": 260,
-      "composite_price": 145.2,
-      "usda_price": 145.21,
+      "composite_head": 529,
+      "usda_head": 529,
+      "composite_price": 135.11,
+      "usda_price": 135.12,
       "price_diff": -0.01
     },
     {
       "group": "cull_cows",
+      "band": "boner_80_85",
+      "composite_head": 245,
+      "usda_head": 245,
+      "composite_price": 141.56,
+      "usda_price": 141.59,
+      "price_diff": -0.03
+    },
+    {
+      "group": "cull_cows",
       "band": "breaker_75_80",
-      "composite_head": 92,
-      "usda_head": 92,
-      "composite_price": 147.4,
-      "usda_price": 147.38,
-      "price_diff": 0.02
+      "composite_head": 86,
+      "usda_head": 86,
+      "composite_price": 138.06,
+      "usda_price": 138.07,
+      "price_diff": -0.01
     },
     {
       "group": "cull_cows",
       "band": "lean_85_90",
-      "composite_head": 139,
-      "usda_head": 139,
-      "composite_price": 131.55,
-      "usda_price": 131.48,
-      "price_diff": 0.07
+      "composite_head": 198,
+      "usda_head": 198,
+      "composite_price": 125.84,
+      "usda_price": 125.84,
+      "price_diff": 0.0
     },
     {
       "group": "bulls",
       "band": "feeder",
-      "composite_head": 93,
-      "usda_head": 93,
-      "composite_price": 402.52,
-      "usda_price": 402.48,
-      "price_diff": 0.04
+      "composite_head": 22,
+      "usda_head": 22,
+      "composite_price": 432.5,
+      "usda_price": 432.5,
+      "price_diff": 0.0
     },
     {
       "group": "bulls",
       "band": "slaughter",
-      "composite_head": 265,
-      "usda_head": 265,
-      "composite_price": 182.87,
-      "usda_price": 182.86,
-      "price_diff": 0.01
+      "composite_head": 189,
+      "usda_head": 189,
+      "composite_price": 182.88,
+      "usda_price": 182.88,
+      "price_diff": 0.0
     }
   ],
-  "max_abs_price_diff": 0.2,
+  "max_abs_price_diff": 0.04,
   "head_mismatches": 0,
   "status": "category heads match; band prices differ",
-  "period_start": "9/13/2026",
-  "period_end": "9/19/2026",
-  "usda_report_date": "2026-09-21",
+  "period_start": "9/20/2026",
+  "period_end": "9/26/2026",
+  "usda_report_date": "2026-09-28",
   "components": [
     "miles_city",
     "pays_wed",
