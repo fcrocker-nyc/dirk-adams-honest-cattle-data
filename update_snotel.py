@@ -453,6 +453,20 @@ class AWDBUnavailable(RuntimeError):
 _AWDB_500_SKIP_LIMIT = 8
 _awdb_500_skips = 0
 
+# Wall-clock budget for the whole AWDB /data phase (all chunks, all
+# retries). When the service degrades from 500s to plain timeouts (seen in
+# the 2026-10-03 run #182: five 500s, then every call timed out) the
+# 500-counter never trips, and 3 outer × 3 inner × 30 s timeouts plus
+# backoff would burn ~15 minutes before the carry-forward kicks in.
+_AWDB_TIME_BUDGET_SECONDS = 300
+_awdb_deadline: float | None = None
+
+
+def _awdb_check_budget() -> None:
+    if _awdb_deadline is not None and time.monotonic() > _awdb_deadline:
+        raise AWDBUnavailable(
+            f"AWDB /data phase exceeded its {_AWDB_TIME_BUDGET_SECONDS}s budget")
+
 
 def _fetch_data_chunk(triplets: list[str], begin: dt.date, end: dt.date) -> list:
     """Fetch WTEQ + PREC + median for a chunk of triplets. On HTTP 500
@@ -463,6 +477,7 @@ def _fetch_data_chunk(triplets: list[str], begin: dt.date, end: dt.date) -> list
     global _awdb_500_skips
     if not triplets:
         return []
+    _awdb_check_budget()
     params = {
         "stationTriplets": ",".join(triplets),
         "elements": ELEMENTS_REQUESTED,
@@ -1474,10 +1489,13 @@ def main() -> int:
     all_triplets = [t for v in triplets_by_county.values() for t in v]
     station_data: dict = {}
     awdb_ok = False
+    global _awdb_deadline
+    _awdb_deadline = time.monotonic() + _AWDB_TIME_BUDGET_SECONDS
     for attempt in range(3):
         if not stations_ok:
             break
         try:
+            _awdb_check_budget()
             station_data = fetch_station_data(
                 all_triplets, days_back=max(args.trend_days, 7)
             )
