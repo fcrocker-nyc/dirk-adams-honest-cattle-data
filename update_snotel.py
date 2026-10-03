@@ -439,11 +439,28 @@ def fetch_mt_stations() -> list[dict]:
     return out
 
 
+class AWDBUnavailable(RuntimeError):
+    """Raised when the AWDB /data service is returning 500 for station
+    after station — i.e. the service itself is down (seen 2026-10-03: every
+    /data call 500'd while /stations stayed healthy). Deliberately NOT in
+    TRANSIENT_NET_ERRORS so the retry loops don't keep hammering the WAF
+    (which answered the previous run's retries with 403s)."""
+
+
+# How many single-station 500s we tolerate in one run before concluding the
+# whole /data service is down. Individual stations do 500 on a bad day
+# (Pickfoot Creek is the classic), but 96 MT stations never all go at once.
+_AWDB_500_SKIP_LIMIT = 8
+_awdb_500_skips = 0
+
+
 def _fetch_data_chunk(triplets: list[str], begin: dt.date, end: dt.date) -> list:
     """Fetch WTEQ + PREC + median for a chunk of triplets. On HTTP 500
     with >1 triplet, recursively splits the chunk so a single bad
     station (e.g. 690:MT:SNTL / Pickfoot Creek) doesn't poison the batch.
+    Trips AWDBUnavailable once too many single stations have 500'd.
     """
+    global _awdb_500_skips
     if not triplets:
         return []
     params = {
@@ -463,7 +480,12 @@ def _fetch_data_chunk(triplets: list[str], begin: dt.date, end: dt.date) -> list
         if exc.code != 500:
             raise
         if len(triplets) == 1:
+            _awdb_500_skips += 1
             print(f"[snotel] skip {triplets[0]}: AWDB 500", file=sys.stderr)
+            if _awdb_500_skips >= _AWDB_500_SKIP_LIMIT:
+                raise AWDBUnavailable(
+                    f"{_awdb_500_skips} stations returned HTTP 500 in a row "
+                    f"— AWDB /data service looks down")
             return []
         mid = len(triplets) // 2
         return (_fetch_data_chunk(triplets[:mid], begin, end)
@@ -1297,8 +1319,41 @@ def build_record(slug: str, today: dt.date,
                  precip_anomaly: dict | None,
                  nass_condition: dict | None = None,
                  vegetation: tuple[float | None, str] | None = None,
-                 hay_pasture: dict | None = None) -> dict:
+                 hay_pasture: dict | None = None,
+                 snow_override: dict | None = None) -> dict:
     precip_ytd = aggregate_precip(prec_current, prec_medians)
+
+    # AWDB-down fallback: reuse the previous run's SNOTEL-derived fields
+    # (swe_index / percent_of_median / trend / status / precip_ytd) and
+    # re-score forage with today's drought, streamflow, soil moisture, CAG,
+    # NASS and RAP inputs. `snow_carried_from` marks the record so the
+    # staleness is visible downstream; it disappears on the next live pull.
+    if snow_override:
+        percent = int(snow_override.get("percent_of_median") or 0)
+        status = snow_override.get("status") or "No Snowpack"
+        precip_ytd = snow_override.get("precip_ytd")
+        score, model = forage_score(
+            slug, percent, status,
+            precip_ytd, drought, streamflow, soil_moisture, precip_anomaly,
+            nass_condition, vegetation,
+        )
+        return {
+            "county": slug,
+            "date": today.isoformat(),
+            "swe_index": float(snow_override.get("swe_index") or 0.0),
+            "percent_of_median": percent,
+            "trend": snow_override.get("trend") or TREND_FLAT,
+            "status": status,
+            "forage_score": score,
+            "forage_model": model,
+            "precip_ytd": precip_ytd,
+            "drought": drought,
+            "streamflow": streamflow,
+            "soil_moisture": soil_moisture,
+            "precip_anomaly": precip_anomaly,
+            "hay_pasture": hay_pasture,
+            "snow_carried_from": snow_override.get("date"),
+        }
 
     if not swe_current:
         score, model = forage_score(
@@ -1385,19 +1440,23 @@ def main() -> int:
     args.out.mkdir(parents=True, exist_ok=True)
 
     # -------- NRCS SNOTEL (SWE + PREC) --------
-    # NRCS AWDB bootstrap is the only hard-fail path in this script — every
-    # other source degrades gracefully. Retry transient URLErrors with
-    # exponential backoff before giving up; a single hiccup from
-    # wcc.sc.egov.usda.gov should not kill the whole 56-county refresh.
+    # NRCS AWDB used to be the only hard-fail path in this script. Since the
+    # 2026-10-03 outage (every /data call 500'd, retries got 403'd by the
+    # WAF, run failed with exit 2 and nothing else refreshed) it degrades
+    # like every other source: SNOTEL fields are carried forward from the
+    # previous county files and the run still commits fresh drought,
+    # streamflow, soil moisture, CAG, NASS and RAP data.
     stations: list = []
+    stations_ok = False
     for attempt in range(3):
         try:
             stations = fetch_mt_stations()
+            stations_ok = True
             break
         except TRANSIENT_NET_ERRORS as exc:
             if attempt == 2:
                 print(f"[snotel] station fetch failed after 3 attempts: {exc}", file=sys.stderr)
-                return 2
+                break
             delay = 20 * (attempt + 1)
             print(f"[snotel] station fetch attempt {attempt+1} failed ({exc}); retrying in {delay}s", file=sys.stderr)
             time.sleep(delay)
@@ -1413,20 +1472,40 @@ def main() -> int:
             triplets_by_county[cn].append(triplet)
 
     all_triplets = [t for v in triplets_by_county.values() for t in v]
-    station_data: list = []
+    station_data: dict = {}
+    awdb_ok = False
     for attempt in range(3):
+        if not stations_ok:
+            break
         try:
             station_data = fetch_station_data(
                 all_triplets, days_back=max(args.trend_days, 7)
             )
+            awdb_ok = True
+            break
+        except AWDBUnavailable as exc:
+            # Service-wide outage: don't retry (the WAF starts 403ing us),
+            # fall through to the carry-forward path below.
+            print(f"[snotel] data fetch aborted: {exc}", file=sys.stderr)
             break
         except TRANSIENT_NET_ERRORS as exc:
             if attempt == 2:
                 print(f"[snotel] data fetch failed after 3 attempts: {exc}", file=sys.stderr)
-                return 2
+                break
             delay = 20 * (attempt + 1)
             print(f"[snotel] data fetch attempt {attempt+1} failed ({exc}); retrying in {delay}s", file=sys.stderr)
             time.sleep(delay)
+
+    # A run where AWDB returned nothing usable is treated the same as an
+    # outage: every county would otherwise flip to "No Snowpack" / precip
+    # none, which is worse than keeping yesterday's figures for a day.
+    if awdb_ok and all_triplets and not station_data:
+        print("[snotel] data fetch returned no station data; treating as AWDB outage", file=sys.stderr)
+        awdb_ok = False
+    if not awdb_ok:
+        print("[snotel] WARN: AWDB unavailable — SNOTEL fields carried forward from "
+              "the previous county files; other sources refreshed normally",
+              file=sys.stderr)
 
     # -------- Mesonet soil moisture (one pull, grouped by county) --------
     mesonet_stns = fetch_mesonet_stations()
@@ -1535,14 +1614,33 @@ def main() -> int:
             _vc = (vegetation_data.get("counties") or {}).get(slug) or {}
             hay_pasture = _vc.get("hay_pasture")
 
+        path = args.out / f"{slug}.json"
+
+        # AWDB outage: carry the previous record's snow/precip fields forward.
+        snow_override = None
+        if not awdb_ok and path.exists():
+            try:
+                prior = json.loads(path.read_text(encoding="utf-8"))
+                snow_override = {
+                    "date": prior.get("snow_carried_from") or prior.get("date"),
+                    "swe_index": prior.get("swe_index"),
+                    "percent_of_median": prior.get("percent_of_median"),
+                    "trend": prior.get("trend"),
+                    "status": prior.get("status"),
+                    "precip_ytd": prior.get("precip_ytd"),
+                }
+            except (OSError, ValueError) as exc:
+                print(f"[snotel] {slug}: could not read prior record ({exc}); "
+                      f"building without snow data", file=sys.stderr)
+
         record = build_record(
             slug, today,
             swe_current, swe_medians, swe_serieses,
             prec_current, prec_medians,
             drought, streamflow, soil_moisture, precip_anomaly,
             nass_condition, vegetation, hay_pasture,
+            snow_override=snow_override,
         )
-        path = args.out / f"{slug}.json"
 
         new_text = json.dumps(record, ensure_ascii=False) + "\n"
         if path.exists() and path.read_text(encoding="utf-8") == new_text:
