@@ -6,7 +6,7 @@
   "channel": "video",
   "base": "Fort Worth, TX",
   "owner_group": "independent",
-  "sale_date": "2026-10-01",
+  "sale_date": "2026-10-02",
   "receipts_offered": 18668,
   "total_receipts": 14008,
   "breakdown": {
@@ -19,7 +19,7 @@
       "pct": 1.98
     }
   },
-  "narrative": "Supply included: 69 percent from the South Central region, 14 percent from the South East region, percent from the North Central region, 4 percent from the North East region and 2 percent from the West region. Deliveries are current through January 2027. Current delivery is 14 days from the last day of the video and is up to and including October 15, 2026. Many Beef on Dairy cattle sold with an .90-1.20 right slide. Supply included: 94% Feeder Cattle (50% Steers, 1% Dairy Steers, 33% Heifers, 11% Beef/Dairy Steers, 5% Beef/Dairy Heifers); 6% Replacement Cattle (4% Stock Cows, 18% Bred Cows, 78% Bred Heifers). Feeder cattle over 600 lbs was 61%. Feeder Cattle prices FOB based on net weights after a 0-3% pencil shrink or equivalent, with a 0-25 cent slide > 600 lbs and 0-40 cent slide < 600 lbs.",
+  "narrative": "Compared to the last sale: Not enough current FOB trades to establish trends. October cattle futures are 14.00 higher compared to the last sale. Much of the Southern Plains received beneficial rainfall over the past week. Many producers are beginning to plant wheat in the area. Supply included: 69 percent from the South Central region, 14 percent from the South East region, percent from the North Central region, 4 percent from the North East region and 2 percent from the West region. Deliveries are current through January 2027. Current delivery is 14 days from the last day of the video and is up to and including October 15, 2026. Many Beef on Dairy cattle sold with an .90-1.20 right slide. Supply included: 94% Feeder Cattle (50% Steers, 1% Dairy Steers, 33% Heifers, 11% Beef/Dairy Steers, 5% Beef/Dairy Heifers); 6% Replacement Cattle (4% Stock Cows, 18% Bred Cows, 78% Bred Heifers). Feeder cattle over 600 lbs was 61%. Feeder Cattle prices FOB based on net weights after a 0-3% pencil shrink or equivalent, with a 0-25 cent slide > 600 lbs and 0-40 cent slide < 600 lbs.",
   "mt_region_label": "North Central (CO, IA, MT, ND, NE, SD, WY)",
   "has_mt_region": true,
   "mt_region_note": "USDA groups Montana cattle into this multi-state region; figures are regional, not Montana-only.",
@@ -168,20 +168,6 @@
       "type": "HEIFERS",
       "grade": "Medium and Large 1",
       "pricing": "cwt",
-      "head": 140,
-      "wt_low": 800,
-      "wt_high": 800,
-      "avg_wt": 800,
-      "price_low": 328.0,
-      "price_high": 328.0,
-      "avg_price": 328.0,
-      "delivery": "Oct",
-      "note": "Spayed"
-    },
-    {
-      "type": "HEIFERS",
-      "grade": "Medium and Large 1",
-      "pricing": "cwt",
       "head": 54,
       "wt_low": 850,
       "wt_high": 850,
@@ -281,8 +267,8 @@
     },
     "heifers": {
       "800_899": {
-        "head": 496,
-        "wtd_avg_price": 319.35,
+        "head": 356,
+        "wtd_avg_price": 315.95,
         "price_low": 303.0,
         "price_high": 328.0,
         "thin": false
@@ -316,15 +302,15 @@
         "thin": true
       },
       "750_849": {
-        "head": 496,
-        "wtd_avg_price": 319.35,
+        "head": 356,
+        "wtd_avg_price": 315.95,
         "price_low": 303.0,
         "price_high": 328.0,
         "thin": false
       }
     }
   },
-  "parsed_at": "2026-10-02T17:20:35.874397Z",
+  "parsed_at": "2026-10-03T15:37:19.165490Z",
   "series_roster": [
     {
       "key": "nlva",
@@ -349,7 +335,7 @@
   ],
   "season": {
     "in_season_window": true,
-    "latest_sale_date": "2026-10-01",
+    "latest_sale_date": "2026-10-02",
     "days_since_latest": 1,
     "stale": false,
     "banner": "Video auction season is active — figures update as sales report."
@@ -388,7 +374,7 @@
       "base": "Fort Worth, TX",
       "owner_group": "independent",
       "report_id": "AMS_2713",
-      "sale_date": "2026-10-01",
+      "sale_date": "2026-10-02",
       "has_mt_region": true,
       "pencil_shrink_pct": "0-3",
       "slide_over_600_cents": "0-25",
