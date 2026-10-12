@@ -1,16 +1,214 @@
 {
- "computed_at": "2026-10-11T19:01:22.851286-04:00",
+ "computed_at": "2026-10-12T10:21:37.915172-04:00",
  "charter": "Honest Cattle holds no futures or options positions and recommends none. Interpretation inputs only.",
  "modules": {
   "ownership": {
-   "disagg": {},
-   "cit": {},
+   "disagg": {
+    "ZC": {
+     "oi": 1859993,
+     "pm_long": 362038,
+     "pm_short": 1050415,
+     "swap_long": 307708,
+     "swap_short": 30283,
+     "swap_spread": 54849,
+     "mm_long": 393249,
+     "mm_short": 63410,
+     "mm_spread": 287623,
+     "other_long": 188462,
+     "other_short": 65828,
+     "other_spread": 125294,
+     "totrep_long": 1719223,
+     "totrep_short": 1677702,
+     "nonrep_long": 140770,
+     "nonrep_short": 182291,
+     "report_date": "2026-10-06",
+     "integrity_ok": true,
+     "conc": {
+      "gross4_long": 9.1,
+      "gross4_short": 11.6,
+      "gross8_long": 16.5,
+      "gross8_short": 18.6,
+      "net4_long": 8.0,
+      "net4_short": 10.0,
+      "net8_long": 14.0,
+      "net8_short": 16.2
+     },
+     "trader_counts": {
+      "total": 867,
+      "mm_long": 109,
+      "mm_short": 46,
+      "pm_long": 287,
+      "pm_short": 351
+     },
+     "mm_contracts_per_long_trader": 3608,
+     "pm_net": -688377,
+     "swap_net": 277425,
+     "mm_net": 329839,
+     "other_net": 122634,
+     "nonrep_net": -41521,
+     "context": {
+      "n_history_weeks": 612,
+      "mm_net_wow": -84621,
+      "mm_net_percentile": 92.8,
+      "percentile_note": "percentile over 612 archived weeks; 5-yr claim requires the archive backfill"
+     }
+    },
+    "LE": {
+     "oi": 293647,
+     "pm_long": 44555,
+     "pm_short": 135163,
+     "swap_long": 70405,
+     "swap_short": 2698,
+     "swap_spread": 1621,
+     "mm_long": 80017,
+     "mm_short": 29322,
+     "mm_spread": 46265,
+     "other_long": 8081,
+     "other_short": 29384,
+     "other_spread": 16772,
+     "totrep_long": 267716,
+     "totrep_short": 261225,
+     "nonrep_long": 25931,
+     "nonrep_short": 32422,
+     "report_date": "2026-10-06",
+     "integrity_ok": true,
+     "conc": {
+      "gross4_long": 13.5,
+      "gross4_short": 15.2,
+      "gross8_long": 22.4,
+      "gross8_short": 24.9,
+      "net4_long": 13.2,
+      "net4_short": 14.9,
+      "net8_long": 20.6,
+      "net8_short": 23.4
+     },
+     "trader_counts": {
+      "total": 381,
+      "mm_long": 73,
+      "mm_short": 34,
+      "pm_long": 96,
+      "pm_short": 139
+     },
+     "mm_contracts_per_long_trader": 1096,
+     "pm_net": -90608,
+     "swap_net": 67707,
+     "mm_net": 50695,
+     "other_net": -21303,
+     "nonrep_net": -6491,
+     "context": {
+      "n_history_weeks": 612,
+      "mm_net_wow": 2999,
+      "mm_net_percentile": 37.1,
+      "percentile_note": "percentile over 612 archived weeks; 5-yr claim requires the archive backfill"
+     }
+    },
+    "GF": {
+     "oi": 63656,
+     "pm_long": 7292,
+     "pm_short": 11366,
+     "swap_long": 7567,
+     "swap_short": 423,
+     "swap_spread": 1412,
+     "mm_long": 18962,
+     "mm_short": 9576,
+     "mm_spread": 10577,
+     "other_long": 2839,
+     "other_short": 13160,
+     "other_spread": 5485,
+     "totrep_long": 54134,
+     "totrep_short": 51999,
+     "nonrep_long": 9522,
+     "nonrep_short": 11657,
+     "report_date": "2026-10-06",
+     "integrity_ok": true,
+     "conc": {
+      "gross4_long": 15.1,
+      "gross4_short": 19.9,
+      "gross8_long": 25.4,
+      "gross8_short": 29.3,
+      "net4_long": 12.4,
+      "net4_short": 18.0,
+      "net8_long": 18.8,
+      "net8_short": 25.0
+     },
+     "trader_counts": {
+      "total": 216,
+      "mm_long": 42,
+      "mm_short": 23,
+      "pm_long": 40,
+      "pm_short": 56
+     },
+     "mm_contracts_per_long_trader": 451,
+     "pm_net": -4074,
+     "swap_net": 7144,
+     "mm_net": 9386,
+     "other_net": -10321,
+     "nonrep_net": -2135,
+     "context": {
+      "n_history_weeks": 612,
+      "mm_net_wow": 2175,
+      "mm_net_percentile": 72.5,
+      "percentile_note": "percentile over 612 archived weeks; 5-yr claim requires the archive backfill"
+     }
+    }
+   },
+   "cit": {
+    "ZC": {
+     "oi": 2558826,
+     "nc_long": 304577,
+     "nc_short": 118273,
+     "nc_spread": 842102,
+     "comm_long": 718591,
+     "comm_short": 1223941,
+     "totrep_long": 2361236,
+     "totrep_short": 2327648,
+     "nonrep_long": 197589,
+     "nonrep_short": 231178,
+     "cit_long": 495966,
+     "cit_short": 143331,
+     "report_date": "2026-10-06",
+     "integrity_ok": true,
+     "cit_net": 352635
+    },
+    "LE": {
+     "oi": 387285,
+     "nc_long": 61922,
+     "nc_short": 38519,
+     "nc_spread": 127022,
+     "comm_long": 97384,
+     "comm_short": 174841,
+     "totrep_long": 357583,
+     "totrep_short": 346845,
+     "nonrep_long": 29702,
+     "nonrep_short": 40440,
+     "cit_long": 71256,
+     "cit_short": 6463,
+     "report_date": "2026-10-06",
+     "integrity_ok": true,
+     "cit_net": 64793
+    },
+    "GF": {
+     "oi": 93223,
+     "nc_long": 16647,
+     "nc_short": 17806,
+     "nc_spread": 41006,
+     "comm_long": 13884,
+     "comm_short": 18706,
+     "totrep_long": 82107,
+     "totrep_short": 78574,
+     "nonrep_long": 11116,
+     "nonrep_short": 14649,
+     "cit_long": 10570,
+     "cit_short": 1056,
+     "report_date": "2026-10-06",
+     "integrity_ok": true,
+     "cit_net": 9514
+    }
+   },
    "as_of_note": "positions as of the Tuesday of the report_date shown; released Friday ~3:30 ET"
   }
  },
  "notes": [
-  "disaggregated COT unavailable: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081)>",
-  "CIT supplemental unavailable: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081)>",
   "CME modules skipped by design (CME Data Terms of Use prohibit scripted collection); market modules are computed in the weekly forecast build from Barchart"
  ]
 }
