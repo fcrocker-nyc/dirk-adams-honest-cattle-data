@@ -12,12 +12,16 @@ Data sources (all publicly accessible, no auth):
     AMS_1773  Miles City Livestock Commission - Miles City, MT (Tue)
     AMS_1774  Public Auction Yards (PAYS) - Billings, MT (Wed)
     AMS_1776  Public Auction Yards (PAYS) - Billings, MT (Fri)
+    AMS_1775  Billings Livestock Commission (BLS) - Billings, MT (Mon weigh-up)
     AMS_1777  Billings Livestock Commission (BLS) - Billings, MT (Thu)
     AMS_1778  Montana Weekly Livestock Auction Summary
 
 The per-barn reports (1773/1774/1776/1777) post the day of or after each
 sale, while AMS_1778 only posts the Monday after its Sun-Sat week. AMS_1778
-is the sum of those barn reports, so this script also builds the week's
+is the sum of those barn reports -- including AMS_1775, the Monday
+weigh-up sale BLS runs through the fall, whose omission here understated
+the statewide week by 873 head (w/e 2026-10-17) and 1,303 head
+(w/e 2026-10-24), so this script also builds the week's
 statewide figures itself as soon as the barn reports land
 (auction/mt_composite_latest.json, source_key "mt_composite"), and checks
 them against AMS_1778 once it posts (auction/mt_composite_check.json).
@@ -66,6 +70,7 @@ REPORTS = {
     "pays_wed": {"id": "AMS_1774", "name": "Public Auction Yards (Wednesday)", "day": "Wednesday", "channel": "auction"},
     "pays": {"id": "AMS_1776", "name": "Public Auction Yards", "day": "Friday", "channel": "auction"},
     "bls":  {"id": "AMS_1777", "name": "Billings Livestock Commission", "day": "Thursday", "channel": "auction"},
+    "bls_mon": {"id": "AMS_1775", "name": "Billings Livestock Commission (Monday)", "day": "Monday", "channel": "auction"},
     "mt_weekly": {"id": "AMS_1778", "name": "Montana Weekly Summary", "day": "Monday", "channel": "auction"},
 }
 
@@ -762,7 +767,7 @@ def main() -> int:
 # 173); single-barn weeks reproduce that barn's summary line for line. In
 # multi-barn weeks USDA merges like lots across barns, so 50-lb feeder band
 # figures can differ slightly from the composite; the check file records it.
-COMPOSITE_KEYS = ("miles_city", "pays_wed", "pays", "bls")
+COMPOSITE_KEYS = ("miles_city", "pays_wed", "pays", "bls", "bls_mon")
 
 
 def _week_bounds(iso: str) -> tuple[dt.date, dt.date]:
