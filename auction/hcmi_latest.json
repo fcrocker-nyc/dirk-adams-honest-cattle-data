@@ -1,22 +1,26 @@
 {
   "week_ending": "10/24/2026",
-  "hcmi": 131.4,
-  "wow_pts": 0.8,
-  "pct_vs_2024": 31.4,
+  "hcmi": 131.9,
+  "wow_pts": 1.5,
+  "pct_vs_2024": 31.9,
   "base_year": 2024,
   "provisional": true,
   "components": {
     "feeder_gf": {
-      "now": 345.35,
+      "now": 348.12,
       "base": 248.08,
-      "index": 139.2,
-      "weight": 0.421
+      "index": 140.3,
+      "weight": 0.421,
+      "contract": "GFX26",
+      "settle_date": "2026-10-23"
     },
     "live_le": {
       "now": 231.2,
       "base": 183.66,
       "index": 125.9,
-      "weight": 0.263
+      "weight": 0.263,
+      "contract": "LEZ26",
+      "settle_date": "2026-10-23"
     },
     "mt_steer": {
       "now": 396.29,
@@ -34,7 +38,8 @@
     }
   },
   "computed_at": "2026-10-25",
-  "source": "Honest Cattle Market Index v2.0 \u2014 CME GF/LE settlements + USDA AMS_1778 head-weighted; base 2024 = 100; provisional prints carry Montana legs at last USDA print; forward curve from transacted prices only",
+  "source": "Honest Cattle Market Index v2.2 \u2014 named CME GF/LE contract settlements (nearest listed month after the priced week, settled inside that week) + USDA AMS_1778 head-weighted; base 2024 = 100; provisional prints carry Montana legs at last USDA print; forward curve from transacted prices only",
+  "basis_note": "Spot futures legs price off the named contract in components.feeder_gf.contract / components.live_le.contract, settled on the stated date. Prints before the week ending 2026-10-24 were built on a rolled continuous front-month series and are on a slightly different basis; the 2024 base is unchanged.",
   "note": "Provisional: AMS_1778 for this week not yet published; Montana steer and boning-cow legs carried at last USDA print. Reconciles when USDA posts.",
   "forward": {
     "computed_at": "2026-10-25",
