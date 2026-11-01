@@ -184,11 +184,11 @@
     }
   ],
   "season": {
-    "in_season_window": true,
+    "in_season_window": false,
     "latest_sale_date": "2026-10-16",
-    "days_since_latest": 15,
+    "days_since_latest": 16,
     "stale": false,
-    "banner": "Video auction season is active — figures update as sales report."
+    "banner": "Off-season — video auctions are seasonal (≈April–October). Figures are from the most recent sales."
   },
   "mt_region_disclaimer": "USDA AMS video reports group Montana cattle into a multi-state North Central region (CO, IA, MT, ND, NE, SD, WY). Figures are regional, not Montana-only.",
   "terms_comparison": [
