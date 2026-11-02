@@ -288,7 +288,13 @@
     }
   },
   "entry_count": 349,
-  "parsed_at": "2026-10-31T16:43:38.919837Z",
+  "usda_check": {
+    "status": "category heads match; band prices differ",
+    "head_mismatches": 0,
+    "max_abs_price_diff": 0.16,
+    "usda_report_date": "2026-11-02"
+  },
+  "parsed_at": "2026-11-02T21:19:12.903666Z",
   "entries": [
     {
       "type": "STEERS",
