@@ -18579,6 +18579,182 @@
     "parsed_at": "2026-11-02T21:19:12.903666Z"
   },
   {
+    "source_key": "bls_mon",
+    "auction": "Billings Livestock Commission (Monday)",
+    "report_id": "AMS_1775",
+    "sale_day": "Monday",
+    "channel": "auction",
+    "sale_date": "2026-11-02",
+    "total_receipts": 1572,
+    "breakdown": {
+      "feeder": {
+        "head": 555,
+        "pct": 35.3
+      },
+      "slaughter": {
+        "head": 689,
+        "pct": 43.8
+      },
+      "replacement": {
+        "head": 328,
+        "pct": 20.9
+      }
+    },
+    "narrative": "Compared to last week: All feeder cattle were too lightly tested to develop an accurate market trend, however lower undertones were noticed on all offerings. Demand for feeder cattle was mostly light to moderate for light offerings. Quality this week was mostly plain. Most feeders were offered in small packages with many singles noticed. Many feeders were cutbacks off summer video sales. With rain seen across the state all weekend long many sets of calves were stressed and buyers discounted them accordingly. Market activity was mostly slow to moderate with a small buyer pool noticed this week. Weigh up cows sold on mostly moderate demand and offerings. Cow quality this week was mostly average to attractive. Feeding cow demand remains good to very good. Additional American packers were in the market this week buying cows to feed. Canadian buyers continue to buy cows to ship north and feed and they showed good demand as they competed with American packers this week. Feeding cows sold mostly steady to 3.00 higher on breaking and boning cows, lean flesh cows sold generally steady to firm. Farmer feeders remain active market participants as they purchased lean cows which will gain quickly when put on feed. Weigh up conditions were mostly below average today with many very full offerings noticed. Cows were full after last weekends change of weather. Slaughter cows sold on mostly light to moderate demand today. Slaughter cow sold steady to 3.00 higher on all offerings in a narrow comparison. Demand for slaughter cows was slightly stronger this week as feeding buyers pushed to own most of the offering. Slaughter bulls sold steady in a narrow comparison. Young age cows suitable to feed or rebreed sold on mostly good to very good demand. Quality this week was mostly average to attractive. Young age offerings sold generally steady. Supply included: 35% Feeder Cattle (38% Steers, 50% Heifers, 12% Bulls); 44% Slaughter Cattle (96% Cows, 4% Bulls); 21% Replacement Cattle (49% Stock Cows, 43% Bred Cows, 3% Bred Heifers, 5% Open Heifers). Feeder cattle supply over 600 lbs was 17%.",
+    "summary": {
+      "steers": {
+        "under_400": {
+          "head": 18,
+          "wtd_avg_price": 552.76,
+          "price_low": 520.0,
+          "price_high": 600.0,
+          "thin": true
+        },
+        "400_499": {
+          "head": 33,
+          "wtd_avg_price": 467.66,
+          "price_low": 419.0,
+          "price_high": 498.0,
+          "thin": true
+        },
+        "500_549": {
+          "head": 32,
+          "wtd_avg_price": 411.47,
+          "price_low": 375.0,
+          "price_high": 438.0,
+          "thin": true
+        },
+        "550_599": {
+          "head": 28,
+          "wtd_avg_price": 365.44,
+          "price_low": 355.0,
+          "price_high": 385.0,
+          "thin": true
+        },
+        "600_649": {
+          "head": 14,
+          "wtd_avg_price": 347.49,
+          "price_low": 340.0,
+          "price_high": 363.0,
+          "thin": true
+        },
+        "650_699": {
+          "head": 17,
+          "wtd_avg_price": 334.64,
+          "price_low": 330.0,
+          "price_high": 340.0,
+          "thin": true
+        },
+        "550_649_combined": {
+          "head": 42,
+          "wtd_avg_price": 359.46,
+          "price_low": 340.0,
+          "price_high": 385.0,
+          "thin": true
+        },
+        "650_749": {
+          "head": 17,
+          "wtd_avg_price": 334.64,
+          "price_low": 330.0,
+          "price_high": 340.0,
+          "thin": true
+        }
+      },
+      "heifers": {
+        "under_400": {
+          "head": 42,
+          "wtd_avg_price": 495.71,
+          "price_low": 430.0,
+          "price_high": 505.0,
+          "thin": true
+        },
+        "400_499": {
+          "head": 95,
+          "wtd_avg_price": 451.01,
+          "price_low": 375.0,
+          "price_high": 472.0,
+          "thin": false
+        },
+        "500_549": {
+          "head": 19,
+          "wtd_avg_price": 360.26,
+          "price_low": 340.0,
+          "price_high": 390.0,
+          "thin": true
+        },
+        "550_599": {
+          "head": 19,
+          "wtd_avg_price": 353.0,
+          "price_low": 353.0,
+          "price_high": 353.0,
+          "thin": true
+        },
+        "600_649": {
+          "head": 4,
+          "wtd_avg_price": 315.0,
+          "price_low": 315.0,
+          "price_high": 315.0,
+          "thin": true
+        },
+        "550_649_combined": {
+          "head": 23,
+          "wtd_avg_price": 346.39,
+          "price_low": 315.0,
+          "price_high": 353.0,
+          "thin": true
+        }
+      },
+      "cull_cows": {
+        "breaker_75_80": {
+          "head": 17,
+          "wtd_avg_price": 132.47,
+          "price_low": 108.0,
+          "price_high": 146.0,
+          "thin": true
+        },
+        "boner_80_85": {
+          "head": 255,
+          "wtd_avg_price": 136.74,
+          "price_low": 95.0,
+          "price_high": 157.5,
+          "thin": false
+        },
+        "lean_85_90": {
+          "head": 128,
+          "wtd_avg_price": 118.31,
+          "price_low": 62.5,
+          "price_high": 154.0,
+          "thin": false
+        },
+        "all": {
+          "head": 400,
+          "wtd_avg_price": 130.66,
+          "price_low": 62.5,
+          "price_high": 157.5,
+          "thin": false
+        }
+      },
+      "bulls": {
+        "slaughter": {
+          "head": 16,
+          "wtd_avg_price": 168.44,
+          "price_low": 150.0,
+          "price_high": 188.0,
+          "thin": true
+        },
+        "feeder": {
+          "head": 48,
+          "wtd_avg_price": 421.91,
+          "price_low": 307.5,
+          "price_high": 501.0,
+          "thin": true
+        }
+      }
+    },
+    "parsed_at": "2026-11-03T18:58:10.360313Z",
+    "entry_count": 55
+  },
+  {
     "source_key": "mt_weekly",
     "auction": "Montana Weekly Summary",
     "report_id": "AMS_1778",
@@ -18832,5 +19008,192 @@
     },
     "parsed_at": "2026-11-02T21:19:11.931694Z",
     "entry_count": 179
+  },
+  {
+    "source_key": "mt_composite",
+    "auction": "Montana statewide composite (USDA per-barn reports)",
+    "report_id": "AMS_1775",
+    "sale_day": "Saturday",
+    "channel": "auction",
+    "period_start": "11/1/2026",
+    "period_end": "11/7/2026",
+    "sale_date": "2026-11-07",
+    "total_receipts": 1572,
+    "breakdown": {
+      "feeder": {
+        "head": 555,
+        "pct": 35.3
+      },
+      "slaughter": {
+        "head": 689,
+        "pct": 43.8
+      },
+      "replacement": {
+        "head": 328,
+        "pct": 20.9
+      }
+    },
+    "components": [
+      {
+        "key": "bls_mon",
+        "report_id": "AMS_1775",
+        "auction": "Billings Livestock Commission (Monday)",
+        "sale_date": "2026-11-02",
+        "total_receipts": 1572
+      }
+    ],
+    "note": "Built from the USDA per-barn reports for this week, which AMS_1778 sums. Preliminary until AMS_1778 posts the Monday after the week; see usda_check.",
+    "summary": {
+      "steers": {
+        "under_400": {
+          "head": 18,
+          "wtd_avg_price": 552.76,
+          "price_low": 520.0,
+          "price_high": 600.0,
+          "thin": true
+        },
+        "400_499": {
+          "head": 33,
+          "wtd_avg_price": 467.66,
+          "price_low": 419.0,
+          "price_high": 498.0,
+          "thin": true
+        },
+        "500_549": {
+          "head": 32,
+          "wtd_avg_price": 411.47,
+          "price_low": 375.0,
+          "price_high": 438.0,
+          "thin": true
+        },
+        "550_599": {
+          "head": 28,
+          "wtd_avg_price": 365.44,
+          "price_low": 355.0,
+          "price_high": 385.0,
+          "thin": true
+        },
+        "600_649": {
+          "head": 14,
+          "wtd_avg_price": 347.49,
+          "price_low": 340.0,
+          "price_high": 363.0,
+          "thin": true
+        },
+        "650_699": {
+          "head": 17,
+          "wtd_avg_price": 334.64,
+          "price_low": 330.0,
+          "price_high": 340.0,
+          "thin": true
+        },
+        "550_649_combined": {
+          "head": 42,
+          "wtd_avg_price": 359.46,
+          "price_low": 340.0,
+          "price_high": 385.0,
+          "thin": true
+        },
+        "650_749": {
+          "head": 17,
+          "wtd_avg_price": 334.64,
+          "price_low": 330.0,
+          "price_high": 340.0,
+          "thin": true
+        }
+      },
+      "heifers": {
+        "under_400": {
+          "head": 42,
+          "wtd_avg_price": 495.71,
+          "price_low": 430.0,
+          "price_high": 505.0,
+          "thin": true
+        },
+        "400_499": {
+          "head": 95,
+          "wtd_avg_price": 451.01,
+          "price_low": 375.0,
+          "price_high": 472.0,
+          "thin": false
+        },
+        "500_549": {
+          "head": 19,
+          "wtd_avg_price": 360.26,
+          "price_low": 340.0,
+          "price_high": 390.0,
+          "thin": true
+        },
+        "550_599": {
+          "head": 19,
+          "wtd_avg_price": 353.0,
+          "price_low": 353.0,
+          "price_high": 353.0,
+          "thin": true
+        },
+        "600_649": {
+          "head": 4,
+          "wtd_avg_price": 315.0,
+          "price_low": 315.0,
+          "price_high": 315.0,
+          "thin": true
+        },
+        "550_649_combined": {
+          "head": 23,
+          "wtd_avg_price": 346.39,
+          "price_low": 315.0,
+          "price_high": 353.0,
+          "thin": true
+        }
+      },
+      "cull_cows": {
+        "breaker_75_80": {
+          "head": 17,
+          "wtd_avg_price": 132.47,
+          "price_low": 108.0,
+          "price_high": 146.0,
+          "thin": true
+        },
+        "boner_80_85": {
+          "head": 255,
+          "wtd_avg_price": 136.74,
+          "price_low": 95.0,
+          "price_high": 157.5,
+          "thin": false
+        },
+        "lean_85_90": {
+          "head": 128,
+          "wtd_avg_price": 118.31,
+          "price_low": 62.5,
+          "price_high": 154.0,
+          "thin": false
+        },
+        "all": {
+          "head": 400,
+          "wtd_avg_price": 130.66,
+          "price_low": 62.5,
+          "price_high": 157.5,
+          "thin": false
+        }
+      },
+      "bulls": {
+        "slaughter": {
+          "head": 16,
+          "wtd_avg_price": 168.44,
+          "price_low": 150.0,
+          "price_high": 188.0,
+          "thin": true
+        },
+        "feeder": {
+          "head": 48,
+          "wtd_avg_price": 421.91,
+          "price_low": 307.5,
+          "price_high": 501.0,
+          "thin": true
+        }
+      }
+    },
+    "entry_count": 55,
+    "parsed_at": "2026-11-03T18:58:11.336530Z"
   }
 ]
