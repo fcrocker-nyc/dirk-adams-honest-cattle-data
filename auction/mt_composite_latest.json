@@ -1,25 +1,25 @@
 {
   "source_key": "mt_composite",
   "auction": "Montana statewide composite (USDA per-barn reports)",
-  "report_id": "AMS_1775+AMS_1773",
+  "report_id": "AMS_1775+AMS_1773+AMS_1774",
   "sale_day": "Saturday",
   "channel": "auction",
   "period_start": "11/1/2026",
   "period_end": "11/7/2026",
   "sale_date": "2026-11-07",
-  "total_receipts": 3125,
+  "total_receipts": 5003,
   "breakdown": {
     "feeder": {
-      "head": 1499,
-      "pct": 48.0
+      "head": 1681,
+      "pct": 33.6
     },
     "slaughter": {
-      "head": 1069,
-      "pct": 34.2
+      "head": 2326,
+      "pct": 46.5
     },
     "replacement": {
-      "head": 557,
-      "pct": 17.8
+      "head": 996,
+      "pct": 19.9
     }
   },
   "components": [
@@ -36,6 +36,13 @@
       "auction": "Miles City Livestock Commission",
       "sale_date": "2026-11-03",
       "total_receipts": 1553
+    },
+    {
+      "key": "pays_wed",
+      "report_id": "AMS_1774",
+      "auction": "Public Auction Yards (Wednesday)",
+      "sale_date": "2026-11-04",
+      "total_receipts": 1878
     }
   ],
   "note": "Built from the USDA per-barn reports for this week, which AMS_1778 sums. Preliminary until AMS_1778 posts the Monday after the week; see usda_check.",
@@ -49,8 +56,8 @@
         "thin": true
       },
       "400_499": {
-        "head": 133,
-        "wtd_avg_price": 479.17,
+        "head": 138,
+        "wtd_avg_price": 478.91,
         "price_low": 419.0,
         "price_high": 522.5,
         "thin": false
@@ -63,15 +70,15 @@
         "thin": false
       },
       "550_599": {
-        "head": 99,
-        "wtd_avg_price": 396.51,
+        "head": 108,
+        "wtd_avg_price": 395.88,
         "price_low": 355.0,
         "price_high": 445.0,
         "thin": false
       },
       "600_649": {
-        "head": 34,
-        "wtd_avg_price": 367.64,
+        "head": 46,
+        "wtd_avg_price": 368.91,
         "price_low": 340.0,
         "price_high": 400.0,
         "thin": true
@@ -91,8 +98,8 @@
         "thin": true
       },
       "550_649_combined": {
-        "head": 133,
-        "wtd_avg_price": 389.13,
+        "head": 154,
+        "wtd_avg_price": 387.83,
         "price_low": 340.0,
         "price_high": 445.0,
         "thin": false
@@ -128,8 +135,8 @@
         "thin": false
       },
       "550_599": {
-        "head": 57,
-        "wtd_avg_price": 357.85,
+        "head": 74,
+        "wtd_avg_price": 357.65,
         "price_low": 353.0,
         "price_high": 366.0,
         "thin": false
@@ -148,9 +155,16 @@
         "price_high": 325.0,
         "thin": true
       },
+      "900_plus": {
+        "head": 17,
+        "wtd_avg_price": 293.82,
+        "price_low": 279.0,
+        "price_high": 297.0,
+        "thin": true
+      },
       "550_649_combined": {
-        "head": 77,
-        "wtd_avg_price": 353.47,
+        "head": 94,
+        "wtd_avg_price": 354.11,
         "price_low": 315.0,
         "price_high": 366.0,
         "thin": false
@@ -165,29 +179,29 @@
     },
     "cull_cows": {
       "breaker_75_80": {
-        "head": 30,
-        "wtd_avg_price": 130.01,
-        "price_low": 108.0,
-        "price_high": 146.0,
-        "thin": true
+        "head": 93,
+        "wtd_avg_price": 129.56,
+        "price_low": 105.0,
+        "price_high": 147.0,
+        "thin": false
       },
       "boner_80_85": {
-        "head": 385,
-        "wtd_avg_price": 135.55,
+        "head": 950,
+        "wtd_avg_price": 135.43,
         "price_low": 95.0,
         "price_high": 157.5,
         "thin": false
       },
       "lean_85_90": {
-        "head": 281,
-        "wtd_avg_price": 121.33,
+        "head": 697,
+        "wtd_avg_price": 121.0,
         "price_low": 62.5,
         "price_high": 154.0,
         "thin": false
       },
       "all": {
-        "head": 696,
-        "wtd_avg_price": 129.57,
+        "head": 1740,
+        "wtd_avg_price": 129.33,
         "price_low": 62.5,
         "price_high": 157.5,
         "thin": false
@@ -195,23 +209,23 @@
     },
     "bulls": {
       "slaughter": {
-        "head": 33,
-        "wtd_avg_price": 167.85,
+        "head": 77,
+        "wtd_avg_price": 176.73,
         "price_low": 150.0,
-        "price_high": 188.0,
-        "thin": true
+        "price_high": 235.0,
+        "thin": false
       },
       "feeder": {
-        "head": 56,
-        "wtd_avg_price": 421.05,
-        "price_low": 307.5,
+        "head": 65,
+        "wtd_avg_price": 398.29,
+        "price_low": 247.5,
         "price_high": 510.0,
         "thin": false
       }
     }
   },
-  "entry_count": 113,
-  "parsed_at": "2026-11-04T19:16:03.346701Z",
+  "entry_count": 149,
+  "parsed_at": "2026-11-05T19:25:26.571556Z",
   "entries": [
     {
       "type": "STEERS",
@@ -1679,6 +1693,468 @@
       "price_low": 162.0,
       "price_high": 167.0,
       "avg_price": 164.7,
+      "note": "Low Return to Feed"
+    },
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 5,
+      "wt_low": 429,
+      "wt_high": 429,
+      "avg_wt": 429,
+      "price_low": 472.0,
+      "price_high": 472.0,
+      "avg_price": 472.0,
+      "note": "Unweaned"
+    },
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 9,
+      "wt_low": 575,
+      "wt_high": 575,
+      "avg_wt": 575,
+      "price_low": 389.0,
+      "price_high": 389.0,
+      "avg_price": 389.0,
+      "note": "Unweaned"
+    },
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 12,
+      "wt_low": 602,
+      "wt_high": 602,
+      "avg_wt": 602,
+      "price_low": 372.5,
+      "price_high": 372.5,
+      "avg_price": 372.5,
+      "note": "Unweaned"
+    },
+    {
+      "type": "STEERS",
+      "grade": "Medium and Large 2",
+      "pricing": "cwt",
+      "head": 11,
+      "wt_low": 652,
+      "wt_high": 674,
+      "avg_wt": 662,
+      "price_low": 327.5,
+      "price_high": 327.5,
+      "avg_price": 327.5,
+      "note": "Unweaned"
+    },
+    {
+      "type": "HEIFERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 17,
+      "wt_low": 559,
+      "wt_high": 559,
+      "avg_wt": 559,
+      "price_low": 357.0,
+      "price_high": 357.0,
+      "avg_price": 357.0,
+      "note": "Unweaned"
+    },
+    {
+      "type": "HEIFERS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 14,
+      "wt_low": 907,
+      "wt_high": 907,
+      "avg_wt": 907,
+      "price_low": 297.0,
+      "price_high": 297.0,
+      "avg_price": 297.0
+    },
+    {
+      "type": "HEIFERS",
+      "grade": "Medium and Large 1-2",
+      "pricing": "cwt",
+      "head": 3,
+      "wt_low": 1043,
+      "wt_high": 1043,
+      "avg_wt": 1043,
+      "price_low": 279.0,
+      "price_high": 279.0,
+      "avg_price": 279.0
+    },
+    {
+      "type": "HEIFERS",
+      "grade": "Large 1",
+      "pricing": "cwt",
+      "head": 11,
+      "wt_low": 1139,
+      "wt_high": 1139,
+      "avg_wt": 1139,
+      "price_low": 258.0,
+      "price_high": 258.0,
+      "avg_price": 258.0
+    },
+    {
+      "type": "BULLS",
+      "grade": "Medium and Large 1",
+      "pricing": "cwt",
+      "head": 6,
+      "wt_low": 1176,
+      "wt_high": 1176,
+      "avg_wt": 1176,
+      "price_low": 247.5,
+      "price_high": 247.5,
+      "avg_price": 247.5
+    },
+    {
+      "type": "BULLS",
+      "grade": "Medium and Large 1-2",
+      "pricing": "cwt",
+      "head": 3,
+      "wt_low": 947,
+      "wt_high": 947,
+      "avg_wt": 947,
+      "price_low": 275.0,
+      "price_high": 275.0,
+      "avg_price": 275.0
+    },
+    {
+      "type": "BULLS",
+      "grade": "Large 1",
+      "pricing": "cwt",
+      "head": 4,
+      "wt_low": 1209,
+      "wt_high": 1209,
+      "avg_wt": 1209,
+      "price_low": 225.0,
+      "price_high": 225.0,
+      "avg_price": 225.0
+    },
+    {
+      "type": "BULLS",
+      "grade": "Medium 1",
+      "pricing": "cwt",
+      "head": 6,
+      "wt_low": 831,
+      "wt_high": 831,
+      "avg_wt": 831,
+      "price_low": 235.0,
+      "price_high": 235.0,
+      "avg_price": 235.0,
+      "note": "Full"
+    },
+    {
+      "type": "COWS",
+      "grade": "Breaker 75-80%",
+      "pricing": "cwt",
+      "head": 25,
+      "wt_low": 1320,
+      "wt_high": 1635,
+      "avg_wt": 1506,
+      "price_low": 132.0,
+      "price_high": 144.0,
+      "avg_price": 138.66,
+      "note": "Average Return to Feed"
+    },
+    {
+      "type": "COWS",
+      "grade": "Breaker 75-80%",
+      "pricing": "cwt",
+      "head": 7,
+      "wt_low": 1559,
+      "wt_high": 1559,
+      "avg_wt": 1559,
+      "price_low": 147.0,
+      "price_high": 147.0,
+      "avg_price": 147.0,
+      "note": "High Return to Feed"
+    },
+    {
+      "type": "COWS",
+      "grade": "Breaker 75-80%",
+      "pricing": "cwt",
+      "head": 13,
+      "wt_low": 1613,
+      "wt_high": 1940,
+      "avg_wt": 1718,
+      "price_low": 105.0,
+      "price_high": 115.0,
+      "avg_price": 110.01,
+      "note": "Low"
+    },
+    {
+      "type": "COWS",
+      "grade": "Breaker 75-80%",
+      "pricing": "cwt",
+      "head": 1,
+      "wt_low": 2095,
+      "wt_high": 2095,
+      "avg_wt": 2095,
+      "price_low": 116.0,
+      "price_high": 116.0,
+      "avg_price": 116.0,
+      "note": "Low Heavy Weight"
+    },
+    {
+      "type": "COWS",
+      "grade": "Breaker 75-80%",
+      "pricing": "cwt",
+      "head": 17,
+      "wt_low": 1235,
+      "wt_high": 1630,
+      "avg_wt": 1501,
+      "price_low": 118.0,
+      "price_high": 131.0,
+      "avg_price": 123.94,
+      "note": "Low Return to Feed"
+    },
+    {
+      "type": "COWS",
+      "grade": "Boner 80-85%",
+      "pricing": "cwt",
+      "head": 21,
+      "wt_low": 1295,
+      "wt_high": 1710,
+      "avg_wt": 1413,
+      "price_low": 107.0,
+      "price_high": 116.0,
+      "avg_price": 112.47,
+      "note": "Average"
+    },
+    {
+      "type": "COWS",
+      "grade": "Boner 80-85%",
+      "pricing": "cwt",
+      "head": 366,
+      "wt_low": 1230,
+      "wt_high": 1625,
+      "avg_wt": 1390,
+      "price_low": 126.0,
+      "price_high": 146.0,
+      "avg_price": 139.86,
+      "note": "Average Return to Feed"
+    },
+    {
+      "type": "COWS",
+      "grade": "Boner 80-85%",
+      "pricing": "cwt",
+      "head": 73,
+      "wt_low": 1300,
+      "wt_high": 1510,
+      "avg_wt": 1358,
+      "price_low": 147.0,
+      "price_high": 155.0,
+      "avg_price": 148.47,
+      "note": "High Return to Feed"
+    },
+    {
+      "type": "COWS",
+      "grade": "Boner 80-85%",
+      "pricing": "cwt",
+      "head": 17,
+      "wt_low": 1335,
+      "wt_high": 1690,
+      "avg_wt": 1426,
+      "price_low": 100.0,
+      "price_high": 107.0,
+      "avg_price": 102.49,
+      "note": "Low"
+    },
+    {
+      "type": "COWS",
+      "grade": "Boner 80-85%",
+      "pricing": "cwt",
+      "head": 88,
+      "wt_low": 1220,
+      "wt_high": 1675,
+      "avg_wt": 1380,
+      "price_low": 106.0,
+      "price_high": 125.0,
+      "avg_price": 117.49,
+      "note": "Low Return to Feed"
+    },
+    {
+      "type": "COWS",
+      "grade": "Lean 85-90%",
+      "pricing": "cwt",
+      "head": 19,
+      "wt_low": 1010,
+      "wt_high": 1257,
+      "avg_wt": 1167,
+      "price_low": 106.0,
+      "price_high": 117.5,
+      "avg_price": 109.2,
+      "note": "Average"
+    },
+    {
+      "type": "COWS",
+      "grade": "Lean 85-90%",
+      "pricing": "cwt",
+      "head": 1,
+      "wt_low": 915,
+      "wt_high": 915,
+      "avg_wt": 915,
+      "price_low": 107.5,
+      "price_high": 107.5,
+      "avg_price": 107.5,
+      "note": "Average Light Weight"
+    },
+    {
+      "type": "COWS",
+      "grade": "Lean 85-90%",
+      "pricing": "cwt",
+      "head": 184,
+      "wt_low": 1020,
+      "wt_high": 1298,
+      "avg_wt": 1216,
+      "price_low": 124.0,
+      "price_high": 144.0,
+      "avg_price": 135.03,
+      "note": "Average Return to Feed"
+    },
+    {
+      "type": "COWS",
+      "grade": "Lean 85-90%",
+      "pricing": "cwt",
+      "head": 18,
+      "wt_low": 1118,
+      "wt_high": 1292,
+      "avg_wt": 1208,
+      "price_low": 145.0,
+      "price_high": 150.5,
+      "avg_price": 146.6,
+      "note": "High Return to Feed"
+    },
+    {
+      "type": "COWS",
+      "grade": "Lean 85-90%",
+      "pricing": "cwt",
+      "head": 52,
+      "wt_low": 1028,
+      "wt_high": 1295,
+      "avg_wt": 1208,
+      "price_low": 90.0,
+      "price_high": 105.0,
+      "avg_price": 97.18,
+      "note": "Low"
+    },
+    {
+      "type": "COWS",
+      "grade": "Lean 85-90%",
+      "pricing": "cwt",
+      "head": 3,
+      "wt_low": 810,
+      "wt_high": 995,
+      "avg_wt": 932,
+      "price_low": 80.0,
+      "price_high": 88.0,
+      "avg_price": 84.62,
+      "note": "Low Light Weight"
+    },
+    {
+      "type": "COWS",
+      "grade": "Lean 85-90%",
+      "pricing": "cwt",
+      "head": 122,
+      "wt_low": 935,
+      "wt_high": 1510,
+      "avg_wt": 1174,
+      "price_low": 100.0,
+      "price_high": 122.5,
+      "avg_price": 113.73,
+      "note": "Low Return to Feed"
+    },
+    {
+      "type": "COWS",
+      "grade": "Lean 85-90%",
+      "pricing": "cwt",
+      "head": 17,
+      "wt_low": 1050,
+      "wt_high": 1277,
+      "avg_wt": 1142,
+      "price_low": 80.0,
+      "price_high": 87.5,
+      "avg_price": 82.1,
+      "note": "Very Low"
+    },
+    {
+      "type": "BULLS",
+      "grade": "1-2",
+      "pricing": "cwt",
+      "head": 9,
+      "wt_low": 1815,
+      "wt_high": 2230,
+      "avg_wt": 1991,
+      "price_low": 170.0,
+      "price_high": 181.0,
+      "avg_price": 174.17,
+      "note": "Average"
+    },
+    {
+      "type": "BULLS",
+      "grade": "1-2",
+      "pricing": "cwt",
+      "head": 6,
+      "wt_low": 1448,
+      "wt_high": 1788,
+      "avg_wt": 1613,
+      "price_low": 172.5,
+      "price_high": 180.0,
+      "avg_price": 176.79,
+      "note": "Average Return to Feed"
+    },
+    {
+      "type": "BULLS",
+      "grade": "1-2",
+      "pricing": "cwt",
+      "head": 2,
+      "wt_low": 1935,
+      "wt_high": 2350,
+      "avg_wt": 2143,
+      "price_low": 182.0,
+      "price_high": 184.0,
+      "avg_price": 182.9,
+      "note": "High"
+    },
+    {
+      "type": "BULLS",
+      "grade": "1-2",
+      "pricing": "cwt",
+      "head": 10,
+      "wt_low": 1594,
+      "wt_high": 2350,
+      "avg_wt": 1809,
+      "price_low": 155.0,
+      "price_high": 168.0,
+      "avg_price": 163.2,
+      "note": "Low"
+    },
+    {
+      "type": "BULLS",
+      "grade": "1-2",
+      "pricing": "cwt",
+      "head": 1,
+      "wt_low": 1495,
+      "wt_high": 1495,
+      "avg_wt": 1495,
+      "price_low": 150.0,
+      "price_high": 150.0,
+      "avg_price": 150.0,
+      "note": "Low Light Weight"
+    },
+    {
+      "type": "BULLS",
+      "grade": "1-2",
+      "pricing": "cwt",
+      "head": 6,
+      "wt_low": 1370,
+      "wt_high": 1925,
+      "avg_wt": 1759,
+      "price_low": 157.5,
+      "price_high": 169.0,
+      "avg_price": 163.88,
       "note": "Low Return to Feed"
     }
   ]
