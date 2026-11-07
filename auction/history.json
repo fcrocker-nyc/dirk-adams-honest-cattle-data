@@ -19528,6 +19528,75 @@
     "entry_count": 93
   },
   {
+    "source_key": "pays",
+    "auction": "Public Auction Yards",
+    "report_id": "AMS_1776",
+    "sale_day": "Friday",
+    "channel": "auction",
+    "sale_date": "2026-11-06",
+    "total_receipts": 2343,
+    "breakdown": {
+      "feeder": {
+        "head": 0,
+        "pct": 0.0
+      },
+      "slaughter": {
+        "head": 399,
+        "pct": 17.0
+      },
+      "replacement": {
+        "head": 1944,
+        "pct": 83.0
+      }
+    },
+    "narrative": "Compared to last week: Todays sale featured bred cows, bred heifers and weigh ups. No feeder cattle sold this sale. Over 2,000 cows were pregnancy checked for todays sale. Demand for bred cows was mostly good to very good for high quality bred cows off reputation ranches. Bred heifers were met with mostly moderate to good demand. Quality was mixed from plain to attractive. Package sizes were mostly small to moderate, with lots of singles noticed. Very few load lots or partial load lots noticed. Buyers were forced to piece together loads as a result. A large crowd of buyers was present for todays sale which stretched late into the evening. Demand did diminish as buyers filled loads and exited the market. Market activity was mostly moderate to active. Weigh up cows sold on mostly light to moderate demand for light to moderate offerings. Feeding cows and slaughter cows both sold generally steady with Wednesdays sale in a narrow comparison. Slaughter bulls were too lightly tested to develop any market trend. Young age cows suitable to feed or rebreed sold on good demand as many high quality opens sold off consigners bred offerings. Young age offerings sold generally steady with Wednesdays sale. Supply included: 17% Slaughter Cattle (99% Cows, 1% Bulls); 83% Replacement Cattle (5% Stock Cows, 73% Bred Cows, 22% Bred Heifers).",
+    "summary": {
+      "steers": {},
+      "heifers": {},
+      "cull_cows": {
+        "breaker_75_80": {
+          "head": 5,
+          "wtd_avg_price": 121.0,
+          "price_low": 97.0,
+          "price_high": 137.0,
+          "thin": true
+        },
+        "boner_80_85": {
+          "head": 130,
+          "wtd_avg_price": 135.8,
+          "price_low": 104.0,
+          "price_high": 148.5,
+          "thin": false
+        },
+        "lean_85_90": {
+          "head": 74,
+          "wtd_avg_price": 116.07,
+          "price_low": 72.5,
+          "price_high": 148.0,
+          "thin": false
+        },
+        "all": {
+          "head": 209,
+          "wtd_avg_price": 128.46,
+          "price_low": 72.5,
+          "price_high": 148.5,
+          "thin": false
+        }
+      },
+      "bulls": {
+        "slaughter": {
+          "head": 3,
+          "wtd_avg_price": 156.64,
+          "price_low": 130.0,
+          "price_high": 175.0,
+          "thin": true
+        }
+      }
+    },
+    "parsed_at": "2026-11-07T17:19:52.300730Z",
+    "entry_count": 15
+  },
+  {
     "source_key": "superior",
     "auction": "Superior Livestock Auction",
     "report_id": "AMS_2713",
@@ -19647,27 +19716,67 @@
     "entry_count": 15
   },
   {
+    "source_key": "wvm",
+    "auction": "Western Video Market",
+    "report_id": "AMS_3242",
+    "sale_day": "Seasonal",
+    "channel": "video",
+    "base": "Cottonwood, CA",
+    "owner_group": "independent",
+    "sale_date": "2026-11-06",
+    "receipts_offered": 4410,
+    "total_receipts": 2692,
+    "breakdown": {
+      "feeder": {
+        "head": 2364,
+        "pct": 87.82
+      },
+      "replacement": {
+        "head": 328,
+        "pct": 12.18
+      }
+    },
+    "narrative": "Feeder steers and heifers lightly tested and not enough comparable Current FOB trades to test trends. Demand and seller interest moderate as cattle futures continue to trend lower. Deliveries are current thru December 2026. Current delivery is 14 days from sale date and is up to and including November 20th. Supply included: 85% Feeder Cattle (19% Steers, 12% Heifers, 41% Beef/Dairy Steers, 27% Beef/Dairy Heifers); 15% Replacement Cattle (29% Bred Cows, 67% Bred Heifers, 4% Cow-Calf Pairs). Feeder cattle over 600 lbs was 44%. Feeder Cattle prices FOB based on net weights after a 0-4% pencil shrink or equivalent, with a 14-25 cent slide > 600 lbs and 22-30 cent slide < 600 lbs.",
+    "mt_region_label": null,
+    "has_mt_region": false,
+    "mt_region_note": "USDA groups Montana cattle into this multi-state region; figures are regional, not Montana-only.",
+    "terms": {
+      "pencil_shrink_pct": "0-4",
+      "slide_over_600_cents": "14-25",
+      "slide_under_600_cents": "22-30",
+      "fob_net_weights": true,
+      "current_delivery": "14 days from sale date and is up to and including November 20th",
+      "delivery_window": "current thru December 2026"
+    },
+    "summary": {
+      "steers": {},
+      "heifers": {}
+    },
+    "parsed_at": "2026-11-07T17:19:54.202703Z",
+    "entry_count": 0
+  },
+  {
     "source_key": "mt_composite",
     "auction": "Montana statewide composite (USDA per-barn reports)",
-    "report_id": "AMS_1775+AMS_1773+AMS_1774+AMS_1777",
+    "report_id": "AMS_1775+AMS_1773+AMS_1774+AMS_1777+AMS_1776",
     "sale_day": "Saturday",
     "channel": "auction",
     "period_start": "11/1/2026",
     "period_end": "11/7/2026",
     "sale_date": "2026-11-07",
-    "total_receipts": 8990,
+    "total_receipts": 11333,
     "breakdown": {
       "feeder": {
         "head": 5668,
-        "pct": 63.0
+        "pct": 50.0
       },
       "slaughter": {
-        "head": 2326,
-        "pct": 25.9
+        "head": 2725,
+        "pct": 24.0
       },
       "replacement": {
-        "head": 996,
-        "pct": 11.1
+        "head": 2940,
+        "pct": 25.9
       }
     },
     "components": [
@@ -19698,6 +19807,13 @@
         "auction": "Billings Livestock Commission",
         "sale_date": "2026-11-05",
         "total_receipts": 3987
+      },
+      {
+        "key": "pays",
+        "report_id": "AMS_1776",
+        "auction": "Public Auction Yards",
+        "sale_date": "2026-11-06",
+        "total_receipts": 2343
       }
     ],
     "note": "Built from the USDA per-barn reports for this week, which AMS_1778 sums. Preliminary until AMS_1778 posts the Monday after the week; see usda_check.",
@@ -19862,29 +19978,29 @@
       },
       "cull_cows": {
         "breaker_75_80": {
-          "head": 93,
-          "wtd_avg_price": 129.56,
-          "price_low": 105.0,
+          "head": 98,
+          "wtd_avg_price": 129.12,
+          "price_low": 97.0,
           "price_high": 147.0,
           "thin": false
         },
         "boner_80_85": {
-          "head": 950,
-          "wtd_avg_price": 135.43,
+          "head": 1080,
+          "wtd_avg_price": 135.47,
           "price_low": 95.0,
           "price_high": 157.5,
           "thin": false
         },
         "lean_85_90": {
-          "head": 697,
-          "wtd_avg_price": 121.0,
+          "head": 771,
+          "wtd_avg_price": 120.53,
           "price_low": 62.5,
           "price_high": 154.0,
           "thin": false
         },
         "all": {
-          "head": 1740,
-          "wtd_avg_price": 129.33,
+          "head": 1949,
+          "wtd_avg_price": 129.24,
           "price_low": 62.5,
           "price_high": 157.5,
           "thin": false
@@ -19892,9 +20008,9 @@
       },
       "bulls": {
         "slaughter": {
-          "head": 88,
-          "wtd_avg_price": 195.61,
-          "price_low": 150.0,
+          "head": 91,
+          "wtd_avg_price": 194.32,
+          "price_low": 130.0,
           "price_high": 380.0,
           "thin": false
         },
@@ -19907,7 +20023,7 @@
         }
       }
     },
-    "entry_count": 242,
-    "parsed_at": "2026-11-06T18:48:14.275239Z"
+    "entry_count": 257,
+    "parsed_at": "2026-11-07T17:19:54.626626Z"
   }
 ]

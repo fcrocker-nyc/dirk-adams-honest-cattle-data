@@ -6,159 +6,35 @@
   "channel": "video",
   "base": "Cottonwood, CA",
   "owner_group": "independent",
-  "sale_date": "2026-10-16",
-  "receipts_offered": 6506,
-  "total_receipts": 6226,
+  "sale_date": "2026-11-06",
+  "receipts_offered": 4410,
+  "total_receipts": 2692,
   "breakdown": {
     "feeder": {
-      "head": 5516,
-      "pct": 88.6
+      "head": 2364,
+      "pct": 87.82
     },
     "replacement": {
-      "head": 710,
-      "pct": 11.4
+      "head": 328,
+      "pct": 12.18
     }
   },
-  "narrative": "No true price comparison when comparing to last month's sale. Demand was moderate to good. Less than 2% of the feeder cattle was P.O. this sale. Deliveries are current to November 2026. Current delivery is 14 days from sale date and is up to and including October 30th. Supply included: 86% Feeder Cattle (36% Steers, 49% Heifers, 10% Beef/Dairy Steers, 5% Beef/Dairy Heifers); 14% Replacement Cattle (80% Bred Heifers, 20% Cow-Calf Pairs). Feeder cattle over 600 lbs was 55%. Feeder Cattle prices FOB based on net weights after a 1-3% pencil shrink or equivalent, with a 10-25 cent slide > 600 lbs and 20-50 cent slide < 600 lbs.",
-  "mt_region_label": "North Central (CO, IA, MT, ND, NE, SD, WY)",
-  "has_mt_region": true,
+  "narrative": "Feeder steers and heifers lightly tested and not enough comparable Current FOB trades to test trends. Demand and seller interest moderate as cattle futures continue to trend lower. Deliveries are current thru December 2026. Current delivery is 14 days from sale date and is up to and including November 20th. Supply included: 85% Feeder Cattle (19% Steers, 12% Heifers, 41% Beef/Dairy Steers, 27% Beef/Dairy Heifers); 15% Replacement Cattle (29% Bred Cows, 67% Bred Heifers, 4% Cow-Calf Pairs). Feeder cattle over 600 lbs was 44%. Feeder Cattle prices FOB based on net weights after a 0-4% pencil shrink or equivalent, with a 14-25 cent slide > 600 lbs and 22-30 cent slide < 600 lbs.",
+  "mt_region_label": null,
+  "has_mt_region": false,
   "mt_region_note": "USDA groups Montana cattle into this multi-state region; figures are regional, not Montana-only.",
   "terms": {
-    "pencil_shrink_pct": "1-3",
-    "slide_over_600_cents": "10-25",
-    "slide_under_600_cents": "20-50",
+    "pencil_shrink_pct": "0-4",
+    "slide_over_600_cents": "14-25",
+    "slide_under_600_cents": "22-30",
     "fob_net_weights": true,
-    "current_delivery": "14 days from sale date and is up to and including October 30th",
-    "delivery_window": "current to November 2026"
+    "current_delivery": "14 days from sale date and is up to and including November 20th",
+    "delivery_window": "current thru December 2026"
   },
-  "entries": [
-    {
-      "type": "STEERS",
-      "grade": "Medium and Large 1",
-      "pricing": "cwt",
-      "head": 75,
-      "wt_low": 830,
-      "wt_high": 830,
-      "avg_wt": 830,
-      "price_low": 351.0,
-      "price_high": 351.0,
-      "avg_price": 351.0,
-      "delivery": "Oct-Nov"
-    },
-    {
-      "type": "STEERS",
-      "grade": "Medium and Large 1",
-      "pricing": "cwt",
-      "head": 215,
-      "wt_low": 625,
-      "wt_high": 625,
-      "avg_wt": 625,
-      "price_low": 420.0,
-      "price_high": 420.0,
-      "avg_price": 420.0,
-      "delivery": "Nov"
-    },
-    {
-      "type": "HEIFERS",
-      "grade": "Medium and Large 1",
-      "pricing": "cwt",
-      "head": 160,
-      "wt_low": 790,
-      "wt_high": 790,
-      "avg_wt": 790,
-      "price_low": 331.0,
-      "price_high": 331.0,
-      "avg_price": 331.0,
-      "delivery": "Oct-Nov"
-    },
-    {
-      "type": "HEIFERS",
-      "grade": "Medium and Large 1",
-      "pricing": "cwt",
-      "head": 105,
-      "wt_low": 525,
-      "wt_high": 525,
-      "avg_wt": 525,
-      "price_low": 415.0,
-      "price_high": 415.0,
-      "avg_price": 415.0,
-      "delivery": "Nov"
-    },
-    {
-      "type": "HEIFERS",
-      "grade": "Medium and Large 1",
-      "pricing": "cwt",
-      "head": 270,
-      "wt_low": 950,
-      "wt_high": 950,
-      "avg_wt": 950,
-      "price_low": 310.0,
-      "price_high": 310.0,
-      "avg_price": 310.0,
-      "note": "South Central"
-    }
-  ],
+  "entries": [],
   "summary": {
-    "steers": {
-      "800_899": {
-        "head": 75,
-        "wtd_avg_price": 351.0,
-        "price_low": 351.0,
-        "price_high": 351.0,
-        "thin": false
-      },
-      "600_649": {
-        "head": 215,
-        "wtd_avg_price": 420.0,
-        "price_low": 420.0,
-        "price_high": 420.0,
-        "thin": false
-      },
-      "550_649_combined": {
-        "head": 215,
-        "wtd_avg_price": 420.0,
-        "price_low": 420.0,
-        "price_high": 420.0,
-        "thin": false
-      },
-      "750_849": {
-        "head": 75,
-        "wtd_avg_price": 351.0,
-        "price_low": 351.0,
-        "price_high": 351.0,
-        "thin": false
-      }
-    },
-    "heifers": {
-      "750_799": {
-        "head": 160,
-        "wtd_avg_price": 331.0,
-        "price_low": 331.0,
-        "price_high": 331.0,
-        "thin": false
-      },
-      "500_549": {
-        "head": 105,
-        "wtd_avg_price": 415.0,
-        "price_low": 415.0,
-        "price_high": 415.0,
-        "thin": false
-      },
-      "900_plus": {
-        "head": 270,
-        "wtd_avg_price": 310.0,
-        "price_low": 310.0,
-        "price_high": 310.0,
-        "thin": false
-      },
-      "750_849": {
-        "head": 160,
-        "wtd_avg_price": 331.0,
-        "price_low": 331.0,
-        "price_high": 331.0,
-        "thin": false
-      }
-    }
+    "steers": {},
+    "heifers": {}
   },
-  "parsed_at": "2026-10-17T14:51:43.966330Z"
+  "parsed_at": "2026-11-07T17:19:54.202703Z"
 }
