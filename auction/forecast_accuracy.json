@@ -1,40 +1,40 @@
 {
-  "generated_at": "2026-11-07T17:19:55.076126+00:00",
+  "generated_at": "2026-11-08T17:31:42.075167+00:00",
   "realized_source": "mt_weekly",
   "forecast_field": "steer mid, $/cwt",
   "min_n_for_significance": 8,
   "overall": {
     "n": 21,
-    "bias_cwt": -44.99,
-    "mpe_pct": -11.32,
-    "mad_cwt": 49.11,
-    "mape_pct": 12.12,
-    "mse": 2919.48,
-    "rmse_cwt": 54.03,
+    "bias_cwt": -44.75,
+    "mpe_pct": -11.27,
+    "mad_cwt": 48.88,
+    "mape_pct": 12.06,
+    "mse": 2896.6,
+    "rmse_cwt": 53.82,
     "sufficient": true,
     "calibration": {
       "n": 21,
-      "slope": 1.626,
-      "intercept_cwt": -337.23,
-      "r_squared": 0.538,
+      "slope": 1.634,
+      "intercept_cwt": -340.67,
+      "r_squared": 0.541,
       "sufficient": true
     }
   },
   "by_band": {
     "550_599": {
       "n": 11,
-      "bias_cwt": -43.18,
-      "mpe_pct": -10.67,
-      "mad_cwt": 50.17,
-      "mape_pct": 12.0,
-      "mse": 3073.66,
-      "rmse_cwt": 55.44,
+      "bias_cwt": -42.73,
+      "mpe_pct": -10.56,
+      "mad_cwt": 49.71,
+      "mape_pct": 11.89,
+      "mse": 3029.98,
+      "rmse_cwt": 55.05,
       "sufficient": true,
       "calibration": {
         "n": 11,
-        "slope": 2.439,
-        "intercept_cwt": -732.17,
-        "r_squared": 0.407,
+        "slope": 2.339,
+        "intercept_cwt": -683.39,
+        "r_squared": 0.399,
         "sufficient": true
       }
     },
@@ -56,7 +56,7 @@
       }
     }
   },
-  "n_forecasts_available": 24,
+  "n_forecasts_available": 25,
   "n_realized_obs": 173,
   "pairs": [
     {
@@ -234,16 +234,16 @@
       "date": "2026-11-02",
       "band": "550_599",
       "quarter": "Q4 2026",
-      "forecast_as_of": "2026-10-26",
-      "forecast": 473.0,
+      "forecast_as_of": "2026-11-02",
+      "forecast": 468.0,
       "actual": 422.45,
-      "error_cwt": -50.55
+      "error_cwt": -45.55
     },
     {
       "date": "2026-11-02",
       "band": "600_649",
       "quarter": "Q4 2026",
-      "forecast_as_of": "2026-10-26",
+      "forecast_as_of": "2026-11-02",
       "forecast": 445.0,
       "actual": 404.96,
       "error_cwt": -40.04
