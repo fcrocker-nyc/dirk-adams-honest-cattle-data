@@ -1,10 +1,10 @@
 {
   "week_ending": "11/07/2026",
-  "hcmi": 125.1,
-  "wow_pts": -4.3,
-  "pct_vs_2024": 25.1,
+  "hcmi": 124.5,
+  "wow_pts": -4.9,
+  "pct_vs_2024": 24.5,
   "base_year": 2024,
-  "provisional": true,
+  "provisional": false,
   "components": {
     "feeder_gf": {
       "now": 318.38,
@@ -23,26 +23,24 @@
       "settle_date": "2026-11-06"
     },
     "mt_steer": {
-      "now": 404.96,
+      "now": 398.93,
       "base": 296.03,
-      "index": 136.8,
+      "index": 134.8,
       "weight": 0.211,
-      "source": "carry"
+      "source": "600-650"
     },
     "boning": {
-      "now": 138.16,
+      "now": 135.45,
       "base": 125.09,
-      "index": 110.5,
-      "weight": 0.105,
-      "source": "carry"
+      "index": 108.3,
+      "weight": 0.105
     }
   },
-  "computed_at": "2026-11-09",
+  "computed_at": "2026-11-10",
   "source": "Honest Cattle Market Index v2.2 \u2014 named CME GF/LE contract settlements (nearest listed month after the priced week, settled inside that week) + USDA AMS_1778 head-weighted; base 2024 = 100; provisional prints carry Montana legs at last USDA print; forward curve from transacted prices only",
   "basis_note": "Spot futures legs price off the named contract in components.feeder_gf.contract / components.live_le.contract, settled on the stated date. Prints before the week ending 2026-10-24 were built on a rolled continuous front-month series and are on a slightly different basis; the 2024 base is unchanged.",
-  "note": "Provisional: AMS_1778 for this week not yet published; Montana steer and boning-cow legs carried at last USDA print. Reconciles when USDA posts.",
   "forward": {
-    "computed_at": "2026-11-09",
+    "computed_at": "2026-11-10",
     "convention": "Transacted prices only: deferred CME GF/LE settles; MT steer leg from forward-delivery video-auction sales (600-649 lb M&L1 steers, delivery-start-month buckets) within 60 days, else carried; boning leg carried (no forward cull market). No Honest Cattle estimates in any leg.",
     "steer_leg_sources": {
       "video MT 600-649": "Preferred. Built lot by lot from the auction houses' own results (Northern Livestock, Superior, Western Video Market) and filtered to lots with a published Montana shipping or delivery point. Genuinely Montana-only.",
@@ -52,15 +50,15 @@
     "months": [
       {
         "month": "2026-12",
-        "hcmi_fwd": 127.2,
+        "hcmi_fwd": 126.8,
         "legs": {
           "feeder_gf": {
             "contract": "GFF27",
-            "settle": 325.88
+            "settle": 325.38
           },
           "live_le": {
             "contract": "LEZ26",
-            "settle": 217.98
+            "settle": 217.65
           },
           "mt_steer": {
             "source": "video 600-649",
@@ -75,117 +73,117 @@
           },
           "boning": {
             "source": "carry",
-            "price": 138.16
+            "price": 135.45
           }
         }
       },
       {
         "month": "2027-01",
-        "hcmi_fwd": 127.5,
+        "hcmi_fwd": 126.7,
         "legs": {
           "feeder_gf": {
             "contract": "GFF27",
-            "settle": 325.88
+            "settle": 325.38
           },
           "live_le": {
             "contract": "LEG27",
-            "settle": 221.6
+            "settle": 221.32
           },
           "mt_steer": {
             "source": "carry",
-            "price": 404.96
+            "price": 398.93
           },
           "boning": {
             "source": "carry",
-            "price": 138.16
+            "price": 135.45
           }
         }
       },
       {
         "month": "2027-02",
-        "hcmi_fwd": 126.9,
+        "hcmi_fwd": 126.1,
         "legs": {
           "feeder_gf": {
             "contract": "GFH27",
-            "settle": 322.1
+            "settle": 321.6
           },
           "live_le": {
             "contract": "LEG27",
-            "settle": 221.6
+            "settle": 221.32
           },
           "mt_steer": {
             "source": "carry",
-            "price": 404.96
+            "price": 398.93
           },
           "boning": {
             "source": "carry",
-            "price": 138.16
+            "price": 135.45
           }
         }
       },
       {
         "month": "2027-03",
-        "hcmi_fwd": 127.2,
+        "hcmi_fwd": 126.5,
         "legs": {
           "feeder_gf": {
             "contract": "GFH27",
-            "settle": 322.1
+            "settle": 321.6
           },
           "live_le": {
             "contract": "LEJ27",
-            "settle": 224.1
+            "settle": 224.12
           },
           "mt_steer": {
             "source": "carry",
-            "price": 404.96
+            "price": 398.93
           },
           "boning": {
             "source": "carry",
-            "price": 138.16
+            "price": 135.45
           }
         }
       },
       {
         "month": "2027-04",
-        "hcmi_fwd": 127.0,
+        "hcmi_fwd": 126.3,
         "legs": {
           "feeder_gf": {
             "contract": "GFJ27",
-            "settle": 320.7
+            "settle": 320.67
           },
           "live_le": {
             "contract": "LEJ27",
-            "settle": 224.1
+            "settle": 224.12
           },
           "mt_steer": {
             "source": "carry",
-            "price": 404.96
+            "price": 398.93
           },
           "boning": {
             "source": "carry",
-            "price": 138.16
+            "price": 135.45
           }
         }
       },
       {
         "month": "2027-05",
-        "hcmi_fwd": 125.9,
+        "hcmi_fwd": 125.4,
         "legs": {
           "feeder_gf": {
             "contract": "GFK27",
-            "settle": 318.62
+            "settle": 319.08
           },
           "live_le": {
             "contract": "LEM27",
-            "settle": 219.3
+            "settle": 219.6
           },
           "mt_steer": {
             "source": "carry",
-            "price": 404.96
+            "price": 398.93
           },
           "boning": {
             "source": "carry",
-            "price": 138.16
+            "price": 135.45
           }
         }
       }
