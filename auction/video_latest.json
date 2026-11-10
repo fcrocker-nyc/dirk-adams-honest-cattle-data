@@ -335,7 +335,7 @@
   "season": {
     "in_season_window": false,
     "latest_sale_date": "2026-11-06",
-    "days_since_latest": 3,
+    "days_since_latest": 4,
     "stale": false,
     "banner": "Off-season — video auctions are seasonal (≈April–October). Figures are from the most recent sales."
   },
