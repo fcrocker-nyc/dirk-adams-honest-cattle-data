@@ -20675,27 +20675,96 @@
     "entry_count": 67
   },
   {
+    "source_key": "pays_wed",
+    "auction": "Public Auction Yards (Wednesday)",
+    "report_id": "AMS_1774",
+    "sale_day": "Wednesday",
+    "channel": "auction",
+    "sale_date": "2026-11-11",
+    "total_receipts": 2093,
+    "breakdown": {
+      "feeder": {
+        "head": 42,
+        "pct": 2.0
+      },
+      "slaughter": {
+        "head": 1229,
+        "pct": 58.7
+      },
+      "replacement": {
+        "head": 822,
+        "pct": 39.3
+      }
+    },
+    "narrative": "Compared to last week (11-04-26): Feeder cattle were all too lightly tested to develop any market trend. Todays sale mostly featured bred cows, weigh cows and bulls. Weigh up cows sold on mostly light to moderate demand for heavy offerings. Demand for feeding cows was light to moderate. Demand overall was not as strong as last week. Canadian packers were active this week and remained in the market throughout the sale. Demand for feeding cows continues to lighten as buyers say lots have started to fill. Private feeders continue to be active buyers of feeding cows and continue to be willing to take lame or slightly blemished cows to feed. Feeding cows sold mostly steady to 5.00 lower on all classes. A wide variety of quality was noticed today, but overall cows were average to attractive. Packer buyers were willing to put some lame and slightly blemished cows on feed as they purchased some cows to hold for the upcoming holidays. Slaughter cows sold generally steady on all classes in a very narrow comparison. The vast majority of cows were purchased to feed in some capacity this week. Weigh up conditions were mostly average today. Slaughter bulls sold mostly steady to 2.00 higher. Young age cows suitable to feed or rebreed sold on moderate to good demand today with several buyers purchasing this class of cow this week. Young age offerings sold mostly 5.00 lower. A light offering of bred cows was seen today and demand was mostly moderate. Quality was mostly plain to average. Supply included: 2% Feeder Cattle (100% Bulls); 59% Slaughter Cattle (91% Cows, 9% Bulls); 39% Replacement Cattle (64% Stock Cows, 31% Bred Cows, 1% Bred Heifers, 4% Open Heifers, 0% Cow-Calf Pairs). Feeder cattle supply over 600 lbs was 100%.",
+    "summary": {
+      "steers": {},
+      "heifers": {},
+      "cull_cows": {
+        "breaker_75_80": {
+          "head": 64,
+          "wtd_avg_price": 124.64,
+          "price_low": 106.0,
+          "price_high": 135.0,
+          "thin": false
+        },
+        "boner_80_85": {
+          "head": 399,
+          "wtd_avg_price": 130.55,
+          "price_low": 87.5,
+          "price_high": 140.0,
+          "thin": false
+        },
+        "lean_85_90": {
+          "head": 209,
+          "wtd_avg_price": 121.3,
+          "price_low": 65.0,
+          "price_high": 139.0,
+          "thin": false
+        },
+        "all": {
+          "head": 672,
+          "wtd_avg_price": 127.11,
+          "price_low": 65.0,
+          "price_high": 140.0,
+          "thin": false
+        }
+      },
+      "bulls": {
+        "slaughter": {
+          "head": 73,
+          "wtd_avg_price": 182.84,
+          "price_low": 157.5,
+          "price_high": 267.5,
+          "thin": false
+        }
+      }
+    },
+    "parsed_at": "2026-11-12T19:28:00.137206Z",
+    "entry_count": 26
+  },
+  {
     "source_key": "mt_composite",
     "auction": "Montana statewide composite (USDA per-barn reports)",
-    "report_id": "AMS_1775+AMS_1773",
+    "report_id": "AMS_1775+AMS_1773+AMS_1774",
     "sale_day": "Saturday",
     "channel": "auction",
     "period_start": "11/8/2026",
     "period_end": "11/14/2026",
     "sale_date": "2026-11-14",
-    "total_receipts": 5759,
+    "total_receipts": 7852,
     "breakdown": {
       "feeder": {
-        "head": 3281,
-        "pct": 57.0
+        "head": 3323,
+        "pct": 42.3
       },
       "slaughter": {
-        "head": 1741,
-        "pct": 30.2
+        "head": 2970,
+        "pct": 37.8
       },
       "replacement": {
-        "head": 737,
-        "pct": 12.8
+        "head": 1559,
+        "pct": 19.9
       }
     },
     "components": [
@@ -20712,6 +20781,13 @@
         "auction": "Miles City Livestock Commission",
         "sale_date": "2026-11-10",
         "total_receipts": 3701
+      },
+      {
+        "key": "pays_wed",
+        "report_id": "AMS_1774",
+        "auction": "Public Auction Yards (Wednesday)",
+        "sale_date": "2026-11-11",
+        "total_receipts": 2093
       }
     ],
     "note": "Built from the USDA per-barn reports for this week, which AMS_1778 sums. Preliminary until AMS_1778 posts the Monday after the week; see usda_check.",
@@ -20883,29 +20959,29 @@
       },
       "cull_cows": {
         "breaker_75_80": {
-          "head": 73,
-          "wtd_avg_price": 120.56,
+          "head": 137,
+          "wtd_avg_price": 122.47,
           "price_low": 106.0,
           "price_high": 138.0,
           "thin": false
         },
         "boner_80_85": {
-          "head": 774,
-          "wtd_avg_price": 126.12,
-          "price_low": 90.0,
+          "head": 1173,
+          "wtd_avg_price": 127.63,
+          "price_low": 87.5,
           "price_high": 148.0,
           "thin": false
         },
         "lean_85_90": {
-          "head": 438,
-          "wtd_avg_price": 113.59,
+          "head": 647,
+          "wtd_avg_price": 116.08,
           "price_low": 65.0,
           "price_high": 140.0,
           "thin": false
         },
         "all": {
-          "head": 1285,
-          "wtd_avg_price": 121.53,
+          "head": 1957,
+          "wtd_avg_price": 123.45,
           "price_low": 65.0,
           "price_high": 148.0,
           "thin": false
@@ -20913,11 +20989,11 @@
       },
       "bulls": {
         "slaughter": {
-          "head": 47,
-          "wtd_avg_price": 169.71,
+          "head": 120,
+          "wtd_avg_price": 177.7,
           "price_low": 155.0,
-          "price_high": 210.0,
-          "thin": true
+          "price_high": 267.5,
+          "thin": false
         },
         "feeder": {
           "head": 47,
@@ -20928,7 +21004,7 @@
         }
       }
     },
-    "entry_count": 125,
-    "parsed_at": "2026-11-11T19:10:43.101071Z"
+    "entry_count": 151,
+    "parsed_at": "2026-11-12T19:28:03.091289Z"
   }
 ]
