@@ -214,11 +214,33 @@ def parse_county(html, slug, label, page_url):
     return rec, None
 
 
+# Fields that change on every run regardless of whether the outlook did.
+# A scheduled rebuild must not commit a new file just because the clock moved.
+VOLATILE_FIELDS = ("updated", "generated_utc")
+
+
+def substantive(feed):
+    return {k: v for k, v in feed.items() if k not in VOLATILE_FIELDS}
+
+
+def unchanged_from_disk(feed, path):
+    """True when the only difference from the committed file is the timestamps."""
+    try:
+        with open(path) as f:
+            old = json.load(f)
+    except (OSError, ValueError):
+        return False
+    return substantive(old) == substantive(feed)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("-o", "--out", default="moisture_outlook.json")
     ap.add_argument("--min-counties", type=int, default=40,
                     help="refuse to write a feed thinner than this")
+    ap.add_argument("--only-if-changed", action="store_true",
+                    help="leave the file untouched unless the outlook itself changed "
+                         "(for scheduled runs, so a no-op rebuild makes no commit)")
     args = ap.parse_args()
 
     pages = []
@@ -279,6 +301,11 @@ def main():
         "county_count": len(out),
         "counties": out,
     }
+    if args.only_if_changed and unchanged_from_disk(feed, args.out):
+        print(f"\n{args.out} unchanged: {len(out)} counties parsed, "
+              f"no new outlook published since the last build")
+        return 0
+
     with open(args.out, "w") as f:
         json.dump(feed, f, indent=2, ensure_ascii=False)
         f.write("\n")

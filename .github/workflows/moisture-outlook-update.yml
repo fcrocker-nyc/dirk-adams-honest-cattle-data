@@ -1,0 +1,67 @@
+name: Update moisture outlook
+
+# Rebuilds moisture_outlook.json — the rolling 1/3/6/12-month precipitation
+# outlook the HonestCattle iOS app shows for a ranch's county — by parsing the
+# outlook table already published on each of the 56 Montana county pages.
+# Deriving the feed from the published pages is deliberate: the app and
+# honestcattle.net cannot drift apart. Details in the app repo's
+# docs/MOISTURE-OUTLOOK.md.
+#
+# The underlying data is monthly: NOAA CPC issues the seasonal outlook
+# mid-month and the monthly outlook at month end, and refresh_outlook.py on
+# the Mac (launchd net.honestcattle.outlookrefresh, 1st of the month 08:00
+# Mountain) pushes the new cards to the county pages.
+#
+# This job still runs DAILY and commits only when the outlook itself changed
+# (--only-if-changed ignores the run timestamps). A fixed monthly date would
+# have to guess when the pages were actually updated; a daily no-op check
+# cannot miss it, and picks up a manual or re-run refresh the same day.
+
+on:
+  schedule:
+    # 16:00 UTC = ~09:00 Mountain. After the Mac-side page push (08:00
+    # Mountain) and clear of the other updaters (11:30-13:30 UTC).
+    - cron: '0 16 * * *'
+  workflow_dispatch: {}  # allow manual runs from the Actions tab
+
+permissions:
+  contents: write
+
+# A rebuild is idempotent, so never let a slow run block the next day's.
+concurrency:
+  group: moisture-outlook-update
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    # ~56 WP REST requests with retries; a hung site should fail loudly, not hang.
+    timeout-minutes: 20
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+
+      # No secrets and no dependencies: the builder is stdlib-only and reads
+      # the public WP REST API. It exits non-zero rather than writing a feed
+      # thinner than 40 counties, so a site outage degrades to "no update".
+      - name: Rebuild moisture outlook
+        run: python build_moisture_outlook.py --only-if-changed
+
+      - name: Commit refreshed outlook
+        run: |
+          git config user.name "moisture-outlook-bot"
+          git config user.email "moisture-outlook-bot@users.noreply.github.com"
+          if [[ -n "$(git status --porcelain moisture_outlook.json)" ]]; then
+            git add moisture_outlook.json
+            git commit -m "auto update: moisture outlook $(date -u +%Y-%m-%d)"
+            # Rebase onto anything that landed while the builder ran.
+            git pull --rebase origin main
+            git push
+          else
+            echo "Outlook unchanged — nothing to commit."
+          fi
