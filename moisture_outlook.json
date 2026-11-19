@@ -1,0 +1,3874 @@
+{
+  "updated": "2026-11-19",
+  "generated_utc": "2026-11-19T15:47:25Z",
+  "method_url": "https://honestcattle.net/measuring-montana-moisture/",
+  "source": "NOAA Climate Prediction Center outlook odds applied to the county's 1991-2020 precipitation record (NOAA NCEI nClimDiv). A tilt in the odds, not a promise; confidence fades with distance.",
+  "note": "Inches are county-wide averages that include mountain ground, so valley and bench ranches usually receive less. Percent of normal carries over better than the inches.",
+  "county_count": 56,
+  "counties": {
+    "beaverhead": {
+      "county": "beaverhead",
+      "county_label": "Beaverhead",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/beaverhead-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 1.54,
+          "expected_in": 1.53,
+          "pct_of_normal": 99,
+          "lean": "No clear signal",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 4.64,
+          "expected_in": 4.51,
+          "pct_of_normal": 97,
+          "lean": "Slight dry lean",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 9.77,
+          "expected_in": 9.56,
+          "pct_of_normal": 98,
+          "lean": "Slight dry lean",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 20.23,
+          "expected_in": 19.6,
+          "pct_of_normal": 97,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 34,
+        "near": 34,
+        "wetter": 32
+      },
+      "odds_3_month": {
+        "drier": 38,
+        "near": 33,
+        "wetter": 29
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 7.33,
+        "expected_in": 6.9,
+        "pct_of_normal": 94,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (43% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "big_horn": {
+      "county": "big_horn",
+      "county_label": "Big Horn",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/big-horn-county/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 0.76,
+          "expected_in": 0.76,
+          "pct_of_normal": 100,
+          "lean": "No clear signal",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 2.17,
+          "expected_in": 2.12,
+          "pct_of_normal": 98,
+          "lean": "Slight dry lean",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 5.75,
+          "expected_in": 5.7,
+          "pct_of_normal": 99,
+          "lean": "No clear signal",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 15.91,
+          "expected_in": 15.34,
+          "pct_of_normal": 96,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 33,
+        "near": 34,
+        "wetter": 33
+      },
+      "odds_3_month": {
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 6.82,
+        "expected_in": 6.48,
+        "pct_of_normal": 95,
+        "drier": 41,
+        "near": 33,
+        "wetter": 26
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 slight lean warmer than normal (36% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "blaine": {
+      "county": "blaine",
+      "county_label": "Blaine",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/blaine-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 0.64,
+          "expected_in": 0.62,
+          "pct_of_normal": 96,
+          "lean": "Slight dry lean",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 1.71,
+          "expected_in": 1.51,
+          "pct_of_normal": 88,
+          "lean": "Leans dry",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 4.07,
+          "expected_in": 3.81,
+          "pct_of_normal": 94,
+          "lean": "Slight dry lean",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 14.39,
+          "expected_in": 13.63,
+          "pct_of_normal": 95,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "odds_3_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 6.55,
+        "expected_in": 6.06,
+        "pct_of_normal": 93,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (45% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "broadwater": {
+      "county": "broadwater",
+      "county_label": "Broadwater",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/broadwater-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 0.91,
+          "expected_in": 0.88,
+          "pct_of_normal": 97,
+          "lean": "Slight dry lean",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 2.47,
+          "expected_in": 2.28,
+          "pct_of_normal": 92,
+          "lean": "Leans dry",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 5.65,
+          "expected_in": 5.31,
+          "pct_of_normal": 94,
+          "lean": "Slight dry lean",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 15.43,
+          "expected_in": 14.71,
+          "pct_of_normal": 95,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "odds_3_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 6.54,
+        "expected_in": 6.2,
+        "pct_of_normal": 95,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (45% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "carbon": {
+      "county": "carbon",
+      "county_label": "Carbon",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/carbon-county/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 1.07,
+          "expected_in": 1.07,
+          "pct_of_normal": 100,
+          "lean": "No clear signal",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 2.83,
+          "expected_in": 2.77,
+          "pct_of_normal": 98,
+          "lean": "Slight dry lean",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 7.06,
+          "expected_in": 7.0,
+          "pct_of_normal": 99,
+          "lean": "No clear signal",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 17.57,
+          "expected_in": 17.05,
+          "pct_of_normal": 97,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 33,
+        "near": 34,
+        "wetter": 33
+      },
+      "odds_3_month": {
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 7.12,
+        "expected_in": 6.69,
+        "pct_of_normal": 94,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 slight lean warmer than normal (36% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "carter": {
+      "county": "carter",
+      "county_label": "Carter",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/carter-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 0.53,
+          "expected_in": 0.55,
+          "pct_of_normal": 105,
+          "lean": "Slight wet lean",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 1.39,
+          "expected_in": 1.39,
+          "pct_of_normal": 100,
+          "lean": "No clear signal",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 4.34,
+          "expected_in": 4.34,
+          "pct_of_normal": 100,
+          "lean": "No clear signal",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 16.14,
+          "expected_in": 15.95,
+          "pct_of_normal": 99,
+          "lean": "No clear signal",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 30,
+        "near": 34,
+        "wetter": 36
+      },
+      "odds_3_month": {
+        "drier": 33,
+        "near": 34,
+        "wetter": 33
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 7.32,
+        "expected_in": 7.21,
+        "pct_of_normal": 98,
+        "drier": 35,
+        "near": 34,
+        "wetter": 31
+      },
+      "temperature_note": "November 2026 leans warmer than normal (58% chance of a warmer-than-normal month); Nov 2026–Jan 2027 slight lean warmer than normal (43% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "cascade": {
+      "county": "cascade",
+      "county_label": "Cascade",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/cascade-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 0.8,
+          "expected_in": 0.75,
+          "pct_of_normal": 94,
+          "lean": "Slight dry lean",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 2.21,
+          "expected_in": 2.04,
+          "pct_of_normal": 92,
+          "lean": "Leans dry",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 5.63,
+          "expected_in": 5.22,
+          "pct_of_normal": 93,
+          "lean": "Leans dry",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 17.03,
+          "expected_in": 16.13,
+          "pct_of_normal": 95,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 39,
+        "near": 33,
+        "wetter": 28
+      },
+      "odds_3_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 7.77,
+        "expected_in": 7.33,
+        "pct_of_normal": 94,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (45% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "chouteau": {
+      "county": "chouteau",
+      "county_label": "Chouteau",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/chouteau-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 0.62,
+          "expected_in": 0.58,
+          "pct_of_normal": 93,
+          "lean": "Slight dry lean",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 1.62,
+          "expected_in": 1.46,
+          "pct_of_normal": 90,
+          "lean": "Leans dry",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 4.03,
+          "expected_in": 3.72,
+          "pct_of_normal": 92,
+          "lean": "Leans dry",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 13.84,
+          "expected_in": 13.07,
+          "pct_of_normal": 94,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 39,
+        "near": 33,
+        "wetter": 28
+      },
+      "odds_3_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 6.48,
+        "expected_in": 6.08,
+        "pct_of_normal": 94,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (45% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "custer": {
+      "county": "custer",
+      "county_label": "Custer",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/custer-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 0.47,
+          "expected_in": 0.48,
+          "pct_of_normal": 102,
+          "lean": "Slight wet lean",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 1.24,
+          "expected_in": 1.21,
+          "pct_of_normal": 97,
+          "lean": "Slight dry lean",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 3.95,
+          "expected_in": 3.92,
+          "pct_of_normal": 99,
+          "lean": "No clear signal",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 14.46,
+          "expected_in": 14.25,
+          "pct_of_normal": 99,
+          "lean": "No clear signal",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 32,
+        "near": 34,
+        "wetter": 34
+      },
+      "odds_3_month": {
+        "drier": 36,
+        "near": 33,
+        "wetter": 31
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 6.96,
+        "expected_in": 6.78,
+        "pct_of_normal": 97,
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "temperature_note": "November 2026 leans warmer than normal (61% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (45% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "daniels": {
+      "county": "daniels",
+      "county_label": "Daniels",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/daniels-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 0.52,
+          "expected_in": 0.52,
+          "pct_of_normal": 101,
+          "lean": "No clear signal",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 1.45,
+          "expected_in": 1.4,
+          "pct_of_normal": 97,
+          "lean": "Slight dry lean",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 3.32,
+          "expected_in": 3.25,
+          "pct_of_normal": 98,
+          "lean": "Slight dry lean",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 14.56,
+          "expected_in": 14.32,
+          "pct_of_normal": 98,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 33,
+        "near": 33,
+        "wetter": 34
+      },
+      "odds_3_month": {
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 6.31,
+        "expected_in": 6.17,
+        "pct_of_normal": 98,
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "temperature_note": "November 2026 leans warmer than normal (65% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (45% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "dawson": {
+      "county": "dawson",
+      "county_label": "Dawson",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/dawson-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 0.4,
+          "expected_in": 0.42,
+          "pct_of_normal": 105,
+          "lean": "Slight wet lean",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 1.08,
+          "expected_in": 1.04,
+          "pct_of_normal": 97,
+          "lean": "Slight dry lean",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 3.3,
+          "expected_in": 3.26,
+          "pct_of_normal": 99,
+          "lean": "No clear signal",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 14.4,
+          "expected_in": 14.2,
+          "pct_of_normal": 99,
+          "lean": "No clear signal",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 30,
+        "near": 34,
+        "wetter": 36
+      },
+      "odds_3_month": {
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 6.54,
+        "expected_in": 6.39,
+        "pct_of_normal": 98,
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "temperature_note": "November 2026 leans warmer than normal (65% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (45% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "deer_lodge": {
+      "county": "deer_lodge",
+      "county_label": "Deer Lodge",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/deer-lodge-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 1.75,
+          "expected_in": 1.7,
+          "pct_of_normal": 97,
+          "lean": "Slight dry lean",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 4.91,
+          "expected_in": 4.53,
+          "pct_of_normal": 92,
+          "lean": "Leans dry",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 10.56,
+          "expected_in": 9.83,
+          "pct_of_normal": 93,
+          "lean": "Slight dry lean",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 22.27,
+          "expected_in": 21.04,
+          "pct_of_normal": 94,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "odds_3_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 8.11,
+        "expected_in": 7.65,
+        "pct_of_normal": 94,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (45% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "fallon": {
+      "county": "fallon",
+      "county_label": "Fallon",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/fallon-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 0.51,
+          "expected_in": 0.54,
+          "pct_of_normal": 105,
+          "lean": "Slight wet lean",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 1.3,
+          "expected_in": 1.3,
+          "pct_of_normal": 100,
+          "lean": "No clear signal",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 3.91,
+          "expected_in": 3.91,
+          "pct_of_normal": 100,
+          "lean": "No clear signal",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 15.51,
+          "expected_in": 15.33,
+          "pct_of_normal": 99,
+          "lean": "No clear signal",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 30,
+        "near": 34,
+        "wetter": 36
+      },
+      "odds_3_month": {
+        "drier": 33,
+        "near": 34,
+        "wetter": 33
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 7.06,
+        "expected_in": 6.9,
+        "pct_of_normal": 98,
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "temperature_note": "November 2026 leans warmer than normal (65% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (45% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "fergus": {
+      "county": "fergus",
+      "county_label": "Fergus",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/fergus-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 0.7,
+          "expected_in": 0.67,
+          "pct_of_normal": 96,
+          "lean": "Slight dry lean",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 1.9,
+          "expected_in": 1.73,
+          "pct_of_normal": 91,
+          "lean": "Leans dry",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 5.02,
+          "expected_in": 4.79,
+          "pct_of_normal": 95,
+          "lean": "Slight dry lean",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 17.01,
+          "expected_in": 16.2,
+          "pct_of_normal": 95,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "odds_3_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 7.9,
+        "expected_in": 7.4,
+        "pct_of_normal": 94,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (45% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "flathead": {
+      "county": "flathead",
+      "county_label": "Flathead",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/flathead-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 3.95,
+          "expected_in": 3.56,
+          "pct_of_normal": 90,
+          "lean": "Leans dry",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 11.97,
+          "expected_in": 11.25,
+          "pct_of_normal": 94,
+          "lean": "Slight dry lean",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 21.31,
+          "expected_in": 20.04,
+          "pct_of_normal": 94,
+          "lean": "Slight dry lean",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 35.87,
+          "expected_in": 34.0,
+          "pct_of_normal": 95,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "odds_3_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 9.71,
+        "expected_in": 9.13,
+        "pct_of_normal": 94,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (55% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "gallatin": {
+      "county": "gallatin",
+      "county_label": "Gallatin",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/gallatin-county/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 1.85,
+          "expected_in": 1.83,
+          "pct_of_normal": 99,
+          "lean": "No clear signal",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 5.54,
+          "expected_in": 5.28,
+          "pct_of_normal": 95,
+          "lean": "Slight dry lean",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 11.87,
+          "expected_in": 11.53,
+          "pct_of_normal": 97,
+          "lean": "Slight dry lean",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 24.43,
+          "expected_in": 23.69,
+          "pct_of_normal": 97,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 35,
+        "near": 33,
+        "wetter": 32
+      },
+      "odds_3_month": {
+        "drier": 41,
+        "near": 34,
+        "wetter": 25
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 8.86,
+        "expected_in": 8.5,
+        "pct_of_normal": 96,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 slight lean warmer than normal (41% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "garfield": {
+      "county": "garfield",
+      "county_label": "Garfield",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/garfield-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 0.48,
+          "expected_in": 0.48,
+          "pct_of_normal": 100,
+          "lean": "No clear signal",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 1.3,
+          "expected_in": 1.24,
+          "pct_of_normal": 95,
+          "lean": "Slight dry lean",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 3.55,
+          "expected_in": 3.46,
+          "pct_of_normal": 97,
+          "lean": "Slight dry lean",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 14.15,
+          "expected_in": 13.5,
+          "pct_of_normal": 95,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 33,
+        "near": 34,
+        "wetter": 33
+      },
+      "odds_3_month": {
+        "drier": 38,
+        "near": 33,
+        "wetter": 29
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 6.67,
+        "expected_in": 6.25,
+        "pct_of_normal": 94,
+        "drier": 41,
+        "near": 34,
+        "wetter": 25
+      },
+      "temperature_note": "November 2026 leans warmer than normal (61% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (45% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "glacier": {
+      "county": "glacier",
+      "county_label": "Glacier",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/glacier-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 2.02,
+          "expected_in": 1.78,
+          "pct_of_normal": 88,
+          "lean": "Leans dry",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 5.7,
+          "expected_in": 5.33,
+          "pct_of_normal": 94,
+          "lean": "Slight dry lean",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 11.47,
+          "expected_in": 10.71,
+          "pct_of_normal": 93,
+          "lean": "Slight dry lean",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 24.07,
+          "expected_in": 22.62,
+          "pct_of_normal": 94,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "odds_3_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 8.31,
+        "expected_in": 7.74,
+        "pct_of_normal": 93,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (55% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "golden_valley": {
+      "county": "golden_valley",
+      "county_label": "Golden Valley",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/golden-valley-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 0.62,
+          "expected_in": 0.6,
+          "pct_of_normal": 97,
+          "lean": "Slight dry lean",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 1.6,
+          "expected_in": 1.45,
+          "pct_of_normal": 91,
+          "lean": "Leans dry",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 4.5,
+          "expected_in": 4.29,
+          "pct_of_normal": 95,
+          "lean": "Slight dry lean",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 15.11,
+          "expected_in": 14.36,
+          "pct_of_normal": 95,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 36,
+        "near": 33,
+        "wetter": 31
+      },
+      "odds_3_month": {
+        "drier": 44,
+        "near": 34,
+        "wetter": 22
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 7.19,
+        "expected_in": 6.67,
+        "pct_of_normal": 93,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (43% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "granite": {
+      "county": "granite",
+      "county_label": "Granite",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/granite-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 2.13,
+          "expected_in": 2.07,
+          "pct_of_normal": 97,
+          "lean": "Slight dry lean",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 6.26,
+          "expected_in": 5.78,
+          "pct_of_normal": 92,
+          "lean": "Leans dry",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 12.41,
+          "expected_in": 11.54,
+          "pct_of_normal": 93,
+          "lean": "Slight dry lean",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 23.87,
+          "expected_in": 22.52,
+          "pct_of_normal": 94,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "odds_3_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 7.96,
+        "expected_in": 7.47,
+        "pct_of_normal": 94,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (45% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "hill": {
+      "county": "hill",
+      "county_label": "Hill",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/hill-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 0.57,
+          "expected_in": 0.53,
+          "pct_of_normal": 93,
+          "lean": "Leans dry",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 1.48,
+          "expected_in": 1.31,
+          "pct_of_normal": 88,
+          "lean": "Leans dry",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 3.42,
+          "expected_in": 3.11,
+          "pct_of_normal": 91,
+          "lean": "Leans dry",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 12.77,
+          "expected_in": 11.96,
+          "pct_of_normal": 94,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 39,
+        "near": 33,
+        "wetter": 28
+      },
+      "odds_3_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 5.83,
+        "expected_in": 5.37,
+        "pct_of_normal": 92,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (45% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "jefferson": {
+      "county": "jefferson",
+      "county_label": "Jefferson",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/jefferson-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 1.15,
+          "expected_in": 1.12,
+          "pct_of_normal": 97,
+          "lean": "Slight dry lean",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 3.06,
+          "expected_in": 2.83,
+          "pct_of_normal": 92,
+          "lean": "Leans dry",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 7.04,
+          "expected_in": 6.58,
+          "pct_of_normal": 93,
+          "lean": "Slight dry lean",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 17.83,
+          "expected_in": 16.94,
+          "pct_of_normal": 95,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "odds_3_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 7.33,
+        "expected_in": 6.94,
+        "pct_of_normal": 95,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (45% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "judith_basin": {
+      "county": "judith_basin",
+      "county_label": "Judith Basin",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/judith-basin-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 0.92,
+          "expected_in": 0.89,
+          "pct_of_normal": 97,
+          "lean": "Slight dry lean",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 2.57,
+          "expected_in": 2.37,
+          "pct_of_normal": 92,
+          "lean": "Leans dry",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 6.56,
+          "expected_in": 6.26,
+          "pct_of_normal": 95,
+          "lean": "Slight dry lean",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 19.43,
+          "expected_in": 18.55,
+          "pct_of_normal": 95,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "odds_3_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 8.59,
+        "expected_in": 8.12,
+        "pct_of_normal": 94,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (45% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "lake": {
+      "county": "lake",
+      "county_label": "Lake",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/lake-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 2.37,
+          "expected_in": 2.13,
+          "pct_of_normal": 90,
+          "lean": "Leans dry",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 7.14,
+          "expected_in": 6.65,
+          "pct_of_normal": 93,
+          "lean": "Slight dry lean",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 13.41,
+          "expected_in": 12.58,
+          "pct_of_normal": 94,
+          "lean": "Slight dry lean",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 24.84,
+          "expected_in": 23.56,
+          "pct_of_normal": 95,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "odds_3_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 7.82,
+        "expected_in": 7.36,
+        "pct_of_normal": 94,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (55% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "lewis_clark": {
+      "county": "lewis_clark",
+      "county_label": "Lewis and Clark",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/lewis-and-clark-county/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 1.78,
+          "expected_in": 1.65,
+          "pct_of_normal": 92,
+          "lean": "Leans dry",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 5.26,
+          "expected_in": 4.86,
+          "pct_of_normal": 92,
+          "lean": "Leans dry",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 10.59,
+          "expected_in": 9.81,
+          "pct_of_normal": 93,
+          "lean": "Leans dry",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 22.31,
+          "expected_in": 21.0,
+          "pct_of_normal": 94,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 41,
+        "near": 33,
+        "wetter": 26
+      },
+      "odds_3_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 8.03,
+        "expected_in": 7.52,
+        "pct_of_normal": 94,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (45% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "liberty": {
+      "county": "liberty",
+      "county_label": "Liberty",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/liberty-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 0.56,
+          "expected_in": 0.48,
+          "pct_of_normal": 85,
+          "lean": "Leans dry",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 1.45,
+          "expected_in": 1.27,
+          "pct_of_normal": 88,
+          "lean": "Leans dry",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 3.44,
+          "expected_in": 3.05,
+          "pct_of_normal": 89,
+          "lean": "Leans dry",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 12.2,
+          "expected_in": 11.35,
+          "pct_of_normal": 93,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "odds_3_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 5.69,
+        "expected_in": 5.26,
+        "pct_of_normal": 92,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (45% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "lincoln": {
+      "county": "lincoln",
+      "county_label": "Lincoln",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/lincoln-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 3.99,
+          "expected_in": 3.55,
+          "pct_of_normal": 89,
+          "lean": "Leans dry",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 11.22,
+          "expected_in": 10.47,
+          "pct_of_normal": 93,
+          "lean": "Slight dry lean",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 19.42,
+          "expected_in": 18.07,
+          "pct_of_normal": 93,
+          "lean": "Slight dry lean",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 32.03,
+          "expected_in": 30.11,
+          "pct_of_normal": 94,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "odds_3_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 8.01,
+        "expected_in": 7.48,
+        "pct_of_normal": 93,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (55% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "madison": {
+      "county": "madison",
+      "county_label": "Madison",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/madison-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 1.64,
+          "expected_in": 1.63,
+          "pct_of_normal": 99,
+          "lean": "No clear signal",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 4.9,
+          "expected_in": 4.73,
+          "pct_of_normal": 96,
+          "lean": "Slight dry lean",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 10.85,
+          "expected_in": 10.6,
+          "pct_of_normal": 98,
+          "lean": "Slight dry lean",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 22.98,
+          "expected_in": 22.33,
+          "pct_of_normal": 97,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 34,
+        "near": 34,
+        "wetter": 32
+      },
+      "odds_3_month": {
+        "drier": 39,
+        "near": 34,
+        "wetter": 27
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 8.55,
+        "expected_in": 8.17,
+        "pct_of_normal": 96,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 slight lean warmer than normal (42% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "mccone": {
+      "county": "mccone",
+      "county_label": "McCone",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/mccone-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 0.36,
+          "expected_in": 0.36,
+          "pct_of_normal": 100,
+          "lean": "No clear signal",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 1.01,
+          "expected_in": 0.98,
+          "pct_of_normal": 97,
+          "lean": "Slight dry lean",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 2.86,
+          "expected_in": 2.83,
+          "pct_of_normal": 99,
+          "lean": "No clear signal",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 13.6,
+          "expected_in": 13.37,
+          "pct_of_normal": 98,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 33,
+        "near": 34,
+        "wetter": 33
+      },
+      "odds_3_month": {
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 6.31,
+        "expected_in": 6.15,
+        "pct_of_normal": 97,
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "temperature_note": "November 2026 leans warmer than normal (65% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (45% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "meagher": {
+      "county": "meagher",
+      "county_label": "Meagher",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/meagher-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 1.29,
+          "expected_in": 1.25,
+          "pct_of_normal": 97,
+          "lean": "Slight dry lean",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 3.73,
+          "expected_in": 3.45,
+          "pct_of_normal": 93,
+          "lean": "Leans dry",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 8.39,
+          "expected_in": 7.96,
+          "pct_of_normal": 95,
+          "lean": "Slight dry lean",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 20.9,
+          "expected_in": 19.97,
+          "pct_of_normal": 96,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "odds_3_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 8.57,
+        "expected_in": 8.14,
+        "pct_of_normal": 95,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (45% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "mineral": {
+      "county": "mineral",
+      "county_label": "Mineral",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/mineral-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 4.77,
+          "expected_in": 4.5,
+          "pct_of_normal": 94,
+          "lean": "Slight dry lean",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 14.13,
+          "expected_in": 13.06,
+          "pct_of_normal": 92,
+          "lean": "Leans dry",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 25.21,
+          "expected_in": 23.37,
+          "pct_of_normal": 93,
+          "lean": "Leans dry",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 38.21,
+          "expected_in": 35.89,
+          "pct_of_normal": 94,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 39,
+        "near": 33,
+        "wetter": 28
+      },
+      "odds_3_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 8.89,
+        "expected_in": 8.36,
+        "pct_of_normal": 94,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (55% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "missoula": {
+      "county": "missoula",
+      "county_label": "Missoula",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/missoula-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 3.28,
+          "expected_in": 3.06,
+          "pct_of_normal": 93,
+          "lean": "Slight dry lean",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 9.86,
+          "expected_in": 9.1,
+          "pct_of_normal": 92,
+          "lean": "Leans dry",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 17.88,
+          "expected_in": 16.6,
+          "pct_of_normal": 93,
+          "lean": "Leans dry",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 29.73,
+          "expected_in": 28.03,
+          "pct_of_normal": 94,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 40,
+        "near": 33,
+        "wetter": 27
+      },
+      "odds_3_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 8.11,
+        "expected_in": 7.59,
+        "pct_of_normal": 94,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (52% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "musselshell": {
+      "county": "musselshell",
+      "county_label": "Musselshell",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/musselshell-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 0.57,
+          "expected_in": 0.57,
+          "pct_of_normal": 99,
+          "lean": "No clear signal",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 1.55,
+          "expected_in": 1.46,
+          "pct_of_normal": 95,
+          "lean": "Slight dry lean",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 4.45,
+          "expected_in": 4.32,
+          "pct_of_normal": 97,
+          "lean": "Slight dry lean",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 15.12,
+          "expected_in": 14.4,
+          "pct_of_normal": 95,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 34,
+        "near": 33,
+        "wetter": 33
+      },
+      "odds_3_month": {
+        "drier": 40,
+        "near": 33,
+        "wetter": 27
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 7.3,
+        "expected_in": 6.69,
+        "pct_of_normal": 92,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (44% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "park": {
+      "county": "park",
+      "county_label": "Park",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/park-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 2.07,
+          "expected_in": 2.05,
+          "pct_of_normal": 99,
+          "lean": "No clear signal",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 6.07,
+          "expected_in": 5.86,
+          "pct_of_normal": 97,
+          "lean": "Slight dry lean",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 12.84,
+          "expected_in": 12.56,
+          "pct_of_normal": 98,
+          "lean": "Slight dry lean",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 26.12,
+          "expected_in": 25.42,
+          "pct_of_normal": 97,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 34,
+        "near": 34,
+        "wetter": 32
+      },
+      "odds_3_month": {
+        "drier": 39,
+        "near": 33,
+        "wetter": 28
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 9.01,
+        "expected_in": 8.61,
+        "pct_of_normal": 96,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 slight lean warmer than normal (38% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "petroleum": {
+      "county": "petroleum",
+      "county_label": "Petroleum",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/petroleum-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 0.51,
+          "expected_in": 0.51,
+          "pct_of_normal": 99,
+          "lean": "No clear signal",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 1.41,
+          "expected_in": 1.25,
+          "pct_of_normal": 89,
+          "lean": "Leans dry",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 3.87,
+          "expected_in": 3.65,
+          "pct_of_normal": 94,
+          "lean": "Slight dry lean",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 14.31,
+          "expected_in": 13.53,
+          "pct_of_normal": 95,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 34,
+        "near": 33,
+        "wetter": 33
+      },
+      "odds_3_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 7.04,
+        "expected_in": 6.5,
+        "pct_of_normal": 92,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (45% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "phillips": {
+      "county": "phillips",
+      "county_label": "Phillips",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/phillips-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 0.48,
+          "expected_in": 0.48,
+          "pct_of_normal": 99,
+          "lean": "No clear signal",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 1.28,
+          "expected_in": 1.12,
+          "pct_of_normal": 87,
+          "lean": "Leans dry",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 3.35,
+          "expected_in": 3.14,
+          "pct_of_normal": 94,
+          "lean": "Slight dry lean",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 13.44,
+          "expected_in": 12.72,
+          "pct_of_normal": 95,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 34,
+        "near": 33,
+        "wetter": 33
+      },
+      "odds_3_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 6.31,
+        "expected_in": 5.79,
+        "pct_of_normal": 92,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (60% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (45% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "pondera": {
+      "county": "pondera",
+      "county_label": "Pondera",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/pondera-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 0.87,
+          "expected_in": 0.77,
+          "pct_of_normal": 88,
+          "lean": "Leans dry",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 2.44,
+          "expected_in": 2.28,
+          "pct_of_normal": 93,
+          "lean": "Slight dry lean",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 5.72,
+          "expected_in": 5.32,
+          "pct_of_normal": 93,
+          "lean": "Slight dry lean",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 15.95,
+          "expected_in": 15.03,
+          "pct_of_normal": 94,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "odds_3_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 6.97,
+        "expected_in": 6.54,
+        "pct_of_normal": 94,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (50% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "powder_river": {
+      "county": "powder_river",
+      "county_label": "Powder River",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/powder-river-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 0.53,
+          "expected_in": 0.54,
+          "pct_of_normal": 101,
+          "lean": "No clear signal",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 1.46,
+          "expected_in": 1.46,
+          "pct_of_normal": 100,
+          "lean": "No clear signal",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 4.63,
+          "expected_in": 4.63,
+          "pct_of_normal": 100,
+          "lean": "No clear signal",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 15.56,
+          "expected_in": 15.36,
+          "pct_of_normal": 99,
+          "lean": "No clear signal",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 32,
+        "near": 34,
+        "wetter": 34
+      },
+      "odds_3_month": {
+        "drier": 33,
+        "near": 34,
+        "wetter": 33
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 7.24,
+        "expected_in": 7.06,
+        "pct_of_normal": 98,
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 slight lean warmer than normal (38% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "powell": {
+      "county": "powell",
+      "county_label": "Powell",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/powell-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 2.46,
+          "expected_in": 2.33,
+          "pct_of_normal": 95,
+          "lean": "Slight dry lean",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 7.51,
+          "expected_in": 6.93,
+          "pct_of_normal": 92,
+          "lean": "Leans dry",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 14.17,
+          "expected_in": 13.15,
+          "pct_of_normal": 93,
+          "lean": "Leans dry",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 26.07,
+          "expected_in": 24.58,
+          "pct_of_normal": 94,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 39,
+        "near": 33,
+        "wetter": 28
+      },
+      "odds_3_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 8.11,
+        "expected_in": 7.64,
+        "pct_of_normal": 94,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (45% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "prairie": {
+      "county": "prairie",
+      "county_label": "Prairie",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/prairie-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 0.4,
+          "expected_in": 0.41,
+          "pct_of_normal": 103,
+          "lean": "Slight wet lean",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 1.08,
+          "expected_in": 1.04,
+          "pct_of_normal": 97,
+          "lean": "Slight dry lean",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 3.33,
+          "expected_in": 3.29,
+          "pct_of_normal": 99,
+          "lean": "No clear signal",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 13.92,
+          "expected_in": 13.73,
+          "pct_of_normal": 99,
+          "lean": "No clear signal",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 32,
+        "near": 33,
+        "wetter": 35
+      },
+      "odds_3_month": {
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 6.61,
+        "expected_in": 6.46,
+        "pct_of_normal": 98,
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "temperature_note": "November 2026 leans warmer than normal (65% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (45% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "ravalli": {
+      "county": "ravalli",
+      "county_label": "Ravalli",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/ravalli-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 3.21,
+          "expected_in": 3.11,
+          "pct_of_normal": 97,
+          "lean": "Slight dry lean",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 9.62,
+          "expected_in": 8.94,
+          "pct_of_normal": 93,
+          "lean": "Leans dry",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 17.41,
+          "expected_in": 16.25,
+          "pct_of_normal": 93,
+          "lean": "Slight dry lean",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 29.2,
+          "expected_in": 27.6,
+          "pct_of_normal": 95,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "odds_3_month": {
+        "drier": 43,
+        "near": 34,
+        "wetter": 23
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 8.08,
+        "expected_in": 7.64,
+        "pct_of_normal": 95,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (45% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "richland": {
+      "county": "richland",
+      "county_label": "Richland",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/richland-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 0.45,
+          "expected_in": 0.47,
+          "pct_of_normal": 105,
+          "lean": "Slight wet lean",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 1.21,
+          "expected_in": 1.17,
+          "pct_of_normal": 97,
+          "lean": "Slight dry lean",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 3.24,
+          "expected_in": 3.2,
+          "pct_of_normal": 99,
+          "lean": "No clear signal",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 14.68,
+          "expected_in": 14.48,
+          "pct_of_normal": 99,
+          "lean": "No clear signal",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 30,
+        "near": 34,
+        "wetter": 36
+      },
+      "odds_3_month": {
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 6.45,
+        "expected_in": 6.3,
+        "pct_of_normal": 98,
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "temperature_note": "November 2026 leans warmer than normal (65% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (45% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "roosevelt": {
+      "county": "roosevelt",
+      "county_label": "Roosevelt",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/roosevelt-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 0.44,
+          "expected_in": 0.45,
+          "pct_of_normal": 103,
+          "lean": "Slight wet lean",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 1.19,
+          "expected_in": 1.15,
+          "pct_of_normal": 97,
+          "lean": "Slight dry lean",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 2.94,
+          "expected_in": 2.9,
+          "pct_of_normal": 99,
+          "lean": "No clear signal",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 14.03,
+          "expected_in": 13.84,
+          "pct_of_normal": 99,
+          "lean": "No clear signal",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 31,
+        "near": 34,
+        "wetter": 35
+      },
+      "odds_3_month": {
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 6.29,
+        "expected_in": 6.15,
+        "pct_of_normal": 98,
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "temperature_note": "November 2026 leans warmer than normal (65% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (45% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "rosebud": {
+      "county": "rosebud",
+      "county_label": "Rosebud",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/rosebud-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 0.56,
+          "expected_in": 0.56,
+          "pct_of_normal": 100,
+          "lean": "No clear signal",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 1.55,
+          "expected_in": 1.51,
+          "pct_of_normal": 98,
+          "lean": "Slight dry lean",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 4.42,
+          "expected_in": 4.38,
+          "pct_of_normal": 99,
+          "lean": "No clear signal",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 14.66,
+          "expected_in": 14.23,
+          "pct_of_normal": 97,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 33,
+        "near": 34,
+        "wetter": 33
+      },
+      "odds_3_month": {
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 6.82,
+        "expected_in": 6.56,
+        "pct_of_normal": 96,
+        "drier": 38,
+        "near": 34,
+        "wetter": 28
+      },
+      "temperature_note": "November 2026 leans warmer than normal (56% chance of a warmer-than-normal month); Nov 2026–Jan 2027 slight lean warmer than normal (42% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "sanders": {
+      "county": "sanders",
+      "county_label": "Sanders",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/sanders-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 3.92,
+          "expected_in": 3.47,
+          "pct_of_normal": 89,
+          "lean": "Leans dry",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 11.47,
+          "expected_in": 10.63,
+          "pct_of_normal": 93,
+          "lean": "Leans dry",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 20.18,
+          "expected_in": 18.74,
+          "pct_of_normal": 93,
+          "lean": "Leans dry",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 31.91,
+          "expected_in": 30.01,
+          "pct_of_normal": 94,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "odds_3_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 7.67,
+        "expected_in": 7.19,
+        "pct_of_normal": 94,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (55% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "sheridan": {
+      "county": "sheridan",
+      "county_label": "Sheridan",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/sheridan-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 0.51,
+          "expected_in": 0.54,
+          "pct_of_normal": 105,
+          "lean": "Slight wet lean",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 1.41,
+          "expected_in": 1.36,
+          "pct_of_normal": 96,
+          "lean": "Slight dry lean",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 3.33,
+          "expected_in": 3.28,
+          "pct_of_normal": 98,
+          "lean": "Slight dry lean",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 14.77,
+          "expected_in": 14.57,
+          "pct_of_normal": 99,
+          "lean": "No clear signal",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 30,
+        "near": 34,
+        "wetter": 36
+      },
+      "odds_3_month": {
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 6.4,
+        "expected_in": 6.26,
+        "pct_of_normal": 98,
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "temperature_note": "November 2026 leans warmer than normal (65% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (49% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "silver_bow": {
+      "county": "silver_bow",
+      "county_label": "Silver Bow",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/silver-bow-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 1.13,
+          "expected_in": 1.1,
+          "pct_of_normal": 97,
+          "lean": "Slight dry lean",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 3.04,
+          "expected_in": 2.78,
+          "pct_of_normal": 91,
+          "lean": "Leans dry",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 7.11,
+          "expected_in": 6.6,
+          "pct_of_normal": 93,
+          "lean": "Leans dry",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 18.11,
+          "expected_in": 17.12,
+          "pct_of_normal": 95,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "odds_3_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 7.48,
+        "expected_in": 7.04,
+        "pct_of_normal": 94,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (45% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "stillwater": {
+      "county": "stillwater",
+      "county_label": "Stillwater",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/stillwater-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 1.01,
+          "expected_in": 1.01,
+          "pct_of_normal": 100,
+          "lean": "No clear signal",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 2.71,
+          "expected_in": 2.64,
+          "pct_of_normal": 97,
+          "lean": "Slight dry lean",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 6.97,
+          "expected_in": 6.87,
+          "pct_of_normal": 99,
+          "lean": "No clear signal",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 18.39,
+          "expected_in": 17.81,
+          "pct_of_normal": 97,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 33,
+        "near": 34,
+        "wetter": 33
+      },
+      "odds_3_month": {
+        "drier": 37,
+        "near": 33,
+        "wetter": 30
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 7.71,
+        "expected_in": 7.26,
+        "pct_of_normal": 94,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 slight lean warmer than normal (36% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "sweet_grass": {
+      "county": "sweet_grass",
+      "county_label": "Sweet Grass",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/sweet-grass-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 1.16,
+          "expected_in": 1.15,
+          "pct_of_normal": 99,
+          "lean": "No clear signal",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 3.09,
+          "expected_in": 2.94,
+          "pct_of_normal": 95,
+          "lean": "Slight dry lean",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 7.62,
+          "expected_in": 7.4,
+          "pct_of_normal": 97,
+          "lean": "Slight dry lean",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 19.53,
+          "expected_in": 18.81,
+          "pct_of_normal": 96,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 34,
+        "near": 34,
+        "wetter": 32
+      },
+      "odds_3_month": {
+        "drier": 40,
+        "near": 34,
+        "wetter": 26
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 8.1,
+        "expected_in": 7.63,
+        "pct_of_normal": 94,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 slight lean warmer than normal (38% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "teton": {
+      "county": "teton",
+      "county_label": "Teton",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/teton-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 1.04,
+          "expected_in": 0.92,
+          "pct_of_normal": 89,
+          "lean": "Leans dry",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 2.91,
+          "expected_in": 2.71,
+          "pct_of_normal": 93,
+          "lean": "Slight dry lean",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 6.62,
+          "expected_in": 6.15,
+          "pct_of_normal": 93,
+          "lean": "Leans dry",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 17.21,
+          "expected_in": 16.21,
+          "pct_of_normal": 94,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "odds_3_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 7.25,
+        "expected_in": 6.79,
+        "pct_of_normal": 94,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (46% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "toole": {
+      "county": "toole",
+      "county_label": "Toole",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/toole-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 0.57,
+          "expected_in": 0.49,
+          "pct_of_normal": 86,
+          "lean": "Leans dry",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 1.42,
+          "expected_in": 1.28,
+          "pct_of_normal": 90,
+          "lean": "Leans dry",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 3.6,
+          "expected_in": 3.25,
+          "pct_of_normal": 90,
+          "lean": "Leans dry",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 12.79,
+          "expected_in": 11.92,
+          "pct_of_normal": 93,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "odds_3_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 6.17,
+        "expected_in": 5.73,
+        "pct_of_normal": 93,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (50% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "treasure": {
+      "county": "treasure",
+      "county_label": "Treasure",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/treasure-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 0.59,
+          "expected_in": 0.59,
+          "pct_of_normal": 100,
+          "lean": "No clear signal",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 1.74,
+          "expected_in": 1.7,
+          "pct_of_normal": 98,
+          "lean": "Slight dry lean",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 4.86,
+          "expected_in": 4.82,
+          "pct_of_normal": 99,
+          "lean": "No clear signal",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 15.1,
+          "expected_in": 14.49,
+          "pct_of_normal": 96,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 33,
+        "near": 34,
+        "wetter": 33
+      },
+      "odds_3_month": {
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 6.82,
+        "expected_in": 6.42,
+        "pct_of_normal": 94,
+        "drier": 42,
+        "near": 33,
+        "wetter": 25
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 slight lean warmer than normal (42% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "valley": {
+      "county": "valley",
+      "county_label": "Valley",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/valley-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 0.42,
+          "expected_in": 0.42,
+          "pct_of_normal": 100,
+          "lean": "No clear signal",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 1.18,
+          "expected_in": 1.09,
+          "pct_of_normal": 92,
+          "lean": "Leans dry",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 3.04,
+          "expected_in": 2.91,
+          "pct_of_normal": 96,
+          "lean": "Slight dry lean",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 13.76,
+          "expected_in": 13.1,
+          "pct_of_normal": 95,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 33,
+        "near": 34,
+        "wetter": 33
+      },
+      "odds_3_month": {
+        "drier": 41,
+        "near": 33,
+        "wetter": 26
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 6.4,
+        "expected_in": 5.96,
+        "pct_of_normal": 93,
+        "drier": 43,
+        "near": 33,
+        "wetter": 24
+      },
+      "temperature_note": "November 2026 leans warmer than normal (65% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (45% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "wheatland": {
+      "county": "wheatland",
+      "county_label": "Wheatland",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/wheatland-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 0.73,
+          "expected_in": 0.71,
+          "pct_of_normal": 97,
+          "lean": "Slight dry lean",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 1.94,
+          "expected_in": 1.77,
+          "pct_of_normal": 91,
+          "lean": "Leans dry",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 5.21,
+          "expected_in": 4.97,
+          "pct_of_normal": 95,
+          "lean": "Slight dry lean",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 16.22,
+          "expected_in": 15.47,
+          "pct_of_normal": 95,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "odds_3_month": {
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 7.54,
+        "expected_in": 7.08,
+        "pct_of_normal": 94,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (45% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "wibaux": {
+      "county": "wibaux",
+      "county_label": "Wibaux",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/wibaux-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 0.49,
+          "expected_in": 0.52,
+          "pct_of_normal": 105,
+          "lean": "Slight wet lean",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 1.25,
+          "expected_in": 1.23,
+          "pct_of_normal": 98,
+          "lean": "Slight dry lean",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 3.72,
+          "expected_in": 3.7,
+          "pct_of_normal": 99,
+          "lean": "No clear signal",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 15.78,
+          "expected_in": 15.6,
+          "pct_of_normal": 99,
+          "lean": "No clear signal",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 30,
+        "near": 34,
+        "wetter": 36
+      },
+      "odds_3_month": {
+        "drier": 35,
+        "near": 33,
+        "wetter": 32
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 6.91,
+        "expected_in": 6.77,
+        "pct_of_normal": 98,
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "temperature_note": "November 2026 leans warmer than normal (65% chance of a warmer-than-normal month); Nov 2026–Jan 2027 leans warmer than normal (45% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    },
+    "yellowstone": {
+      "county": "yellowstone",
+      "county_label": "Yellowstone",
+      "page_url": "https://honestcattle.net/counties-in-montana-counties/yellowstone-county-montana/",
+      "horizons": [
+        {
+          "horizon": "1 month",
+          "months": 1,
+          "window": "November 2026",
+          "normal_in": 0.61,
+          "expected_in": 0.61,
+          "pct_of_normal": 100,
+          "lean": "No clear signal",
+          "confidence": "Moderate"
+        },
+        {
+          "horizon": "3 months",
+          "months": 3,
+          "window": "Nov 2026–Jan 2027",
+          "normal_in": 1.67,
+          "expected_in": 1.63,
+          "pct_of_normal": 98,
+          "lean": "Slight dry lean",
+          "confidence": "Low to moderate"
+        },
+        {
+          "horizon": "6 months",
+          "months": 6,
+          "window": "Nov 2026–Apr 2027",
+          "normal_in": 4.75,
+          "expected_in": 4.71,
+          "pct_of_normal": 99,
+          "lean": "No clear signal",
+          "confidence": "Low"
+        },
+        {
+          "horizon": "12 months",
+          "months": 12,
+          "window": "Nov 2026–Oct 2027",
+          "normal_in": 14.59,
+          "expected_in": 14.02,
+          "pct_of_normal": 96,
+          "lean": "Slight dry lean",
+          "confidence": "Very low"
+        }
+      ],
+      "issued_seasonal": "Oct 15, 2026",
+      "issued_monthly": "Oct 31, 2026",
+      "odds_1_month": {
+        "drier": 33,
+        "near": 34,
+        "wetter": 33
+      },
+      "odds_3_month": {
+        "drier": 36,
+        "near": 34,
+        "wetter": 30
+      },
+      "spring_growing_season": {
+        "window": "Apr–Jun 2027",
+        "normal_in": 6.64,
+        "expected_in": 6.12,
+        "pct_of_normal": 92,
+        "drier": 45,
+        "near": 33,
+        "wetter": 22
+      },
+      "temperature_note": "November 2026 leans warmer than normal (55% chance of a warmer-than-normal month); Nov 2026–Jan 2027 slight lean warmer than normal (37% chance of a warmer-than-normal three months). Warmer weather pulls more moisture out of soil and snowpack."
+    }
+  }
+}
