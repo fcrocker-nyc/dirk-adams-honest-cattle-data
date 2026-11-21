@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-20T19:33:06.484646+00:00",
+  "generated_at": "2026-11-21T18:40:25.391621+00:00",
   "realized_source": "mt_weekly",
   "forecast_field": "steer mid, $/cwt",
   "min_n_for_significance": 8,
@@ -56,7 +56,7 @@
       }
     }
   },
-  "n_forecasts_available": 26,
+  "n_forecasts_available": 27,
   "n_realized_obs": 177,
   "pairs": [
     {
@@ -270,7 +270,7 @@
       "date": "2026-11-16",
       "band": "550_599",
       "quarter": "Q4 2026",
-      "forecast_as_of": "2026-11-09",
+      "forecast_as_of": "2026-11-16",
       "forecast": 468.0,
       "actual": 427.14,
       "error_cwt": -40.86
@@ -279,7 +279,7 @@
       "date": "2026-11-16",
       "band": "600_649",
       "quarter": "Q4 2026",
-      "forecast_as_of": "2026-11-09",
+      "forecast_as_of": "2026-11-16",
       "forecast": 445.0,
       "actual": 395.19,
       "error_cwt": -49.81
