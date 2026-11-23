@@ -295,7 +295,13 @@
     }
   },
   "entry_count": 300,
-  "parsed_at": "2026-11-22T18:57:59.837972Z",
+  "usda_check": {
+    "status": "differs",
+    "head_mismatches": 1,
+    "max_abs_price_diff": 0.82,
+    "usda_report_date": "2026-11-23"
+  },
+  "parsed_at": "2026-11-23T23:17:18.113273Z",
   "entries": [
     {
       "type": "STEERS",

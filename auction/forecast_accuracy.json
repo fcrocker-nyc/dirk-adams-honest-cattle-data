@@ -1,63 +1,63 @@
 {
-  "generated_at": "2026-11-22T18:58:00.416955+00:00",
+  "generated_at": "2026-11-23T23:17:18.443880+00:00",
   "realized_source": "mt_weekly",
   "forecast_field": "steer mid, $/cwt",
   "min_n_for_significance": 8,
   "overall": {
-    "n": 25,
-    "bias_cwt": -45.2,
-    "mpe_pct": -11.33,
-    "mad_cwt": 48.67,
-    "mape_pct": 12.0,
-    "mse": 2799.28,
-    "rmse_cwt": 52.91,
+    "n": 27,
+    "bias_cwt": -45.66,
+    "mpe_pct": -11.43,
+    "mad_cwt": 48.87,
+    "mape_pct": 12.05,
+    "mse": 2786.87,
+    "rmse_cwt": 52.79,
     "sufficient": true,
     "calibration": {
-      "n": 25,
-      "slope": 1.578,
-      "intercept_cwt": -314.06,
-      "r_squared": 0.548,
+      "n": 27,
+      "slope": 1.56,
+      "intercept_cwt": -305.64,
+      "r_squared": 0.553,
       "sufficient": true
     }
   },
   "by_band": {
     "550_599": {
-      "n": 13,
-      "bias_cwt": -43.42,
-      "mpe_pct": -10.67,
-      "mad_cwt": 49.34,
-      "mape_pct": 11.79,
-      "mse": 2913.83,
-      "rmse_cwt": 53.98,
+      "n": 14,
+      "bias_cwt": -44.04,
+      "mpe_pct": -10.8,
+      "mad_cwt": 49.53,
+      "mape_pct": 11.85,
+      "mse": 2899.22,
+      "rmse_cwt": 53.84,
       "sufficient": true,
       "calibration": {
-        "n": 13,
-        "slope": 2.23,
-        "intercept_cwt": -629.89,
-        "r_squared": 0.402,
+        "n": 14,
+        "slope": 2.219,
+        "intercept_cwt": -624.4,
+        "r_squared": 0.411,
         "sufficient": true
       }
     },
     "600_649": {
-      "n": 12,
-      "bias_cwt": -47.13,
-      "mpe_pct": -12.06,
-      "mad_cwt": 47.95,
-      "mape_pct": 12.22,
-      "mse": 2675.19,
-      "rmse_cwt": 51.72,
+      "n": 13,
+      "bias_cwt": -47.39,
+      "mpe_pct": -12.11,
+      "mad_cwt": 48.15,
+      "mape_pct": 12.27,
+      "mse": 2665.89,
+      "rmse_cwt": 51.63,
       "sufficient": true,
       "calibration": {
-        "n": 12,
-        "slope": 1.806,
-        "intercept_cwt": -411.75,
-        "r_squared": 0.702,
+        "n": 13,
+        "slope": 1.8,
+        "intercept_cwt": -408.75,
+        "r_squared": 0.704,
         "sufficient": true
       }
     }
   },
   "n_forecasts_available": 27,
-  "n_realized_obs": 177,
+  "n_realized_obs": 179,
   "pairs": [
     {
       "date": "2026-05-04",
@@ -283,6 +283,24 @@
       "forecast": 445.0,
       "actual": 395.19,
       "error_cwt": -49.81
+    },
+    {
+      "date": "2026-11-23",
+      "band": "550_599",
+      "quarter": "Q4 2026",
+      "forecast_as_of": "2026-11-16",
+      "forecast": 468.0,
+      "actual": 415.95,
+      "error_cwt": -52.05
+    },
+    {
+      "date": "2026-11-23",
+      "band": "600_649",
+      "quarter": "Q4 2026",
+      "forecast_as_of": "2026-11-16",
+      "forecast": 445.0,
+      "actual": 394.46,
+      "error_cwt": -50.54
     }
   ],
   "note": "Metrics pair each realized mt_weekly steer wtd-avg with the HC quarterly forecast mid in effect that week. Driver regression (calf price ~ Choice-Select / feeder-corn / PTI / slaughter) is the next stage once a signifier time-series is logged. Treat metrics with n < 8 as indicative."
