@@ -1,6 +1,134 @@
 {
-  "updated": "2026-11-16",
+  "updated": "2026-11-23",
   "weeks": [
+    {
+      "as_of": "2026-11-23",
+      "source_url": "https://honestcattle.net/2026/11/23/2026-11-23-honest-cattle-weekly-market-forecast/",
+      "source_title": "2026-11-23 Honest Cattle® Weekly Market Forecast",
+      "class_note": "550–599 and 600–649 lb Montana-origin steers / heifers, FOB auction",
+      "quarters": [
+        {
+          "label": "Q4 2026",
+          "status": "ADJUSTED UP",
+          "bands": {
+            "550_599": {
+              "steer": {
+                "low": 451.0,
+                "high": 485.0,
+                "mid": 468.0
+              },
+              "heifer": {
+                "low": 401.0,
+                "high": 435.0,
+                "mid": 418.0
+              }
+            },
+            "600_649": {
+              "steer": {
+                "low": 428.0,
+                "high": 462.0,
+                "mid": 445.0
+              },
+              "heifer": {
+                "low": 383.0,
+                "high": 417.0,
+                "mid": 400.0
+              }
+            }
+          },
+          "steer": {
+            "low": 428.0,
+            "high": 485.0,
+            "mid": 456
+          },
+          "heifer": {
+            "low": 383.0,
+            "high": 435.0,
+            "mid": 409
+          }
+        },
+        {
+          "label": "Q1 2027",
+          "status": "HELD",
+          "bands": {
+            "550_599": {
+              "steer": {
+                "low": 445.0,
+                "high": 479.0,
+                "mid": 462.0
+              },
+              "heifer": {
+                "low": 395.0,
+                "high": 429.0,
+                "mid": 412.0
+              }
+            },
+            "600_649": {
+              "steer": {
+                "low": 418.0,
+                "high": 452.0,
+                "mid": 435.0
+              },
+              "heifer": {
+                "low": 372.0,
+                "high": 406.0,
+                "mid": 389.0
+              }
+            }
+          },
+          "steer": {
+            "low": 418.0,
+            "high": 479.0,
+            "mid": 448
+          },
+          "heifer": {
+            "low": 372.0,
+            "high": 429.0,
+            "mid": 400
+          }
+        },
+        {
+          "label": "Q2 2027",
+          "status": "HELD",
+          "bands": {
+            "550_599": {
+              "steer": {
+                "low": 435.0,
+                "high": 469.0,
+                "mid": 452.0
+              },
+              "heifer": {
+                "low": 395.0,
+                "high": 429.0,
+                "mid": 412.0
+              }
+            },
+            "600_649": {
+              "steer": {
+                "low": 407.0,
+                "high": 441.0,
+                "mid": 424.0
+              },
+              "heifer": {
+                "low": 371.0,
+                "high": 405.0,
+                "mid": 388.0
+              }
+            }
+          },
+          "steer": {
+            "low": 407.0,
+            "high": 469.0,
+            "mid": 438
+          },
+          "heifer": {
+            "low": 371.0,
+            "high": 429.0,
+            "mid": 400
+          }
+        }
+      ]
+    },
     {
       "as_of": "2026-11-16",
       "source_url": "https://honestcattle.net/2026/11/16/2026-11-16-honest-cattle-weekly-market-forecast/",
@@ -381,134 +509,6 @@
             "low": 366.0,
             "high": 423.0,
             "mid": 394
-          }
-        }
-      ]
-    },
-    {
-      "as_of": "2026-10-26",
-      "source_url": "https://honestcattle.net/2026/10/26/2026-10-26-honest-cattle-weekly-market-forecast/",
-      "source_title": "2026-10-26 Honest Cattle® Weekly Market Forecast",
-      "class_note": "550–599 and 600–649 lb Montana-origin steers / heifers, FOB auction",
-      "quarters": [
-        {
-          "label": "Q4 2026",
-          "status": "HELD",
-          "bands": {
-            "550_599": {
-              "steer": {
-                "low": 456.0,
-                "high": 490.0,
-                "mid": 473.0
-              },
-              "heifer": {
-                "low": 421.0,
-                "high": 455.0,
-                "mid": 438.0
-              }
-            },
-            "600_649": {
-              "steer": {
-                "low": 428.0,
-                "high": 462.0,
-                "mid": 445.0
-              },
-              "heifer": {
-                "low": 400.0,
-                "high": 434.0,
-                "mid": 417.0
-              }
-            }
-          },
-          "steer": {
-            "low": 428.0,
-            "high": 490.0,
-            "mid": 459
-          },
-          "heifer": {
-            "low": 400.0,
-            "high": 455.0,
-            "mid": 428
-          }
-        },
-        {
-          "label": "Q1 2027",
-          "status": "HELD",
-          "bands": {
-            "550_599": {
-              "steer": {
-                "low": 458.0,
-                "high": 492.0,
-                "mid": 475.0
-              },
-              "heifer": {
-                "low": 423.0,
-                "high": 457.0,
-                "mid": 440.0
-              }
-            },
-            "600_649": {
-              "steer": {
-                "low": 430.0,
-                "high": 464.0,
-                "mid": 447.0
-              },
-              "heifer": {
-                "low": 402.0,
-                "high": 436.0,
-                "mid": 419.0
-              }
-            }
-          },
-          "steer": {
-            "low": 430.0,
-            "high": 492.0,
-            "mid": 461
-          },
-          "heifer": {
-            "low": 402.0,
-            "high": 457.0,
-            "mid": 430
-          }
-        },
-        {
-          "label": "Q2 2027",
-          "status": "HELD",
-          "bands": {
-            "550_599": {
-              "steer": {
-                "low": 448.0,
-                "high": 482.0,
-                "mid": 465.0
-              },
-              "heifer": {
-                "low": 413.0,
-                "high": 447.0,
-                "mid": 430.0
-              }
-            },
-            "600_649": {
-              "steer": {
-                "low": 420.0,
-                "high": 454.0,
-                "mid": 437.0
-              },
-              "heifer": {
-                "low": 392.0,
-                "high": 426.0,
-                "mid": 409.0
-              }
-            }
-          },
-          "steer": {
-            "low": 420.0,
-            "high": 482.0,
-            "mid": 451
-          },
-          "heifer": {
-            "low": 392.0,
-            "high": 447.0,
-            "mid": 420
           }
         }
       ]
